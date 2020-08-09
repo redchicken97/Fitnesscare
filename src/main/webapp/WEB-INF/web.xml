@@ -5,16 +5,16 @@
 	version="2.5">
 	<display-name>Archetype Created Web Application</display-name>
 
-	<content-param>
-		<param-name>contentConfigLocation</param-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
-	</content-param>
+	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.sprigframework.web.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
