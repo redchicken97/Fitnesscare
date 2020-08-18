@@ -11,7 +11,10 @@
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+			
 	</listener>
+   
+   
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -39,7 +42,7 @@
 	<servlet>
 		<servlet-name>trainer</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
+		<init-param> 
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/trainer-layer.xml</param-value>
 		</init-param>

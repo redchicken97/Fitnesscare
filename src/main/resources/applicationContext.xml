@@ -16,24 +16,47 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	<bean destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource" id="dataSource">
-	
-	 </bean>
+
+	<context:property-placeholder
+	location="classpath:db.properties" />
+	<bean destroy-method="close"
+		class="org.apache.commons.dbcp2.BasicDataSource" id="dataSource">
+		<!-- JDBC 드라이버 클래스명 설정 -->
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<!-- JDBC 접속 문자열 생성 -->
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+
 	<!-- Transaction 관리자 설정 -->
 	<bean
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		id="transactionManager" p:dataSource-ref="dataSource" />
 
 	<!-- myBatis 사용을 위한 설정 -->
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
-		id="sqlSessionFactoryBean">
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
-			value="classpath:/mybatis-config.xml" />
+			value="classpath:mybatis-config.xml" />
 	</bean>
-	<bean class="org.mybatis.spring.SqlSessionTemplate"
-		id="sqlSessionTemplate">
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactoryBean" />
 	</bean>
+	 <context:component-scan
+		base-package="com.fitess.common.user"/>
+		
+		  <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
