@@ -1,10 +1,10 @@
-package com.fitess.common.user.dao;
+package com.fitess.common.user.service;
 
 import java.util.List;
 
 import com.fitess.common.user.vo.UserVO;
 
-public interface UserDAO {
+public interface UserService {
 	
 	public void insertUser(UserVO vo);
 	
