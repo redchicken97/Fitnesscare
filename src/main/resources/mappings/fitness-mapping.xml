@@ -56,8 +56,6 @@
 		WHERE user_id = #{user_id}
 	</select>
 
-
-
 	<select id="getUserList" resultMap="userResult">
 		SELECT * FROM user_info ORDER BY user_id DESC
 	</select>
