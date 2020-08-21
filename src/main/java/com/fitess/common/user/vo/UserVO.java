@@ -17,6 +17,7 @@ public class UserVO {
 	private Date user_regdate;	//회원가입 날짜
 	private char user_loginMethod;	//로그인한 방법 (카카오 : k, 일반 로그인 : L)
 	private char user_level;	//유저 등급(일반 : U, 트레이너 : T, 관리자 : A)
+	private char user_state;	//유저 상태(정상 : E, 정지 : D, 탈퇴 : O)
 	private char user_report_count;	//신고 당한 횟수
 	public int getUser_id() {
 		return user_id;
@@ -102,20 +103,32 @@ public class UserVO {
 	public void setUser_level(char user_level) {
 		this.user_level = user_level;
 	}
+	
+	public char getUser_state() {
+		return user_state;
+	}
+	public void setUser_state(char user_state) {
+		this.user_state = user_state;
+	}
+	
 	public char getUser_report_count() {
 		return user_report_count;
 	}
 	public void setUser_report_count(char user_report_count) {
 		this.user_report_count = user_report_count;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "UserVO [user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_nick="
 				+ user_nick + ", user_pw=" + user_pw + ", term_one=" + term_one + ", term_two=" + term_two
 				+ ", user_check_date1=" + user_check_date1 + ", user_check_date2=" + user_check_date2 + ", term_type1="
 				+ term_type1 + ", term_type2=" + term_type2 + ", user_regdate=" + user_regdate + ", user_loginMethod="
-				+ user_loginMethod + ", user_level=" + user_level + ", user_report_count=" + user_report_count + "]";
+				+ user_loginMethod + ", user_level=" + user_level + ", user_state=" + user_state
+				+ ", user_report_count=" + user_report_count + "]";
 	}
+	
 
 	
 }

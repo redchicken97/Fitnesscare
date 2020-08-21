@@ -22,7 +22,7 @@ public class UserController {
 	@RequestMapping("/getUserList.do")
 	public String getUserList(UserVO vo, Model model) {
 		System.out.println("controller에서 회원 목록 보기");
-		model.addAttribute("boardList", userService.getUserList(vo));
+		model.addAttribute("userList", userService.getUserList(vo));
 		return "getUserList.jsp";
 	}
 }

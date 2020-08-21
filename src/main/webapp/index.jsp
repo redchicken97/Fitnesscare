@@ -11,7 +11,7 @@
 	<hr>
 		<a href="#">로그인</a></br></br>
 		<a href="insertUser.jsp">회원가입</a></br></br>
-		<a href="getUSerList.do">회원정보</a>
+		<a href="getUserList.do">회원정보</a>
 	<hr/>
 </body>
 </html>
