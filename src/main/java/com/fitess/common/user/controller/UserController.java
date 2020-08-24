@@ -23,6 +23,6 @@ public class UserController {
 	public String getUserList(UserVO vo, Model model) {
 		System.out.println("controller에서 회원 목록 보기");
 		model.addAttribute("userList", userService.getUserList(vo));
-		return "getUserList.jsp";
+		return "getUserList";
 	}
 }
