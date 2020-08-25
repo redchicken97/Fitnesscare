@@ -13,7 +13,7 @@
 		<result property="term_one" column="TERM_ONE" />
 		<result property="term_two" column="TERM_TWO" />
 		<result property="user_check_date1" column="USER_CHECK_DATE1" />
-		<result property="user_check_date2" column="USER_CHECK_DATE1" />
+		<result property="user_check_date2" column="USER_CHECK_DATE2" />
 		<result property="term_type1" column="TERM_TYPE1" />
 		<result property="term_type2" column="TERM_TYPE2" />
 		<result property="user_regdate" column="USER_REGDATE" />
@@ -28,13 +28,11 @@
 	INSERT INTO
 	user_info
 	(user_id, user_name, user_email, user_nick,
-	user_pw, term_one,
-	term_two, user_check_date1, user_check_date2,
-	user_regdate)
-	VALUES((select nvl(max(user_id), 0) + 1 from user_id),
-	#{user_name}, #{user_email}, #{user_nick}, #{user_nick}, #{user_pw},
-	#{term_one},#{term_two},#{user_check_date1}, #{user_check_date2},
-	#{user_regdate})
+	user_pw, term_one, term_two, term_type1, term_type2)
+	VALUES((select nvl(max(user_id), 0) + 1 from
+	user_info),
+	#{user_name},#{user_email},#{user_nick},#{user_pw},
+	#{term_one},#{term_two},#{term_type1},#{term_type2})
 	</insert>
 	
 	<update id="updateUser" parameterType="user_info">
@@ -54,6 +52,11 @@
 	<select id="getUser" resultType="user_info">
 		SELECT * FROM user_info
 		WHERE user_id = #{user_id}
+	</select>
+	
+	<select id="userLogin" resultType="user_info">
+		SELECT * FROM user_info
+		WHERE user_email = #{user_email}
 	</select>
 
 	<select id="getUserList" resultMap="userResult">

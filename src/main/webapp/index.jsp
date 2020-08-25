@@ -9,7 +9,7 @@
 <body>
 	<h1>메인 페이지</h1>
 	<hr>
-		<a href="#">로그인</a></br></br>
+		<a href="login.jsp">로그인</a></br></br>
 		<a href="insertUser.jsp">회원가입</a></br></br>
 		<a href="getUserList.do">회원정보</a>
 				 

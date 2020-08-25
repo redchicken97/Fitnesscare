@@ -4,7 +4,9 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+<%
+	List<UserVO> userList = (List<UserVO>) session.getAttribute("userList");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -33,10 +35,29 @@
 			<th>UserState</th>
 			<th>UserReportCount</th>
 		</tr>
-		<tr>
-			<td></td>
-		</tr>
-	</table>
+		
+		<c:forEach var="user" items="${userList}">
+			<tr>
+				<td>${user.user_id }</td>
+				<td>${user.user_name }</td>
+				<td>${user.user_email }</td>
+				<td>${user.user_nick }</td>
+				<td>${user.user_pw }</td>
+				<td>${user.term_one }</td>
+				<td>${user.term_two }</td>
+				<td>${user.user_check_date1 }</td>
+				<td>${user.user_check_date2 }</td>
+				<td>${user.term_type1 }</td>
+				<td>${user.term_type2 }</td>
+				<td>${user.user_regdate }</td>
+				<td>${user.user_loginMethod }</td>
+				<td>${user.user_level }</td>
+				<td>${user.user_state }</td>
+				<td>${user.user_report_count }</td>
+			</tr>
+		</c:forEach>
+	</table><br/>
+	
 	<a href="index.jsp">메인회면으로 가기</a>
 </body>
 </html>
