@@ -19,7 +19,13 @@
 				<td><input type="password" name="user_pw"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="로그인"></td>
+				<td><input type="submit" value="로그인"></td>
+				<td>
+					<a>
+					
+					</a>
+					<img src="/Fitnesscare/resources/kakao_login_small.png">
+				</td>
 			</tr>
 		</table>
 	</form>

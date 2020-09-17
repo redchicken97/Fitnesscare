@@ -15,7 +15,7 @@ public class UserVO {
 	private String term_type1;	//동의를 한 약관 내용
 	private String term_type2;	//동의를 한 약관 내용
 	private Date user_regdate;	//회원가입 날짜
-	private char user_loginMethod;	//로그인한 방법 (카카오 : k, 일반 로그인 : L)
+	private char user_loginMethod;	//로그인한 방법 (카카오 : K, 일반 로그인 : L)
 	private char user_level;	//유저 등급(일반 : U, 트레이너 : T, 관리자 : A)
 	private char user_state;	//유저 상태(정상 : E, 정지 : D, 탈퇴 : O)
 	private char user_report_count;	//신고 당한 횟수

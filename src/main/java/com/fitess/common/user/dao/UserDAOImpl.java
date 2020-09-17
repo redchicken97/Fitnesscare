@@ -47,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public UserVO userLogin(String user_email) {
 		System.out.println("mybatis login ¿€µø");
-		return sqlSessionTemplate.selectOne("UserDAO.userLogin", user_email);
+		return sqlSessionTemplate.selectOne("UserDAO.getUser", user_email);
 	}
 
 }

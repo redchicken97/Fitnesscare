@@ -23,16 +23,27 @@
 		<result property="user_report_count" column="USER_REPORT_COUNT" />
 	</resultMap>
 
+	<insert id="insertKakaoUser" parameterType="user_info">
+		INSERT INTO
+		user_info (user_id, user_name, user_email, user_nick,
+		user_pw, user_loginMethod,
+		term_one, term_two, term_type1, term_type2)
+		VALUES((select nvl(max(user_id), 0) + 1 from
+		user_info),
+		#{user_name},#{user_email}, #{user_nick},#{user_pw}, 
+		#{user_loginMethod}, #{term_one}, #{term_two}, #{term_type1},#{term_type2})
+		
+	</insert>
 
 	<insert id="insertUser" parameterType="user_info">
-	INSERT INTO
-	user_info
-	(user_id, user_name, user_email, user_nick,
-	user_pw, term_one, term_two, term_type1, term_type2)
-	VALUES((select nvl(max(user_id), 0) + 1 from
-	user_info),
-	#{user_name},#{user_email},#{user_nick},#{user_pw},
-	#{term_one},#{term_two},#{term_type1},#{term_type2})
+		INSERT INTO
+		user_info
+		(user_id, user_name, user_email, user_nick,
+		user_pw, term_one, term_two, term_type1, term_type2)
+		VALUES((select nvl(max(user_id), 0) + 1 from
+		user_info),
+		#{user_name},#{user_email},#{user_nick},#{user_pw},
+		#{term_one},#{term_two},#{term_type1},#{term_type2})
 	</insert>
 	
 	<update id="updateUser" parameterType="user_info">
@@ -50,11 +61,6 @@
 	</delete>
 
 	<select id="getUser" resultType="user_info">
-		SELECT * FROM user_info
-		WHERE user_id = #{user_id}
-	</select>
-	
-	<select id="userLogin" resultType="user_info">
 		SELECT * FROM user_info
 		WHERE user_email = #{user_email}
 	</select>
