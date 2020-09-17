@@ -12,7 +12,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitess.common.user.dao.UserDAO;
 import com.fitess.common.user.dao.UserKakaoDAO;
 import com.fitess.common.user.vo.UserVO;
 import com.google.gson.JsonElement;

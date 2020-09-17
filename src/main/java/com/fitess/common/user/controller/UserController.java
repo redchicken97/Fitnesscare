@@ -83,7 +83,7 @@ public class UserController {
 	public String insertKakaoUser(UserVO vo) {
 		System.out.println("controller에서 kakao 유저 회원가입");
 		userkakaoService.insertKakaoUser(vo);
-		return null;
+		return "getUserList";
 	}
 	
 	@RequestMapping("/getUserList.do")
