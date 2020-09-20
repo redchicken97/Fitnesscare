@@ -138,6 +138,7 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 
 	@Override
 	public void insertKakaoUser(UserVO vo) {
+		vo.setUser_loginMethod('K');
 		userKakaoDAO.insertKakaoUser(vo);
 	}
 

@@ -15,8 +15,8 @@ public class UserKakaoDAOImpl implements UserKakaoDAO {
 	@Override
 	public void insertKakaoUser(UserVO vo) {
 		System.out.println("mybatis K_insert 작동");
-		sqlSessionTemple.insert("UserKakaoDAO.insertKakaoUser", vo);
-
+		sqlSessionTemple.insert("UserDAO.insertKakaoUser", vo);
+		//UserDAO는 매퍼의 namespace
 	}
 
 }

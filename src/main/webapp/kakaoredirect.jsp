@@ -15,8 +15,8 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	
 	<form action ="insertKakaoUser.do" method="post">
-	<input type="hidden" value="${userId }">
-	<input type="hidden" value="${userNick }">
+	<input type="hidden" name="user_email" value="${userId }">
+	<input type="hidden" name="user_nick" value="${userNick }">
 		<p>
 			<textarea name="term_type1">회원약관</textarea>
 			<br>

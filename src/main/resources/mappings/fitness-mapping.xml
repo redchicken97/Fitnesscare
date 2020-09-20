@@ -25,7 +25,8 @@
 
 	<insert id="insertKakaoUser" parameterType="user_info">
 		INSERT INTO
-		user_info (user_id, user_name, user_email, user_nick,
+		user_info 
+		(user_id, user_name, user_email, user_nick,
 		user_pw, user_loginMethod,
 		term_one, term_two, term_type1, term_type2)
 		VALUES((select nvl(max(user_id), 0) + 1 from

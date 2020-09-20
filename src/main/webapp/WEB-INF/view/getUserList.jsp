@@ -34,6 +34,7 @@
 			<th>UserLevel</th>
 			<th>UserState</th>
 			<th>UserReportCount</th>
+			<th>delete</th>
 		</tr>
 		
 		<c:forEach var="user" items="${userList}">
@@ -54,6 +55,7 @@
 				<td>${user.user_level }</td>
 				<td>${user.user_state }</td>
 				<td>${user.user_report_count }</td>
+				<td><button type="button" onclick="location.href='deleteUser.do?user_id=${user.user_id}'">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table><br/>
