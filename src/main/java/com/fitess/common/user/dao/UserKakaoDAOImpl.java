@@ -19,4 +19,11 @@ public class UserKakaoDAOImpl implements UserKakaoDAO {
 		//UserDAO는 매퍼의 namespace
 	}
 
+	@Override
+	public UserVO getKakaoUser(UserVO vo) {
+		System.out.println("mybatis K_getUser 작동");
+		sqlSessionTemple.selectOne("UserDAO.getUser", vo);
+		return null;
+	}
+
 }

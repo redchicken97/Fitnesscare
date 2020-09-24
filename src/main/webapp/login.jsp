@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +26,13 @@
 			<tr>
 				<td><input type="submit" value="로그인"></td>
 				<td>
-					<a>
-					
+					<a href="https://kauth.kakao.com/oauth/authorize
+						?client_id=e11e0bca2855ad3abc123dc69e2a7bf7
+						&redirect_uri=http://localhost:8181/Fitnesscare/kakaoredirect.do
+						&response_type=code">
+						<img src="/Fitnesscare/resources/kakao_login_small.png">
 					</a>
-					<img src="/Fitnesscare/resources/kakao_login_small.png">
+					
 				</td>
 			</tr>
 		</table>

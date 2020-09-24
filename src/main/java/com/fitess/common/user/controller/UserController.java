@@ -21,7 +21,7 @@ public class UserController {
 	
 	@RequestMapping("/login.do")
 	public String loginUser(UserVO vo, HttpServletResponse response,HttpServletRequest request , Model model) throws IOException {
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 		System.out.println("controller ·Î±×ÀÎ");
 		PrintWriter out = response.getWriter();
 		
@@ -42,8 +42,8 @@ public class UserController {
 			}else {
 				
 				model.addAttribute("userInfo", user_pwd);
-				return "check";
-			}
+				return "getUser";
+			} 
 		}
 		return null;
 	}
