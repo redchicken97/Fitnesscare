@@ -57,6 +57,6 @@
 		</tr>		
 	</table>
 	
-	<a href="healthTeam.jsp">헬스 장소 공유 등록</a>
+	<a href="healthTeamInput.jsp?id=${userInfo.user_id }">헬스 장소 공유 등록</a>
 </body>
 </html>

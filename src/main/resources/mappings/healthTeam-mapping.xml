@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="healthTeamDAO">
+
+	<resultMap type="healtTeam" id="healResult">
+		<id property="ht_id" column="HT_ID" />
+		<result property="ht_title" column="HT_TITLE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="ht_regdate" column="HT_REGDATE"/>
+		<result property="ht_commentcnt" column="HT_COMMENTCNT"/>
+		<result property="ht_limitcnt" column="HT_LIMITCNT"/>
+		<result property="ht_placename" column="HT_PLACENAME"/>
+		<result property="ht_placeaddress" column="HT_PLACEADDRESS"/>
+		<result property="ht_y" column="HT_Y"/>
+		<result property="ht_x" column="HT_X"/>
+	</resultMap>
+
+	<insert id="insertHealthTeam" parameterType="healtTeam">
+	
+	</insert>
+</mapper>

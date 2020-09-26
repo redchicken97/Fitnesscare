@@ -12,7 +12,7 @@
 		<a href="login.jsp">로그인</a></br></br>
 		<a href="insertUser.jsp">회원가입</a></br></br>
 		<a href="getUserList.do">회원정보</a>
-				 
+		<a href="healthTeam.jsp">헬스팀  내역</a>
 	<hr/>
 </body>
 </html>
