@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminDAO">
+
+	<resultMap type="admin" id="adminResult">
+		<id property="adm_id" column="ADM_ID" />
+		<result property="adm_email" column="ADM_EMAIL" />
+		<result property="adm_nickname" column="ADM_NICKNAME" />
+		<result property="adm_password" column="ADM_PASSWORD" />
+	</resultMap>
+	
+	<select id="getAdmin" resultMap="adminResult">
+		SELECT * 
+		FROM admin 
+		WHERE adm_id = #{adm_id} 
+	</select>
+	
+	<select id="getAdminList" resultMap="adminResult">
+		SELECT * 
+		FROM admin
+		ORDER BY adm_id DESC
+	</select>
+
+	<insert id="insertAdmin" parameterType="admin">
+		INSERT INTO
+		admin (adm_id, adm_email, adm_nickname, adm_password) 
+		VALUES(ADM_ID_SEQ.NEXTVAL, #{adm_email}, #{adm_nickname}, #{adm_password})
+	</insert>
+	
+	<update id="updateAdmin" parameterType="admin">
+		UPDATE admin
+		SET 
+		adm_email = #{adm_email}, 
+		adm_nickname = #{adm_nickname}, 
+		adm_password = #{adm_password}
+		WHERE
+		adm_id = #{adm_id}
+	</update>
+	
+	<delete id="deleteAdmin" parameterType="admin">
+		DELETE FROM admin
+		WHERE adm_id = #{adm_id} 
+	</delete>
+ 	
+</mapper>

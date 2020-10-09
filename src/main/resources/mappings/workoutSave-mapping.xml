@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WorkoutSaveDAO">
+
+	<resultMap type="workoutSave" id="workoutSaveResult">
+		<id property="workout_id" column="WORKOUT_ID" />
+		<result property="workout_img" column="WORKOUT_IMG" />
+	</resultMap>
+	<!-- 
+	<select id="getWorkoutSave" resultType="workoutSave">
+		SELECT * 
+		FROM workout_save
+		WHERE workout_id = #{workout_id}
+	</select>
+	 -->
+	<select id="getWorkoutSaveList" resultMap="workoutSaveResult">
+		SELECT * FROM workout_save
+		ORDER BY workout_id DESC
+	</select>
+
+	<insert id="insertWorkoutSave" parameterType="workoutSave">
+		INSERT INTO
+		workout_save (workout_id, workout_img)
+		VALUES(WORKOUT_ID_SEQ.NEXTVAL, #{workout_img})
+	</insert>
+	<!-- 
+	<update id="updateWorkoutSave" parameterType="workoutSave">
+		UPDATE workout_save
+		SET
+		workout_id = #{workout_id}
+		WHERE
+		workout_img = #{workout_img}
+	</update>
+
+	<delete id="deleteWorkoutSave" parameterType="workoutSave">
+		DELETE FROM
+		workout_save WHERE
+		workout_id = #{workout_id}
+	</delete>
+ 	-->
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TermDAO">
+
+	<resultMap type="term" id="termResult">
+		<id property="term_id" column="TERM_ID" />
+		<result property="term_name" column="TERM_NAME" />
+		<result property="term_type" column="TERM_TYPE" />
+		<result property="term_content" column="TERM_CONTENT" />
+		<result property="term_createdate" column="TERM_CREATEDATE" />
+		<result property="term_manager" column="TERM_MANAGER" />
+	</resultMap>
+	
+	<select id="getTerm" resultMap="termResult">
+		SELECT * 
+		FROM term
+		WHERE term_id = #{term_id}
+	</select>
+	
+	<sql id="subGetTermList1">
+		SELECT term_id, term_name, term_type, 
+		term_createdate, term_manager, ROWNUM AS rnum 
+		FROM term 
+	</sql>
+	
+	<select id="getTermList" resultMap="termResult">
+		SELECT * 
+		FROM (<include refid="subGetTermList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
+		ORDER BY term_id DESC
+	</select>
+	
+	<select id="getTermCount" resultType="int">
+		SELECT COUNT(*)
+		FROM term 
+	</select>
+
+	<insert id="insertTerm" parameterType="term">
+		INSERT INTO
+		term (term_id, term_name, term_type, term_content, term_manager)
+		VALUES(TERM_ID_SEQ.NEXTVAL, #{term_name}, #{term_type}, #{term_content}, #{term_manager})
+	</insert>
+	
+	<update id="updateTerm" parameterType="term">
+		UPDATE term
+		SET
+		term_name = #{term_name}, 
+		term_type = #{term_type}, 
+		term_content = #{term_content}, 
+		term_manager = #{term_manager}
+		WHERE
+		term_id = #{term_id}
+	</update>
+ 	
+</mapper>
