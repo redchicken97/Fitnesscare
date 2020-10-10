@@ -8,8 +8,8 @@ public class UserVO {
 	private String user_email;
 	private String user_nick;
 	private String user_pw;
-	private int user_one;
-	private int user_two;
+	private int term_one;
+	private int term_two;
 	private Date user_check_date1;
 	private Date user_check_date2;
 	private String term_type1;
@@ -23,7 +23,7 @@ public class UserVO {
 	@Override
 	public String toString() {
 		return "UserVO [user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_nick="
-				+ user_nick + ", user_pw=" + user_pw + ", user_one=" + user_one + ", user_two=" + user_two
+				+ user_nick + ", user_pw=" + user_pw + ", term_one=" + term_one + ", term_two=" + term_two
 				+ ", user_check_date1=" + user_check_date1 + ", user_check_date2=" + user_check_date2 + ", term_type1="
 				+ term_type1 + ", term_type2=" + term_type2 + ", user_regdate=" + user_regdate + ", user_loginmethod="
 				+ user_loginmethod + ", user_level=" + user_level + ", user_state=" + user_state
@@ -59,17 +59,17 @@ public class UserVO {
 	public void setUser_pw(String user_pw) {
 		this.user_pw = user_pw;
 	}
-	public int getUser_one() {
-		return user_one;
+	public int getTerm_one() {
+		return term_one;
 	}
-	public void setUser_one(int user_one) {
-		this.user_one = user_one;
+	public void setTerm_one(int term_one) {
+		this.term_one = term_one;
 	}
-	public int getUser_two() {
-		return user_two;
+	public int getTerm_two() {
+		return term_two;
 	}
-	public void setUser_two(int user_two) {
-		this.user_two = user_two;
+	public void setTerm_two(int term_two) {
+		this.term_two = term_two;
 	}
 	public Date getUser_check_date1() {
 		return user_check_date1;

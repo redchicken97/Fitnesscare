@@ -1,4 +1,3 @@
-<%@ page import="java.util.List"%>
 <%@ page import="com.fitness.admin.term.dao.TermDAO"%>
 <%@ page import="com.fitness.admin.term.vo.TermVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

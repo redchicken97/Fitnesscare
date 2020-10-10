@@ -9,11 +9,13 @@
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"></typeAlias>
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"></typeAlias>
+		<typeAlias type="com.fitness.admin.user.vo.UserVO" alias="user"></typeAlias>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/workoutSave-mapping.xml" />
 		<mapper resource="mappings/foodSave-mapping.xml" />
 		<mapper resource="mappings/term-mapping.xml" />
 		<mapper resource="mappings/admin-mapping.xml" />
+		<mapper resource="mappings/user-mapping.xml" />
 	</mappers>
 </configuration>
