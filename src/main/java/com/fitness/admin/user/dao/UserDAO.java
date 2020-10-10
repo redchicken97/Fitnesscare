@@ -1,6 +1,8 @@
 package com.fitness.admin.user.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,10 @@ public class UserDAO {
 	
 	public List<UserVO> getUserList(Criteria cri) {
 		System.out.println("UserDAO.getUserList ½ÇÇà");
+		Map map = new HashMap();
+		map.put("cri", cri);
+		map.put("startNum", cri.getStartNum());
+		map.put("endNum", cri.getEndNum());
 		return sqlSessionTemplate.selectList("UserDAO.getUserList", cri);
 	}
 	

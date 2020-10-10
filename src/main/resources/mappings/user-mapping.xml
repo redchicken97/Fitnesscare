@@ -29,9 +29,18 @@
 		WHERE user_id = #{user_id} 
 	</select>
 	
+	<sql id="subGetUserList1">
+		SELECT user_id, user_name, user_email, user_nick, 
+		term_one, term_two, user_check_date1, user_check_date2, 
+		term_type1, term_type2, user_regdate, user_loginmethod, 
+		user_level, user_state, user_report_count, ROWNUM AS rnum 
+		FROM user_info 
+	</sql>
+	
 	<select id="getUserList" resultMap="userResult">
 		SELECT * 
-		FROM user_info
+		FROM (<include refid="subGetUserList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
 		ORDER BY user_id DESC
 	</select>
 	
