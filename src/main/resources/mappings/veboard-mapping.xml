@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="VEBoardDAO">
+
+	<resultMap type="veboard" id="veboardResult">
+		<id property="ex_id" column="EX_ID" />
+		<result property="ex_title" column="EX_TITLE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="ex_regdate" column="EX_REGDATE" />
+		<result property="ex_commentcnt" column="EX_COMMENTCNT" />
+		<result property="ex_rdcnt" column="EX_RDCNT" />
+		<result property="ex_visitcnt" column="EX_VISITCNT" />
+		<result property="ex_reportcnt" column="EX_REPORTCNT" />
+		<result property="ex_type" column="EX_TYPE" />
+		<result property="ex_link" column="EX_LINK" />
+		<result property="ex_content" column="EX_CONTENT" />
+	</resultMap>
+	
+	<select id="getVEBoard" resultMap="veboardResult">
+		SELECT * 
+		FROM workoutvideo
+		WHERE ex_id = #{ex_id}
+	</select>
+	
+	<sql id="subGetVEBoardList1">
+		SELECT ex_id, ex_title, user_id, ex_regdate, 
+		ex_commentcnt, ex_rdcnt, ex_visitcnt, ex_reportcnt, 
+		ex_type, ex_link, ex_content, ROWNUM AS rnum 
+		FROM workoutvideo 
+	</sql>
+	
+	<select id="getVEBoardList" resultMap="veboardResult">
+		SELECT * 
+		FROM (<include refid="subGetVEBoardList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
+		ORDER BY ex_id DESC
+	</select>
+	
+	<select id="getVEBoardCount" resultType="int">
+		SELECT COUNT(*)
+		FROM workoutvideo 
+	</select>
+
+	<insert id="insertVEBoard" parameterType="veboard">
+		INSERT INTO
+		workoutvideo (ex_id, ex_title, user_id, 
+		ex_type, ex_link, ex_content)
+		VALUES(EX_ID_SEQ.NEXTVAL, #{ex_title}, #{user_id}, 
+		1, "None", #{ex_content})
+	</insert>
+	
+	<update id="updateVEBoard" parameterType="veboard">
+		UPDATE workoutvideo
+		SET
+		ex_title = #{ex_title}, 
+		ex_link = #{ex_link}, 
+		ex_content = #{ex_content}
+		WHERE
+		ex_id = #{ex_id}
+	</update>
+	<!-- 
+	<delete id="deleteVEBoard" parameterType="veboard">
+		DELETE FROM workoutvideo
+		WHERE EX_ID = #{ex_id}
+	</delete>
+ 	-->
+</mapper>

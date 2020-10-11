@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FEBoardDAO">
+
+	<resultMap type="feboard" id="feboardResult">
+		<id property="free_id" column="FREE_ID" />
+		<result property="free_title" column="FREE_TITLE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="free_regdate" column="FREE_REGDATE" />
+		<result property="free_commentcnt" column="FREE_COMMENTCNT" />
+		<result property="free_rdcnt" column="FREE_RDCNT" />
+		<result property="free_visitcnt" column="FREE_VISITCNT" />
+		<result property="free_reportcnt" column="FREE_REPORTCNT" />
+		<result property="free_type" column="FREE_TYPE" />
+		<result property="free_content" column="FREE_CONTENT" />
+	</resultMap>
+	
+	<select id="getFEBoard" resultMap="feboardResult">
+		SELECT * 
+		FROM free
+		WHERE free_id = #{free_id}
+	</select>
+	
+	<sql id="subGetFEBoardList1">
+		SELECT free_id, free_title, user_id, free_regdate, 
+		free_commentcnt, free_rdcnt, free_visitcnt, free_reportcnt, 
+		free_type, free_content, ROWNUM AS rnum 
+		FROM free 
+	</sql>
+	
+	<select id="getFEBoardList" resultMap="feboardResult">
+		SELECT * 
+		FROM (<include refid="subGetFEBoardList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
+		ORDER BY free_id DESC
+	</select>
+	
+	<select id="getFEBoardCount" resultType="int">
+		SELECT COUNT(*)
+		FROM free 
+	</select>
+
+	<insert id="insertFEBoard" parameterType="feboard">
+		INSERT INTO
+		free (free_id, free_title, user_id, free_type, free_content)
+		VALUES(FREE_ID_SEQ.NEXTVAL, #{free_title}, #{user_id}, 1, #{free_content})
+	</insert>
+	
+	<update id="updateFEBoard" parameterType="feboard">
+		UPDATE free
+		SET
+		free_title = #{free_title}, 
+		free_content = #{free_content}
+		WHERE
+		free_id = #{free_id}
+	</update>
+	<!-- 
+	<delete id="deleteFEBoard" parameterType="feboard">
+		DELETE FROM free
+		WHERE FREE_ID = #{free_id}
+	</delete>
+ 	-->
+</mapper>

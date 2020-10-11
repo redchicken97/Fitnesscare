@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="HTEBoardDAO">
+
+	<resultMap type="hteboard" id="hteboardResult">
+		<id property="ht_id" column="HT_ID" />
+		<result property="ht_title" column="HT_TITLE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="ht_regdate" column="HT_REGDATE" />
+		<result property="ht_commentcnt" column="HT_COMMENTCNT" />
+		<result property="ht_limitcnt" column="HT_LIMITCNT" />
+		<result property="ht_placename" column="HT_PLACENAME" />
+		<result property="ht_placeaddress" column="HT_PLACEADDRESS" />
+		<result property="ht_y" column="HT_Y" />
+		<result property="ht_x" column="HT_X" />
+		<result property="ht_content" column="HT_CONTENT" />
+	</resultMap>
+	
+	<select id="getHTEBoard" resultMap="hteboardResult">
+		SELECT * 
+		FROM healthteam
+		WHERE ht_id = #{ht_id}
+	</select>
+	
+	<sql id="subGetHTEBoardList1">
+		SELECT ht_id, ht_title, user_id, ht_regdate, 
+		ht_commentcnt, ht_limitcnt, ht_placename, ht_placeaddress, 
+		ht_y, ht_x, ht_content, ROWNUM AS rnum 
+		FROM healthteam 
+	</sql>
+	
+	<select id="getHTEBoardList" resultMap="hteboardResult">
+		SELECT * 
+		FROM (<include refid="subGetHTEBoardList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
+		ORDER BY ht_id DESC
+	</select>
+	
+	<select id="getHTEBoardCount" resultType="int">
+		SELECT COUNT(*)
+		FROM healthteam 
+	</select>
+
+	<insert id="insertHTEBoard" parameterType="hteboard">
+		INSERT INTO
+		healthteam (ht_id, ht_title, user_id, 
+		ht_placename, ht_placeaddress, ht_content)
+		VALUES(HT_ID_SEQ.NEXTVAL, #{ht_title}, #{user_id}, 
+		'None', 'None', #{ht_content})
+	</insert>
+	
+	<update id="updateHTEBoard" parameterType="hteboard">
+		UPDATE healthteam
+		SET
+		ht_title = #{ht_title}, 
+		ht_content = #{ht_content}
+		WHERE
+		ht_id = #{ht_id}
+	</update>
+	<!-- 
+	<delete id="deleteHTEBoard" parameterType="hteboard">
+		DELETE FROM healthteam
+		WHERE HT_ID = #{ht_id}
+	</delete>
+ 	-->
+</mapper>

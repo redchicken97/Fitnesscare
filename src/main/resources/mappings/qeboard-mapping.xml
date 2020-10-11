@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QEBoardDAO">
+
+	<resultMap type="qeboard" id="qeboardResult">
+		<id property="q_id" column="Q_ID" />
+		<result property="q_title" column="Q_TITLE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="q_regdate" column="Q_REGDATE" />
+		<result property="q_rdcnt" column="Q_RDCNT" />
+		<result property="q_visitcnt" column="Q_VISITCNT" />
+		<result property="q_reportcnt" column="Q_REPORTCNT" />
+		<result property="q_type" column="Q_TYPE" />
+		<result property="q_lock" column="Q_LOCK" />
+		<result property="q_content" column="Q_CONTENT" />
+	</resultMap>
+	
+	<select id="getQEBoard" resultMap="qeboardResult">
+		SELECT * 
+		FROM question
+		WHERE q_id = #{q_id}
+	</select>
+	
+	<sql id="subGetQEBoardList1">
+		SELECT q_id, q_title, user_id, q_regdate, 
+		q_rdcnt, q_visitcnt, q_reportcnt, 
+		q_type, q_lock, q_content, ROWNUM AS rnum 
+		FROM question 
+	</sql>
+	
+	<select id="getQEBoardList" resultMap="qeboardResult">
+		SELECT * 
+		FROM (<include refid="subGetQEBoardList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
+		ORDER BY q_id DESC
+	</select>
+	
+	<select id="getQEBoardCount" resultType="int">
+		SELECT COUNT(*)
+		FROM question 
+	</select>
+
+	<insert id="insertQEBoard" parameterType="qeboard">
+		INSERT INTO
+		question (q_id, q_title, user_id, 
+		q_type, q_lock, q_content)
+		VALUES(Q_ID_SEQ.NEXTVAL, #{q_title}, #{user_id}, 
+		1, 1, #{q_content})
+	</insert>
+	
+	<update id="updateQEBoard" parameterType="qeboard">
+		UPDATE question
+		SET
+		q_title = #{q_title}, 
+		q_content = #{q_content}
+		WHERE
+		q_id = #{q_id}
+	</update>
+	<!-- 
+	<delete id="deleteQEBoard" parameterType="qeboard">
+		DELETE FROM question
+		WHERE Q_ID = #{q_id}
+	</delete>
+ 	-->
+</mapper>
