@@ -16,37 +16,37 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public void insertUser(UserVO vo) {
-		System.out.println("mybatis insert ÀÛµ¿");
+		System.out.println("mybatis insert ì‘ë™");
 		sqlSessionTemplate.insert("UserDAO.insertUser", vo);
 	}
 
 	@Override
 	public void updateUser(UserVO vo) {
-		System.out.println("mybatis update ÀÛµ¿");
+		System.out.println("mybatis update ì‘ë™");
 		sqlSessionTemplate.update("UserDAO.updateUser", vo);
 	}
 
 	@Override
 	public void deleteUser(UserVO vo) {
-		System.out.println("mybatis delete ÀÛµ¿");
+		System.out.println("mybatis delete ì‘ë™");
 		sqlSessionTemplate.delete("UserDAO.deleteUser", vo);
 	}
 
 	@Override
 	public UserVO getUser(UserVO vo) {
-		System.out.println("mybatis get ÀÛµ¿");
+		System.out.println("mybatis get ì‘ë™");
 		return sqlSessionTemplate.selectOne("UserDAO.getUser", vo);
 	}
 
 	@Override
 	public List<UserVO> getUserList(UserVO vo) {
-		System.out.println("mybatis getList ÀÛµ¿");
+		System.out.println("mybatis getList ì‘ë™");
 		return sqlSessionTemplate.selectList("UserDAO.getUserList");
 	}
 
 	@Override
 	public UserVO userLogin(String user_email) {
-		System.out.println("mybatis login ÀÛµ¿");
+		System.out.println("mybatis login ì‘ë™");
 		return sqlSessionTemplate.selectOne("UserDAO.getUser", user_email);
 	}
 

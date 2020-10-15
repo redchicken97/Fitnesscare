@@ -31,13 +31,13 @@ public class UserKakaoController {
 		HashMap<String, Object> userInfo = userkakaoService.getUserInfo(access_Token);
 		System.out.println("login Controller :" + userInfo);
 		
-		//kakao api¸¦ ÀÌ¿ëÇÑ ÀÌ¸ŞÀÏ °¡Á®¿À±â
+		//kakao apië¥¼ ì´ìš©í•œ ì´ë©”ì¼ ê°€ì ¸ì˜¤ê¸°
 		String kakaoId = (String) userInfo.get("email");
 		
-		//°¡Á®¿Â ÀÌ¸ŞÀÏÀ» ÀÌ¿ëÇØ¼­ À¯ÀúÀÌ ÀÖ´ÂÁö È®ÀÎ
+		//ê°€ì ¸ì˜¨ ì´ë©”ì¼ì„ ì´ìš©í•´ì„œ ìœ ì €ê°€ ìˆëŠ”ì§€ í™•ì¸
 		UserVO KakaoUser = userService.userLogin(kakaoId);
 		
-		//ÀÖ´Ù¸é ·Î±×ÀÎ È­¸éÀ¸·Î ÀÌµ¿
+		//ìˆë‹¤ë©´ ë¡œê·¸ì¸ í™”ë©´ìœ¼ë¡œ ì´ë™
 		if (KakaoUser != null) {
 			model.addAttribute("userInfo", KakaoUser);
 			return "getUser";
@@ -53,7 +53,7 @@ public class UserKakaoController {
 
 	@RequestMapping("/insertKakaoUser.do")
 	public String insertKakaoUser(UserVO vo) {
-		System.out.println("controller¿¡¼­ kakao À¯Àú È¸¿ø°¡ÀÔ");
+		System.out.println("controllerì—ì„œ kakao ìœ ì € íšŒì›ê°€ì…");
 		userkakaoService.insertKakaoUser(vo);
 		return "redirect:/getUserList.do";
 	}

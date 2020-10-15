@@ -14,14 +14,14 @@ public class UserKakaoDAOImpl implements UserKakaoDAO {
 	
 	@Override
 	public void insertKakaoUser(UserVO vo) {
-		System.out.println("mybatis K_insert ÀÛµ¿");
+		System.out.println("mybatis K_insert ì‘ë™");
 		sqlSessionTemple.insert("UserDAO.insertKakaoUser", vo);
-		//UserDAO´Â ¸ÅÆÛÀÇ namespace
+		//UserDAOëŠ” ë§¤í¼ì˜ namespace
 	}
 
 	@Override
 	public UserVO getKakaoUser(UserVO vo) {
-		System.out.println("mybatis K_getUser ÀÛµ¿");
+		System.out.println("mybatis K_getUser ì‘ë™");
 		sqlSessionTemple.selectOne("UserDAO.getUser", vo);
 		return null;
 	}

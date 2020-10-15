@@ -3,16 +3,17 @@ package com.fitess.common.user.vo;
 import java.util.Date;
 
 public class healthTeamVO {
-	private int ht_id;			//±Û ¹øÈ£ 1Áõ°¡ ½ÃÄö½º 
-	private String ht_title;	//Á¦¸ñ
-	private int user_id;		//µî·ÏÀÚ ¾ÆÀÌµğ
-	private Date ht_regdate;	//µî·ÏÀÏ
-	private int ht_commentCnt; 	//´ñ±Û¼ö
-	private int ht_limitCnt;;	//Âü¿©ÀÚ Á¦ÇÑ¼ö
-	private String ht_placename;//Àå¼Ò ÀÌ¸§
-	private String ht_placeaddress;//ÀÚ¼Ò ÁÖ¼Ò
-	private int ht_y;		//¾à¼Ó Àå¼Ò À§µµ
-	private int ht_x;		//¾à¼Ó Àå¼Ò °æµµ
+	private int ht_id;			//ê²Œì‹œíŒ ì¼ë ¨ ë²ˆí˜¸ 1ì¦ê°€ ì‹œí€€ìŠ¤ 
+	private String ht_title;	//ê²Œì‹œê¸€ ì œëª©
+	private int user_id;		//íšŒì› ì‹œë¦¬ì–¼ ë„˜ë²„
+	private Date ht_regdate;	//ê¸€ ë“±ë¡ ë‚ ì§œ
+	private int ht_commentCnt; 	//ëŒ“ê¸€ ìˆ˜
+	private int ht_limitCnt;;	//ì°¸ì—¬ì ì œí•œìˆ˜
+	private String ht_placename;//ì•½ì† ì¥ì†Œ ì´ë¦„
+	private String ht_placeaddress;//ì•½ì† ì¥ì†Œ ì£¼ì†Œ
+	private int ht_y;		//ì•½ì†ì¥ì†Œ ìœ„ë„
+	private int ht_x;		//ì•½ì†ì¥ì†Œ ê²½ë„
+	private String ht_content;	//ê¸€ ë‚´ìš©
 	
 	public int getHt_id() {
 		return ht_id;

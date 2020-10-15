@@ -22,21 +22,21 @@ public class UserController {
 	@RequestMapping("/login.do")
 	public String loginUser(UserVO vo, HttpServletResponse response,HttpServletRequest request , Model model) throws IOException {
 //		request.setCharacterEncoding("UTF-8");
-		System.out.println("controller ·Î±×ÀÎ");
+		System.out.println("controller ë¡œê·¸ì¸");
 		PrintWriter out = response.getWriter();
 		
-		//À¯Àú ¾ÆÀÌµğ¸¦ ±âÁØÀ¸·Î DB·Î ºÎÅÍ ³»¿ëÀ» °¡Á®¿È
+		//ìœ ì € ì•„ì´ë””ë¥¼ ê¸°ì¤€ìœ¼ë¡œ DBë¡œ ë¶€í„° ë‚´ìš©ì„ ê°€ì ¸ì˜´
 		UserVO user_pwd = userService.userLogin(vo.getUser_email());
 		
 		if(user_pwd == null) {
 			out.println("<script>");
-			out.println("alert('À¯Àú Á¤º¸°¡ ¾ø½À´Ï´Ù.');");
+			out.println("alert('ìœ ì € ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.');");
 			out.println("history.back()");
 			out.println("</script>");
 		}else {
 			if(!user_pwd.getUser_pw().equals(vo.getUser_pw())) {
 				out.println("<script>");
-				out.println("alert('À¯Àú ºñ¹Î¹øÈ£°¡ ´Ù¸¨´Ï´Ù.')");
+				out.println("alert('ìœ ì € ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.')");
 				out.println("history.go(-1);");
 				out.println("</script>");
 			}else {
@@ -50,21 +50,21 @@ public class UserController {
 	
 	@RequestMapping("/insertUser.do")
 	public String insertUser(UserVO vo) {
-		System.out.println("controller¿¡¼­ ±Û µî·Ï ");
+		System.out.println("controllerì—ì„œ ê¸€ ë“±ë¡ ");
 		userService.insertUser(vo);
 		return "redirect:/getUserList.do";
 	}
 	
 	@RequestMapping("/getUserList.do")
 	public String getUserList(UserVO vo, Model model) {
-		System.out.println("controller¿¡¼­ È¸¿ø ¸ñ·Ï º¸±â");
+		System.out.println("controllerì—ì„œ íšŒì› ëª©ë¡ ë³´ê¸°");
 		model.addAttribute("userList", userService.getUserList(vo));
 		return "getUserList";
 	}
 	
 	@RequestMapping("/deleteUser.do")
 	public String deleteUser(UserVO vo) {
-		System.out.println("controller ¿¡¼­ À¯Àú »èÁ¦");
+		System.out.println("controllerì—ì„œ ìœ ì € ì‚­ì œ");
 		userService.deleteUser(vo);
 		return "redirect:/getUserList.do";
 	}
