@@ -3,22 +3,22 @@ package com.fitess.common.user.vo;
 import java.util.Date;
 
 public class UserVO {
-	private int user_id;	//À¯Àú ¹øÈ£ 1Áõ°¡ ½ÃÄö½º
-	private String user_name;	//À¯Àú ÀÌ¸§
-	private String user_email;	//À¯Àú ÀÌ¸ŞÀÏ ·Î±×ÀÎ ¾ÆÀÌµğ·Î »ç¿ë
-	private String user_nick;	//À¯Àú ´Ğ³×ÀÓ È¨ÆäÀÌÁö¿¡¼­ »ç¿ë
-	private String user_pw;		//À¯Àú ºñ¹Ğ¹øÈ£
-	private int term_one;	//¾à°üµ¿ÀÇ ÇßÀ¸¸é 1 ¾ÈÇßÀ¸¸é 0
-	private int term_two;	//¾à°üµ¿ÀÇ ÇßÀ¸¸é 1 ¾ÈÇßÀ¸¸é 0
-	private Date user_check_date1;	//¾à°üµ¿ÀÇ¸¦ ÇÑ ³¯Â¥
-	private Date user_check_date2;	//¾à°üµ¿ÀÇ¸¦ ÇÑ ³¯Â¥
-	private String term_type1;	//µ¿ÀÇ¸¦ ÇÑ ¾à°ü ³»¿ë
-	private String term_type2;	//µ¿ÀÇ¸¦ ÇÑ ¾à°ü ³»¿ë
-	private Date user_regdate;	//È¸¿ø°¡ÀÔ ³¯Â¥
-	private char user_loginMethod;	//·Î±×ÀÎÇÑ ¹æ¹ı (Ä«Ä«¿À : K, ÀÏ¹İ ·Î±×ÀÎ : L)
-	private char user_level;	//À¯Àú µî±Ş(ÀÏ¹İ : U, Æ®·¹ÀÌ³Ê : T, °ü¸®ÀÚ : A)
-	private char user_state;	//À¯Àú »óÅÂ(Á¤»ó : E, Á¤Áö : D, Å»Åğ : O)
-	private char user_report_count;	//½Å°í ´çÇÑ È½¼ö
+	private int user_id;	//íšŒì› ì‹œë¦¬ì–¼ ë„˜ë²„ (1ì¦ê°€ ì‹œí€€ìŠ¤)
+	private String user_name;	//ì‚¬ìš©ì ì´ë¦„
+	private String user_email;	//ì‚¬ìš©ì ì´ë©”ì¼ (ì•„ì´ë””)
+	private String user_nick;	//ì‚¬ìš©ì ë‹‰ë„¤ì„ ì‚¬ì´íŠ¸ì— ì‚¬ìš©í•  ì´ë¦„
+	private String user_pw;		//ì‚¬ìš©ì ë¹„ë°€ë²ˆí˜¸
+	private int term_one;	//ì•½ê´€ ë™ì˜ ì—¬ë¶€ í–ˆìœ¼ë©´ 1 ì•ˆí–ˆìœ¼ë©´ 0
+	private int term_two;	//ì•½ê´€ ë™ì˜ ì—¬ë¶€ í–ˆìœ¼ë©´ 1 ì•ˆí–ˆìœ¼ë©´ 0
+	private Date user_check_date1;	//ì•½ê´€ ë™ì˜í•œ ë‚ ì§œ
+	private Date user_check_date2;	//ì•½ê´€ ë™ì˜í•œ ë‚ ì§œ
+	private String term_type1;	//ë™ì˜í•œ ì•½ê´€ì˜ ì¢…ë¥˜
+	private String term_type2;	//ë™ì˜í•œ ì•½ê´€ì˜ ì¢…ë¥˜
+	private Date user_regdate;	//íšŒì›ê°€ì… ë‚ ì§œ
+	private char user_loginMethod;	//ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (Ä«Ä«ï¿½ï¿½ : K, ï¿½Ï¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ : L)
+	private char user_level;	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(ï¿½Ï¹ï¿½ : U, Æ®ï¿½ï¿½ï¿½Ì³ï¿½ : T, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : A)
+	private char user_state;	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ : E, ï¿½ï¿½ï¿½ï¿½ : D, Å»ï¿½ï¿½ : O)
+	private char user_report_count;	//ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
 	public int getUser_id() {
 		return user_id;
 	}
