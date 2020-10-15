@@ -14,7 +14,7 @@ public class healthTeamVO {
 	private int ht_y;		//약속장소 위도
 	private int ht_x;		//약속장소 경도
 	private String ht_content;	//글 내용
-	
+
 	public int getHt_id() {
 		return ht_id;
 	}
@@ -94,13 +94,23 @@ public class healthTeamVO {
 	public void setHt_x(int ht_x) {
 		this.ht_x = ht_x;
 	}
+	
+	public String getHt_content() {
+		return ht_content;
+	}
+
+	public void setHt_content(String ht_content) {
+		this.ht_content = ht_content;
+	}
 
 	@Override
 	public String toString() {
 		return "healthTeamVO [ht_id=" + ht_id + ", ht_title=" + ht_title + ", user_id=" + user_id + ", ht_regdate="
 				+ ht_regdate + ", ht_commentCnt=" + ht_commentCnt + ", ht_limitCnt=" + ht_limitCnt + ", ht_placename="
-				+ ht_placename + ", ht_placeaddress=" + ht_placeaddress + ", ht_y=" + ht_y + ", ht_x=" + ht_x + "]";
+				+ ht_placename + ", ht_placeaddress=" + ht_placeaddress + ", ht_y=" + ht_y + ", ht_x=" + ht_x
+				+ ", ht_content=" + ht_content + "]";
 	}
+
 	
 	
 	
