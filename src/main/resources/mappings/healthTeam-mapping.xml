@@ -9,8 +9,8 @@
 		<result property="ht_title" column="HT_TITLE" />
 		<result property="user_id" column="USER_ID" />
 		<result property="ht_regdate" column="HT_REGDATE"/>
-		<result property="ht_commentcnt" column="HT_COMMENTCNT"/>
-		<result property="ht_limitcnt" column="HT_LIMITCNT"/>
+		<result property="ht_commentCnt" column="HT_COMMENTCNT"/>
+		<result property="ht_limitCnt" column="HT_LIMITCNT"/>
 		<result property="ht_placename" column="HT_PLACENAME"/>
 		<result property="ht_placeaddress" column="HT_PLACEADDRESS"/>
 		<result property="ht_y" column="HT_Y"/>

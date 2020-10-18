@@ -50,7 +50,7 @@ public class UserController {
 	
 	@RequestMapping("/insertUser.do")
 	public String insertUser(UserVO vo) {
-		System.out.println("controller에서 글 등록 ");
+		System.out.println("controller에서 회원 등록 ");
 		userService.insertUser(vo);
 		return "redirect:/getUserList.do";
 	}

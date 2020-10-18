@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+	
+	request.setCharacterEncoding("UTF-8");
+	String id = request.getParameter("id");
+	int userId = Integer.parseInt(id);
+	
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,15 +153,15 @@ function displayPlaces(places) {
                    locRoadAdress = result[0].road_address.address_name;
                 }
             });
-           locPosition = marker.getPosition();
+//           locPosition = marker.getPosition();
+           Position_Y = marker.getPosition().getLat();
+           Position_X = marker.getPosition().getLng();
            locTitle = title;
 
           document.getElementById("locRoadAdress").value = locRoadAdress;
-          document.getElementById("locPosition").value = locPosition;
+          document.getElementById("locPosition_Y").value = Position_Y;
+          document.getElementById("locPosition_X").value = Position_X;
           document.getElementById("locTitle").value = locTitle;
-          console.log(locRoadAdress);
-          console.log(locPosition);
-          console.log(locTitle);
 
 
           });
@@ -283,10 +290,16 @@ function removeAllChildNods(el) {
 	<form action="test.jsp" method="post">
 		도로명주소 
 		<input id="locRoadAdress" type="text" name="RoadAdress" style="width: 200px;"><br> 
-		위도 경도 
-		<input id="locPosition"type="text" name="Position" value=""><br> 
+		위도 
+		<input id="locPosition_Y"type="text" name="Position_Y" value=""><br> 
+		경도 
+		<input id="locPosition_X"type="text" name="Position_X" value=""><br> 
 		장소 이름 
 		<input id="locTitle" type="text" name="Title" value=""><br> 
+		
+
+		<input type="hidden" name="userId" value="<%=userId %>">
+		
 		<input type="submit" value="확인">
 	</form>
 </body>

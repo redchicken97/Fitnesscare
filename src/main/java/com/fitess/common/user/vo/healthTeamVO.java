@@ -84,6 +84,7 @@ public class healthTeamVO {
 	}
 
 	public void setHt_y(int ht_y) {
+		
 		this.ht_y = ht_y;
 	}
 
