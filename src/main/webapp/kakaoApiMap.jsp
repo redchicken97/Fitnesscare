@@ -33,6 +33,7 @@
 			<div id="pagination"></div>
 		</div>
 	</div>
+	<h2> 마커를 클릭해 주세요 </h2>
 
 	<script type="text/javascript"
 		src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e11e0bca2855ad3abc123dc69e2a7bf7&libraries=services"></script>
@@ -287,15 +288,20 @@ function removeAllChildNods(el) {
     }
 }
 </script>
-	<form action="test.jsp" method="post">
+	<form action="insertMap.do" method="post">
+		제목
+		<input type="text" name="ht_title" value="">
 		도로명주소 
-		<input id="locRoadAdress" type="text" name="RoadAdress" style="width: 200px;"><br> 
+		<input id="locRoadAdress" type="text" name="ht_placeaddress" style="width: 200px;"><br> 
 		위도 
-		<input id="locPosition_Y"type="text" name="Position_Y" value=""><br> 
+		<input id="locPosition_Y"type="text" name=ht_y value=""><br> 
 		경도 
-		<input id="locPosition_X"type="text" name="Position_X" value=""><br> 
+		<input id="locPosition_X"type="text" name="ht_x" value=""><br> 
 		장소 이름 
-		<input id="locTitle" type="text" name="Title" value=""><br> 
+		<input id="locTitle" type="text" name="ht_placename" value=""><br> 
+		
+		내용
+		<textarea name="ht_content"></textarea>
 		
 
 		<input type="hidden" name="userId" value="<%=userId %>">

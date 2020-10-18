@@ -15,9 +15,24 @@
 		<result property="ht_placeaddress" column="HT_PLACEADDRESS"/>
 		<result property="ht_y" column="HT_Y"/>
 		<result property="ht_x" column="HT_X"/>
+		<result property="ht_content" column="HT_CONTENT"/>
 	</resultMap>
 
 	<insert id="insertHealthTeam" parameterType="healtTeam">
-	
+		INSERT INTO
+		HealthTeam
+		(ht_id, ht_title, user_id, ht_limitCnt, ht_placename,
+		ht_placeaddress, ht_y, ht_x, ht_content)
+		VALUES((select nvl(max(ht_id), 0) + 1 from healthTeam), 
+		#{ht_title},#{user_id},#{ht_limitCnt},#{ht_placename},#{ht_placeaddress},
+		#{ht_y},#{ht_x},#{ht_content})
 	</insert>
+	
+	<select id="getHealthTeam" resultType="healtTeam">
+		SELECT * FROM healthTeam WHERE ht_id = #{ht_id}
+	</select>
+	
+	<select id="getHealthTeamList" resultMap="healResult">
+		SELECT * FROM healthTeam ORDER BY ht_id DESC
+	</select>
 </mapper>

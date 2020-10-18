@@ -2,7 +2,7 @@ package com.fitess.common.user.vo;
 
 import java.util.Date;
 
-public class healthTeamVO {
+public class HealthTeamVO {
 	private int ht_id;			//게시판 일련 번호 1증가 시퀀스 
 	private String ht_title;	//게시글 제목
 	private int user_id;		//회원 시리얼 넘버
