@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class UserController {
 	private UserService userService;	
 	
 	@RequestMapping("/login.do")
-	public String loginUser(UserVO vo, HttpServletResponse response,HttpServletRequest request , Model model) throws IOException {
+	public String loginUser(UserVO vo, HttpServletResponse response,HttpServletRequest request , Model model, HttpSession session) throws IOException {
 //		request.setCharacterEncoding("UTF-8");
 		System.out.println("controller 로그인");
 		PrintWriter out = response.getWriter();
@@ -40,12 +41,19 @@ public class UserController {
 				out.println("history.go(-1);");
 				out.println("</script>");
 			}else {
-				
-				model.addAttribute("userInfo", user_pwd);
-				return "getUser";
+				session.setAttribute("userInfo", user_pwd);
+	//			model.addAttribute("userInfo", user_pwd);
+				return "redirect:/getUser.do";
 			} 
 		}
 		return null;
+	}
+	@RequestMapping("/getUser.do")
+	public String getUser(UserVO vo, HttpSession session, HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		String user_pwd = (String)session.getAttribute("user_pwd");
+	//	model.addAttribute("user_pwd");
+		return "getUser";
 	}
 	
 	@RequestMapping("/insertUser.do")
