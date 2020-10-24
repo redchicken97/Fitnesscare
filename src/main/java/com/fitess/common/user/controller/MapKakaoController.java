@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fitess.common.user.service.MapKakaoService;
 import com.fitess.common.user.vo.HealthTeamVO;
@@ -14,7 +15,9 @@ public class MapKakaoController {
 	private MapKakaoService mapkakaoservice;
 	
 	@RequestMapping("/insertMap.do")
-	public String insertMap(HealthTeamVO vo) {
+	public String insertMap(HealthTeamVO vo, @RequestParam(value="ht_y") float ht_y,
+	@RequestParam(value="ht_x") float ht_x) {
+//		vo.setHt_x(ht_x);
 		System.out.println("controller에서 map 등록");
 		mapkakaoservice.insertMap(vo);
 		return "redirect:/getMapList.do";

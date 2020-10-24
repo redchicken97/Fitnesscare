@@ -294,9 +294,9 @@ function removeAllChildNods(el) {
 		도로명주소 
 		<input id="locRoadAdress" type="text" name="ht_placeaddress" style="width: 200px;"><br> 
 		위도 
-		<input id="locPosition_Y"type="text" name=ht_y value=""><br> 
+		<input id="locPosition_Y" type="text" name=ht_y value=""><br> 
 		경도 
-		<input id="locPosition_X"type="text" name="ht_x" value=""><br> 
+		<input id="locPosition_X" type="text" name="ht_x" value=""><br> 
 		장소 이름 
 		<input id="locTitle" type="text" name="ht_placename" value=""><br> 
 		

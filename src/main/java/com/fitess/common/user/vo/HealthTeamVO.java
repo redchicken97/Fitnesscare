@@ -11,8 +11,8 @@ public class HealthTeamVO {
 	private int ht_limitCnt;;	//참여자 제한수
 	private String ht_placename;//약속 장소 이름
 	private String ht_placeaddress;//약속 장소 주소
-	private int ht_y;		//약속장소 위도
-	private int ht_x;		//약속장소 경도
+	private float ht_y;		//약속장소 위도
+	private float ht_x;		//약속장소 경도
 	private String ht_content;	//글 내용
 
 	public int getHt_id() {
@@ -79,21 +79,21 @@ public class HealthTeamVO {
 		this.ht_placeaddress = ht_placeaddress;
 	}
 
-	public int getHt_y() {
+	public float getHt_y() {
 		return ht_y;
 	}
 
-	public void setHt_y(int ht_y) {
+	public void setHt_y(float ht_y) {
 		
 		this.ht_y = ht_y;
 	}
 
-	public int getHt_x() {
+	public float getHt_x() {
 		return ht_x;
 	}
 
-	public void setHt_x(int ht_x) {
-		this.ht_x = ht_x;
+	public void setHt_x(float ht_x2) {
+		this.ht_x = ht_x2;
 	}
 	
 	public String getHt_content() {
