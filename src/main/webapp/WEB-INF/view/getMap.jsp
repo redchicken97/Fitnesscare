@@ -18,19 +18,19 @@
 <body>
 	<div id="map" style="width:100%;height:350px;"></div>
 	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e11e0bca2855ad3abc123dc69e2a7bf7"></script>
-	
+	<h3>제목 : ${mapOne.ht_title}</h3>
 	<script>
 		
-		var mapContainer = documentById('map'), // 지도를 표시할 div
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		mapOption = {
-				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				center: new kakao.maps.LatLng(${mapOne.ht_y}, ${mapOne.ht_x}), // 지도의 중심좌표
 				level: 3 // 지도 확대 레벨
 		}
 		
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		
 		// 마커가 표시될 위치입니다
-		var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+		var markerPosition = new kakao.maps.LatLng(${mapOne.ht_y}, ${mapOne.ht_x});
 		
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({

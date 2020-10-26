@@ -10,5 +10,5 @@ public interface MapKakaoService {
 	
 	public List<HealthTeamVO> getMapList(HealthTeamVO vo);
 	
-	public HealthTeamVO getMap(HealthTeamVO vo);
+	public HealthTeamVO getMap(int ht_id);
 }

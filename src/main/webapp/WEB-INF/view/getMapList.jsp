@@ -30,7 +30,7 @@
 		<c:forEach var="map" items="${mapList}">
 			<tr>
 				<td>${map.ht_id }</td>
-				<td><a href="getMap.do?ht_id?${ht_id }">${map.ht_title }</a></td>
+				<td><a href="getMap.do?ht_id=${map.ht_id }">${map.ht_title }</a></td>
 				<td>${map.user_id }</td> <!-- 나중에 user_id를 이용해서 닉네임을 가져옴 -->
 				<td>${map.ht_regdate }</td>
 				<td>${map.ht_commentCnt }</td>

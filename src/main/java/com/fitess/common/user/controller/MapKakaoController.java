@@ -31,7 +31,7 @@ public class MapKakaoController {
 	@RequestMapping("/getMap.do")
 	public String getMap(HealthTeamVO vo, Model model) {
 		System.out.println("controller에서 글 하나 가셔오기");
-		model.addAttribute("mapOne", mapkakaoservice.getMap(vo));
+		model.addAttribute("mapOne", mapkakaoservice.getMap(vo.getHt_id()));
 		return "getMap";
 	}
 }

@@ -27,9 +27,9 @@ public class MapKakaoDAOImpl implements MapKakaoDAO {
 	}
 
 	@Override
-	public HealthTeamVO getMap(HealthTeamVO vo) {
+	public HealthTeamVO getMap(int ht_id) {
 		System.out.println("mybatis get 작동");
-		return sqlSessionTemplate.selectOne("healthTeamDAO.getHealthTeam");
+		return sqlSessionTemplate.selectOne("healthTeamDAO.getHealthTeam", ht_id);
 	}
 
 }

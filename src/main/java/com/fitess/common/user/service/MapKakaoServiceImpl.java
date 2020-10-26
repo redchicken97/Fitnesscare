@@ -27,9 +27,9 @@ public class MapKakaoServiceImpl implements MapKakaoService {
 	}
 
 	@Override
-	public HealthTeamVO getMap(HealthTeamVO vo) {
+	public HealthTeamVO getMap(int ht_id) {
 		System.out.println("service get 작동");
-		return mapKakaoDAO.getMap(vo);
+		return mapKakaoDAO.getMap(ht_id);
 	}
 
 }
