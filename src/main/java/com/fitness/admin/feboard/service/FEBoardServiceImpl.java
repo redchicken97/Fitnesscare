@@ -26,13 +26,13 @@ public class FEBoardServiceImpl implements FEBoardService {
 		System.out.println("FEBoardService.updateFEBoard 실행");
 		fEBoardDAO.updateFEBoard(vo);
 	}
-	/*
+	
 	@Override
-	public void deleteFEBoard(FreeVO vo) {
+	public void deleteFEBoard(FEBoardVO vo) {
 		System.out.println("FEBoardService.deleteFEBoard 실행");
 		fEBoardDAO.deleteFEBoard(vo);
 	}
-	*/
+	
 	@Override
 	public FEBoardVO getFEBoard(FEBoardVO vo) {
 		System.out.println("FEBoardService.getFEBoard 실행");

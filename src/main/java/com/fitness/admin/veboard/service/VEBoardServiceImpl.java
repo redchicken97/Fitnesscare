@@ -26,13 +26,13 @@ public class VEBoardServiceImpl implements VEBoardService {
 		System.out.println("VEBoardService.updateVEBoard 실행");
 		vEBoardDAO.updateVEBoard(vo);
 	}
-	/*
+	
 	@Override
 	public void deleteVEBoard(VEBoardVO vo) {
 		System.out.println("VEBoardService.deleteVEBoard 실행");
 		vEBoardDAO.deleteVEBoard(vo);
 	}
-	*/
+	
 	@Override
 	public VEBoardVO getVEBoard(VEBoardVO vo) {
 		System.out.println("VEBoardService.getVEBoard 실행");

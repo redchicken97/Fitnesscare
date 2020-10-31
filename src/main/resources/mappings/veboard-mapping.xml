@@ -60,10 +60,10 @@
 		WHERE
 		ex_id = #{ex_id}
 	</update>
-	<!-- 
+	
 	<delete id="deleteVEBoard" parameterType="veboard">
 		DELETE FROM workoutvideo
-		WHERE EX_ID = #{ex_id}
+		WHERE ex_id = #{ex_id}
 	</delete>
- 	-->
+ 	
 </mapper>

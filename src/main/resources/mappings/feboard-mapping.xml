@@ -56,10 +56,10 @@
 		WHERE
 		free_id = #{free_id}
 	</update>
-	<!-- 
+	
 	<delete id="deleteFEBoard" parameterType="feboard">
 		DELETE FROM free
-		WHERE FREE_ID = #{free_id}
+		WHERE free_id = #{free_id}
 	</delete>
- 	-->
+ 	
 </mapper>

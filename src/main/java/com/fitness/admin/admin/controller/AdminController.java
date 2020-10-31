@@ -15,6 +15,12 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
+	@RequestMapping(value="mainAdmin.admin")
+	public String mainAdmin() {
+		System.out.println("AdminController.mainAdmin 실행 - 메인 창");
+		return "mainAdmin";
+	}
+	
 	@RequestMapping(value="insertAdmin.admin", method=RequestMethod.GET)
 	public String insertAdminForm(AdminVO vo) {
 		System.out.println("AdminController.insertAdminForm 실행");

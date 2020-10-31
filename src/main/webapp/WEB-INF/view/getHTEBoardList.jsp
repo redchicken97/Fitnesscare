@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +22,25 @@
 			<th>등록일</th>
 			<th>댓글수</th>
 			<th>글 종류</th>
+			<th>글삭제</th>
 		</tr>
 		<c:forEach var="hteboard" items="${hteboardList}">
 		<tr>
 			<td>${hteboard.ht_id}</td>
 			<td><a href="/getHTEBoard.admin?ht_id=${hteboard.ht_id}">${hteboard.ht_title}</a></td>
 			<td>${hteboard.user_id}</td>
-			<td>${hteboard.ht_regdate}</td>
+			<td><fmt:formatDate value="${hteboard.ht_regdate}" dateStyle="default" /></td>
 			<td>${hteboard.ht_commentcnt}</td>
-			<td>공지사항</td>
+			<c:choose>
+				<c:when test="${hteboard.ht_type eq 0}">
+					<td>일반 게시글</td>
+				</c:when>
+				<c:when test="${hteboard.ht_type eq 1}">
+					<td>공지사항</td>
+				</c:when>
+				<c:otherwise><td>오류</td></c:otherwise>
+			</c:choose>
+			<td><a href="deleteHTEBoard.admin?ht_id=${hteboard.ht_id}">삭제하기</a></td>
 		</tr>
 		</c:forEach>
 	</table>

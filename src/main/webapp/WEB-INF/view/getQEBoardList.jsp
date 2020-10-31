@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +25,36 @@
 			<th>신고수</th>
 			<th>글종류</th>
 			<th>잠금여부</th>
+			<th>글삭제</th>
 		</tr>
 		<c:forEach var="qeboard" items="${qeboardList}">
 		<tr>
 			<td>${qeboard.q_id}</td>
 			<td><a href="/getQEBoard.admin?q_id=${qeboard.q_id}">${qeboard.q_title}</a></td>
-			<td>${qeboard.user_id}</td><%-- 나중에 fk를 user_email 등으로 바꾸는게 나을것같다...(email에 unique 추가해서) --%>
-			<td>${qeboard.q_regdate}</td>
+			<td>${qeboard.user_id}</td>
+			<td><fmt:formatDate value="${qeboard.q_regdate}" dateStyle="default" /></td>
 			<td>${qeboard.q_rdcnt}</td>
 			<td>${qeboard.q_visitcnt}</td>
 			<td>${qeboard.q_reportcnt}</td>
-			<td>공지사항</td><%-- 2가지 데이터는 이미 정형화되어서 qeboardList에 반환됨 --%>
-			<td>잠금없음</td>
+			<c:choose>
+				<c:when test="${qeboard.q_type eq 0}">
+					<td>일반 게시글</td>
+				</c:when>
+				<c:when test="${qeboard.q_type eq 1}">
+					<td>공지사항</td>
+				</c:when>
+				<c:otherwise><td>오류</td></c:otherwise>
+			</c:choose>
+			<c:choose>
+				<c:when test="${qeboard.q_lock eq '0'.charAt(0)}">
+					<td>잠금</td>
+				</c:when>
+				<c:when test="${qeboard.q_lock eq '1'.charAt(0)}">
+					<td>잠금없음</td>
+				</c:when>
+				<c:otherwise><td>오류</td></c:otherwise>
+			</c:choose>
+			<td><a href="deleteQEBoard.admin?q_id=${qeboard.q_id}">삭제하기</a></td>
 		</tr>
 		</c:forEach>
 	</table>

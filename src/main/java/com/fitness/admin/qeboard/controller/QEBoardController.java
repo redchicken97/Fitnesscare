@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fitness.admin.comment.service.CommentService;
+import com.fitness.admin.comment.vo.CommentVO;
 import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.admin.qeboard.service.QEBoardService;
@@ -16,6 +18,9 @@ public class QEBoardController {
 
 	@Autowired
 	private QEBoardService qEBoardService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@RequestMapping(value="insertQEBoard.admin", method=RequestMethod.GET)
 	public String insertQEBoardForm(QEBoardVO vo) {
@@ -43,19 +48,25 @@ public class QEBoardController {
 		qEBoardService.updateQEBoard(vo);
 		return "redirect:/getQEBoard.admin?q_id=" + vo.getQ_id();
 	}
-	/* 추후 구현
+	
 	@RequestMapping("deleteQEBoard.admin")
 	public String deleteQEBoard(QEBoardVO vo) {
 		System.out.println("QEBoardController.deleteQEBoard 실행");
 		qEBoardService.deleteQEBoard(vo);
 		return "redirect:/getQEBoardList.admin";
 	}
-	*/
 	
 	@RequestMapping("getQEBoard.admin")
 	public String getQEBoard(QEBoardVO vo, Model model) {
 		System.out.println("QEBoardController.getQEBoard 실행");
 		model.addAttribute("qeboard", qEBoardService.getQEBoard(vo));
+		
+		// 댓글 세팅
+		CommentVO cvo = new CommentVO();
+		cvo.setCmt_type("question");
+		cvo.setTarget_id(vo.getQ_id());
+		model.addAttribute("commentList", commentService.getCommentList(cvo));
+		
 		return "getQEBoard";
 	}
 	

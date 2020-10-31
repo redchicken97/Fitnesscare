@@ -24,12 +24,12 @@ public class QEBoardDAO {
 		System.out.println("QEBoardDAO.updateQEBoard 실행");
 		sqlSessionTemplate.update("QEBoardDAO.updateQEBoard", vo);
 	}
-	/* 해당 부분은 추후 구현
+	
 	public void deleteQEBoard(QEBoardVO vo) {
 		System.out.println("QEBoardDAO.deleteQEBoard 실행");
 		sqlSessionTemplate.delete("QEBoardDAO.deleteQEBoard", vo);
 	}
-	*/
+	
 	public QEBoardVO getQEBoard(QEBoardVO vo) {
 		System.out.println("QEBoardDAO.getQEBoard 실행");
 		return (QEBoardVO)sqlSessionTemplate.selectOne("QEBoardDAO.getQEBoard", vo);

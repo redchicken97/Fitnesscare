@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +25,28 @@
 			<th>조회수</th>
 			<th>신고수</th>
 			<th>글종류</th>
+			<th>글삭제</th>
 		</tr>
 		<c:forEach var="veboard" items="${veboardList}">
 		<tr>
 			<td>${veboard.ex_id}</td>
 			<td><a href="/getVEBoard.admin?ex_id=${veboard.ex_id}">${veboard.ex_title}</a></td>
 			<td>${veboard.user_id}</td>
-			<td>${veboard.ex_regdate}</td>
+			<td><fmt:formatDate value="${veboard.ex_regdate}" dateStyle="default" /></td>
 			<td>${veboard.ex_commentcnt}</td>
 			<td>${veboard.ex_rdcnt}</td>
 			<td>${veboard.ex_visitcnt}</td>
 			<td>${veboard.ex_reportcnt}</td>
-			<td>공지사항</td>
+			<c:choose>
+				<c:when test="${veboard.ex_type eq 0}">
+					<td>일반 게시글</td>
+				</c:when>
+				<c:when test="${veboard.ex_type eq 1}">
+					<td>공지사항</td>
+				</c:when>
+				<c:otherwise><td>오류</td></c:otherwise>
+			</c:choose>
+			<td><a href="deleteVEBoard.admin?ex_id=${veboard.ex_id}">삭제하기</a></td>
 		</tr>
 		</c:forEach>
 	</table>

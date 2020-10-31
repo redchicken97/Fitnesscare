@@ -43,14 +43,13 @@ public class VEBoardController {
 		vEBoardService.updateVEBoard(vo);
 		return "redirect:/getVEBoard.admin?ex_id=" + vo.getEx_id();
 	}
-	/* 추후 구현
+	
 	@RequestMapping("deleteVEBoard.admin")
 	public String deleteVEBoard(VEBoardVO vo) {
 		System.out.println("VEBoardController.deleteVEBoard 실행");
 		vEBoardService.deleteVEBoard(vo);
 		return "redirect:/getVEBoardList.admin";
 	}
-	*/
 	
 	@RequestMapping("getVEBoard.admin")
 	public String getVEBoard(VEBoardVO vo, Model model) {

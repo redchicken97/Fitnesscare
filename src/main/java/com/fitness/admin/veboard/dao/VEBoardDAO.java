@@ -24,12 +24,12 @@ public class VEBoardDAO {
 		System.out.println("VEBoardDAO.updateVEBoard 실행");
 		sqlSessionTemplate.update("VEBoardDAO.updateVEBoard", vo);
 	}
-	/*
+	
 	public void deleteVEBoard(VEBoardVO vo) {
 		System.out.println("VEBoardDAO.deleteVEBoard 실행");
 		sqlSessionTemplate.delete("VEBoardDAO.deleteVEBoard", vo);
 	}
-	*/
+	
 	public VEBoardVO getVEBoard(VEBoardVO vo) {
 		System.out.println("VEBoardDAO.getVEBoard 실행");
 		return (VEBoardVO)sqlSessionTemplate.selectOne("VEBoardDAO.getVEBoard", vo);

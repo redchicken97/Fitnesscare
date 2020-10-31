@@ -14,13 +14,14 @@ public class HTEBoardVO {
 	private double ht_y;
 	private double ht_x;
 	private String ht_content;
+	private int ht_type;
 	
 	@Override
 	public String toString() {
 		return "HTEBoardVO [ht_id=" + ht_id + ", ht_title=" + ht_title + ", user_id=" + user_id + ", ht_regdate="
 				+ ht_regdate + ", ht_commentcnt=" + ht_commentcnt + ", ht_limitcnt=" + ht_limitcnt + ", ht_placename="
 				+ ht_placename + ", ht_placeaddress=" + ht_placeaddress + ", ht_y=" + ht_y + ", ht_x=" + ht_x
-				+ ", ht_content=" + ht_content + "]";
+				+ ", ht_content=" + ht_content + ", ht_type=" + ht_type + "]";
 	}
 	public int getHt_id() {
 		return ht_id;
@@ -88,4 +89,11 @@ public class HTEBoardVO {
 	public void setHt_content(String ht_content) {
 		this.ht_content = ht_content;
 	}
+	public int getHt_type() {
+		return ht_type;
+	}
+	public void setHt_type(int ht_type) {
+		this.ht_type = ht_type;
+	}
+	
 }

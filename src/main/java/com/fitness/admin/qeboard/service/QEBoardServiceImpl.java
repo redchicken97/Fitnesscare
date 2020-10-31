@@ -26,13 +26,17 @@ public class QEBoardServiceImpl implements QEBoardService {
 		System.out.println("QEBoardService.updateQEBoard 실행");
 		qEBoardDAO.updateQEBoard(vo);
 	}
-	/* 추후 구현
+	
 	@Override
 	public void deleteQEBoard(QEBoardVO vo) {
 		System.out.println("QEBoardService.deleteQEBoard 실행");
+		// comment 연쇄 삭제하는 로직이 들어와야함
+		// commentDAO,deleteComment(vo);
+		// 파라미터 타입 : QEBoardVO, 반환 타입 : void
+		// 파라미터 타입이 vo여야 하는 이유는 q_id와 q_type 2가지를 비교해야하기때문
 		qEBoardDAO.deleteQEBoard(vo);
 	}
-	*/
+	
 	@Override
 	public QEBoardVO getQEBoard(QEBoardVO vo) {
 		System.out.println("QEBoardService.getQEBoard 실행");

@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +25,28 @@
 			<th>조회수</th>
 			<th>신고수</th>
 			<th>글종류</th>
+			<th>글삭제</th>
 		</tr>
 		<c:forEach var="feboard" items="${feboardList}">
 		<tr>
 			<td>${feboard.free_id}</td>
 			<td><a href="/getFEBoard.admin?free_id=${feboard.free_id}">${feboard.free_title}</a></td>
 			<td>${feboard.user_id}</td>
-			<td>${feboard.free_regdate}</td>
+			<td><fmt:formatDate value="${feboard.free_regdate}" dateStyle="default" /></td>
 			<td>${feboard.free_commentcnt}</td>
 			<td>${feboard.free_rdcnt}</td>
 			<td>${feboard.free_visitcnt}</td>
 			<td>${feboard.free_reportcnt}</td>
-			<td>공지사항</td>
+			<c:choose>
+				<c:when test="${feboard.free_type eq 0}">
+					<td>일반 게시글</td>
+				</c:when>
+				<c:when test="${feboard.free_type eq 1}">
+					<td>공지사항</td>
+				</c:when>
+				<c:otherwise><td>오류</td></c:otherwise>
+			</c:choose>
+			<td><a href="deleteFEBoard.admin?free_id=${feboard.free_id}">삭제하기</a></td>
 		</tr>
 		</c:forEach>
 	</table>

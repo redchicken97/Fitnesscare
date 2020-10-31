@@ -34,7 +34,7 @@
 		SELECT * 
 		FROM (<include refid="subGetQEBoardList1" />) sub1
 		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
-		ORDER BY q_id DESC
+		ORDER BY q_type DESC, q_id DESC
 	</select>
 	
 	<select id="getQEBoardCount" resultType="int">
@@ -58,10 +58,10 @@
 		WHERE
 		q_id = #{q_id}
 	</update>
-	<!-- 
+	
 	<delete id="deleteQEBoard" parameterType="qeboard">
 		DELETE FROM question
 		WHERE Q_ID = #{q_id}
 	</delete>
- 	-->
+ 	
 </mapper>

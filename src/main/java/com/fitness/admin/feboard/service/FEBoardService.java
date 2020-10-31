@@ -8,7 +8,7 @@ import com.fitness.admin.feboard.vo.FEBoardVO;
 public interface FEBoardService {
 	void insertFEBoard(FEBoardVO vo);
 	void updateFEBoard(FEBoardVO vo);
-	// void deleteFEBoard(FEBoardVO vo);
+	void deleteFEBoard(FEBoardVO vo);
 	FEBoardVO getFEBoard(FEBoardVO vo);
 	List<FEBoardVO> getFEBoardList(Criteria cri);
 	int getFEBoardCount();

@@ -24,12 +24,12 @@ public class HTEBoardDAO {
 		System.out.println("HTEBoardDAO.updateHTEBoard 실행");
 		sqlSessionTemplate.update("HTEBoardDAO.updateHTEBoard", vo);
 	}
-	/*
+	
 	public void deleteHTEBoard(HTEBoardVO vo) {
 		System.out.println("HTEBoardDAO.deleteHTEBoard 실행");
 		sqlSessionTemplate.delete("HTEBoardDAO.deleteHTEBoard", vo);
 	}
-	*/
+	
 	public HTEBoardVO getHTEBoard(HTEBoardVO vo) {
 		System.out.println("HTEBoardDAO.getHTEBoard 실행");
 		return (HTEBoardVO)sqlSessionTemplate.selectOne("HTEBoardDAO.getHTEBoard", vo);

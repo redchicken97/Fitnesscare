@@ -8,7 +8,7 @@ import com.fitness.admin.hteboard.vo.HTEBoardVO;
 public interface HTEBoardService {
 	void insertHTEBoard(HTEBoardVO vo);
 	void updateHTEBoard(HTEBoardVO vo);
-	// void deleteHTEBoard(HTEBoardVO vo);
+	void deleteHTEBoard(HTEBoardVO vo);
 	HTEBoardVO getHTEBoard(HTEBoardVO vo);
 	List<HTEBoardVO> getHTEBoardList(Criteria cri);
 	int getHTEBoardCount();

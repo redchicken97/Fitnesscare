@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommentDAO">
+
+	<resultMap type="comment" id="commentResult">
+		<id property="cmt_id" column="CMT_ID" />
+		<result property="target_id" column="TARGET_ID" />
+		<result property="cmt_type" column="CMT_TYPE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="cmt_regdate" column="CMT_REGDATE" />
+		<result property="cmt_rdcnt" column="CMT_RDCNT" />
+		<result property="cmt_reportcnt" column="CMT_REPORTCNT" />
+		<result property="cmt_ref" column="CMT_REF" />
+		<result property="cmt_step" column="CMT_STEP" />
+		<result property="cmt_depth" column="CMT_DEPTH" />
+		<result property="cmt_content" column="CMT_CONTENT" />
+	</resultMap>
+	
+	<select id="getComment" resultMap="commentResult"
+		parameterType="comment">
+		SELECT * 
+		FROM comment_info
+		WHERE cmt_id = #{cmt_id} AND cmt_type = #{cmt_type}	
+	</select>
+	
+	<select id="getCommentList" resultMap="commentResult"
+		parameterType="comment"> 
+		SELECT * 
+		FROM comment_info
+		WHERE cmt_type = #{cmt_type} and
+		target_id = #{target_id}
+	</select>
+	
+	<insert id="insertComment" parameterType="comment">
+		INSERT INTO comment_info
+		(cmt_id, target_id, cmt_type, user_id,
+		cmt_ref, cmt_step, cmt_depth, cmt_content)
+		VALUES(CMT_ID_SEQ.NEXTVAL, #{target_id}, #{cmt_type}, #{user_id},
+		#{cmt_ref}, #{cmt_step}, #{cmt_depth}, #{cmt_content})
+	</insert>
+ 	
+</mapper>

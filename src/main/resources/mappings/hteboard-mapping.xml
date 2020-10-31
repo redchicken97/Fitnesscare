@@ -27,7 +27,7 @@
 	<sql id="subGetHTEBoardList1">
 		SELECT ht_id, ht_title, user_id, ht_regdate, 
 		ht_commentcnt, ht_limitcnt, ht_placename, ht_placeaddress, 
-		ht_y, ht_x, ht_content, ROWNUM AS rnum 
+		ht_y, ht_x, ht_content, ht_type, ROWNUM AS rnum 
 		FROM healthteam 
 	</sql>
 	
@@ -46,9 +46,9 @@
 	<insert id="insertHTEBoard" parameterType="hteboard">
 		INSERT INTO
 		healthteam (ht_id, ht_title, user_id, 
-		ht_placename, ht_placeaddress, ht_content)
+		ht_placename, ht_placeaddress, ht_content, ht_type)
 		VALUES(HT_ID_SEQ.NEXTVAL, #{ht_title}, #{user_id}, 
-		'None', 'None', #{ht_content})
+		'None', 'None', #{ht_content}, 1)
 	</insert>
 	
 	<update id="updateHTEBoard" parameterType="hteboard">
@@ -59,10 +59,10 @@
 		WHERE
 		ht_id = #{ht_id}
 	</update>
-	<!-- 
+	
 	<delete id="deleteHTEBoard" parameterType="hteboard">
 		DELETE FROM healthteam
-		WHERE HT_ID = #{ht_id}
+		WHERE ht_id = #{ht_id}
 	</delete>
- 	-->
+ 	
 </mapper>

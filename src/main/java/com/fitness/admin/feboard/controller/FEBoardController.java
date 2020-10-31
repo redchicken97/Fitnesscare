@@ -43,14 +43,14 @@ public class FEBoardController {
 		fEBoardService.updateFEBoard(vo);
 		return "redirect:/getFEBoard.admin?free_id=" + vo.getFree_id();
 	}
-	/*
+	
 	@RequestMapping("deleteFEBoard")
-	public String deleteFEBoard(FreeVO vo) {
+	public String deleteFEBoard(FEBoardVO vo) {
 		System.out.println("FEBoardController.deleteFEBoard 실행");
 		fEBoardService.deleteFEBoard(vo);
 		return "redirect:/getFEBoardList.admin";
 	}
-	*/
+	
 	@RequestMapping("getFEBoard")
 	public String getFEBoard(FEBoardVO vo, Model model) {
 		System.out.println("FEBoardController.getFEBoard 실행");

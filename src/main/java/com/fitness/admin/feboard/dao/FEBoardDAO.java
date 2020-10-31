@@ -24,12 +24,12 @@ public class FEBoardDAO {
 		System.out.println("FEBoardDAO.updateFEBoard 실행");
 		sqlSessionTemplate.update("FEBoardDAO.updateFEBoard", vo);
 	}
-	/*
-	public void deleteFEBoard(FreeVO vo) {
+	
+	public void deleteFEBoard(FEBoardVO vo) {
 		System.out.println("FEBoardDAO.deleteFEBoard 실행");
 		sqlSessionTemplate.delete("FEBoardDAO.deleteFEBoard", vo);
 	}
-	*/
+	
 	public FEBoardVO getFEBoard(FEBoardVO vo) {
 		System.out.println("FEBoardDAO.getFEBoard 실행");
 		return (FEBoardVO)sqlSessionTemplate.selectOne("FEBoardDAO.getFEBoard", vo);

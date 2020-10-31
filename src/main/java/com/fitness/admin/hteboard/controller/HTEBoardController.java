@@ -43,14 +43,14 @@ public class HTEBoardController {
 		hTEBoardService.updateHTEBoard(vo);
 		return "redirect:/getHTEBoard.admin?ht_id=" + vo.getHt_id();
 	}
-	/*
+	
 	@RequestMapping("deleteHTEBoard")
 	public String deleteHTEBoard(HTEBoardVO vo) {
 		System.out.println("HTEBoardController.deleteHTEBoard 실행");
 		hTEBoardService.deleteHTEBoard(vo);
 		return "redirect:/getHTEBoardList.admin";
 	}
-	*/
+	
 	@RequestMapping("getHTEBoard.admin")
 	public String getHTEBoard(HTEBoardVO vo, Model model) {
 		System.out.println("HTEBoardController.getHTEBoard 실행");

@@ -26,13 +26,13 @@ public class HTEBoardServiceImpl implements HTEBoardService {
 		System.out.println("HTEBoardService.updateHTEBoard 실행");
 		hTEBoardDAO.updateHTEBoard(vo);
 	}
-	/*
+	
 	@Override
 	public void deleteHTEBoard(HTEBoardVO vo) {
 		System.out.println("HTEBoardService.deleteHTEBoard 실행");
 		hTEBoardDAO.deleteHTEBoard(vo);
 	}
-	*/
+	
 	@Override
 	public HTEBoardVO getHTEBoard(HTEBoardVO vo) {
 		System.out.println("HTEBoardService.getHTEBoard 실행");
