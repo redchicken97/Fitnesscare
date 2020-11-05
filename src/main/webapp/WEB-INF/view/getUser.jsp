@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,11 +52,11 @@
 		</tr>
 		<tr>
 			<th>약관동의날짜1</th>
-			<td>${user.user_check_date1}</td>
+			<td><fmt:formatDate value="${user.user_check_date1}" dateStyle="default" /></td>
 		</tr>
 		<tr>
 			<th>약관동의날짜2</th>
-			<td>${user.user_check_date2}</td>
+			<td><fmt:formatDate value="${user.user_check_date2}" dateStyle="default" /></td>
 		</tr>
 		<tr>
 			<th>약관종류1</th>
@@ -67,7 +68,7 @@
 		</tr>
 		<tr>
 			<th>등록날짜</th>
-			<td>${user.user_regdate}</td>
+			<td><fmt:formatDate value="${user.user_regdate}" dateStyle="default" /></td>
 		</tr>
 		<tr>
 			<th>로그인방식</th>
@@ -108,10 +109,10 @@
 	<%-- 사용자 계정 정지/복구 --%>
 	<c:choose>
 		<c:when test="${user.user_state eq 'E'.charAt(0)}">
-			<a href="/suspendUser.admin?user_id=${user.user_id}">정지</a>
+			<a href="/suspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">정지</a>
 		</c:when>
 		<c:when test="${user.user_state eq 'D'.charAt(0)}">
-			<a href="/unsuspendUser.admin?user_id=${user.user_id}">복구</a>
+			<a href="/unsuspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">복구</a>
 		</c:when>
 		<c:when test="${user.user_state eq 'O'.charAt(0)}">
 			이미 탈퇴한 회원입니다.

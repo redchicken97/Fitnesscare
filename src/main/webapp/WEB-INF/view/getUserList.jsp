@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 		<td>${user.user_name}</td>
 		<td>${user.user_email}</td>
 		<td>${user.user_nick}</td>
-		<td>${user.user_regdate}</td>
+		<td><fmt:formatDate value="${user.user_regdate}" dateStyle="default" /></td>
 		<td>
 		<c:choose>
 			<c:when test="${user.user_level eq 'U'.charAt(0)}">일반사용자</c:when>
@@ -50,10 +51,10 @@
 		<td>
 		<c:choose>
 			<c:when test="${user.user_state eq 'E'.charAt(0)}">
-				<a href="/suspendUser.admin?user_id=${user.user_id}">정지</a>
+				<a href="/suspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">정지</a>
 			</c:when>
 			<c:when test="${user.user_state eq 'D'.charAt(0)}">
-				<a href="/unsuspendUser.admin?user_id=${user.user_id}">복구</a>
+				<a href="/unsuspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">복구</a>
 			</c:when>
 			<c:otherwise>오류</c:otherwise>
 		</c:choose>
