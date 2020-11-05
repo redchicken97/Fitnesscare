@@ -60,6 +60,6 @@
 	</table>
 	
 	<a href="kakaoApiMap.jsp?id=${userInfo.user_id }">헬스 장소 공유 등록</a>
-	<a herf="#">댓글 달기</a>
+	<a href="comment.do?nick=${userInfo.user_nick }">댓글 달기</a>
 </body>
 </html>

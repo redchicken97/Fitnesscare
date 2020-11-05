@@ -51,7 +51,7 @@ public class UserController {
 	@RequestMapping("/getUser.do")
 	public String getUser(UserVO vo, HttpSession session, HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
-		String user_pwd = (String)session.getAttribute("user_pwd");
+//		String user_pwd = (String)session.getAttribute("user_pwd");
 	//	model.addAttribute("user_pwd");
 		return "getUser";
 	}
