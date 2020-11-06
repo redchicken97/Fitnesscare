@@ -27,11 +27,11 @@
 			<th>글종류</th>
 			<th>글삭제</th>
 		</tr>
-		<c:forEach var="feboard" items="${feboardList}">
+		<c:forEach var="feboard" items="${feboardList}" varStatus="status">
 		<tr>
 			<td>${feboard.free_id}</td>
 			<td><a href="/getFEBoard.admin?free_id=${feboard.free_id}">${feboard.free_title}</a></td>
-			<td>${feboard.user_id}</td>
+			<td>${userList[status.index]}</td>
 			<td><fmt:formatDate value="${feboard.free_regdate}" dateStyle="default" /></td>
 			<td>${feboard.free_commentcnt}</td>
 			<td>${feboard.free_rdcnt}</td>

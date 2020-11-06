@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<th>작성자ID</th>
-			<td>${qeboard.user_id}</td>
+			<td>${userName}</td>
 		</tr>
 		<tr>
 			<th>등록일</th>

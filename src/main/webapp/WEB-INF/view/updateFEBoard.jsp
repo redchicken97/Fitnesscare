@@ -29,8 +29,8 @@
 				<td><input type="text" name="free_title" value="${feboard.free_title}" /></td>
 			</tr>
 			<tr>
-				<th>사용자ID</th>
-				<td>${feboard.user_id}</td>
+				<th>작성자이름</th>
+				<td>${userName}</td>
 			</tr>
 			<tr>
 				<th>내용</th>

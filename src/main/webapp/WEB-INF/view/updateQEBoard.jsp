@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<th>사용자ID</th>
-				<td>${qeboard.user_id}</td>
+				<td>${userName}</td>
 			</tr>
 			<tr>
 				<th>내용</th>

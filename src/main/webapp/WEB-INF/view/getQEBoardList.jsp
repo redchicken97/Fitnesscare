@@ -27,11 +27,11 @@
 			<th>잠금여부</th>
 			<th>글삭제</th>
 		</tr>
-		<c:forEach var="qeboard" items="${qeboardList}">
+		<c:forEach var="qeboard" items="${qeboardList}" varStatus="status">
 		<tr>
 			<td>${qeboard.q_id}</td>
 			<td><a href="/getQEBoard.admin?q_id=${qeboard.q_id}">${qeboard.q_title}</a></td>
-			<td>${qeboard.user_id}</td>
+			<td>${userList[status.index]}</td>
 			<td><fmt:formatDate value="${qeboard.q_regdate}" dateStyle="default" /></td>
 			<td>${qeboard.q_rdcnt}</td>
 			<td>${qeboard.q_visitcnt}</td>

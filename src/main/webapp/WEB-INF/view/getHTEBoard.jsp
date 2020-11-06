@@ -32,8 +32,8 @@
 			<td>${hteboard.ht_title}</td>
 		</tr>
 		<tr>
-			<th>작성자ID</th>
-			<td>${hteboard.user_id}</td>
+			<th>작성자</th>
+			<td>${userName}</td>
 		</tr>
 		<tr>
 			<th>등록일</th>

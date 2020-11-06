@@ -27,10 +27,6 @@
 				<td><input type="text" name="user_id" /></td>
 			</tr>
 			<tr>
-				<th>영상 링크</th>
-				<td><input type="text" name="ex_link" /></td>
-			</tr>
-			<tr>
 				<th>내용</th>
 				<td width="1024"><%-- 네이버 스마트 에디터 입력란 --%>
 					<textarea name="ex_content" id="contents" rows="10" cols="100" 

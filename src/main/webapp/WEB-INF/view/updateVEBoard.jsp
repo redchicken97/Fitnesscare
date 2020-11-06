@@ -29,8 +29,8 @@
 				<td><input type="text" name="ex_title" value="${veboard.ex_title}" /></td>
 			</tr>
 			<tr>
-				<th>사용자ID</th>
-				<td>${veboard.user_id}</td>
+				<th>작성자</th>
+				<td>${userName}</td>
 			</tr>
 			<tr>
 				<th>영상 링크</th>

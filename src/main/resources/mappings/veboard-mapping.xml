@@ -48,7 +48,7 @@
 		workoutvideo (ex_id, ex_title, user_id, 
 		ex_type, ex_link, ex_content)
 		VALUES(EX_ID_SEQ.NEXTVAL, #{ex_title}, #{user_id}, 
-		1, "None", #{ex_content})
+		1, 'None', #{ex_content})
 	</insert>
 	
 	<update id="updateVEBoard" parameterType="veboard">

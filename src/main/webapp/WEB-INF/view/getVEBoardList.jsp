@@ -27,11 +27,11 @@
 			<th>글종류</th>
 			<th>글삭제</th>
 		</tr>
-		<c:forEach var="veboard" items="${veboardList}">
+		<c:forEach var="veboard" items="${veboardList}" varStatus="status">
 		<tr>
 			<td>${veboard.ex_id}</td>
 			<td><a href="/getVEBoard.admin?ex_id=${veboard.ex_id}">${veboard.ex_title}</a></td>
-			<td>${veboard.user_id}</td>
+			<td>${userList[status.index]}</td>
 			<td><fmt:formatDate value="${veboard.ex_regdate}" dateStyle="default" /></td>
 			<td>${veboard.ex_commentcnt}</td>
 			<td>${veboard.ex_rdcnt}</td>

@@ -24,11 +24,11 @@
 			<th>글 종류</th>
 			<th>글삭제</th>
 		</tr>
-		<c:forEach var="hteboard" items="${hteboardList}">
+		<c:forEach var="hteboard" items="${hteboardList}" varStatus="status">
 		<tr>
 			<td>${hteboard.ht_id}</td>
 			<td><a href="/getHTEBoard.admin?ht_id=${hteboard.ht_id}">${hteboard.ht_title}</a></td>
-			<td>${hteboard.user_id}</td>
+			<td>${userList[status.index]}</td>
 			<td><fmt:formatDate value="${hteboard.ht_regdate}" dateStyle="default" /></td>
 			<td>${hteboard.ht_commentcnt}</td>
 			<c:choose>

@@ -29,8 +29,8 @@
 				<td><input type="text" name="ht_title" value="${hteboard.ht_title}" /></td>
 			</tr>
 			<tr>
-				<th>사용자ID</th>
-				<td>${hteboard.user_id}</td>
+				<th>작성자이름</th>
+				<td>${userName}</td>
 			</tr>
 			<tr>
 				<th>내용</th>
