@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.fitess.common.user.vo.UserVO" alias="user_info"></typeAlias>
 		<typeAlias type="com.fitess.common.user.vo.HealthTeamVO" alias="healtTeam"/>
+		<typeAlias type="com.fitess.common.user.vo.CommentInfoVO" alias="commentInfo"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -22,5 +23,6 @@
 	<mappers>
 		<mapper resource="mappings/fitness-mapping.xml" />
 		<mapper resource="mappings/healthTeam-mapping.xml"/>
+		<mapper resource="mappings/comment-mapping.xml"/>
 	</mappers>
 </configuration>

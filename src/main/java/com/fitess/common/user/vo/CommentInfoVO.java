@@ -12,7 +12,7 @@ public class CommentInfoVO {
 	private int cmt_reportCnt;
 	private int cmt_ref;
 	private int cmt_step;
-	private int cme_depth;
+	private int cmt_depth;
 	private String cmt_content;
 	public int getCmt_id() {
 		return cmt_id;
@@ -62,11 +62,12 @@ public class CommentInfoVO {
 	public void setCmt_step(int cmt_step) {
 		this.cmt_step = cmt_step;
 	}
-	public int getCme_depth() {
-		return cme_depth;
+	
+	public int getCmt_depth() {
+		return cmt_depth;
 	}
-	public void setCme_depth(int cme_depth) {
-		this.cme_depth = cme_depth;
+	public void setCmt_depth(int cmt_depth) {
+		this.cmt_depth = cmt_depth;
 	}
 	public String getCmt_content() {
 		return cmt_content;
@@ -78,8 +79,10 @@ public class CommentInfoVO {
 	public String toString() {
 		return "CommentInfoVO [cmt_id=" + cmt_id + ", target_id=" + target_id + ", cmt_type=" + cmt_type + ", user_id="
 				+ user_id + ", cmt_regdate=" + cmt_regdate + ", cmt_reportCnt=" + cmt_reportCnt + ", cmt_ref=" + cmt_ref
-				+ ", cmt_step=" + cmt_step + ", cme_depth=" + cme_depth + ", cmt_content=" + cmt_content + "]";
+				+ ", cmt_step=" + cmt_step + ", cmt_depth=" + cmt_depth + ", cmt_content=" + cmt_content + "]";
 	}
+
+	
 	
 	
 }
