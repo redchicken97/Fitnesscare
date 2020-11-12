@@ -17,6 +17,7 @@ import com.fitess.common.user.vo.UserVO;
 
 @Controller
 public class UserController {
+	
 	@Autowired
 	private UserService userService;	
 	

@@ -32,15 +32,14 @@
 	</form>
 	
 	<script>
-		$('#commnetInput').click(function(){
-			$.ajax{
-				url:'/comment.do'
-				type:'post'
-				data:$('form').serialize(),
-				success:function() {
-					alert("send success")
-				}
-			}}
+		$('commentInput').click(function(){
+			$.ajax({
+				url:'comment.do',
+				type:'post',
+				data:,
+				success:
+				
+			})
 		})
 	</script>
 </body>

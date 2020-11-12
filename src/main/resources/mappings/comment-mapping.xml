@@ -23,6 +23,11 @@
 		cmt_step, cmt_depth, cmt_content)
 		VALUES((select nvl(max(cmt_id), 0) + 1 from 
 		comment_info),
-		)
+		#{target_id},#{cmt_type},#{user_id},#{cmt_ref},
+		#{cmt_step},#{cmt_depth},#{cmt_content})
 	</insert>
+	
+	<select id="getCommentList" resultMap="commentResult">
+		SELECT * FROM comment_into ORDER BY cmt_id DESC
+	</select>
 </mapper>

@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class CommentInfoVO {
 	
-	private int cmt_id;
-	private int target_id;
-	private String cmt_type;
-	private int user_id;
-	private Date cmt_regdate;
-	private int cmt_reportCnt;
-	private int cmt_ref;
-	private int cmt_step;
-	private int cmt_depth;
-	private String cmt_content;
+	private int cmt_id;				// 댓글 고유 번호
+	private int target_id;			// 댓글이 달리는 게시판 번호
+	private String cmt_type;		// 게시판 종류를 나타내고 question, free, healthteam, workoutvideo 4가지만 들어감 
+	private int user_id;			// 댓글 작성자의 id
+	private Date cmt_regdate;		// 댓글 작성 날짜
+	private int cmt_reportCnt;		// 댓글 신고수
+	private int cmt_ref;			// 답변그룹
+	private int cmt_step;			// 답변 위치
+	private int cmt_depth;			// 답변 들여쓰기 횟수
+	private String cmt_content;		// 댓글 내용
 	public int getCmt_id() {
 		return cmt_id;
 	}
