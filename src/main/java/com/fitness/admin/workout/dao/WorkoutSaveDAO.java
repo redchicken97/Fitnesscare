@@ -15,12 +15,12 @@ public class WorkoutSaveDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertWorkoutSave(WorkoutSaveVO vo) {
-		System.out.println("WorkoutSaveDAO.insertWorkoutSave ½ÇÇà");
+		System.out.println("WorkoutSaveDAO.insertWorkoutSave ì‹¤í–‰");
 		sqlSessionTemplate.insert("WorkoutSaveDAO.insertWorkoutSave", vo);
 	}
 	
 	public List<WorkoutSaveVO> getWorkoutSaveList(WorkoutSaveVO vo) {
-		System.out.println("WorkoutSaveDAO.getWorkoutSaveList ½ÇÇà");
+		System.out.println("WorkoutSaveDAO.getWorkoutSaveList ì‹¤í–‰");
 		return sqlSessionTemplate.selectList("WorkoutSaveDAO.getWorkoutSaveList", vo);
 	}
 	

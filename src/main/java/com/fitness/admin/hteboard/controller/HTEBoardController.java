@@ -29,20 +29,20 @@ public class HTEBoardController {
 	
 	@RequestMapping(value="insertHTEBoard", method=RequestMethod.GET)
 	public String insertHTEBoardForm(HTEBoardVO vo) {
-		System.out.println("HTEBoardController.insertHTEBoardForm ½ÇÇà");
+		System.out.println("HTEBoardController.insertHTEBoardForm ì‹¤í–‰");
 		return "insertHTEBoard";
 	}
 	
 	@RequestMapping(value="insertHTEBoard", method=RequestMethod.POST)
 	public String insertHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardController.insertHTEBoard ½ÇÇà");
+		System.out.println("HTEBoardController.insertHTEBoard ì‹¤í–‰");
 		hTEBoardService.insertHTEBoard(vo);
 		return "redirect:/getHTEBoardList.admin";
 	}
 	
 	@RequestMapping(value="updateHTEBoard", method=RequestMethod.GET)
 	public String updateHTEBoardForm(HTEBoardVO vo, Model model) {
-		System.out.println("HTEBoardController.updateHTEBoardForm ½ÇÇà");
+		System.out.println("HTEBoardController.updateHTEBoardForm ì‹¤í–‰");
 		model.addAttribute("hteboard", hTEBoardService.getHTEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "updateHTEBoard";
@@ -50,36 +50,36 @@ public class HTEBoardController {
 	
 	@RequestMapping(value="updateHTEBoard", method=RequestMethod.POST)
 	public String updateHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardController.updateHTEBoard ½ÇÇà");
+		System.out.println("HTEBoardController.updateHTEBoard ì‹¤í–‰");
 		hTEBoardService.updateHTEBoard(vo);
 		return "redirect:/getHTEBoard.admin?ht_id=" + vo.getHt_id();
 	}
 	
 	@RequestMapping("deleteHTEBoard")
 	public String deleteHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardController.deleteHTEBoard ½ÇÇà");
+		System.out.println("HTEBoardController.deleteHTEBoard ì‹¤í–‰");
 		
-		// °Ô½Ã±Û »èÁ¦ Àü¿¡ vo°´Ã¼¸¦ ÀÌ¿ë, »ç¿ëÀÚÀÇ ÀÌ¸§°ú ÀÌ¸ŞÀÏÀ» °¡Á®¿Â´Ù.
+		// ê²Œì‹œê¸€ ì‚­ì œ ì „ì— voê°ì²´ë¥¼ ì´ìš©, ì‚¬ìš©ìì˜ ì´ë¦„ê³¼ ì´ë©”ì¼ì„ ê°€ì ¸ì˜¨ë‹¤.
 		UserVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
-		// °Ô½Ã±Û »èÁ¦
+		// ê²Œì‹œê¸€ ì‚­ì œ
 		hTEBoardService.deleteHTEBoard(vo);
 		
-		// °Ô½Ã±Û »èÁ¦¿¡ ´ëÇØ »ç¿ëÀÚ¿¡°Ô ÇØ´ç »ç½ÇÀ» ¸ŞÀÏ·Î Àü¼ÛÇÑ´Ù.
+		// ê²Œì‹œê¸€ ì‚­ì œì— ëŒ€í•´ ì‚¬ìš©ìì—ê²Œ í•´ë‹¹ ì‚¬ì‹¤ì„ ë©”ì¼ë¡œ ì „ì†¡í•œë‹¤.
 		StringBuffer sb = new StringBuffer();
-		sb.append(userName + "´ÔÀÌ ÀÛ¼ºÇÑ °Ô½Ã±ÛÀÌ °ü¸®ÀÚ¿¡ ÀÇÇØ »èÁ¦ Ã³¸®µÇ¾ú½À´Ï´Ù.<br />");
-		sb.append("ÀÚ¼¼ÇÑ »çÇ×Àº °ü¸®ÀÚ(ghp0405@gmail.com)¿¡°Ô ¹®ÀÇÇÏ¿©ÁÖ½Ê½Ã¿À.<br />");
+		sb.append(userName + "ë‹˜ì´ ì‘ì„±í•œ ê²Œì‹œê¸€ì´ ê´€ë¦¬ìì— ì˜í•´ ì‚­ì œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤.<br />");
+		sb.append("ìì„¸í•œ ì‚¬í•­ì€ ê´€ë¦¬ì(ghp0405@gmail.com)ì—ê²Œ ë¬¸ì˜í•˜ì—¬ì£¼ì‹­ì‹œì˜¤.<br />");
 		String str = sb.toString();
-		mailService.sendMail(userEmail, userName + "´ÔÀÇ °Ô½Ã±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.", str);
+		mailService.sendMail(userEmail, userName + "ë‹˜ì˜ ê²Œì‹œê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.", str);
 		
 		return "redirect:/getHTEBoardList.admin";
 	}
 	
 	@RequestMapping("getHTEBoard.admin")
 	public String getHTEBoard(HTEBoardVO vo, Model model) {
-		System.out.println("HTEBoardController.getHTEBoard ½ÇÇà");
+		System.out.println("HTEBoardController.getHTEBoard ì‹¤í–‰");
 		model.addAttribute("hteboard", hTEBoardService.getHTEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "getHTEBoard";
@@ -87,7 +87,7 @@ public class HTEBoardController {
 	
 	@RequestMapping("getHTEBoardList.admin")
 	public String getHTEBoardList(Criteria cri, Model model) {
-		System.out.println("HTEBoardController.getHTEBoardList ½ÇÇà");
+		System.out.println("HTEBoardController.getHTEBoardList ì‹¤í–‰");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

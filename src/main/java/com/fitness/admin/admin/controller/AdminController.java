@@ -17,47 +17,47 @@ public class AdminController {
 	
 	@RequestMapping(value="mainAdmin.admin")
 	public String mainAdmin() {
-		System.out.println("AdminController.mainAdmin 角青 - 皋牢 芒");
+		System.out.println("AdminController.mainAdmin 鞁ろ枆");
 		return "mainAdmin";
 	}
 	
 	@RequestMapping(value="insertAdmin.admin", method=RequestMethod.GET)
 	public String insertAdminForm(AdminVO vo) {
-		System.out.println("AdminController.insertAdminForm 角青");
+		System.out.println("AdminController.insertAdminForm 鞁ろ枆");
 		return "insertAdmin";
 	}
 	
 	@RequestMapping(value="insertAdmin.admin", method=RequestMethod.POST)
 	public String insertAdmin(AdminVO vo) {
-		System.out.println("AdminController.insertAdmin 角青");
+		System.out.println("AdminController.insertAdmin 鞁ろ枆");
 		adminService.insertAdmin(vo);
 		return "redirect:/getAdminList.admin";
 	}
 	
 	@RequestMapping(value="updateAdmin.admin", method=RequestMethod.GET)
 	public String updateAdminForm(AdminVO vo, Model model) {
-		System.out.println("AdminController.updateAdminForm 角青");
+		System.out.println("AdminController.updateAdminForm 鞁ろ枆");
 		model.addAttribute("admin", adminService.getAdmin(vo));
 		return "updateAdmin";
 	}
 	
 	@RequestMapping(value="updateAdmin.admin", method=RequestMethod.POST)
 	public String updateAdmin(AdminVO vo) {
-		System.out.println("AdminController.updateAdmin 角青");
+		System.out.println("AdminController.updateAdmin 鞁ろ枆");
 		adminService.updateAdmin(vo);
 		return "redirect:/getAdminList.admin";
 	}
 	
 	@RequestMapping("deleteAdmin.admin")
 	public String deleteAdmin(AdminVO vo) {
-		System.out.println("AdminController.deleteAdmin 角青");
+		System.out.println("AdminController.deleteAdmin 鞁ろ枆");
 		adminService.deleteAdmin(vo);
 		return "redirect:/getAdminList.admin";
 	}
 	
 	@RequestMapping("getAdminList.admin")
 	public String getAdminList(AdminVO vo, Model model) {
-		System.out.println("AdminController.getAdminList 角青");
+		System.out.println("AdminController.getAdminList 鞁ろ枆");
 		model.addAttribute("adminList", adminService.getAdminList(vo));
 		return "getAdminList";
 	}

@@ -17,25 +17,25 @@ public class UserDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	// °èÁ¤ Á¤Áö ¸Þ¼­µå
+	// ê³„ì • ì •ì§€ ë©”ì„œë“œ
 	public void suspendUser(UserVO vo) {
-		System.out.println("UserDAO.suspendUser ½ÇÇà");
+		System.out.println("UserDAO.suspendUser ì‹¤í–‰");
 		sqlSessionTemplate.update("UserDAO.suspendUser", vo);
 	}
 	
-	// °èÁ¤ Á¤Áö ÇØÁ¦ ¸Þ¼­µå
+	// ê³„ì • ì •ì§€ í•´ì œ ë©”ì„œë“œ
 	public void unsuspendUser(UserVO vo) {
-		System.out.println("UserDAO.unsuspendUser ½ÇÇà");
+		System.out.println("UserDAO.unsuspendUser ì‹¤í–‰");
 		sqlSessionTemplate.update("UserDAO.unsuspendUser", vo);
 	}
 	
 	public UserVO getUser(UserVO vo) {
-		System.out.println("UserDAO.getUser ½ÇÇà");
+		System.out.println("UserDAO.getUser ì‹¤í–‰");
 		return (UserVO)sqlSessionTemplate.selectOne("UserDAO.getUser", vo);
 	}
 	
 	public List<UserVO> getUserList(Criteria cri) {
-		System.out.println("UserDAO.getUserList ½ÇÇà");
+		System.out.println("UserDAO.getUserList ì‹¤í–‰");
 		Map map = new HashMap();
 		map.put("cri", cri);
 		map.put("startNum", cri.getStartNum());
@@ -44,7 +44,7 @@ public class UserDAO {
 	}
 	
 	public int getUserCount() {
-		System.out.println("UserDAO.getUserCount ½ÇÇà");
+		System.out.println("UserDAO.getUserCount ì‹¤í–‰");
 		return (int)sqlSessionTemplate.selectOne("UserDAO.getUserCount");
 	}
 	

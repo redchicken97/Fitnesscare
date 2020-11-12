@@ -16,13 +16,13 @@ public class WorkoutSaveServiceImpl implements WorkoutSaveService {
 	
 	@Override
 	public void insertWorkoutSave(WorkoutSaveVO vo) {
-		System.out.println("WorkoutSaveService.insertWorkoutSave ½ÇÇà");
+		System.out.println("WorkoutSaveService.insertWorkoutSave ì‹¤í–‰");
 		workoutSaveDAO.insertWorkoutSave(vo);
 	}
 
 	@Override
 	public List<WorkoutSaveVO> getWorkoutSaveList(WorkoutSaveVO vo) {
-		System.out.println("WorkoutSaveService.getWorkoutSaveList ½ÇÇà");
+		System.out.println("WorkoutSaveService.getWorkoutSaveList ì‹¤í–‰");
 		return workoutSaveDAO.getWorkoutSaveList(vo);
 	}
 	

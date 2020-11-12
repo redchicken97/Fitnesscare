@@ -16,32 +16,32 @@ public class VEBoardDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardDAO.insertVEBoard 角青");
+		System.out.println("VEBoardDAO.insertVEBoard 鞁ろ枆");
 		sqlSessionTemplate.insert("VEBoardDAO.insertVEBoard", vo);
 	}
 	
 	public void updateVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardDAO.updateVEBoard 角青");
+		System.out.println("VEBoardDAO.updateVEBoard 鞁ろ枆");
 		sqlSessionTemplate.update("VEBoardDAO.updateVEBoard", vo);
 	}
 	
 	public void deleteVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardDAO.deleteVEBoard 角青");
+		System.out.println("VEBoardDAO.deleteVEBoard 鞁ろ枆");
 		sqlSessionTemplate.delete("VEBoardDAO.deleteVEBoard", vo);
 	}
 	
 	public VEBoardVO getVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardDAO.getVEBoard 角青");
+		System.out.println("VEBoardDAO.getVEBoard 鞁ろ枆");
 		return (VEBoardVO)sqlSessionTemplate.selectOne("VEBoardDAO.getVEBoard", vo);
 	}
 	
 	public List<VEBoardVO> getVEBoardList(Criteria cri) {
-		System.out.println("VEBoardDAO.getVEBoardList 角青");
+		System.out.println("VEBoardDAO.getVEBoardList 鞁ろ枆");
 		return sqlSessionTemplate.selectList("VEBoardDAO.getVEBoardList", cri);
 	}
 	
 	public int getVEBoardCount() {
-		System.out.println("VEBoardDAO.getVEBoardCount 角青");
+		System.out.println("VEBoardDAO.getVEBoardCount 鞁ろ枆");
 		return (int)sqlSessionTemplate.selectOne("VEBoardDAO.getVEBoardCount");
 	}
 	

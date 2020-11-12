@@ -15,27 +15,27 @@ public class CommentDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertComment(CommentVO vo) {
-		System.out.println("CommentDAO.insertComment 角青");
+		System.out.println("CommentDAO.insertComment 鞁ろ枆");
 		sqlSessionTemplate.insert("CommentDAO.insertComment", vo);
 	}
 	
 	public void updateComment(CommentVO vo) {
-		System.out.println("CommentDAO.updateComment 角青");
+		System.out.println("CommentDAO.updateComment 鞁ろ枆");
 		sqlSessionTemplate.update("CommentDAO.updateComment", vo);
 	}
 	
 	public void deleteComment(CommentVO vo) {
-		System.out.println("CommentDAO.deleteComment 角青");
+		System.out.println("CommentDAO.deleteComment 鞁ろ枆");
 		sqlSessionTemplate.delete("CommentDAO.deleteComment", vo);
 	}
 	
 	public CommentVO getComment(CommentVO vo) {
-		System.out.println("CommentDAO.getComment 角青");
+		System.out.println("CommentDAO.getComment 鞁ろ枆");
 		return (CommentVO)sqlSessionTemplate.selectOne("CommentDAO.getComment", vo);
 	}
 	
 	public List<CommentVO> getCommentList(CommentVO vo) {
-		System.out.println("CommentDAO.getCommentList 角青");
+		System.out.println("CommentDAO.getCommentList 鞁ろ枆");
 		return sqlSessionTemplate.selectList("CommentDAO.getCommentList", vo);
 	}
 	

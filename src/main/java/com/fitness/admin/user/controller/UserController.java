@@ -27,16 +27,16 @@ public class UserController {
 	@RequestMapping("suspendUser.admin")
 	public String suspendUser(UserVO vo, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
-		System.out.println("UserController.suspendUser ½ÇÇà");
+		System.out.println("UserController.suspendUser ì‹¤í–‰");
 		userService.suspendUser(vo);
 		
-		// »ç¿ë Á¤ÁöµÈ »ç½Ç¿¡ ´ëÇÑ ¸ŞÀÏÀ» ´ë»ó »ç¿ëÀÚ¿¡°Ô Àü¼ÛÇÑ´Ù.
+		// ì‚¬ìš© ì •ì§€ëœ ì‚¬ì‹¤ì— ëŒ€í•œ ë©”ì¼ì„ ëŒ€ìƒ ì‚¬ìš©ìì—ê²Œ ì „ì†¡í•œë‹¤.
 		StringBuffer sb = new StringBuffer();
-		sb.append("°ü¸®ÀÚ¿¡ ÀÇÇØ " + vo.getUser_email() + "°èÁ¤ÀÌ Á¤ÁöµÇ¾ú½À´Ï´Ù.<br />");
-		sb.append("ÀÚ¼¼ÇÑ »çÇ×Àº °ü¸®ÀÚ(ghp0405@gmail.com)¿¡°Ô ¹®ÀÇÇÏ¿© ÁÖ½Ê½Ã¿À.");
+		sb.append("ê´€ë¦¬ìì— ì˜í•´ " + vo.getUser_email() + "ê³„ì •ì´ ì •ì§€ë˜ì—ˆìŠµë‹ˆë‹¤.<br />");
+		sb.append("ìì„¸í•œ ì‚¬í•­ì€ ê´€ë¦¬ì(ghp0405@gmail.com)ì—ê²Œ ë¬¸ì˜í•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.");
 		String str = sb.toString();
 		mailService.sendMail(vo.getUser_email().toString(), 
-				vo.getUser_email().toString() + " °èÁ¤ÀÌ Á¤ÁöµÇ¾ú½À´Ï´Ù.", str);
+				vo.getUser_email().toString() + " ê³„ì •ì´ ì •ì§€ë˜ì—ˆìŠµë‹ˆë‹¤.", str);
 		
 		return "redirect:/getUserList.admin";
 	}
@@ -44,30 +44,30 @@ public class UserController {
 	@RequestMapping("unsuspendUser.admin")
 	public String unsuspendUser(UserVO vo, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		System.out.println("UserController.unsuspendUser ½ÇÇà");
+		System.out.println("UserController.unsuspendUser ì‹¤í–‰");
 		userService.unsuspendUser(vo);
 		
-		// »ç¿ë Á¤Áö ÇØÁ¦µÈ »ç½Ç¿¡ ´ëÇÑ ¸ŞÀÏÀ» ´ë»ó »ç¿ëÀÚ¿¡°Ô Àü¼ÛÇÑ´Ù.
+		// ì‚¬ìš© ì •ì§€ í•´ì œëœ ì‚¬ì‹¤ì— ëŒ€í•œ ë©”ì¼ì„ ëŒ€ìƒ ì‚¬ìš©ìì—ê²Œ ì „ì†¡í•œë‹¤.
 		StringBuffer sb = new StringBuffer();
-		sb.append(vo.getUser_email() + "°èÁ¤¿¡ ´ëÇÑ Á¤Áö°¡ ÇØÁ¦µÇ¾ú½À´Ï´Ù. <br />");
-		sb.append("ÀÚ¼¼ÇÑ »çÇ×Àº °ü¸®ÀÚ(ghp0405@gmail.com)¿¡°Ô ¹®ÀÇÇÏ¿© ÁÖ½Ê½Ã¿À.");
+		sb.append(vo.getUser_email() + "ê³„ì •ì— ëŒ€í•œ ì •ì§€ê°€ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤. <br />");
+		sb.append("ìì„¸í•œ ì‚¬í•­ì€ ê´€ë¦¬ì(ghp0405@gmail.com)ì—ê²Œ ë¬¸ì˜í•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.");
 		String str = sb.toString();
 		mailService.sendMail(vo.getUser_email().toString(), 
-				vo.getUser_email().toString() + " °èÁ¤¿¡ ´ëÇÑ Á¤Áö°¡ ÇØÁ¦µÇ¾ú½À´Ï´Ù.", str);
+				vo.getUser_email().toString() + " ê³„ì •ì— ëŒ€í•œ ì •ì§€ê°€ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤.", str);
 		
 		return "redirect:/getUserList.admin";
 	}
 	
 	@RequestMapping("getUser.admin")
 	public String getUser(UserVO vo, Model model) {
-		System.out.println("UserController.getUser ½ÇÇà");
+		System.out.println("UserController.getUser ì‹¤í–‰");
 		model.addAttribute("user", userService.getUser(vo));
 		return "getUser";
 	}
 	
 	@RequestMapping("getUserList.admin")
 	public String getUserList(Model model, Criteria cri) {
-		System.out.println("UserController.getUserList ½ÇÇà");
+		System.out.println("UserController.getUserList ì‹¤í–‰");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

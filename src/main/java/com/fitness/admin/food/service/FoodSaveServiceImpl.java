@@ -16,13 +16,13 @@ public class FoodSaveServiceImpl implements FoodSaveService {
 	
 	@Override
 	public void insertFoodSave(FoodSaveVO vo) {
-		System.out.println("FoodSaveService.insertFoodSave ½ÇÇà");
+		System.out.println("FoodSaveService.insertFoodSave ì‹¤í–‰");
 		foodSaveDAO.insertFoodSave(vo);
 	}
 
 	@Override
 	public List<FoodSaveVO> getFoodSaveList(FoodSaveVO vo) {
-		System.out.println("FoodSaveService.getFoodSaveList ½ÇÇà");
+		System.out.println("FoodSaveService.getFoodSaveList ì‹¤í–‰");
 		return foodSaveDAO.getFoodSaveList(vo);
 	}
 	

@@ -23,7 +23,7 @@ public class MailService {
 		try {
 			MimeMessageHelper messageHelper = 
 						new MimeMessageHelper(message, true, "UTF-8");
-			messageHelper.setFrom("ghp0405@gmail.com", "ȫ�浿");
+			messageHelper.setFrom("ghp0405@gmail.com", "박강현");
 			messageHelper.setSubject(subject);
 			messageHelper.setTo(to);
 			messageHelper.setText(body, true);

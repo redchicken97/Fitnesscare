@@ -18,22 +18,22 @@ public class TermDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertTerm(TermVO vo) {
-		System.out.println("TermDAO.insertTerm 角青");
+		System.out.println("TermDAO.insertTerm 鞁ろ枆");
 		sqlSessionTemplate.insert("TermDAO.insertTerm", vo);
 	}
 	
 	public void updateTerm(TermVO vo) {
-		System.out.println("TermDAO.updateTerm 角青");
+		System.out.println("TermDAO.updateTerm 鞁ろ枆");
 		sqlSessionTemplate.update("TermDAO.updateTerm", vo);
 	}
 	
 	public TermVO getTerm(TermVO vo) {
-		System.out.println("TermDAO.getTerm 角青");
+		System.out.println("TermDAO.getTerm 鞁ろ枆");
 		return (TermVO)sqlSessionTemplate.selectOne("TermDAO.getTerm", vo);
 	}
 	
 	public List<TermVO> getTermList(Criteria cri) {
-		System.out.println("TermDAO.getTermList 角青");
+		System.out.println("TermDAO.getTermList 鞁ろ枆");
 		Map map = new HashMap();
 		map.put("cri", cri);
 		map.put("startNum", cri.getStartNum());
@@ -42,7 +42,7 @@ public class TermDAO {
 	}
 	
 	public int getTermCount() {
-		System.out.println("TermDAO.getTermCount 角青");
+		System.out.println("TermDAO.getTermCount 鞁ろ枆");
 		return (int)sqlSessionTemplate.selectOne("TermDAO.getTermCount");
 	}
 	

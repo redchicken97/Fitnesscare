@@ -15,27 +15,27 @@ public class AdminDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertAdmin(AdminVO vo) {
-		System.out.println("AdminDAO.insertAdmin 角青");
+		System.out.println("AdminDAO.insertAdmin 鞁ろ枆");
 		sqlSessionTemplate.insert("AdminDAO.insertAdmin", vo);
 	}
 	
 	public void updateAdmin(AdminVO vo) {
-		System.out.println("AdminDAO.updateAdmin 角青");
+		System.out.println("AdminDAO.updateAdmin 鞁ろ枆");
 		sqlSessionTemplate.update("AdminDAO.updateAdmin", vo);
 	}
 	
 	public void deleteAdmin(AdminVO vo) {
-		System.out.println("AdminDAO.deleteAdmin 角青");
+		System.out.println("AdminDAO.deleteAdmin 鞁ろ枆");
 		sqlSessionTemplate.delete("AdminDAO.deleteAdmin", vo);
 	}
 	
 	public AdminVO getAdmin(AdminVO vo) {
-		System.out.println("AdminDAO.getAdmin 角青");
+		System.out.println("AdminDAO.getAdmin 鞁ろ枆");
 		return (AdminVO)sqlSessionTemplate.selectOne("AdminDAO.getAdmin", vo);
 	}
 	
 	public List<AdminVO> getAdminList(AdminVO vo) {
-		System.out.println("AdminDAO.getAdminList 角青");
+		System.out.println("AdminDAO.getAdminList 鞁ろ枆");
 		return sqlSessionTemplate.selectList("AdminDAO.getAdminList", vo);
 	}
 	

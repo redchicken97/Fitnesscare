@@ -35,20 +35,20 @@ public class QEBoardController {
 	
 	@RequestMapping(value="insertQEBoard.admin", method=RequestMethod.GET)
 	public String insertQEBoardForm(QEBoardVO vo) {
-		System.out.println("QEBoardController.insertQEBoardForm ½ÇÇà");
+		System.out.println("QEBoardController.insertQEBoardForm ì‹¤í–‰");
 		return "insertQEBoard";
 	}
 	
 	@RequestMapping(value="insertQEBoard.admin", method=RequestMethod.POST)
 	public String insertQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardController.insertQEBoard ½ÇÇà");
+		System.out.println("QEBoardController.insertQEBoard ì‹¤í–‰");
 		qEBoardService.insertQEBoard(vo);
 		return "redirect:/getQEBoardList.admin";
 	}
 	
 	@RequestMapping(value="updateQEBoard.admin", method=RequestMethod.GET)
 	public String updateQEBoardForm(QEBoardVO vo, Model model) {
-		System.out.println("QEBoardController.updateQEBoardForm ½ÇÇà");
+		System.out.println("QEBoardController.updateQEBoardForm ì‹¤í–‰");
 		model.addAttribute("qeboard", qEBoardService.getQEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "updateQEBoard";
@@ -56,40 +56,40 @@ public class QEBoardController {
 	
 	@RequestMapping(value="updateQEBoard.admin", method=RequestMethod.POST)
 	public String updateQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardController.updateQEBoard ½ÇÇà");
+		System.out.println("QEBoardController.updateQEBoard ì‹¤í–‰");
 		qEBoardService.updateQEBoard(vo);
 		return "redirect:/getQEBoard.admin?q_id=" + vo.getQ_id();
 	}
 	
 	@RequestMapping("deleteQEBoard.admin")
 	public String deleteQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardController.deleteQEBoard ½ÇÇà");
+		System.out.println("QEBoardController.deleteQEBoard ì‹¤í–‰");
 		
-		// voÀÇ ³»¿ëÀ» »èÁ¦ÇÏ±â Àü¿¡, uvo¸¦ ÀÌ¿ëÇÏ¿© »ç¿ëÀÚÀÇ ÀÌ¸§°ú ÀÌ¸ŞÀÏ Á¤º¸¸¦ °¡Á®¿Â´Ù.
-		// ÇØ´ç ÀÛ¾÷ ÀÌÀü¿¡ deleteQEBoard()¸¦ ½ÇÇàÇÏ¸é, vo°´Ã¼°¡ Áö¿öÁö¸é¼­ ³»¿ëÀ» °¡Á®¿ÀÁö ¸øÇÏ°Ô µÈ´Ù.
+		// voì˜ ë‚´ìš©ì„ ì‚­ì œí•˜ê¸° ì „ì—, uvoë¥¼ ì´ìš©í•˜ì—¬ ì‚¬ìš©ìì˜ ì´ë¦„ê³¼ ì´ë©”ì¼ ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
+		// í•´ë‹¹ ì‘ì—… ì´ì „ì— deleteQEBoard()ë¥¼ ì‹¤í–‰í•˜ë©´, voê°ì²´ê°€ ì§€ì›Œì§€ë©´ì„œ ë‚´ìš©ì„ ê°€ì ¸ì˜¤ì§€ ëª»í•˜ê²Œ ëœë‹¤.
 		UserVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
 		qEBoardService.deleteQEBoard(vo);
 		
-		// °Ô½Ã±ÛÀÌ °­Á¦ »èÁ¦µÈ »ç½ÇÀ» ÀÛ¼ºÀÚ¿¡°Ô ¸ŞÀÏ·Î ¾Ë·ÁÁØ´Ù.
+		// ê²Œì‹œê¸€ì´ ê°•ì œ ì‚­ì œëœ ì‚¬ì‹¤ì„ ì‘ì„±ìì—ê²Œ ë©”ì¼ë¡œ ì•Œë ¤ì¤€ë‹¤.
 		StringBuffer sb = new StringBuffer();
-		sb.append(userName + "´ÔÀÌ ÀÛ¼ºÇÑ °Ô½Ã±ÛÀÌ °ü¸®ÀÚ¿¡ ÀÇÇØ »èÁ¦ Ã³¸®µÇ¾ú½À´Ï´Ù.<br />");
-		sb.append("ÀÚ¼¼ÇÑ »çÇ×Àº °ü¸®ÀÚ(ghp0405@gmail.com)¿¡°Ô ¹®ÀÇÇÏ¿©ÁÖ½Ê½Ã¿À.<br />");
+		sb.append(userName + "ë‹˜ì´ ì‘ì„±í•œ ê²Œì‹œê¸€ì´ ê´€ë¦¬ìì— ì˜í•´ ì‚­ì œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤.<br />");
+		sb.append("ìì„¸í•œ ì‚¬í•­ì€ ê´€ë¦¬ì(ghp0405@gmail.com)ì—ê²Œ ë¬¸ì˜í•˜ì—¬ì£¼ì‹­ì‹œì˜¤.<br />");
 		String str = sb.toString();
-		mailService.sendMail(userEmail, userName + "´ÔÀÇ °Ô½Ã±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.", str);
+		mailService.sendMail(userEmail, userName + "ë‹˜ì˜ ê²Œì‹œê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.", str);
 		
 		return "redirect:/getQEBoardList.admin";
 	}
 	
 	@RequestMapping("getQEBoard.admin")
 	public String getQEBoard(QEBoardVO vo, Model model) {
-		System.out.println("QEBoardController.getQEBoard ½ÇÇà");
+		System.out.println("QEBoardController.getQEBoard ì‹¤í–‰");
 		model.addAttribute("qeboard", qEBoardService.getQEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		
-		// ´ñ±Û ¼¼ÆÃ
+		// ëŒ“ê¸€ ì„¸íŒ…
 		CommentVO cvo = new CommentVO();
 		cvo.setCmt_type("question");
 		cvo.setTarget_id(vo.getQ_id());
@@ -100,7 +100,7 @@ public class QEBoardController {
 	
 	@RequestMapping("getQEBoardList.admin")
 	public String getQEBoardList(Model model, Criteria cri) {
-		System.out.println("QEBoardController.getQEBoardList ½ÇÇà");
+		System.out.println("QEBoardController.getQEBoardList ì‹¤í–‰");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -108,8 +108,8 @@ public class QEBoardController {
 		cri = pageMaker.getCri();
 		model.addAttribute("pageMaker", pageMaker);
 		
-		// ÀÛ¼ºÀÚ¶õ¿¡ user_id ´ë½Å ½ÇÁ¦ »ç¿ëÀÚ ÀÌ¸§ÀÌ ³ª¿Ã ¼ö ÀÖµµ·Ï
-		// »ç¿ëÀÚ ÀÌ¸§µéÀ» ´ãÀº list¸¦ ¸¸µç´Ù.
+		// ì‘ì„±ìë€ì— user_id ëŒ€ì‹  ì‹¤ì œ ì‚¬ìš©ì ì´ë¦„ì´ ë‚˜ì˜¬ ìˆ˜ ìˆë„ë¡
+		// ì‚¬ìš©ì ì´ë¦„ë“¤ì„ ë‹´ì€ listë¥¼ ë§Œë“ ë‹¤.
 		List<QEBoardVO> qeList = new ArrayList<>();
 		List<String> userList = new ArrayList<>();
 		qeList = qEBoardService.getQEBoardList(cri);
@@ -122,7 +122,7 @@ public class QEBoardController {
 		return "getQEBoardList";
 	}
 	
-	// vo °´Ã¼ÀÇ id°ªÀ» ¹ÙÅÁÀ¸·Î ÀÛ¼ºÀÚÀÇ Á¤º¸¸¦ °¡Á®¿À´Â ¸Ş¼­µå
+	// vo ê°ì²´ì˜ idê°’ì„ ë°”íƒ•ìœ¼ë¡œ ì‘ì„±ìì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ
 	public UserVO getUserFromId(QEBoardVO vo) {
 		vo = qEBoardService.getQEBoard(vo);
 		UserVO uvo = new UserVO();

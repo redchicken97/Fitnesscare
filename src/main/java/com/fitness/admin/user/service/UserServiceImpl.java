@@ -17,31 +17,31 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void suspendUser(UserVO vo) {
-		System.out.println("UserService.suspendUser 角青");
+		System.out.println("UserService.suspendUser 鞁ろ枆");
 		userDAO.suspendUser(vo);
 	}
 
 	@Override
 	public void unsuspendUser(UserVO vo) {
-		System.out.println("UserService.unsuspendUser 角青");
+		System.out.println("UserService.unsuspendUser 鞁ろ枆");
 		userDAO.unsuspendUser(vo);
 	}
 
 	@Override
 	public UserVO getUser(UserVO vo) {
-		System.out.println("UserService.getUser 角青");
+		System.out.println("UserService.getUser 鞁ろ枆");
 		return userDAO.getUser(vo);
 	}
 
 	@Override
 	public List<UserVO> getUserList(Criteria cri) {
-		System.out.println("UserService.getUserList 角青");
+		System.out.println("UserService.getUserList 鞁ろ枆");
 		return userDAO.getUserList(cri);
 	}
 	
 	@Override
 	public int getUserCount() {
-		System.out.println("UserService.getUserCount 角青");
+		System.out.println("UserService.getUserCount 鞁ろ枆");
 		return userDAO.getUserCount();
 	}
 

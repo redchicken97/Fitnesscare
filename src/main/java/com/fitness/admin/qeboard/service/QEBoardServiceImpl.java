@@ -17,41 +17,41 @@ public class QEBoardServiceImpl implements QEBoardService {
 	
 	@Override
 	public void insertQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardService.insertQEBoard ½ÇÇà");
+		System.out.println("QEBoardService.insertQEBoard ì‹¤í–‰");
 		qEBoardDAO.insertQEBoard(vo);
 	}
 
 	@Override
 	public void updateQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardService.updateQEBoard ½ÇÇà");
+		System.out.println("QEBoardService.updateQEBoard ì‹¤í–‰");
 		qEBoardDAO.updateQEBoard(vo);
 	}
 	
 	@Override
 	public void deleteQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardService.deleteQEBoard ½ÇÇà");
-		// comment ¿¬¼â »èÁ¦ÇÏ´Â ·ÎÁ÷ÀÌ µé¾î¿Í¾ßÇÔ
+		System.out.println("QEBoardService.deleteQEBoard ì‹¤í–‰");
+		// comment ì‹¤í–‰ ì‹¤í–‰ï¿½Ï´ï¿½ ì‹¤í–‰ï¿½ï¿½ ï¿½ï¿½ï¿½Í¾ï¿½ï¿½ï¿½
 		// commentDAO,deleteComment(vo);
-		// ÆÄ¶ó¹ÌÅÍ Å¸ÀÔ : QEBoardVO, ¹ÝÈ¯ Å¸ÀÔ : void
-		// ÆÄ¶ó¹ÌÅÍ Å¸ÀÔÀÌ vo¿©¾ß ÇÏ´Â ÀÌÀ¯´Â q_id¿Í q_type 2°¡Áö¸¦ ºñ±³ÇØ¾ßÇÏ±â¶§¹®
+		// ï¿½Ä¶ì‹¤í–‰ Å¸ï¿½ï¿½ : QEBoardVO, ï¿½ï¿½È¯ Å¸ï¿½ï¿½ : void
+		// ï¿½Ä¶ì‹¤í–‰ Å¸ì‹¤í–‰ voì‹¤í–‰ ï¿½Ï´ï¿½ ì‹¤í–‰ï¿½ï¿½ q_idï¿½ï¿½ q_type 2ì‹¤í–‰ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ï±â¶§ï¿½ï¿½
 		qEBoardDAO.deleteQEBoard(vo);
 	}
 	
 	@Override
 	public QEBoardVO getQEBoard(QEBoardVO vo) {
-		System.out.println("QEBoardService.getQEBoard ½ÇÇà");
+		System.out.println("QEBoardService.getQEBoard ì‹¤í–‰");
 		return qEBoardDAO.getQEBoard(vo);
 	}
 
 	@Override
 	public List<QEBoardVO> getQEBoardList(Criteria cri) {
-		System.out.println("QEBoardService.getQEBoardList ½ÇÇà");
+		System.out.println("QEBoardService.getQEBoardList ì‹¤í–‰");
 		return qEBoardDAO.getQEBoardList(cri);
 	}
 	
 	@Override
 	public int getQEBoardCount() {
-		System.out.println("QEBoardService.getQEBoardCount ½ÇÇà");
+		System.out.println("QEBoardService.getQEBoardCount ì‹¤í–‰");
 		return qEBoardDAO.getQEBoardCount();
 	}
 

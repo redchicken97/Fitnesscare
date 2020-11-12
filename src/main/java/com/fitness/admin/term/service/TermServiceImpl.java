@@ -17,31 +17,31 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void insertTerm(TermVO vo) {
-		System.out.println("TermService.insertTerm 角青");
+		System.out.println("TermService.insertTerm 鞁ろ枆");
 		termDAO.insertTerm(vo);
 	}
 
 	@Override
 	public void updateTerm(TermVO vo) {
-		System.out.println("TermService.updateTerm 角青");
+		System.out.println("TermService.updateTerm 鞁ろ枆");
 		termDAO.updateTerm(vo);
 	}
 
 	@Override
 	public TermVO getTerm(TermVO vo) {
-		System.out.println("TermService.getTerm 角青");
+		System.out.println("TermService.getTerm 鞁ろ枆");
 		return termDAO.getTerm(vo);
 	}
 
 	@Override
 	public List<TermVO> getTermList(Criteria cri) {
-		System.out.println("TermService.getTermList 角青");
+		System.out.println("TermService.getTermList 鞁ろ枆");
 		return termDAO.getTermList(cri);
 	}
 	
 	@Override
 	public int getTermCount() {
-		System.out.println("TermService.getTermCount 角青");
+		System.out.println("TermService.getTermCount 鞁ろ枆");
 		return termDAO.getTermCount();
 	}
 	

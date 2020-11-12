@@ -27,15 +27,15 @@ public class WorkoutSaveController {
 	
 	@RequestMapping(value="/insertWorkoutSave.admin", method=RequestMethod.GET)
 	public String insertWorkoutSaveForm(WorkoutSaveVO vo) {
-		System.out.println("WorkoutSaveController.insertWorkoutSaveForm ½ÇÇà");
+		System.out.println("WorkoutSaveController.insertWorkoutSaveForm ì‹¤í–‰");
 		return "insertWorkoutSave";
 	}
 	
 	@RequestMapping(value="/insertWorkoutSave.admin", method=RequestMethod.POST)
 	public String insertWorkoutSave(WorkoutSaveVO vo, MultipartFile imgFile) {
-		System.out.println("WorkoutSaveController.insertWorkoutSave ½ÇÇà");
+		System.out.println("WorkoutSaveController.insertWorkoutSave ì‹¤í–‰");
 		
-		// ÀÌ¹ÌÁö ¾÷·Îµå
+		// ì´ë¯¸ì§€ ì—…ë¡œë“œ
 		String savedImgName = null;
 		try {
 			savedImgName = uploadFile(imgFile.getOriginalFilename(), imgFile.getBytes());
@@ -50,7 +50,7 @@ public class WorkoutSaveController {
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
-		UUID uid = UUID.randomUUID(); // ÆÄÀÏ ¾÷·Îµå½Ã ÆÄÀÏ¸í Áßº¹ ¹æÁö¸¦ À§ÇÑ UUID
+		UUID uid = UUID.randomUUID(); // íŒŒì¼ ì—…ë¡œë“œì‹œ íŒŒì¼ëª… ì¤‘ë³µ ë°©ì§€ë¥¼ ìœ„í•œ UUID
 		String savedName = uid.toString() + "_" + originalName;
 		File target = new File(uploadPath, savedName);
 		FileCopyUtils.copy(fileData, target);
@@ -59,7 +59,7 @@ public class WorkoutSaveController {
 	
 	@RequestMapping("/getWorkoutSaveList.admin")
 	public String getWorkoutSaveList(WorkoutSaveVO vo, Model model) {
-		System.out.println("WorkoutSaveController.getWorkoutSaveList ½ÇÇà");
+		System.out.println("WorkoutSaveController.getWorkoutSaveList ì‹¤í–‰");
 		model.addAttribute("workoutSaveList", workoutSaveService.getWorkoutSaveList(vo));
 		return "getWorkoutSaveList";
 	}

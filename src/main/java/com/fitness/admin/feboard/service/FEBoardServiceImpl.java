@@ -17,37 +17,37 @@ public class FEBoardServiceImpl implements FEBoardService {
 	
 	@Override
 	public void insertFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardService.insertFEBoard 角青");
+		System.out.println("FEBoardService.insertFEBoard 鞁ろ枆");
 		fEBoardDAO.insertFEBoard(vo);
 	}
 
 	@Override
 	public void updateFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardService.updateFEBoard 角青");
+		System.out.println("FEBoardService.updateFEBoard 鞁ろ枆");
 		fEBoardDAO.updateFEBoard(vo);
 	}
 	
 	@Override
 	public void deleteFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardService.deleteFEBoard 角青");
+		System.out.println("FEBoardService.deleteFEBoard 鞁ろ枆");
 		fEBoardDAO.deleteFEBoard(vo);
 	}
 	
 	@Override
 	public FEBoardVO getFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardService.getFEBoard 角青");
+		System.out.println("FEBoardService.getFEBoard 鞁ろ枆");
 		return fEBoardDAO.getFEBoard(vo);
 	}
 
 	@Override
 	public List<FEBoardVO> getFEBoardList(Criteria cri) {
-		System.out.println("FEBoardService.getFEBoardList 角青");
+		System.out.println("FEBoardService.getFEBoardList 鞁ろ枆");
 		return fEBoardDAO.getFEBoardList(cri);
 	}
 
 	@Override
 	public int getFEBoardCount() {
-		System.out.println("FEBoardService.getFEBoardCount 角青");
+		System.out.println("FEBoardService.getFEBoardCount 鞁ろ枆");
 		return fEBoardDAO.getFEBoardCount();
 	}
 

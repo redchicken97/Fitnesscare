@@ -2,9 +2,7 @@ package com.fitness.admin.comment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fitness.admin.comment.service.CommentService;
 import com.fitness.admin.comment.vo.CommentVO;
@@ -15,25 +13,22 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	// ¾Æ·¡ DML ±â´ÉµéÀº form action ¶Ç´Â urlÀ» ÅëÇØ ±¸ÇöµÇ¹Ç·Î controller¿¡ ³²±è
 	@RequestMapping("insertComment.admin")
 	public String insertComment(CommentVO vo) {
-		System.out.println("CommentController.insertComment ½ÇÇà");
-		// »ðÀÔ Àü¿¡, ¿ø±ÛÀÇ cmt_id¸¦ °¡Á®¿Í¼­ cmt_ref¿¡ ³Ö¾îÁà¾ßÇÔ
+		System.out.println("CommentController.insertComment ì‹¤í–‰");
 		commentService.insertComment(vo);
-		// ´ë»ó °Ô½ÃÆÇÀÇ cmt_type°ª¿¡ µû¶ó return url°ªÀÌ ´Þ¶óÁ®¾ßÇÔ
 		return "redirect:/getQEBoard.admin?q_id=" + vo.getTarget_id();
 	}
 	
 	@RequestMapping("updateComment.admin")
 	public void updateComment(CommentVO vo) {
-		System.out.println("CommentController.updateComment ½ÇÇà");
+		System.out.println("CommentController.updateComment ì‹¤í–‰");
 		commentService.updateComment(vo);
 	}
 	
 	@RequestMapping("deleteComment.admin")
 	public void deleteComment(CommentVO vo) {
-		System.out.println("CommentController.deleteComment ½ÇÇà");
+		System.out.println("CommentController.deleteComment ì‹¤í–‰");
 		commentService.deleteComment(vo);
 	}
 	

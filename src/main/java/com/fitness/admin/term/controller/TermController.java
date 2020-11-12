@@ -19,41 +19,41 @@ public class TermController {
 	
 	@RequestMapping(value="/insertTerm.admin", method=RequestMethod.GET)
 	public String insertTermForm(TermVO vo) {
-		System.out.println("TermController.insertTermForm 角青");
+		System.out.println("TermController.insertTermForm 鞁ろ枆");
 		return "insertTerm";
 	}
 	
 	@RequestMapping(value="/insertTerm.admin", method=RequestMethod.POST)
 	public String insertTerm(TermVO vo) {
-		System.out.println("TermController.insertTerm 角青");
+		System.out.println("TermController.insertTerm 鞁ろ枆");
 		termService.insertTerm(vo);
 		return "redirect:/getTermList.admin";
 	}
 	
 	@RequestMapping(value="/updateTerm.admin", method=RequestMethod.GET)
 	public String updateTermForm(TermVO vo, Model model) {
-		System.out.println("TermController.updateTermForm 角青");
+		System.out.println("TermController.updateTermForm 鞁ろ枆");
 		model.addAttribute("term", termService.getTerm(vo));
 		return "updateTerm";
 	}
 	
 	@RequestMapping(value="/updateTerm.admin", method=RequestMethod.POST)
 	public String updateTerm(TermVO vo) {
-		System.out.println("TermController.updateTerm 角青");
+		System.out.println("TermController.updateTerm 鞁ろ枆");
 		termService.updateTerm(vo);
 		return "redirect:/getTerm.admin?term_id=" + vo.getTerm_id();
 	}
 	
 	@RequestMapping("/getTerm.admin")
 	public String getTerm(TermVO vo, Model model) {
-		System.out.println("TermController.getTerm 角青");
+		System.out.println("TermController.getTerm 鞁ろ枆");
 		model.addAttribute("term", termService.getTerm(vo));
 		return "getTerm";
 	}
 	
 	@RequestMapping("/getTermList.admin")
 	public String getTermList(Model model, Criteria cri) {
-		System.out.println("TermController.getTermList 角青");
+		System.out.println("TermController.getTermList 鞁ろ枆");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

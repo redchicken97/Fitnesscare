@@ -29,20 +29,20 @@ public class FEBoardController {
 	
 	@RequestMapping(value="insertFEBoard", method=RequestMethod.GET)
 	public String insertFEBoardFrom(FEBoardVO vo) {
-		System.out.println("FEBoardController.insertFEBoardFrom ½ÇÇà");
+		System.out.println("FEBoardController.insertFEBoardFrom ì‹¤í–‰");
 		return "insertFEBoard";
 	}
 	
 	@RequestMapping(value="insertFEBoard", method=RequestMethod.POST)
 	public String insertFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardController.insertFEBoard ½ÇÇà");
+		System.out.println("FEBoardController.insertFEBoard ì‹¤í–‰");
 		fEBoardService.insertFEBoard(vo);
 		return "redirect:/getFEBoardList.admin";
 	}
 	
 	@RequestMapping(value="updateFEBoard", method=RequestMethod.GET)
 	public String updateFEBoardFrom(FEBoardVO vo, Model model) {
-		System.out.println("FEBoardController.updateFEBoardFrom ½ÇÇà");
+		System.out.println("FEBoardController.updateFEBoardFrom ì‹¤í–‰");
 		model.addAttribute("feboard", fEBoardService.getFEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "updateFEBoard";
@@ -50,36 +50,36 @@ public class FEBoardController {
 	
 	@RequestMapping(value="updateFEBoard", method=RequestMethod.POST)
 	public String updateFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardController.updateFEBoard ½ÇÇà");
+		System.out.println("FEBoardController.updateFEBoard ì‹¤í–‰");
 		fEBoardService.updateFEBoard(vo);
 		return "redirect:/getFEBoard.admin?free_id=" + vo.getFree_id();
 	}
 	
 	@RequestMapping("deleteFEBoard")
 	public String deleteFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardController.deleteFEBoard ½ÇÇà");
+		System.out.println("FEBoardController.deleteFEBoard ì‹¤í–‰");
 		
-		// delete ÀÛ¾÷ Àü, free_id¸¦ ÀÌ¿ëÇÏ¿© »ç¿ëÀÚÀÇ ÀÌ¸§ ¹× ÀÌ¸ŞÀÏ Á¤º¸¸¦ °¡Á®¿Â´Ù.
+		// delete ì‘ì—… ì „, free_idë¥¼ ì´ìš©í•˜ì—¬ ì‚¬ìš©ìì˜ ì´ë¦„ ë° ì´ë©”ì¼ ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 		UserVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
-		// °Ô½Ã±Û »èÁ¦
+		// ê²Œì‹œê¸€ ì‚­ì œ
 		fEBoardService.deleteFEBoard(vo);
 		
-		// °Ô½Ã±Û »èÁ¦¿¡ ´ëÇÑ »ç½ÇÀ» »ç¿ëÀÚ¿¡°Ô ¸ŞÀÏ·Î Àü¼Û
+		// ê²Œì‹œê¸€ ì‚­ì œì— ëŒ€í•œ ì‚¬ì‹¤ì„ ì‚¬ìš©ìì—ê²Œ ë©”ì¼ë¡œ ì „ì†¡
 		StringBuffer sb = new StringBuffer();
-		sb.append(userName + "´ÔÀÌ ÀÛ¼ºÇÑ °Ô½Ã±ÛÀÌ °ü¸®ÀÚ¿¡ ÀÇÇØ »èÁ¦ Ã³¸®µÇ¾ú½À´Ï´Ù. <br />");
-		sb.append("ÀÚ¼¼ÇÑ »çÇ×Àº °ü¸®ÀÚ(ghp0405@gmail.com)¿¡°Ô ¹®ÀÇÇÏ¿©ÁÖ½Ê½Ã¿À.<br />");
+		sb.append(userName + "ë‹˜ì´ ì‘ì„±í•œ ê²Œì‹œê¸€ì´ ê´€ë¦¬ìì— ì˜í•´ ì‚­ì œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤. <br />");
+		sb.append("ìì„¸í•œ ì‚¬í•­ì€ ê´€ë¦¬ì(ghp0405@gmail.com)ì—ê²Œ ë¬¸ì˜í•˜ì—¬ì£¼ì‹­ì‹œì˜¤.<br />");
 		String str = sb.toString();
-		mailService.sendMail(userEmail, userName + "´ÔÀÇ °Ô½Ã±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.", str);
+		mailService.sendMail(userEmail, userName + "ë‹˜ì˜ ê²Œì‹œê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.", str);
 		
 		return "redirect:/getFEBoardList.admin";
 	}
 	
 	@RequestMapping("getFEBoard")
 	public String getFEBoard(FEBoardVO vo, Model model) {
-		System.out.println("FEBoardController.getFEBoard ½ÇÇà");
+		System.out.println("FEBoardController.getFEBoard ì‹¤í–‰");
 		model.addAttribute("feboard", fEBoardService.getFEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "getFEBoard";
@@ -87,7 +87,7 @@ public class FEBoardController {
 	
 	@RequestMapping("getFEBoardList")
 	public String getFEBoardList(Criteria cri, Model model) {
-		System.out.println("FEBoardController.getFEBoardList ½ÇÇà");
+		System.out.println("FEBoardController.getFEBoardList ì‹¤í–‰");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -95,8 +95,8 @@ public class FEBoardController {
 		cri = pageMaker.getCri();
 		model.addAttribute("pageMaker", pageMaker);
 		
-		// ÀÛ¼ºÀÚ¶õ¿¡ user_id ´ë½Å ½ÇÁ¦ »ç¿ëÀÚ ÀÌ¸§ÀÌ ³ª¿Ã ¼ö ÀÖµµ·Ï
-		// »ç¿ëÀÚ ÀÌ¸§µéÀ» ´ãÀº list¸¦ ¸¸µç´Ù.
+		// ì‘ì„±ìë€ì— user_id ëŒ€ì‹  ì‹¤ì œ ì‚¬ìš©ì ì´ë¦„ì´ ë‚˜ì˜¬ ìˆ˜ ìˆë„ë¡
+		// ì‚¬ìš©ì ì´ë¦„ë“¤ì„ ë‹´ì€ listë¥¼ ë§Œë“ ë‹¤.
 		List<FEBoardVO> feList = new ArrayList<>();
 		List<String> userList = new ArrayList<>();
 		feList = fEBoardService.getFEBoardList(cri);
@@ -109,7 +109,7 @@ public class FEBoardController {
 		return "getFEBoardList";
 	}
 	
-	// vo°´Ã¼ÀÇ id°ªÀ» ¹ÙÅÁÀ¸·Î »ç¿ëÀÚÀÇ Á¤º¸¸¦ °¡Á®¿À´Â ¸Ş¼­µå
+	// voê°ì²´ì˜ idê°’ì„ ë°”íƒ•ìœ¼ë¡œ ì‚¬ìš©ìì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ
 	public UserVO getUserFromId(FEBoardVO vo) {
 		vo = fEBoardService.getFEBoard(vo);
 		UserVO uvo = new UserVO();

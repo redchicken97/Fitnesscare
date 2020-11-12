@@ -16,31 +16,31 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	public void insertAdmin(AdminVO vo) {
-		System.out.println("AdminService.insertAdmin 角青");
+		System.out.println("AdminService.insertAdmin 鞁ろ枆");
 		adminDAO.insertAdmin(vo);
 	}
 
 	@Override
 	public void updateAdmin(AdminVO vo) {
-		System.out.println("AdminService.updateAdmin 角青");
+		System.out.println("AdminService.updateAdmin 鞁ろ枆");
 		adminDAO.updateAdmin(vo);
 	}
 
 	@Override
 	public void deleteAdmin(AdminVO vo) {
-		System.out.println("AdminService.deleteAdmin 角青");
+		System.out.println("AdminService.deleteAdmin 鞁ろ枆");
 		adminDAO.deleteAdmin(vo);
 	}
 	
 	@Override
 	public AdminVO getAdmin(AdminVO vo) {
-		System.out.println("AdminService.getAdmin 角青");
+		System.out.println("AdminService.getAdmin 鞁ろ枆");
 		return adminDAO.getAdmin(vo);
 	}
 
 	@Override
 	public List<AdminVO> getAdminList(AdminVO vo) {
-		System.out.println("AdminService.getAdminList 角青");
+		System.out.println("AdminService.getAdminList 鞁ろ枆");
 		return adminDAO.getAdminList(vo);
 	}
 

@@ -27,15 +27,15 @@ public class FoodSaveController {
 	
 	@RequestMapping(value="/insertFoodSave.admin", method=RequestMethod.GET)
 	public String insertFoodSaveForm(FoodSaveVO vo) {
-		System.out.println("FoodSaveController.insertFoodSaveForm ½ÇÇà");
+		System.out.println("FoodSaveController.insertFoodSaveForm ì‹¤í–‰");
 		return "insertFoodSave";
 	}
 	
 	@RequestMapping(value="/insertFoodSave.admin", method=RequestMethod.POST)
 	public String insertFoodSave(FoodSaveVO vo, MultipartFile imgFile) {
-		System.out.println("FoodSaveController.insertFoodSave ½ÇÇà");
+		System.out.println("FoodSaveController.insertFoodSave ì‹¤í–‰");
 		
-		// ÀÌ¹ÌÁö ¾÷·Îµå
+		// ì´ë¯¸ì§€ ì—…ë¡œë“œ
 		String savedImgName = null;
 		try {
 			savedImgName = uploadFile(imgFile.getOriginalFilename(), imgFile.getBytes());
@@ -50,7 +50,7 @@ public class FoodSaveController {
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
-		UUID uid = UUID.randomUUID(); // ÆÄÀÏ ¾÷·Îµå½Ã ÆÄÀÏ¸í Áßº¹ ¹æÁö¸¦ À§ÇÑ UUID
+		UUID uid = UUID.randomUUID(); // íŒŒì¼ ì—…ë¡œë“œì‹œ íŒŒì¼ëª… ì¤‘ë³µ ë°©ì§€ë¥¼ ìœ„í•œ UUID
 		String savedName = uid.toString() + "_" + originalName;
 		File target = new File(uploadPath, savedName);
 		FileCopyUtils.copy(fileData, target);
@@ -59,7 +59,7 @@ public class FoodSaveController {
 	
 	@RequestMapping("/getFoodSaveList.admin")
 	public String getFoodSaveList(FoodSaveVO vo, Model model) {
-		System.out.println("FoodSaveController.getFoodSaveList ½ÇÇà");
+		System.out.println("FoodSaveController.getFoodSaveList ì‹¤í–‰");
 		model.addAttribute("foodSaveList", foodSaveService.getFoodSaveList(vo));
 		return "getFoodSaveList";
 	}

@@ -29,20 +29,20 @@ public class VEBoardController {
 	
 	@RequestMapping(value="insertVEBoard.admin", method=RequestMethod.GET)
 	public String insertVEBoardForm(VEBoardVO vo) {
-		System.out.println("VEBoardController.insertVEBoardForm ½ÇÇà");
+		System.out.println("VEBoardController.insertVEBoardForm ì‹¤í–‰");
 		return "insertVEBoard";
 	}
 	
 	@RequestMapping(value="insertVEBoard.admin", method=RequestMethod.POST)
 	public String insertVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardController.insertVEBoard ½ÇÇà");
+		System.out.println("VEBoardController.insertVEBoard ì‹¤í–‰");
 		vEBoardService.insertVEBoard(vo);
 		return "redirect:/getVEBoardList.admin";
 	}
 	
 	@RequestMapping(value="updateVEBoard.admin", method=RequestMethod.GET)
 	public String updateVEBoardForm(VEBoardVO vo, Model model) {
-		System.out.println("VEBoardController.updateVEBoardForm ½ÇÇà");
+		System.out.println("VEBoardController.updateVEBoardForm ì‹¤í–‰");
 		model.addAttribute("veboard", vEBoardService.getVEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "updateVEBoard";
@@ -50,16 +50,16 @@ public class VEBoardController {
 	
 	@RequestMapping(value="updateVEBoard.admin", method=RequestMethod.POST)
 	public String updateVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardController.updateVEBoard ½ÇÇà");
+		System.out.println("VEBoardController.updateVEBoard ì‹¤í–‰");
 		vEBoardService.updateVEBoard(vo);
 		return "redirect:/getVEBoard.admin?ex_id=" + vo.getEx_id();
 	}
 	
 	@RequestMapping("deleteVEBoard.admin")
 	public String deleteVEBoard(VEBoardVO vo) {
-		System.out.println("VEBoardController.deleteVEBoard ½ÇÇà");
+		System.out.println("VEBoardController.deleteVEBoard ì‹¤í–‰");
 		
-		// °Ô½Ã±ÛÀ» »èÁ¦ÇÏ±â Àü, vo°´Ã¼ÀÇ id°ªÀ» ÀÌ¿ëÇÏ¿© »ç¿ëÀÚÀÇ ÀÌ¸§ ¹× ÀÌ¸ŞÀÏÀ» ¾Ë¾Æ³½´Ù.
+		// ê²Œì‹œê¸€ì„ ì‚­ì œí•˜ê¸° ì „, voê°ì²´ì˜ idê°’ì„ ì´ìš©í•˜ì—¬ ì‚¬ìš©ìì˜ ì´ë¦„ ë° ì´ë©”ì¼ì„ ì•Œì•„ë‚¸ë‹¤.
 		vo = vEBoardService.getVEBoard(vo);
 		UserVO uvo = new UserVO();
 		uvo.setUser_id(vo.getUser_id());
@@ -69,19 +69,19 @@ public class VEBoardController {
 		
 		vEBoardService.deleteVEBoard(vo);
 		
-		// »ç¿ëÀÚ¿¡°Ô °Ô½Ã±Û »èÁ¦¿¡ ´ëÇÑ »ç½ÇÀ» ¸ŞÀÏ·Î º¸³¿
+		// ì‚¬ìš©ìì—ê²Œ ê²Œì‹œê¸€ ì‚­ì œì— ëŒ€í•œ ì‚¬ì‹¤ì„ ë©”ì¼ë¡œ ë³´ëƒ„
 		StringBuffer sb = new StringBuffer();
-		sb.append(userName + "´ÔÀÌ ÀÛ¼ºÇÑ °Ô½Ã±ÛÀÌ °ü¸®ÀÚ¿¡ ÀÇÇØ »èÁ¦ Ã³¸®µÇ¾ú½À´Ï´Ù.<br />");
-		sb.append("ÀÚ¼¼ÇÑ »çÇ×Àº °ü¸®ÀÚ(ghp0405@gmail.com)¿¡°Ô ¹®ÀÇÇÏ¿©ÁÖ½Ê½Ã¿À.<br />");
+		sb.append(userName + "ë‹˜ì´ ì‘ì„±í•œ ê²Œì‹œê¸€ì´ ê´€ë¦¬ìì— ì˜í•´ ì‚­ì œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤.<br />");
+		sb.append("ìì„¸í•œ ì‚¬í•­ì€ ê´€ë¦¬ì(ghp0405@gmail.com)ì—ê²Œ ë¬¸ì˜í•˜ì—¬ì£¼ì‹­ì‹œì˜¤.<br />");
 		String str = sb.toString();
-		mailService.sendMail(userEmail, userName + "´ÔÀÇ °Ô½Ã±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.", str);
+		mailService.sendMail(userEmail, userName + "ë‹˜ì˜ ê²Œì‹œê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.", str);
 		
 		return "redirect:/getVEBoardList.admin";
 	}
 	
 	@RequestMapping("getVEBoard.admin")
 	public String getVEBoard(VEBoardVO vo, Model model) {
-		System.out.println("VEBoardController.getVEBoard ½ÇÇà");
+		System.out.println("VEBoardController.getVEBoard ì‹¤í–‰");
 		model.addAttribute("veboard", vEBoardService.getVEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		return "getVEBoard";
@@ -89,7 +89,7 @@ public class VEBoardController {
 	
 	@RequestMapping("getVEBoardList.admin")
 	public String getVEBoardList(Model model, Criteria cri) {
-		System.out.println("VEBoardController.getVEBoardList ½ÇÇà");
+		System.out.println("VEBoardController.getVEBoardList ì‹¤í–‰");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

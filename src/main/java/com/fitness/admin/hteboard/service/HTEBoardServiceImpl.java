@@ -17,37 +17,37 @@ public class HTEBoardServiceImpl implements HTEBoardService {
 	
 	@Override
 	public void insertHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardService.insertHTEBoard 角青");
+		System.out.println("HTEBoardService.insertHTEBoard 鞁ろ枆");
 		hTEBoardDAO.insertHTEBoard(vo);
 	}
 
 	@Override
 	public void updateHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardService.updateHTEBoard 角青");
+		System.out.println("HTEBoardService.updateHTEBoard 鞁ろ枆");
 		hTEBoardDAO.updateHTEBoard(vo);
 	}
 	
 	@Override
 	public void deleteHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardService.deleteHTEBoard 角青");
+		System.out.println("HTEBoardService.deleteHTEBoard 鞁ろ枆");
 		hTEBoardDAO.deleteHTEBoard(vo);
 	}
 	
 	@Override
 	public HTEBoardVO getHTEBoard(HTEBoardVO vo) {
-		System.out.println("HTEBoardService.getHTEBoard 角青");
+		System.out.println("HTEBoardService.getHTEBoard 鞁ろ枆");
 		return hTEBoardDAO.getHTEBoard(vo);
 	}
 
 	@Override
 	public List<HTEBoardVO> getHTEBoardList(Criteria cri) {
-		System.out.println("HTEBoardService.getHTEBoardList 角青");
+		System.out.println("HTEBoardService.getHTEBoardList 鞁ろ枆");
 		return hTEBoardDAO.getHTEBoardList(cri);
 	}
 
 	@Override
 	public int getHTEBoardCount() {
-		System.out.println("HTEBoardService.getHTEBoardCount 角青");
+		System.out.println("HTEBoardService.getHTEBoardCount 鞁ろ枆");
 		return hTEBoardDAO.getHTEBoardCount();
 	}
 

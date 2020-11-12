@@ -16,32 +16,32 @@ public class FEBoardDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardDAO.insertFEBoard 角青");
+		System.out.println("FEBoardDAO.insertFEBoard 鞁ろ枆");
 		sqlSessionTemplate.insert("FEBoardDAO.insertFEBoard", vo);
 	}
 	
 	public void updateFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardDAO.updateFEBoard 角青");
+		System.out.println("FEBoardDAO.updateFEBoard 鞁ろ枆");
 		sqlSessionTemplate.update("FEBoardDAO.updateFEBoard", vo);
 	}
 	
 	public void deleteFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardDAO.deleteFEBoard 角青");
+		System.out.println("FEBoardDAO.deleteFEBoard 鞁ろ枆");
 		sqlSessionTemplate.delete("FEBoardDAO.deleteFEBoard", vo);
 	}
 	
 	public FEBoardVO getFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardDAO.getFEBoard 角青");
+		System.out.println("FEBoardDAO.getFEBoard 鞁ろ枆");
 		return (FEBoardVO)sqlSessionTemplate.selectOne("FEBoardDAO.getFEBoard", vo);
 	}
 	
 	public List<FEBoardVO> getFEBoardList(Criteria cri) {
-		System.out.println("FEBoardDAO.getFEBoardList 角青");
+		System.out.println("FEBoardDAO.getFEBoardList 鞁ろ枆");
 		return sqlSessionTemplate.selectList("FEBoardDAO.getFEBoardList", cri);
 	}
 	
 	public int getFEBoardCount() {
-		System.out.println("FEBoardDAO.getFEBoardCount 角青");
+		System.out.println("FEBoardDAO.getFEBoardCount 鞁ろ枆");
 		return (int)sqlSessionTemplate.selectOne("FEBoardDAO.getFEBoardCount");
 	}
 	

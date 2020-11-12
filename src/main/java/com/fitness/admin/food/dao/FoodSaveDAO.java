@@ -15,12 +15,12 @@ public class FoodSaveDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertFoodSave(FoodSaveVO vo) {
-		System.out.println("FoodSaveDAO.insertFoodSave ½ÇÇà");
+		System.out.println("FoodSaveDAO.insertFoodSave ì‹¤í–‰");
 		sqlSessionTemplate.insert("FoodSaveDAO.insertFoodSave", vo);
 	}
 	
 	public List<FoodSaveVO> getFoodSaveList(FoodSaveVO vo) {
-		System.out.println("FoodSaveDAO.getFoodSaveList ½ÇÇà");
+		System.out.println("FoodSaveDAO.getFoodSaveList ì‹¤í–‰");
 		return sqlSessionTemplate.selectList("FoodSaveDAO.getFoodSaveList", vo);
 	}
 	
