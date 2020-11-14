@@ -16,14 +16,21 @@ public class UserCommentServiceImpl implements UserCommentService {
 	
 	@Override
 	public void insertComment(CommentInfoVO vo) {
-		System.out.println("service insertComment 작동");
+		System.out.println("service insertComment 실행");
 		userCommentDAO.insertComment(vo);
 	}
 
 	@Override
+	public void reInsertComment(CommentInfoVO vo) {
+		System.out.println("service reInsertComment 실행");
+		userCommentDAO.reInsertComment(vo);
+	}
+	
+	@Override
 	public List<CommentInfoVO> getCommentList(CommentInfoVO vo) {
-		System.out.println("service getCommentList 작동");
+		System.out.println("service getCommentList 실행");
 		return userCommentDAO.getCommentList(vo);
 	}
+
 
 }

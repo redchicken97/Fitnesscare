@@ -140,11 +140,13 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 	@Override
 	public void insertKakaoUser(UserVO vo) {
 		vo.setUser_loginMethod('K');
+		System.out.println("service에서 insertKakaoUser 실행");
 		userKakaoDAO.insertKakaoUser(vo);
 	}
 
 	@Override
 	public UserVO getKakaoUser(UserVO vo) {
+		System.out.println("service에서 getKakaoUser 실행");
 		return userKakaoDAO.getKakaoUser(vo);
 	}
 

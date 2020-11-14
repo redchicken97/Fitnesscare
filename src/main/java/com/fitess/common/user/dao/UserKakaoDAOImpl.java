@@ -14,14 +14,14 @@ public class UserKakaoDAOImpl implements UserKakaoDAO {
 	
 	@Override
 	public void insertKakaoUser(UserVO vo) {
-		System.out.println("mybatis K_insert 작동");
+		System.out.println("mybatis K_insert 실행");
 		sqlSessionTemple.insert("UserDAO.insertKakaoUser", vo);
 		//UserDAO는 매퍼의 namespace
 	}
 
 	@Override
 	public UserVO getKakaoUser(UserVO vo) {
-		System.out.println("mybatis K_getUser 작동");
+		System.out.println("mybatis K_getUser 실행");
 		sqlSessionTemple.selectOne("UserDAO.getUser", vo);
 		return null;
 	}

@@ -23,6 +23,20 @@
 		cmt_step, cmt_depth, cmt_content)
 		VALUES((select nvl(max(cmt_id), 0) + 1 from 
 		comment_info),
+		#{target_id},#{cmt_type},#{user_id},
+		
+		(select nvl(max(cmt_ref), 0) + 1 from comment_info),
+		
+		#{cmt_step},#{cmt_depth},#{cmt_content})
+	</insert>
+	
+	<insert id="reInsertComment" parameterType="commentInfo">
+		INSERT INTO
+		comment_info
+		(cmt_id, target_id, cmt_type, user_id, cmt_ref, 
+		cmt_step, cmt_depth, cmt_content)
+		VALUES((select nvl(max(cmt_id), 0) + 1 from 
+		comment_info),
 		#{target_id},#{cmt_type},#{user_id},#{cmt_ref},
 		#{cmt_step},#{cmt_depth},#{cmt_content})
 	</insert>

@@ -21,7 +21,14 @@ public class UserCommentController {
 		return null;
 	}
 	
-	@RequestMapping("comment.do")
+	@RequestMapping("/reCommentInput.do")
+	public String reInsertComment(CommentInfoVO vo) {
+		System.out.println("controller에서 reInsertComment 작동");
+		userCommentService.reInsertComment(vo);
+		return null;
+	}
+	
+	@RequestMapping("/commentList.do")
 	public String getCommentList(CommentInfoVO vo, Model model) {
 		System.out.println("controller에서 getCommentList 작동");
 		model.addAttribute("commentList", userCommentService.getCommentList(vo));

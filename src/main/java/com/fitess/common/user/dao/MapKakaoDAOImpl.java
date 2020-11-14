@@ -16,19 +16,19 @@ public class MapKakaoDAOImpl implements MapKakaoDAO {
 	
 	@Override
 	public void insertMap(HealthTeamVO vo) {
-		System.out.println("mybatis insert 작동");
+		System.out.println("mybatis insert 실행");
 		sqlSessionTemplate.insert("healthTeamDAO.insertHealthTeam", vo);
 	}
 
 	@Override
 	public List<HealthTeamVO> getMapList(HealthTeamVO vo) {
-		System.out.println("mybatis List 작동");
+		System.out.println("mybatis List 실행");
 		return sqlSessionTemplate.selectList("healthTeamDAO.getHealthTeamList");
 	}
 
 	@Override
 	public HealthTeamVO getMap(int ht_id) {
-		System.out.println("mybatis get 작동");
+		System.out.println("mybatis get 실행");
 		return sqlSessionTemplate.selectOne("healthTeamDAO.getHealthTeam", ht_id);
 	}
 

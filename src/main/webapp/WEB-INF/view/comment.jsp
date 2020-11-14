@@ -3,7 +3,8 @@
     <%
     
     	request.setCharacterEncoding("UTF-8");
-    	String nick = request.getParameter("nick");
+    	int userId = Integer.parseInt(request.getParameter("userId"));
+    	int boardId = 0;
     
     %>
 <!DOCTYPE html>
@@ -16,14 +17,16 @@
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
 	<h1> 댓글 달기 </h1>
 	<form>
+		<input type="hidden" name="cmt_type" value="free">
+		<input type="hidden" name="target_id" value=<%=boardId %>>
 		<table border="1">
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="user_nick" value="<%=nick%>"></td>
+				<th>작성자 아이디</th>
+				<td><input type="text" name="user_id" value="<%=userId%>"></td>
 			 </tr>
 			 <tr>
 			 	<th>댓글</th>
-			 	<td><input type="text" name="user_comment"></td>
+			 	<td><input type="text" name="cmt_content"></td>
 			 </tr>
 			 <tr>
 			 	<td><input type="button" id="commentInput" value="등록"></td>
@@ -34,11 +37,12 @@
 	<script>
 		$('commentInput').click(function(){
 			$.ajax({
-				url:'comment.do',
+				url:'commentInput.do',
 				type:'post',
-				data:,
-				success:
-				
+				data:$('form').serialize(),
+				success:function(date){
+					alert("댓글 입력이 완료되었습니다");
+				} 
 			})
 		})
 	</script>

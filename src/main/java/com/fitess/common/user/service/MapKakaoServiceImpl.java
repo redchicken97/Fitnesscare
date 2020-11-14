@@ -16,19 +16,19 @@ public class MapKakaoServiceImpl implements MapKakaoService {
 	
 	@Override
 	public void insertMap(HealthTeamVO vo) {
-		System.out.println("service insert 작동");
+		System.out.println("service insert 실행");
 		mapKakaoDAO.insertMap(vo);
 	}
 
 	@Override
 	public List<HealthTeamVO> getMapList(HealthTeamVO vo) {
-		System.out.println("service getList 작동");
+		System.out.println("service getList 실행");
 		return mapKakaoDAO.getMapList(vo);
 	}
 
 	@Override
 	public HealthTeamVO getMap(int ht_id) {
-		System.out.println("service get 작동");
+		System.out.println("service get 실행");
 		return mapKakaoDAO.getMap(ht_id);
 	}
 
