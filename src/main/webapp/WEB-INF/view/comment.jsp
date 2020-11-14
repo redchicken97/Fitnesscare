@@ -35,12 +35,12 @@
 	</form>
 	
 	<script>
-		$('commentInput').click(function(){
+		$('#commentInput').click(function(){
 			$.ajax({
 				url:'commentInput.do',
 				type:'post',
 				data:$('form').serialize(),
-				success:function(date){
+				success:function(data){
 					alert("댓글 입력이 완료되었습니다");
 				} 
 			})

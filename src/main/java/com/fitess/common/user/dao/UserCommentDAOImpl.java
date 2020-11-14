@@ -17,19 +17,19 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 	@Override
 	public void insertComment(CommentInfoVO vo) {
 		System.out.println("mybatis insertComment 작동");
-		sqlSessionTemplate.insert("UserCommentDAO.insertComment", vo);
+		sqlSessionTemplate.insert("commentDAO.insertComment", vo);
 	}
 	
 	@Override
 	public void reInsertComment(CommentInfoVO vo) {
 		System.out.println("mybatis reInsertComment 작동");
-		sqlSessionTemplate.insert("UserCommentDAO.reInsertComment", vo);
+		sqlSessionTemplate.insert("commentDAO.reInsertComment", vo);
 	}
 
 	@Override
 	public List<CommentInfoVO> getCommentList(CommentInfoVO vo) {
 		System.out.println("mybatis getCommentList 작동");
-		return sqlSessionTemplate.selectList("UserCommentDAO.getCommentList");
+		return sqlSessionTemplate.selectList("commentDAO.getCommentList");
 	}
 
 
