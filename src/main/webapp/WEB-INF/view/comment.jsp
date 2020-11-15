@@ -1,10 +1,13 @@
+<%@page import="com.fitess.common.user.vo.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
     
     	request.setCharacterEncoding("UTF-8");
-    	int userId = Integer.parseInt(request.getParameter("userId"));
+    	UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+//    	int userId = Integer.parseInt(request.getParameter("userId"));
     	int boardId = 0;
+    	int refId = 2;
     
     %>
 <!DOCTYPE html>
@@ -18,11 +21,12 @@
 	<h1> 댓글 달기 </h1>
 	<form>
 		<input type="hidden" name="cmt_type" value="free">
-		<input type="hidden" name="target_id" value=<%=boardId %>>
+		<input type="hidden" name="target_id" value="<%=boardId%>">
+		<input type="hidden" name="cmt_ref" value="<%=refId%>">
 		<table border="1">
 			<tr>
 				<th>작성자 아이디</th>
-				<td><input type="text" name="user_id" value="<%=userId%>"></td>
+				<td><input type="text" name="user_id" value="${userInfo.user_id }"></td>
 			 </tr>
 			 <tr>
 			 	<th>댓글</th>
@@ -43,8 +47,8 @@
 				success:function(data){
 					alert("댓글 입력이 완료되었습니다");
 				} 
-			})
-		})
+			});
+		});
 	</script>
 </body>
 </html>

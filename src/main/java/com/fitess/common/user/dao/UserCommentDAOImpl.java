@@ -32,6 +32,4 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 		return sqlSessionTemplate.selectList("commentDAO.getCommentList");
 	}
 
-
-
 }

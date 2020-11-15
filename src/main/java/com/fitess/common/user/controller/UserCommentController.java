@@ -18,7 +18,7 @@ public class UserCommentController {
 	public String insertComment(CommentInfoVO vo) {
 		System.out.println("controller에서 insertComment 작동");
 		userCommentService.insertComment(vo);
-		return null;
+		return "comment";
 	}
 	
 	@RequestMapping("/reCommentInput.do")
