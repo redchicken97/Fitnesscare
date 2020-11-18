@@ -10,5 +10,5 @@ public interface UserCommentService {
 	
 	public void reInsertComment(CommentInfoVO vo);
 	
-	public List<CommentInfoVO> getCommentList(CommentInfoVO vo);
+	public List<String> getCommentList(CommentInfoVO vo);
 }

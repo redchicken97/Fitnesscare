@@ -1,9 +1,13 @@
 package com.fitess.common.user.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fitess.common.user.service.UserCommentService;
 import com.fitess.common.user.vo.CommentInfoVO;
@@ -29,9 +33,10 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/commentList.do")
-	public String getCommentList(CommentInfoVO vo, Model model) {
+	@ResponseBody
+	public List<String> getCommentList(CommentInfoVO vo, Model model) {	
 		System.out.println("controller에서 getCommentList 작동");
-		model.addAttribute("commentList", userCommentService.getCommentList(vo));
-		return "comment";
+//		model.addAttribute("commentList", userCommentService.getCommentList(vo));
+		return userCommentService.getCommentList(vo);
 	}
 }

@@ -38,6 +38,8 @@
 		</table>
 	</form>
 	
+	
+	
 	<script>
 		$('#commentInput').click(function(){
 			$.ajax({
@@ -49,6 +51,18 @@
 				} 
 			});
 		});
+		
+	</script>
+	<script>
+		$('#target').click(function(){
+			$.getJSON('commentList.do', function(data){
+				var html = '';
+				$.each(data, function(entryIndex, entry){
+					html += '<div class="entry">';
+					html += '<h3></h3>'
+				})
+			})
+		})
 	</script>
 </body>
 </html>

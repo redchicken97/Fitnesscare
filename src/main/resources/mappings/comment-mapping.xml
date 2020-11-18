@@ -9,6 +9,7 @@
 		<result property="cmt_type" column="CMT_TYPE"/>
 		<result property="user_id" column="USER_ID"/>
 		<result property="cmt_regdate" column="CMT_REGDATE"/>
+		<result property="cmt_rdCnt" column="CMT_RDCNT"/>
 		<result property="cmt_reportCnt" column="CMT_REPORTCNT"/>
 		<result property="cmt_ref" column="CMT_REF"/>
 		<result property="cmt_step" column="CMT_STEP"/>

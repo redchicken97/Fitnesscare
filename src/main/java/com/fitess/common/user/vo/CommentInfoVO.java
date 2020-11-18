@@ -9,6 +9,7 @@ public class CommentInfoVO {
 	private String cmt_type;		// 게시판 종류를 나타내고 question, free, healthteam, workoutvideo 4가지만 들어감 
 	private int user_id;			// 댓글 작성자의 id
 	private Date cmt_regdate;		// 댓글 작성 날짜
+	private int cmt_rdCnt;			// 댓글 추천수
 	private int cmt_reportCnt;		// 댓글 신고수
 	private int cmt_ref;			// 답변그룹
 	private int cmt_step;			// 답변 위치
@@ -75,14 +76,19 @@ public class CommentInfoVO {
 	public void setCmt_content(String cmt_content) {
 		this.cmt_content = cmt_content;
 	}
+	public int getCmt_rdCnt() {
+		return cmt_rdCnt;
+	}
+	public void setCmt_rdCnt(int cmt_rdCnt) {
+		this.cmt_rdCnt = cmt_rdCnt;
+	}
 	@Override
 	public String toString() {
 		return "CommentInfoVO [cmt_id=" + cmt_id + ", target_id=" + target_id + ", cmt_type=" + cmt_type + ", user_id="
-				+ user_id + ", cmt_regdate=" + cmt_regdate + ", cmt_reportCnt=" + cmt_reportCnt + ", cmt_ref=" + cmt_ref
-				+ ", cmt_step=" + cmt_step + ", cmt_depth=" + cmt_depth + ", cmt_content=" + cmt_content + "]";
+				+ user_id + ", cmt_regdate=" + cmt_regdate + ", cmt_rdCnt=" + cmt_rdCnt + ", cmt_reportCnt="
+				+ cmt_reportCnt + ", cmt_ref=" + cmt_ref + ", cmt_step=" + cmt_step + ", cmt_depth=" + cmt_depth
+				+ ", cmt_content=" + cmt_content + "]";
 	}
-
-	
 	
 	
 }
