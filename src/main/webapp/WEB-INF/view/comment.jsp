@@ -38,8 +38,6 @@
 		</table>
 	</form>
 	
-	
-	
 	<script>
 		$('#commentInput').click(function(){
 			$.ajax({
@@ -54,15 +52,43 @@
 		
 	</script>
 	<script>
-		$('#target').click(function(){
-			$.getJSON('commentList.do', function(data){
-				var html = '';
-				$.each(data, function(entryIndex, entry){
-					html += '<div class="entry">';
-					html += '<h3></h3>'
-				})
-			})
-		})
+		$(document).ready(function(){
+			$('#target').click(function(){
+				$.getJSON('commentList.do', function(data){
+					var html = '';
+					$.each(data, function(entryIndex, entry){
+						html += '<div class="entry">';
+						html += '<h3 class="cmt_id">' + entry.cmt_id + '</h3>';
+						html += '<h3 class="target_id">' + entry.target_id + '</h3>';
+						html += '<h3 class="user_id">' + entry.user_id + '</h3>';
+						html += '<h3 class="cmt_regdate">' + entry.user_regdate + '</h3>';
+						html += '<h3 class="cmt_rdcnt">' + entry.user_rdcnt + '</h3>';
+						html += '<h3 class="cmt_reportcnt">' + entry.cmt_reportcnt + '</h3>';
+						html += '<h3 class="cmt_ref">' + entry.cmt_ref + '</h3>';
+						html += '<h3 class="cmt_step">' + entry.cmt_step + '</h3>';
+						html += '<h3 class="cmt_depth">' + entry.cmt_depth + '</h3>';
+						html += '<h3 class="cmt_content">' + entry.cmt_content + '</h3>';
+						html += '</div>';
+						html += '</div>';
+	 				});
+					console.log(html);
+				});
+				return false;
+			});
+		});
+	
+		
 	</script>
+	<div id="container">
+      <div class="letters">
+        <div class="letter" id="target">
+          <h3><a href="#">클릭</a></h3>
+      	</div>
+   	  </div>
+      	      
+      <div id="dictionary">
+      </div>
+
+    </div>
 </body>
 </html>
