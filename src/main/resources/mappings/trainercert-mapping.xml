@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TrainerCertDAO">
+
+	<resultMap type="trainercert" id="trainercertResult">
+		<id property="t_id" column="T_ID" />
+		<result property="user_id" column="USER_ID" />
+		<result property="t_picture_link" column="T_PICTURE_LINK" />
+		<result property="t_cname" column="T_CNAME" />
+		<result property="t_company" column="T_COMPANY" />
+		<result property="t_createdate" column="T_CREATEDATE" />
+		<result property="t_clink" column="T_CLINK" />
+		<result property="t_checkdate" column="T_CHECKDATE" />
+	</resultMap>
+	
+	<select id="getTrainerCert" resultMap="trainercertResult">
+		SELECT * 
+		FROM trainer_cert
+		WHERE t_id = #{t_id}
+	</select>
+	
+	<sql id="subGetTrainerCertList1">
+		SELECT t_id, user_id, t_picture_link,
+		t_cname, t_company, t_createdate,
+		t_clink, t_checkdate, ROWNUM AS rnum 
+		FROM trainer_cert 
+	</sql>
+	
+	<select id="getTrainerCertList" resultMap="trainercertResult">
+		SELECT * 
+		FROM (<include refid="subGetTrainerCertList1" />) sub1
+		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
+		ORDER BY t_id DESC
+	</select>
+	
+	<select id="getTrainerCertCount" resultType="int">
+		SELECT COUNT(*)
+		FROM trainer_cert 
+	</select>
+	
+	<update id="acceptTrainerCert" parameterType="trainercert">
+		UPDATE user_info
+		SET
+		user_level = 'T'
+		WHERE
+		user_id = #{user_id}
+	</update>
+	
+	<delete id="declineTrainerCert" parameterType="trainercert">
+		DELETE FROM trainer_cert
+		WHERE t_id = #{t_id}
+	</delete>
+	
+	<update id="setTCheckDate" parameterType="trainercert">
+		UPDATE trainer_cert
+		SET
+		t_checkdate = SYSDATE
+		where
+		t_id = #{t_id}
+	</update>
+ 	
+</mapper>

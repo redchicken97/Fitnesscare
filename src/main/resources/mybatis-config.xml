@@ -15,6 +15,7 @@
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.comment.vo.CommentVO" alias="comment"></typeAlias>
+		<typeAlias type="com.fitness.admin.trainercert.vo.TrainerCertVO" alias="trainercert"></typeAlias>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/workoutSave-mapping.xml" />
@@ -27,5 +28,6 @@
 		<mapper resource="mappings/veboard-mapping.xml" />
 		<mapper resource="mappings/hteboard-mapping.xml" />
 		<mapper resource="mappings/comment-mapping.xml" />
+		<mapper resource="mappings/trainercert-mapping.xml" />
 	</mappers>
 </configuration>
