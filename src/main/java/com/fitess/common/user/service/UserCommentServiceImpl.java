@@ -58,9 +58,11 @@ public class UserCommentServiceImpl implements UserCommentService {
 			List1.addProperty("cmt_depth", List3.getCmt_depth());
 			List1.addProperty("cmt_content", List3.getCmt_content());
 			
-			String json = gson.toJson(List1);
+			String json = gson.toJson(List1);		
 			
 			List2.add(json);
+			
+			System.out.println(List2);
 			
 		}
 

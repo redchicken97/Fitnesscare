@@ -55,28 +55,16 @@
 		$(document).ready(function(){
 			$('#target').click(function(){
 				$.getJSON('commentList.do', function(data){
-					var html = '';
-					$.each(data, function(entryIndex, entry){
-						html += '<div class="entry">';
-						html += '<h3 class="cmt_id">' + entry.cmt_id + '</h3>';
-						html += '<h3 class="target_id">' + entry.target_id + '</h3>';
-						html += '<h3 class="user_id">' + entry.user_id + '</h3>';
-						html += '<h3 class="cmt_regdate">' + entry.user_regdate + '</h3>';
-						html += '<h3 class="cmt_rdcnt">' + entry.user_rdcnt + '</h3>';
-						html += '<h3 class="cmt_reportcnt">' + entry.cmt_reportcnt + '</h3>';
-						html += '<h3 class="cmt_ref">' + entry.cmt_ref + '</h3>';
-						html += '<h3 class="cmt_step">' + entry.cmt_step + '</h3>';
-						html += '<h3 class="cmt_depth">' + entry.cmt_depth + '</h3>';
-						html += '<h3 class="cmt_content">' + entry.cmt_content + '</h3>';
-						html += '</div>';
-						html += '</div>';
+					$.each(data, function(index, item){
+						typeof item
+						console.log(item);
 	 				});
-					console.log(html);
+					$('#dictionary').html(html);
 				});
 				return false;
 			});
 		});
-	
+						
 		
 	</script>
 	<div id="container">
