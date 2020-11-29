@@ -17,7 +17,6 @@
 		<typeAlias type="com.fitness.admin.feboard.vo.FEBoardVO" alias="feboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
-		<typeAlias type="com.fitness.admin.comment.vo.CommentVO" alias="comment"></typeAlias>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -43,6 +42,5 @@
 		<mapper resource="mappings/feboard-mapping.xml" />
 		<mapper resource="mappings/veboard-mapping.xml" />
 		<mapper resource="mappings/hteboard-mapping.xml" />
-		<mapper resource="mappings/comment-mapping.xml" />
 	</mappers>
 </configuration>
