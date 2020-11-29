@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fitness.admin.common.paging.Criteria;
 import com.fitness.common.user.dao.UserDAO;
 import com.fitness.common.user.vo.UserVO;
 
@@ -39,15 +40,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserVO> getUserList(UserVO vo) {
+	public List<UserVO> getUserList(Criteria cri) {
 		System.out.println("service에서 getUserList 실행");
-		return userDAO.getUserList(vo);
+		return userDAO.getUserList(cri);
 	}
 
 	@Override
 	public UserVO userLogin(String user_email) {
 		System.out.println("service에서 userLogin 실행");
 		return userDAO.userLogin(user_email);
+	}
+	
+	@Override
+	public int getUserCount() {
+		System.out.println("service에서 getUserCount 실행");
+		return userDAO.getUserCount();
 	}
 
 }

@@ -65,7 +65,7 @@
 	getUser : 사용자 파트에 있는 것을 사용
 	getUserList : 관리자 파트에 있는 것을 사용(페이징 처리 때문) -->
 	
-	<select id="getUser" resultType="user">
+	<select id="getUser" parameterType="user" resultMap="userResult">
 		SELECT * FROM user_info
 		WHERE user_email = #{user_email}
 	</select>

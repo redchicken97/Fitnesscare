@@ -2,6 +2,7 @@ package com.fitness.common.user.service;
 
 import java.util.List;
 
+import com.fitness.admin.common.paging.Criteria;
 import com.fitness.common.user.vo.UserVO;
 
 public interface UserService {
@@ -14,8 +15,10 @@ public interface UserService {
 	
 	public UserVO getUser(UserVO vo);
 	
-	public List<UserVO> getUserList(UserVO vo);
+	public List<UserVO> getUserList(Criteria cri);
 	
 	public UserVO userLogin(String user_email);
+	
+	public int getUserCount();
 	
 }

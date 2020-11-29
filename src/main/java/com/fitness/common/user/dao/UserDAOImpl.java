@@ -1,11 +1,14 @@
 package com.fitness.common.user.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fitness.admin.common.paging.Criteria;
 import com.fitness.common.user.vo.UserVO;
 
 @Repository
@@ -39,15 +42,27 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<UserVO> getUserList(UserVO vo) {
+	public List<UserVO> getUserList(Criteria cri) {
 		System.out.println("mybatis getList 실행");
-		return sqlSessionTemplate.selectList("UserDAO.getUserList");
+		Map map = new HashMap();
+		map.put("startNum", cri.getStartNum());
+		map.put("endNum", cri.getEndNum());
+		map.put("cri", cri);
+		return sqlSessionTemplate.selectList("UserDAO.getUserList", map);
 	}
 
 	@Override
 	public UserVO userLogin(String user_email) {
 		System.out.println("mybatis login 실행");
-		return sqlSessionTemplate.selectOne("UserDAO.getUser", user_email);
+		UserVO vo = new UserVO();
+		vo.setUser_email(user_email);
+		return sqlSessionTemplate.selectOne("UserDAO.getUser", vo);
+	}
+	
+	@Override
+	public int getUserCount() {
+		System.out.println("mybatis getUserCount 실행");
+		return sqlSessionTemplate.selectOne("UserDAO.getUserCount");
 	}
 
 }
