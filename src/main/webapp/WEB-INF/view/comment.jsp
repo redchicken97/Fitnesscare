@@ -17,7 +17,10 @@
 <title>댓글 시험 페이지</title>
 </head>
 <body>
+
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
+	<!-- 
+	
 	<h1> 댓글 달기 </h1>
 	<form>
 		<input type="hidden" name="cmt_type" value="free">
@@ -37,6 +40,10 @@
 			 </tr>
 		</table>
 	</form>
+
+	
+	 -->
+
 	
 	<script>
 		$('#commentInput').click(function(){
@@ -51,32 +58,18 @@
 		});
 		
 	</script>
+	
 	<script>
-		$(document).ready(function(){
-			$('#target').click(function(){
-				$.getJSON('commentList.do', function(data){
-					$.each(data, function(index, item){
-						typeof item
-						console.log(item);
-	 				});
-					$('#dictionary').html(html);
-				});
-				return false;
-			});
+		var result = null;
+		$.getJSON('commentList.do', function(data){
+		    $.each(data, function(index, item){
+		        $.each(JSON.parse(item), function(i, list){
+		            console.log(list);
+		        });
+//		        console.log(data);
+		      });
 		});
-						
-		
 	</script>
-	<div id="container">
-      <div class="letters">
-        <div class="letter" id="target">
-          <h3><a href="#">클릭</a></h3>
-      	</div>
-   	  </div>
-      	      
-      <div id="dictionary">
-      </div>
 
-    </div>
 </body>
 </html>
