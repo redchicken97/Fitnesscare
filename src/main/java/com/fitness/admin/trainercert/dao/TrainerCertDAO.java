@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.trainercert.vo.TrainerCertVO;
-import com.fitness.admin.user.vo.UserVO;
 
 @Repository
 public class TrainerCertDAO {
