@@ -17,7 +17,7 @@ import com.fitness.admin.user.vo.UserVO;
 
 @Controller
 @EnableAsync
-public class UserController {
+public class UserManController {
 
 	@Autowired
 	private UserService userService;

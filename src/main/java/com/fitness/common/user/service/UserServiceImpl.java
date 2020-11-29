@@ -1,12 +1,12 @@
-package com.fitess.common.user.service;
+package com.fitness.common.user.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitess.common.user.dao.UserDAO;
-import com.fitess.common.user.vo.UserVO;
+import com.fitness.common.user.dao.UserDAO;
+import com.fitness.common.user.vo.UserVO;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {

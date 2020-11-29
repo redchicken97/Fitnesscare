@@ -1,4 +1,4 @@
-<%@page import="com.fitess.common.user.vo.HealthTeamVO"%>
+<%@page import="com.fitness.common.user.vo.HealthTeamVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

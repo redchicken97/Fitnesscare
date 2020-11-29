@@ -1,4 +1,4 @@
-<%@page import="com.fitess.common.user.vo.UserVO"%>
+<%@page import="com.fitness.common.user.vo.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%

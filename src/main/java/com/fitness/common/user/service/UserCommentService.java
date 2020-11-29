@@ -1,8 +1,8 @@
-package com.fitess.common.user.service;
+package com.fitness.common.user.service;
 
 import java.util.List;
 
-import com.fitess.common.user.vo.CommentInfoVO;
+import com.fitness.common.user.vo.CommentInfoVO;
 
 public interface UserCommentService {
 	

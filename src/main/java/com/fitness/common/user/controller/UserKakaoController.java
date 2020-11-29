@@ -1,4 +1,4 @@
-package com.fitess.common.user.controller;
+package com.fitness.common.user.controller;
 
 import java.util.HashMap;
 
@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fitess.common.user.service.UserKakaoService;
-import com.fitess.common.user.service.UserService;
-import com.fitess.common.user.vo.UserVO;
+import com.fitness.common.user.service.UserKakaoService;
+import com.fitness.common.user.service.UserService;
+import com.fitness.common.user.vo.UserVO;
 
 @Controller
 public class UserKakaoController {

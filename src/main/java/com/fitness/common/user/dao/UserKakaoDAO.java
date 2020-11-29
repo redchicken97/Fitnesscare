@@ -1,6 +1,6 @@
-package com.fitess.common.user.dao;
+package com.fitness.common.user.dao;
 
-import com.fitess.common.user.vo.UserVO;
+import com.fitness.common.user.vo.UserVO;
 
 public interface UserKakaoDAO {
 

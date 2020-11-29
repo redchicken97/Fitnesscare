@@ -23,10 +23,51 @@
 		<result property="user_report_count" column="USER_REPORT_COUNT" />
 	</resultMap>
 	
-	<select id="getUser" resultMap="userResult">
-		SELECT * 
-		FROM user_info 
-		WHERE user_id = #{user_id} 
+	<insert id="insertKakaoUser" parameterType="user">
+		INSERT INTO
+		user_info 
+		(user_id, user_name, user_email, user_nick,
+		user_pw, user_loginMethod,
+		term_one, term_two, term_type1, term_type2)
+		VALUES((select nvl(max(user_id), 0) + 1 from
+		user_info),
+		#{user_name},#{user_email}, #{user_nick},#{user_pw}, 
+		#{user_loginMethod}, #{term_one}, #{term_two}, #{term_type1},#{term_type2})
+		
+	</insert>
+
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO
+		user_info
+		(user_id, user_name, user_email, user_nick,
+		user_pw, term_one, term_two, term_type1, term_type2)
+		VALUES((select nvl(max(user_id), 0) + 1 from
+		user_info),
+		#{user_name},#{user_email},#{user_nick},#{user_pw},
+		#{term_one},#{term_two},#{term_type1},#{term_type2})
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE user_info
+		SET
+		user_nick=#{user_nick}, user_pw = #{user_pw}
+		WHERE
+		user_id = #{user_id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="user">
+		DELETE FROM
+		user_info WHERE
+		user_id = #{user_id}
+	</delete>
+	
+	<!-- getUser 및 getUserList 사용시 주의사항
+	getUser : 사용자 파트에 있는 것을 사용
+	getUserList : 관리자 파트에 있는 것을 사용(페이징 처리 때문) -->
+	
+	<select id="getUser" resultType="user">
+		SELECT * FROM user_info
+		WHERE user_email = #{user_email}
 	</select>
 	
 	<sql id="subGetUserList1">
