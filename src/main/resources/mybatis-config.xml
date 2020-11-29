@@ -5,6 +5,9 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
+		<typeAlias type="com.fitess.common.user.vo.UserVO" alias="user_info"></typeAlias>
+		<typeAlias type="com.fitess.common.user.vo.HealthTeamVO" alias="healtTeam"/>
+		<typeAlias type="com.fitess.common.user.vo.CommentInfoVO" alias="commentInfo"/>
 		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"></typeAlias>
@@ -14,9 +17,22 @@
 		<typeAlias type="com.fitness.admin.feboard.vo.FEBoardVO" alias="feboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
-		<typeAlias type="com.fitness.admin.trainercert.vo.TrainerCertVO" alias="trainercert"></typeAlias>
 	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
 	<mappers>
+		<mapper resource="mappings/fitness-mapping.xml" />
+		<mapper resource="mappings/healthTeam-mapping.xml"/>
+		<mapper resource="mappings/comment-mapping.xml"/>
 		<mapper resource="mappings/workoutSave-mapping.xml" />
 		<mapper resource="mappings/foodSave-mapping.xml" />
 		<mapper resource="mappings/term-mapping.xml" />
@@ -26,6 +42,5 @@
 		<mapper resource="mappings/feboard-mapping.xml" />
 		<mapper resource="mappings/veboard-mapping.xml" />
 		<mapper resource="mappings/hteboard-mapping.xml" />
-		<mapper resource="mappings/trainercert-mapping.xml" />
 	</mappers>
 </configuration>

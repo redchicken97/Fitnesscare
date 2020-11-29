@@ -1,79 +1,65 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.fitness.admin.user.dao.UserDAO"%>
-<%@ page import="com.fitness.admin.user.vo.UserVO"%>
+<%@page import="com.fitess.common.user.vo.UserVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	List<UserVO> userList = (List<UserVO>) session.getAttribute("userList");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>UserList</title>
+<title>User List</title>
 </head>
 <body>
-<h1>사용자 목록</h1>
-<table border="1">
-	<tr>
-		<th>번호</th>
-		<th>이름</th>
-		<th>이메일</th>
-		<th>닉네임</th>
-		<th>등록날짜</th>
-		<th>사용자등급</th>
-		<th>사용자계정상태</th>
-		<th>신고당한횟수</th>
-		<th>계정정지</th>
-	</tr>
-	<c:forEach var="user" items="${userList}">
-	<tr>
-		<td><a href="/getUser.admin?user_id=${user.user_id}">${user.user_id}</a></td>
-		<td>${user.user_name}</td>
-		<td>${user.user_email}</td>
-		<td>${user.user_nick}</td>
-		<td><fmt:formatDate value="${user.user_regdate}" dateStyle="default" /></td>
-		<td>
-		<c:choose>
-			<c:when test="${user.user_level eq 'U'.charAt(0)}">일반사용자</c:when>
-			<c:when test="${user.user_level eq 'T'.charAt(0)}">트레이너</c:when>
-			<c:otherwise>오류</c:otherwise>
-		</c:choose>
-		</td>
-		<td>
-		<c:choose>
-			<c:when test="${user.user_state eq 'E'.charAt(0)}">정상</c:when>
-			<c:when test="${user.user_state eq 'D'.charAt(0)}">정지</c:when>
-			<c:when test="${user.user_state eq 'O'.charAt(0)}">탈퇴</c:when>
-			<c:otherwise>오류</c:otherwise>
-		</c:choose>
-		</td>
-		<td>${user.user_report_count}</td>
-		<td>
-		<c:choose>
-			<c:when test="${user.user_state eq 'E'.charAt(0)}">
-				<a href="/suspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">정지</a>
-			</c:when>
-			<c:when test="${user.user_state eq 'D'.charAt(0)}">
-				<a href="/unsuspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">복구</a>
-			</c:when>
-			<c:otherwise>오류</c:otherwise>
-		</c:choose>
-		</td>
-	</tr>
-	</c:forEach>
-</table>
-<%-- 페이징 처리 부분 --%>
-<ul> 
-	<c:if test="${pageMaker.prev}">
-		<li><a href="/getUserList.admin${pageMaker.makeQuery(pageMaker.startPage - 1)}"><</a></li>
-	</c:if>
-	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-		<li><a href="/getUserList.admin${pageMaker.makeQuery(idx)}">${idx}</a></li>
-	</c:forEach>
-	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-		<li><a href="/getUserList.admin${pageMaker.makeQuery(pageMaker.endPage + 1)}">></a></li>
-	</c:if>
-</ul>
-<br />
+	<h1>회원 목록</h1>
+	<table border="1">
+		<tr>
+			<th>UserId</th>
+			<th>UserName</th>
+			<th>UserEmail</th>
+			<th>UserNick</th>
+			<th>UserPw</th>
+			<th>TermOne</th>
+			<th>TermTwo</th>
+			<th>UserCheckDate1</th>
+			<th>UserCheckDate2</th>
+			<th>TermType1</th>
+			<th>TermType2</th>
+			<th>UserRegDate</th>
+			<th>UserLoginMethod</th>
+			<th>UserLevel</th>
+			<th>UserState</th>
+			<th>UserReportCount</th>
+			<th>delete</th>
+		</tr>
+		
+		<c:forEach var="user" items="${userList}">
+			<tr>
+				<td>${user.user_id }</td>
+				<td>${user.user_name }</td>
+				<td>${user.user_email }</td>
+				<td>${user.user_nick }</td>
+				<td>${user.user_pw }</td>
+				<td>${user.term_one }</td>
+				<td>${user.term_two }</td>
+				<td>${user.user_check_date1 }</td>
+				<td>${user.user_check_date2 }</td>
+				<td>${user.term_type1 }</td>
+				<td>${user.term_type2 }</td>
+				<td>${user.user_regdate }</td>
+				<td>${user.user_loginMethod }</td>
+				<td>${user.user_level }</td>
+				<td>${user.user_state }</td>
+				<td>${user.user_report_count }</td>
+				<td><button type="button" onclick="location.href='deleteUser.do?user_id=${user.user_id}'">삭제</button></td>
+			</tr>
+		</c:forEach>
+	</table><br/>
+	
+	<a href="index.jsp">메인회면으로 가기</a>
 </body>
 </html>

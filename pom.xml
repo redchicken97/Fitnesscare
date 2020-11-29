@@ -15,9 +15,19 @@
 		<org.springframework-version>5.2.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.5</org.aspectj-version>
 		<org.slf4j-version>1.7.30</org.slf4j-version>
-	</properties>
+	</properties>	
+
 
 	<dependencies>
+
+	<!-- com.google.code.gson -->
+	<!-- json 사용 외부 라이브러리 -->
+	<dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+		<version>2.8.5</version>
+	</dependency>
+		
 		<!-- spring-context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -30,13 +40,6 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
-		</dependency>
-		
-		<!-- jstl -->
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
 		</dependency>
 
 		<!-- aspectjrt -->
@@ -108,41 +111,37 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.5</version>
 		</dependency>
+
+
 		
-		<!-- test -->
+
+	<!-- Servlet -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>4.0.1</version>
+		<scope>provided</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>javax.servlet.jsp-api</artifactId>
+		<version>2.3.1</version>
+		<scope>provided</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>5.2.9.RELEASE</version>
-		    <scope>test</scope>
-		</dependency>
-		
-		<!-- java mail -->
-		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>javax.mail-api</artifactId>
-		    <version>1.6.2</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>com.sun.mail</groupId>
-		    <artifactId>javax.mail</artifactId>
-		    <version>1.6.2</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context-support</artifactId>
-		    <version>${org.springframework-version}</version>
-		</dependency>
-		
 	</dependencies>
 	<build>
 		<finalName>Fitnesscare</finalName>

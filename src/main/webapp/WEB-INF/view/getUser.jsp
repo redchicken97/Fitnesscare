@@ -1,125 +1,65 @@
-<%@ page import="com.fitness.admin.user.dao.UserDAO"%>
-<%@ page import="com.fitness.admin.user.vo.UserVO"%>
+<%@page import="com.fitess.common.user.vo.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+	
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User</title>
+<title>유저 정보</title>
 </head>
-<body>
-	<h1>사용자 보기</h1>
-	<a href="/getUserList.admin">사용자 목록으로</a>
+<body>	
+	<h1>회원정보</h1>
 	<table border="1">
 		<tr>
-			<th>번호</th>
-			<td>${user.user_id}</td>
+			<th>UserId</th>
+			<th>UserName</th>
+			<th>UserEmail</th>
+			<th>UserNick</th>
+			<th>UserPw</th>
+			<th>TermOne</th>
+			<th>TermTwo</th>
+			<th>UserCheckDate1</th>
+			<th>UserCheckDate2</th>	
 		</tr>
 		<tr>
-			<th>이름</th>
-			<td>${user.user_name}</td>
+			<td>${userInfo.user_id }</td>
+			<td>${userInfo.user_name }</td>
+			<td>${userInfo.user_email }</td>
+			<td>${userInfo.user_nick }</td>
+			<td>${userInfo.user_pw }</td>
+			<td>${userInfo.term_one }</td>
+			<td>${userInfo.term_two }</td>
+			<td>${userInfo.user_check_date1 }</td>
+			<td>${userInfo.user_check_date2 }</td>
 		</tr>
 		<tr>
-			<th>이메일</th>
-			<td>${user.user_email}</td>
+			<th>TermType1</th>
+			<th>TermType2</th>
+			<th>UserRegDate</th>
+			<th>UserLoginMethod</th>
+			<th>UserLevel</th>
+			<th>UserState</th>
+			<th>UserReportCount</th>
 		</tr>
 		<tr>
-			<th>닉네임</th>
-			<td>${user.user_nick}</td>
-		</tr>
-		<tr>
-			<th>약관동의1</th>
-			<td>
-				<c:choose>
-					<c:when test="${user.term_one eq 0}">비동의</c:when>
-					<c:when test="${user.term_one eq 1}">동의</c:when>
-					<c:otherwise>오류</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th>약관동의2</th>
-			<td>
-				<c:choose>
-					<c:when test="${user.term_two eq 0}">비동의</c:when>
-					<c:when test="${user.term_two eq 1}">동의</c:when>
-					<c:otherwise>오류</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th>약관동의날짜1</th>
-			<td><fmt:formatDate value="${user.user_check_date1}" dateStyle="default" /></td>
-		</tr>
-		<tr>
-			<th>약관동의날짜2</th>
-			<td><fmt:formatDate value="${user.user_check_date2}" dateStyle="default" /></td>
-		</tr>
-		<tr>
-			<th>약관종류1</th>
-			<td>${user.term_type1}</td>
-		</tr>
-		<tr>
-			<th>약관종류2</th>
-			<td>${user.term_type2}</td>
-		</tr>
-		<tr>
-			<th>등록날짜</th>
-			<td><fmt:formatDate value="${user.user_regdate}" dateStyle="default" /></td>
-		</tr>
-		<tr>
-			<th>로그인방식</th>
-			<td>
-				<c:choose>
-					<c:when test="${user.user_loginmethod eq 'L'.charAt(0)}">일반</c:when>
-					<c:when test="${user.user_loginmethod eq 'K'.charAt(0)}">카카오</c:when>
-					<c:otherwise>오류</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th>사용자등급</th>
-			<td>
-				<c:choose>
-					<c:when test="${user.user_level eq 'U'.charAt(0)}">일반사용자</c:when>
-					<c:when test="${user.user_level eq 'T'.charAt(0)}">트레이너</c:when>
-					<c:otherwise>오류</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th>사용자계정상태</th>
-			<td>
-				<c:choose>
-					<c:when test="${user.user_state eq 'E'.charAt(0)}">정상</c:when>
-					<c:when test="${user.user_state eq 'D'.charAt(0)}">정지</c:when>
-					<c:when test="${user.user_state eq 'O'.charAt(0)}">탈퇴</c:when>
-					<c:otherwise>오류</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th>신고당한횟수</th>
-			<td>${user.user_report_count}</td>
-		</tr>
+			<td>${userInfo.term_type1 }</td>
+			<td>${userInfo.term_type2 }</td>
+			<td>${userInfo.user_regdate }</td>
+			<td>${userInfo.user_loginMethod }</td>
+			<td>${userInfo.user_level }</td>
+			<td>${userInfo.user_state }</td>
+			<td>${userInfo.user_report_count }</td>
+		</tr>		
 	</table>
-	<%-- 사용자 계정 정지/복구 --%>
-	<c:choose>
-		<c:when test="${user.user_state eq 'E'.charAt(0)}">
-			<a href="/suspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">정지</a>
-		</c:when>
-		<c:when test="${user.user_state eq 'D'.charAt(0)}">
-			<a href="/unsuspendUser.admin?user_id=${user.user_id}&user_email=${user.user_email}">복구</a>
-		</c:when>
-		<c:when test="${user.user_state eq 'O'.charAt(0)}">
-			이미 탈퇴한 회원입니다.
-		</c:when>
-		<c:otherwise>
-			오류
-		</c:otherwise>
-	</c:choose>
+	
+	<a href="kakaoApiMap.jsp?id=${userInfo.user_id }">헬스 장소 공유 등록</a>
+	<a href="comment.do?userId=${userInfo.user_id }">댓글 달기</a>
 </body>
 </html>
