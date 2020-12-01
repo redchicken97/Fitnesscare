@@ -1,4 +1,4 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.kakaoLogin.dao;
 
 import com.fitness.common.user.vo.UserVO;
 

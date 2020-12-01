@@ -1,4 +1,4 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.comment.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fitness.common.user.vo.CommentInfoVO;
+import com.fitness.user.comment.vo.CommentInfoVO;
 
 @Repository
 public class UserCommentDAOImpl implements UserCommentDAO {

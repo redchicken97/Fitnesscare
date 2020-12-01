@@ -1,4 +1,4 @@
-package com.fitness.common.user.controller;
+package com.fitness.user.kakaoMap.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fitness.common.user.service.MapKakaoService;
-import com.fitness.common.user.vo.HealthTeamVO;
+import com.fitness.user.kakaoMap.service.MapKakaoService;
+import com.fitness.user.kakaoMap.vo.HealthTeamVO;
 
 @Controller
 public class MapKakaoController {

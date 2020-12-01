@@ -1,8 +1,8 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.comment.dao;
 
 import java.util.List;
 
-import com.fitness.common.user.vo.CommentInfoVO;
+import com.fitness.user.comment.vo.CommentInfoVO;
 
 public interface UserCommentDAO {
 	

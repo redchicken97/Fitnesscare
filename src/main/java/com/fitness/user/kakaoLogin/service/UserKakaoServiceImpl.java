@@ -1,4 +1,4 @@
-package com.fitness.common.user.service;
+package com.fitness.user.kakaoLogin.service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,8 +12,8 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitness.common.user.dao.UserKakaoDAO;
 import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.kakaoLogin.dao.UserKakaoDAO;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

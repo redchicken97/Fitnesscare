@@ -1,4 +1,4 @@
-package com.fitness.common.user.vo;
+package com.fitness.user.comment.vo;
 
 import java.util.Date;
 

@@ -6,8 +6,8 @@
 	<properties resource="db.properties" />
 	<typeAliases>
 		<typeAlias type="com.fitness.common.user.vo.UserVO" alias="user_info"></typeAlias>
-		<typeAlias type="com.fitness.common.user.vo.HealthTeamVO" alias="healtTeam"/>
-		<typeAlias type="com.fitness.common.user.vo.CommentInfoVO" alias="commentInfo"/>
+		<typeAlias type="com.fitness.user.kakaoMap.vo.HealthTeamVO" alias="healtTeam"/>
+		<typeAlias type="com.fitness.user.comment.vo.CommentInfoVO" alias="commentInfo"/>
 		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"></typeAlias>

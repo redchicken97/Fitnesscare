@@ -1,4 +1,4 @@
-package com.fitness.common.user.service;
+package com.fitness.user.comment.service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,8 +9,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitness.common.user.dao.UserCommentDAO;
-import com.fitness.common.user.vo.CommentInfoVO;
+import com.fitness.user.comment.dao.UserCommentDAO;
+import com.fitness.user.comment.vo.CommentInfoVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;

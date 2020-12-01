@@ -1,4 +1,4 @@
-package com.fitness.common.user.controller;
+package com.fitness.user.comment.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fitness.common.user.service.UserCommentService;
-import com.fitness.common.user.vo.CommentInfoVO;
+import com.fitness.user.comment.service.UserCommentService;
+import com.fitness.user.comment.vo.CommentInfoVO;
 
 @Controller
 public class UserCommentController {

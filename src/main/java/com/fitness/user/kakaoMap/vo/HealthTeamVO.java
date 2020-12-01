@@ -1,4 +1,4 @@
-package com.fitness.common.user.vo;
+package com.fitness.user.kakaoMap.vo;
 
 import java.util.Date;
 

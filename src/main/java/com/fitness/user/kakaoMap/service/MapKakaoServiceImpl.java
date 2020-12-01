@@ -1,12 +1,12 @@
-package com.fitness.common.user.service;
+package com.fitness.user.kakaoMap.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitness.common.user.dao.MapKakaoDAO;
-import com.fitness.common.user.vo.HealthTeamVO;
+import com.fitness.user.kakaoMap.dao.MapKakaoDAO;
+import com.fitness.user.kakaoMap.vo.HealthTeamVO;
 
 @Service("mapkakaoService")
 public class MapKakaoServiceImpl implements MapKakaoService {

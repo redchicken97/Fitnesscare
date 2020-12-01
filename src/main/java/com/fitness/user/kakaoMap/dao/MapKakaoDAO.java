@@ -1,8 +1,8 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.kakaoMap.dao;
 
 import java.util.List;
 
-import com.fitness.common.user.vo.HealthTeamVO;
+import com.fitness.user.kakaoMap.vo.HealthTeamVO;
 
 public interface MapKakaoDAO {
 
