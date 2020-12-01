@@ -10,10 +10,8 @@
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-			
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>			
 	</listener>
-   
    
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -33,8 +31,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/user-layer.xml</param-value> 
-			
+			<param-value>/WEB-INF/config/user-layer.xml</param-value> 		
 		</init-param>
 	</servlet>
 	<servlet-mapping>
@@ -54,6 +51,7 @@
 		<servlet-name>trainer</servlet-name>
 		<url-pattern>*.mdo</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>admin</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

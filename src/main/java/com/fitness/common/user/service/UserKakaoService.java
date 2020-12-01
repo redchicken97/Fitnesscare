@@ -1,4 +1,4 @@
-package com.fitness.user.kakaoLogin.service;
+package com.fitness.common.user.service;
 
 import java.util.HashMap;
 
