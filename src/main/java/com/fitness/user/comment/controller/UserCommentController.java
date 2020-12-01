@@ -30,6 +30,12 @@ public class UserCommentController {
 		return null;
 	}
 	
+	@RequestMapping("/comment.do")
+	public String comment(CommentInfoVO vo) {
+		System.out.println("controller 에서 comment 메핑");
+		return "comment";
+	}
+	
 	@RequestMapping("/commentList.do")
 	@ResponseBody
 	public List<String> getCommentList(CommentInfoVO vo) {	
