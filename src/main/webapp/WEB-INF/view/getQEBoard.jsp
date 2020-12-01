@@ -82,6 +82,7 @@
 		</tr>
 	</table>
 	<br />
+	<!-- 댓글 등록 
 	<form action="insertComment.admin" method="post">
 		<input type="hidden" name="cmt_id" value="${comment.cmt_id}" />
 		<input type="hidden" name="target_id" value="${qeboard.q_id}" />
@@ -125,6 +126,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	-->
 <script>
 $(document).ready(function(){
 	

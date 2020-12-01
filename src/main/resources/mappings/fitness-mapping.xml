@@ -4,7 +4,7 @@
 
 <mapper namespace="UserDAO">
 
-	<resultMap type="user" id="userResult">
+	<resultMap type="user_info" id="userResult">
 		<id property="user_id" column="USER_ID" />
 		<result property="user_name" column="USER_NAME" />
 		<result property="user_email" column="USER_EMAIL" />
@@ -17,13 +17,13 @@
 		<result property="term_type1" column="TERM_TYPE1" />
 		<result property="term_type2" column="TERM_TYPE2" />
 		<result property="user_regdate" column="USER_REGDATE" />
-		<result property="user_loginmethod" column="USER_LOGINMETHOD" />
+		<result property="user_loginMethod" column="USER_LOGINMETHOD" />
 		<result property="user_level" column="USER_LEVEL" />
 		<result property="user_state" column="USER_STATE" />
 		<result property="user_report_count" column="USER_REPORT_COUNT" />
 	</resultMap>
-	
-	<insert id="insertKakaoUser" parameterType="user">
+
+	<insert id="insertKakaoUser" parameterType="user_info">
 		INSERT INTO
 		user_info 
 		(user_id, user_name, user_email, user_nick,
@@ -36,7 +36,7 @@
 		
 	</insert>
 
-	<insert id="insertUser" parameterType="user">
+	<insert id="insertUser" parameterType="user_info">
 		INSERT INTO
 		user_info
 		(user_id, user_name, user_email, user_nick,
@@ -47,7 +47,7 @@
 		#{term_one},#{term_two},#{term_type1},#{term_type2})
 	</insert>
 	
-	<update id="updateUser" parameterType="user">
+	<update id="updateUser" parameterType="user_info">
 		UPDATE user_info
 		SET
 		user_nick=#{user_nick}, user_pw = #{user_pw}
@@ -55,55 +55,20 @@
 		user_id = #{user_id}
 	</update>
 	
-	<delete id="deleteUser" parameterType="user">
+	<delete id="deleteUser" parameterType="user_info">
 		DELETE FROM
 		user_info WHERE
 		user_id = #{user_id}
 	</delete>
-	
-	<!-- getUser 및 getUserList 사용시 주의사항
-	getUser : 사용자 파트에 있는 것을 사용
-	getUserList : 관리자 파트에 있는 것을 사용(페이징 처리 때문) -->
-	
-	<select id="getUser" parameterType="user" resultMap="userResult">
+
+	<select id="getUser" resultType="user_info">
 		SELECT * FROM user_info
 		WHERE user_email = #{user_email}
 	</select>
-	
-	<sql id="subGetUserList1">
-		SELECT user_id, user_name, user_email, user_nick, 
-		term_one, term_two, user_check_date1, user_check_date2, 
-		term_type1, term_type2, user_regdate, user_loginmethod, 
-		user_level, user_state, user_report_count, ROWNUM AS rnum 
-		FROM user_info 
-	</sql>
-	
+
 	<select id="getUserList" resultMap="userResult">
-		SELECT * 
-		FROM (<include refid="subGetUserList1" />) sub1
-		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
-		ORDER BY user_id DESC
+		SELECT * FROM user_info ORDER BY user_id DESC
 	</select>
-	
-	<select id="getUserCount" resultType="int">
-		SELECT COUNT(*) 
-		FROM user_info 
-	</select>
-	
-	<update id="suspendUser" parameterType="user">
-		UPDATE user_info
-		SET 
-		user_state = 'D'
-		WHERE
-		user_id = #{user_id}
-	</update>
-	
-	<update id="unsuspendUser" parameterType="user">
-		UPDATE user_info
-		SET 
-		user_state = 'E'
-		WHERE
-		user_id = #{user_id}
-	</update>
- 	
+
+
 </mapper>

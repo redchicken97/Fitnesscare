@@ -2,7 +2,7 @@ package com.fitness.admin.user.vo;
 
 import java.util.Date;
 
-public class UserVO {
+public class UserManVO {
 	private int user_id;
 	private String user_name;
 	private String user_email;

@@ -40,9 +40,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserVO> getUserList(Criteria cri) {
+	public List<UserVO> getUserList(UserVO vo) {
 		System.out.println("service에서 getUserList 실행");
-		return userDAO.getUserList(cri);
+		return userDAO.getUserList(vo);
 	}
 
 	@Override

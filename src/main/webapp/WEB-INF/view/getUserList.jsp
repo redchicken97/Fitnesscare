@@ -47,7 +47,7 @@
 				<td>${user.term_type1 }</td>
 				<td>${user.term_type2 }</td>
 				<td>${user.user_regdate }</td>
-				<td>${user.user_loginmethod }</td>
+				<td>${user.user_loginMethod }</td>
 				<td>${user.user_level }</td>
 				<td>${user.user_state }</td>
 				<td>${user.user_report_count }</td>

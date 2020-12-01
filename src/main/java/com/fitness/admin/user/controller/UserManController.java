@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fitness.admin.common.mail.MailService;
 import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.common.paging.PageMaker;
-import com.fitness.admin.user.service.UserService;
-import com.fitness.admin.user.vo.UserVO;
+import com.fitness.admin.user.service.UserManService;
+import com.fitness.admin.user.vo.UserManVO;
 
 @Controller
 @EnableAsync
 public class UserManController {
 
 	@Autowired
-	private UserService userService;
+	private UserManService userManService;
 	@Autowired
 	private MailService mailService;
 	
 	@RequestMapping("suspendUser.admin")
-	public String suspendUser(UserVO vo, HttpServletRequest request,
+	public String suspendUser(UserManVO vo, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
 		System.out.println("UserController.suspendUser 실행");
-		userService.suspendUser(vo);
+		userManService.suspendUser(vo);
 		
 		// 사용 정지된 사실에 대한 메일을 대상 사용자에게 전송한다.
 		StringBuffer sb = new StringBuffer();
@@ -38,14 +38,14 @@ public class UserManController {
 		mailService.sendMail(vo.getUser_email().toString(), 
 				vo.getUser_email().toString() + " 계정이 정지되었습니다.", str);
 		
-		return "redirect:/getUserList.admin";
+		return "redirect:/getUserInfoList.admin";
 	}
 	
 	@RequestMapping("unsuspendUser.admin")
-	public String unsuspendUser(UserVO vo, HttpServletRequest request,
+	public String unsuspendUser(UserManVO vo, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		System.out.println("UserController.unsuspendUser 실행");
-		userService.unsuspendUser(vo);
+		userManService.unsuspendUser(vo);
 		
 		// 사용 정지 해제된 사실에 대한 메일을 대상 사용자에게 전송한다.
 		StringBuffer sb = new StringBuffer();
@@ -55,28 +55,28 @@ public class UserManController {
 		mailService.sendMail(vo.getUser_email().toString(), 
 				vo.getUser_email().toString() + " 계정에 대한 정지가 해제되었습니다.", str);
 		
-		return "redirect:/getUserList.admin";
+		return "redirect:/getUserInfoList.admin";
 	}
 	
-	@RequestMapping("getUser.admin")
-	public String getUser(UserVO vo, Model model) {
-		System.out.println("UserController.getUser 실행");
-		model.addAttribute("user", userService.getUser(vo));
-		return "getUser";
+	@RequestMapping("getUserInfo.admin")
+	public String getUser(UserManVO vo, Model model) {
+		System.out.println("UserController.getUserInfo 실행");
+		model.addAttribute("user", userManService.getUserInfo(vo));
+		return "getUserInfo";
 	}
 	
-	@RequestMapping("getUserList.admin")
-	public String getUserList(Model model, Criteria cri) {
-		System.out.println("UserController.getUserList 실행");
+	@RequestMapping("getUserInfoList.admin")
+	public String getUserInfoList(Model model, Criteria cri) {
+		System.out.println("UserController.getUserInfoList 실행");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(userService.getUserCount());
+		pageMaker.setTotalCount(userManService.getUserCount());
 		cri = pageMaker.getCri();
 		model.addAttribute("pageMaker", pageMaker);
 		
-		model.addAttribute("userList", userService.getUserList(cri));
-		return "getUserList";
+		model.addAttribute("userList", userManService.getUserInfoList(cri));
+		return "getUserInfoList";
 	}
 	
 }

@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fitness.admin.common.paging.Criteria;
 import com.fitness.common.user.vo.UserVO;
 
 @Repository
@@ -42,15 +41,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<UserVO> getUserList(Criteria cri) {
+	public List<UserVO> getUserList(UserVO vo) {
 		System.out.println("mybatis getList 실행");
-		Map map = new HashMap();
-		map.put("startNum", cri.getStartNum());
-		map.put("endNum", cri.getEndNum());
-		map.put("cri", cri);
-		return sqlSessionTemplate.selectList("UserDAO.getUserList", map);
+		return sqlSessionTemplate.selectList("UserDAO.getUserList");
 	}
-
+	
 	@Override
 	public UserVO userLogin(String user_email) {
 		System.out.println("mybatis login 실행");

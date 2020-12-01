@@ -2,7 +2,6 @@ package com.fitness.common.user.dao;
 
 import java.util.List;
 
-import com.fitness.admin.common.paging.Criteria;
 import com.fitness.common.user.vo.UserVO;
 
 public interface UserDAO {
@@ -15,7 +14,7 @@ public interface UserDAO {
 	
 	public UserVO getUser(UserVO vo);
 	
-	public List<UserVO> getUserList(Criteria cri);
+	public List<UserVO> getUserList(UserVO vo);
 	
 	public UserVO userLogin(String user_email);
 	

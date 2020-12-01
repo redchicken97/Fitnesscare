@@ -14,8 +14,8 @@ import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.admin.feboard.service.FEBoardService;
 import com.fitness.admin.feboard.vo.FEBoardVO;
-import com.fitness.admin.user.service.UserService;
-import com.fitness.admin.user.vo.UserVO;
+import com.fitness.admin.user.service.UserManService;
+import com.fitness.admin.user.vo.UserManVO;
 
 @Controller
 public class FEBoardController {
@@ -25,7 +25,7 @@ public class FEBoardController {
 	@Autowired
 	private MailService mailService;
 	@Autowired
-	private UserService userService;
+	private UserManService userManService;
 	
 	@RequestMapping(value="insertFEBoard", method=RequestMethod.GET)
 	public String insertFEBoardFrom(FEBoardVO vo) {
@@ -60,7 +60,7 @@ public class FEBoardController {
 		System.out.println("FEBoardController.deleteFEBoard 실행");
 		
 		// delete 작업 전, free_id를 이용하여 사용자의 이름 및 이메일 정보를 가져온다.
-		UserVO uvo = getUserFromId(vo);
+		UserManVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
@@ -110,11 +110,11 @@ public class FEBoardController {
 	}
 	
 	// vo객체의 id값을 바탕으로 사용자의 정보를 가져오는 메서드
-	public UserVO getUserFromId(FEBoardVO vo) {
+	public UserManVO getUserFromId(FEBoardVO vo) {
 		vo = fEBoardService.getFEBoard(vo);
-		UserVO uvo = new UserVO();
+		UserManVO uvo = new UserManVO();
 		uvo.setUser_id(vo.getUser_id());
-		return userService.getUser(uvo);
+		return userManService.getUserInfo(uvo);
 	}
 	
 }

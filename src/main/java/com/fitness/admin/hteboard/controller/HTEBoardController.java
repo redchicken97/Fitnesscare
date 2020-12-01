@@ -14,8 +14,8 @@ import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.admin.hteboard.service.HTEBoardService;
 import com.fitness.admin.hteboard.vo.HTEBoardVO;
-import com.fitness.admin.user.service.UserService;
-import com.fitness.admin.user.vo.UserVO;
+import com.fitness.admin.user.service.UserManService;
+import com.fitness.admin.user.vo.UserManVO;
 
 @Controller
 public class HTEBoardController {
@@ -25,7 +25,7 @@ public class HTEBoardController {
 	@Autowired
 	private MailService mailService;
 	@Autowired
-	private UserService userService;
+	private UserManService userManService;
 	
 	@RequestMapping(value="insertHTEBoard", method=RequestMethod.GET)
 	public String insertHTEBoardForm(HTEBoardVO vo) {
@@ -60,7 +60,7 @@ public class HTEBoardController {
 		System.out.println("HTEBoardController.deleteHTEBoard 실행");
 		
 		// 게시글 삭제 전에 vo객체를 이용, 사용자의 이름과 이메일을 가져온다.
-		UserVO uvo = getUserFromId(vo);
+		UserManVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
@@ -107,11 +107,11 @@ public class HTEBoardController {
 		return "getHTEBoardList";
 	}
 	
-	public UserVO getUserFromId(HTEBoardVO vo) {
+	public UserManVO getUserFromId(HTEBoardVO vo) {
 		vo = hTEBoardService.getHTEBoard(vo);
-		UserVO uvo = new UserVO();
+		UserManVO uvo = new UserManVO();
 		uvo.setUser_id(vo.getUser_id());
-		return userService.getUser(uvo);
+		return userManService.getUserInfo(uvo);
 	}
 	
 }

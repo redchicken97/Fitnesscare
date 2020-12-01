@@ -17,8 +17,8 @@ import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.admin.qeboard.service.QEBoardService;
 import com.fitness.admin.qeboard.vo.QEBoardVO;
-import com.fitness.admin.user.service.UserService;
-import com.fitness.admin.user.vo.UserVO;
+import com.fitness.admin.user.service.UserManService;
+import com.fitness.admin.user.vo.UserManVO;
 
 @Controller
 @EnableAsync
@@ -26,12 +26,12 @@ public class QEBoardController {
 
 	@Autowired
 	private QEBoardService qEBoardService;
-	@Autowired
-	private CommentService commentService;
+	// @Autowired
+	// private CommentService commentService; // 댓글 기능은 추후에 구현
 	@Autowired
 	private MailService mailService;
 	@Autowired
-	private UserService userService;
+	private UserManService userManService;
 	
 	@RequestMapping(value="insertQEBoard.admin", method=RequestMethod.GET)
 	public String insertQEBoardForm(QEBoardVO vo) {
@@ -67,7 +67,7 @@ public class QEBoardController {
 		
 		// vo의 내용을 삭제하기 전에, uvo를 이용하여 사용자의 이름과 이메일 정보를 가져온다.
 		// 해당 작업 이전에 deleteQEBoard()를 실행하면, vo객체가 지워지면서 내용을 가져오지 못하게 된다.
-		UserVO uvo = getUserFromId(vo);
+		UserManVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
@@ -89,11 +89,11 @@ public class QEBoardController {
 		model.addAttribute("qeboard", qEBoardService.getQEBoard(vo));
 		model.addAttribute("userName", getUserFromId(vo).getUser_name());
 		
-		// 댓글 세팅
-		CommentVO cvo = new CommentVO();
-		cvo.setCmt_type("question");
-		cvo.setTarget_id(vo.getQ_id());
-		model.addAttribute("commentList", commentService.getCommentList(cvo));
+		// 댓글 세팅 -> 추후 구현
+		// CommentVO cvo = new CommentVO();
+		// cvo.setCmt_type("question");
+		// cvo.setTarget_id(vo.getQ_id());
+		// model.addAttribute("commentList", commentService.getCommentList(cvo));
 		
 		return "getQEBoard";
 	}
@@ -123,11 +123,11 @@ public class QEBoardController {
 	}
 	
 	// vo 객체의 id값을 바탕으로 작성자의 정보를 가져오는 메서드
-	public UserVO getUserFromId(QEBoardVO vo) {
+	public UserManVO getUserFromId(QEBoardVO vo) {
 		vo = qEBoardService.getQEBoard(vo);
-		UserVO uvo = new UserVO();
+		UserManVO uvo = new UserManVO();
 		uvo.setUser_id(vo.getUser_id());
-		return userService.getUser(uvo);
+		return userManService.getUserInfo(uvo);
 	}
 	
 }

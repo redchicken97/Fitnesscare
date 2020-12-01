@@ -15,7 +15,7 @@ public interface UserService {
 	
 	public UserVO getUser(UserVO vo);
 	
-	public List<UserVO> getUserList(Criteria cri);
+	public List<UserVO> getUserList(UserVO vo);
 	
 	public UserVO userLogin(String user_email);
 	

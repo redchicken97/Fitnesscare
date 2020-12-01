@@ -12,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fitness.admin.common.paging.Criteria;
-import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.common.user.service.UserService;
 import com.fitness.common.user.vo.UserVO;
 
@@ -67,16 +65,9 @@ public class UserController {
 	}
 	
 	@RequestMapping("/getUserList.do")
-	public String getUserList(Criteria cri, Model model) {
+	public String getUserList(UserVO vo, Model model) {
 		System.out.println("controller에서 회원 목록 보기");
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(userService.getUserCount());
-		cri = pageMaker.getCri();
-		model.addAttribute("pageMaker", pageMaker);
-		
-		model.addAttribute("userList", userService.getUserList(cri));
+		model.addAttribute("userList", userService.getUserList(vo));
 		return "getUserList";
 	}
 	

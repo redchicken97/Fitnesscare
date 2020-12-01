@@ -6,37 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fitness.admin.common.paging.Criteria;
-import com.fitness.admin.user.dao.UserDAO;
-import com.fitness.admin.user.vo.UserVO;
+import com.fitness.admin.user.dao.UserManDAO;
+import com.fitness.admin.user.vo.UserManVO;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserManServiceImpl implements UserManService {
 
 	@Autowired
-	private UserDAO userDAO;
+	private UserManDAO userDAO;
 	
 	@Override
-	public void suspendUser(UserVO vo) {
+	public void suspendUser(UserManVO vo) {
 		System.out.println("UserService.suspendUser 실행");
 		userDAO.suspendUser(vo);
 	}
 
 	@Override
-	public void unsuspendUser(UserVO vo) {
+	public void unsuspendUser(UserManVO vo) {
 		System.out.println("UserService.unsuspendUser 실행");
 		userDAO.unsuspendUser(vo);
 	}
 
 	@Override
-	public UserVO getUser(UserVO vo) {
-		System.out.println("UserService.getUser 실행");
-		return userDAO.getUser(vo);
+	public UserManVO getUserInfo(UserManVO vo) {
+		System.out.println("UserService.getUserInfo 실행");
+		return userDAO.getUserInfo(vo);
 	}
 
 	@Override
-	public List<UserVO> getUserList(Criteria cri) {
-		System.out.println("UserService.getUserList 실행");
-		return userDAO.getUserList(cri);
+	public List<UserManVO> getUserInfoList(Criteria cri) {
+		System.out.println("UserService.getUserInfoList 실행");
+		return userDAO.getUserInfoList(cri);
 	}
 	
 	@Override

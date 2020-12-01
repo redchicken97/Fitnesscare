@@ -5,14 +5,14 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-		<!-- <typeAlias type="com.fitness.common.user.vo.UserVO" alias="user_info"></typeAlias> -->
+		<typeAlias type="com.fitness.common.user.vo.UserVO" alias="user_info"></typeAlias>
 		<typeAlias type="com.fitness.common.user.vo.HealthTeamVO" alias="healtTeam"/>
 		<typeAlias type="com.fitness.common.user.vo.CommentInfoVO" alias="commentInfo"/>
 		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"></typeAlias>
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"></typeAlias>
-		<typeAlias type="com.fitness.admin.user.vo.UserVO" alias="user"></typeAlias>
+		<typeAlias type="com.fitness.admin.user.vo.UserManVO" alias="userMan"></typeAlias>
 		<typeAlias type="com.fitness.admin.qeboard.vo.QEBoardVO" alias="qeboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.feboard.vo.FEBoardVO" alias="feboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"></typeAlias>
@@ -32,11 +32,12 @@
 	<mappers>
 		<mapper resource="mappings/healthTeam-mapping.xml"/>
 		<mapper resource="mappings/comment-mapping.xml"/>
+		<mapper resource="mappings/fitness-mapping.xml"/>
 		<mapper resource="mappings/workoutSave-mapping.xml" />
 		<mapper resource="mappings/foodSave-mapping.xml" />
 		<mapper resource="mappings/term-mapping.xml" />
 		<mapper resource="mappings/admin-mapping.xml" />
-		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/userman-mapping.xml" />
 		<mapper resource="mappings/qeboard-mapping.xml" />
 		<mapper resource="mappings/feboard-mapping.xml" />
 		<mapper resource="mappings/veboard-mapping.xml" />

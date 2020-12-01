@@ -5,8 +5,8 @@ import com.fitness.admin.common.paging.Criteria;
 import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.admin.trainercert.service.TrainerCertService;
 import com.fitness.admin.trainercert.vo.TrainerCertVO;
-import com.fitness.admin.user.service.UserService;
-import com.fitness.admin.user.vo.UserVO;
+import com.fitness.admin.user.service.UserManService;
+import com.fitness.admin.user.vo.UserManVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class TrainerCertController {
 	@Autowired
 	private TrainerCertService trainerCertService;
 	@Autowired
-	private UserService userService;
+	private UserManService userManService;
 	@Autowired
 	private MailService mailService;
 	
@@ -36,7 +36,7 @@ public class TrainerCertController {
 		System.out.println("TrainerCertController.acceptTrainerCert 실행");
 
 		// 이메일을 보낼 때 사용될 사용자 정보를 얻는다.
-		UserVO uvo = getUserFromId(vo);
+		UserManVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
@@ -60,7 +60,7 @@ public class TrainerCertController {
 		System.out.println("TrainerCertController.declineTrainerCert 실행");
 
 		// 이메일을 보낼 때 사용될 사용자 정보를 얻는다.
-		UserVO uvo = getUserFromId(vo);
+		UserManVO uvo = getUserFromId(vo);
 		String userName = uvo.getUser_name();
 		String userEmail = uvo.getUser_email();
 		
@@ -109,11 +109,11 @@ public class TrainerCertController {
 		return "getTrainerCertList";
 	}
 	
-	public UserVO getUserFromId(TrainerCertVO vo) {
+	public UserManVO getUserFromId(TrainerCertVO vo) {
 		vo = trainerCertService.getTrainerCert(vo);
-		UserVO uvo = new UserVO();
+		UserManVO uvo = new UserManVO();
 		uvo.setUser_id(vo.getUser_id());
-		return userService.getUser(uvo);
+		return userManService.getUserInfo(uvo);
 	}
 	
 }
