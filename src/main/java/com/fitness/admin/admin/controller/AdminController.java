@@ -27,6 +27,16 @@ public class AdminController {
 		return "insertAdmin";
 	}
 	
+	@RequestMapping(value="frontBoard.admin", method=RequestMethod.GET)
+	public String frontBoard() {
+		return "frontBoard";
+	}
+	
+	@RequestMapping(value="frontLogin.admin", method=RequestMethod.GET)
+	public String frontLogin() {
+		return "frontLogin";
+	}
+	
 	@RequestMapping(value="insertAdmin.admin", method=RequestMethod.POST)
 	public String insertAdmin(AdminVO vo) {
 		System.out.println("AdminController.insertAdmin 실행");
