@@ -19,32 +19,37 @@
 <body>
 
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
-	<!-- 
-	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 	<h1> 댓글 달기 </h1>
 	<form>
 		<input type="hidden" name="cmt_type" value="free">
 		<input type="hidden" name="target_id" value="<%=boardId%>">
-		<input type="hidden" name="cmt_ref" value="<%=refId%>">
-		<table border="1">
-			<tr>
-				<th>작성자 아이디</th>
-				<td><input type="text" name="user_id" value="${userInfo.user_id }"></td>
-			 </tr>
-			 <tr>
-			 	<th>댓글</th>
-			 	<td><input type="text" name="cmt_content"></td>
-			 </tr>
-			 <tr>
-			 	<td><input type="button" id="commentInput" value="등록"></td>
-			 </tr>
-		</table>
+		
+		<div class ="box-header with-border">
+			<h3 class="box-title">댓글 작성</h3>
+		</div>
+		
+		<div class="box-body">
+			<div class="form-group">
+				<label for="newReplyText">댓글 내용</label>
+				<input class="form-control" id="newReplyText" name="cmt_content" placeholder="댓글 내용을 입력해 주세요">
+			</div>
+			<div class="form-group">
+				<label for="newReplywriter">작성자 이름</label>
+				<input class="form-control" id="newReplywriter" name="user_id" value="${userInfo.user_id }">
+			</div>
+		</div>
+		
+		<div class="comment-box">
+			<ul id="replies">
+			
+			</ul>
+		</div>
+		
 	</form>
 
-	
-	 -->
 
-	
 	<script>
 		$('#commentInput').click(function(){
 			$.ajax({
@@ -53,22 +58,52 @@
 				data:$('form').serialize(),
 				success:function(data){
 					alert("댓글 입력이 완료되었습니다");
+					getreplies();
 				} 
 			});
 		});
 		
 	</script>
-	
+
 	<script>
-		var result = null;
+	
+	getreplies();
+	
+	
+	function getreplies(){
 		$.getJSON('commentList.do', function(data){
-		    $.each(data, function(index, item){
-		        $.each(JSON.parse(item), function(i, list){
-		            console.log(list);
-		        });
-//		        console.log(data);
+			
+			var str = "";
+			
+			$.each(data, function(index, item){
+				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
+					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
+					+  "<p class='replyDate'>" + JSON.parse(item).cmt_regdate + "</p>"
+					+  "<p class='replyRecommend'>" + JSON.parse(item).cmt_rdcnt + "</p>"
+					+  "<p class='replyReport'>" + JSON.parse(item).cmt_reportcnt + "</p>"
+					+  "<p class='replayText'>" + JSON.parse(item).cmt_content + "</p>"
+					+  "<button type='button'>댓글 수정</button>"
+					+  "<button type='button'>답글 쓰기</button>"
+					+  "<button type='button'>신고 하기</button>"
+					+  "<button type='button'>추천 하기</button>"
+					+ "</li>"
+					+ "<hr/>";
 		      });
+			
+			$('#replies').html(str);
+			
 		});
+	}
+	
+		function blank_check(){
+			if($.trim($('#cmt_content').val()) == ""){
+				alert('댓글을 입력해주세요');
+				$('#cmt_content').val('').focus();
+				
+				return false;
+			}
+		}
+		
 	</script>
 
 </body>

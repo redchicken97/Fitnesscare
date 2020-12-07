@@ -63,7 +63,6 @@ public class CommentInfoVO {
 	public void setCmt_step(int cmt_step) {
 		this.cmt_step = cmt_step;
 	}
-	
 	public int getCmt_depth() {
 		return cmt_depth;
 	}
@@ -82,6 +81,7 @@ public class CommentInfoVO {
 	public void setCmt_rdCnt(int cmt_rdCnt) {
 		this.cmt_rdCnt = cmt_rdCnt;
 	}
+	
 	@Override
 	public String toString() {
 		return "CommentInfoVO [cmt_id=" + cmt_id + ", target_id=" + target_id + ", cmt_type=" + cmt_type + ", user_id="
@@ -89,6 +89,5 @@ public class CommentInfoVO {
 				+ cmt_reportCnt + ", cmt_ref=" + cmt_ref + ", cmt_step=" + cmt_step + ", cmt_depth=" + cmt_depth
 				+ ", cmt_content=" + cmt_content + "]";
 	}
-	
 	
 }

@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
+import com.google.gson.JsonObject;
 
 @Controller
 public class UserCommentController {
@@ -17,7 +19,7 @@ public class UserCommentController {
 	private UserCommentService userCommentService;
 	
 	@RequestMapping("/commentInput.do")
-	public String insertComment(CommentInfoVO vo) {
+	public String insertComment(CommentInfoVO vo) { 
 		System.out.println("controller에서 insertComment 작동");
 		userCommentService.insertComment(vo);
 		return "comment";
@@ -37,9 +39,15 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/commentList.do")
-	@ResponseBody
-	public List<String> getCommentList(CommentInfoVO vo) {	
+	public @ResponseBody List<String> getCommentList(CommentInfoVO vo) {	
 		System.out.println("controller에서 getCommentList 작동");
 		return userCommentService.getCommentList(vo);
 	}
-}
+	
+	@RequestMapping("/getComment.do")
+	public String getComment(CommentInfoVO vo, Model model) {
+		System.out.println("controller에서 getComment 실행");
+		model.addAttribute("commentOne", userCommentService.getComment(vo));
+		return "getComment";
+	}
+} 

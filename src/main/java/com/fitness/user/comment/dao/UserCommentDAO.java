@@ -12,4 +12,6 @@ public interface UserCommentDAO {
 	
 	public List<CommentInfoVO> getCommentList(CommentInfoVO vo);
 	
+	public CommentInfoVO getComment(CommentInfoVO vo);
+	
 }

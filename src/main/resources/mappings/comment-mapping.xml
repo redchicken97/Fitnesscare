@@ -25,10 +25,10 @@
 		VALUES((select nvl(max(cmt_id), 0) + 1 from 
 		comment_info),
 		#{target_id},#{cmt_type},#{user_id},
-		<!-- 
-		(select nvl(max(cmt_ref), 0) + 1 from comment_info),
-		 -->
-		#{cmt_ref},
+		 
+		(select nvl(max(cmt_id), 0) from comment_info),
+		 
+
 		#{cmt_step},#{cmt_depth},#{cmt_content})
 	</insert>
 	
@@ -46,4 +46,11 @@
 	<select id="getCommentList" resultMap="commentResult">
 		SELECT * FROM comment_info ORDER BY cmt_id DESC
 	</select>
+	
+	<select id="getComment" resultType="commentInfo">
+		SELECT * FROM comment_info
+		WHERE cmt_id = #{cmt_id}
+	</select>
+	
+	<update id=""></update>
 </mapper>

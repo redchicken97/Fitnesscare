@@ -41,33 +41,37 @@ public class UserCommentServiceImpl implements UserCommentService {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-		for(CommentInfoVO List3 : userCommentDAO.getCommentList(vo)) {
+		for(CommentInfoVO vo1 : userCommentDAO.getCommentList(vo)) {
 			
+			if (vo1.getCmt_content() == null) {
+				vo1.setCmt_content(" ");
+			}
 			
-			String today = sdFormat.format(List3.getCmt_regdate());
+			String today = sdFormat.format(vo1.getCmt_regdate());
 			
-			List1.addProperty("cmt_id", List3.getCmt_id());
-			List1.addProperty("target_id", List3.getTarget_id());
-			List1.addProperty("cmt_type", List3.getCmt_type());
-			List1.addProperty("user_id", List3.getUser_id());
+			List1.addProperty("cmt_id", vo1.getCmt_id());
+			List1.addProperty("target_id", vo1.getTarget_id());
+			List1.addProperty("cmt_type", vo1.getCmt_type());
+			List1.addProperty("user_id", vo1.getUser_id());
 			List1.addProperty("cmt_regdate", today);
-			List1.addProperty("cmt_rdcnt", List3.getCmt_reportCnt());
-			List1.addProperty("cmt_reportcnt", List3.getCmt_reportCnt());
-			List1.addProperty("cmt_ref", List3.getCmt_ref());
-			List1.addProperty("cmt_step", List3.getCmt_step());
-			List1.addProperty("cmt_depth", List3.getCmt_depth());
-			List1.addProperty("cmt_content", List3.getCmt_content());
-			
+			List1.addProperty("cmt_rdcnt", vo1.getCmt_reportCnt());
+			List1.addProperty("cmt_reportcnt", vo1.getCmt_reportCnt());
+			List1.addProperty("cmt_ref", vo1.getCmt_ref());
+			List1.addProperty("cmt_step", vo1.getCmt_step());
+			List1.addProperty("cmt_depth", vo1.getCmt_depth());
+			List1.addProperty("cmt_content", vo1.getCmt_content());
+
 			String json = gson.toJson(List1);		
 			
 			List2.add(json);
-			
-			System.out.println(List2);
-			
-		}
 
+		}
 		return List2;
 	}
 
-
+	@Override
+	public CommentInfoVO getComment(CommentInfoVO vo) {
+		System.out.println("service getComment 실행");
+		return userCommentDAO.getComment(vo);
+	}
 }
