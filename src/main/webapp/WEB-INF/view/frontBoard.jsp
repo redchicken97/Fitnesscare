@@ -394,7 +394,7 @@
 					</div> <!-- end fitness-email -->
 				</div>
 			</div>
-			<div class="subscribe-option set-bg" style="border:solid 1px blue; background-image: url('C:/images/footer.jpg'); width: 1520px; height: 200px;border:solid 1px white;  background-repeat: no-repeat;  margin-left: -180px; margin-top: 70px;  ">
+			<div class="subscribe-option set-bg" style="border:solid 1px blue; background-image: url('/resources/img/footer.jpg'); width: 1520px; height: 200px;border:solid 1px white;  background-repeat: no-repeat;  margin-left: -180px; margin-top: 70px;  ">
 				<div class="so-text">
 					<p style="font-weight: bold; color: white; font-size: 25px; padding-left: 60px; padding-top: 55px;">Subscribe To Our Mailing List<br> <span style="font-size: 20px; color: white; font-weight: bold;">Sign up to receive the latest information</span></p>
 				</div><!-- end so-text -->

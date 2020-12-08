@@ -44,8 +44,8 @@
 	<div class="Login" style="width:  1525px; height: 750px; background-color: white; margin-top: 100px;">
 		<div class="sign in" style="width:900px; height: 700px; border-radius: 30px; background-color: white; position: relative; left: 312.5px; top:25px;" >
 			<h1 style="font-size: 40px; font-family: sans-serif; text-align: center; position: relative; top: 30px; font-weight: bold; color: #585858;">Sign in </h1>
-			<a href="https://www.facebook.com" target="blank"><img src="C:\Users\82108\Desktop\print/google.png" class="text-center" style="border:0; outline: 0; margin-top: 50px; margin-left: 185px; border-radius: 10px; width: 260px; height: 45px; border:0; outline: 0;" ></a>
-			<a href="https://www.google.com" target="blank"><img src="C:\Users\82108\Desktop\print/facebook.png" class="text-center" style="border:0; outline: 0; margin-top: 50px; margin-left: 23px; border-radius: 10px; width: 260px; height: 45px; border:0; outline: 0;" ></a>
+			<a href="https://www.facebook.com" target="blank"><img src="/resources/img/facebook2.png" class="text-center" style="border:0; outline: 0; margin-top: 50px; margin-left: 185px; border-radius: 10px; width: 260px; height: 45px; border:0; outline: 0;" ></a>
+			<a href="https://www.google.com" target="blank"><img src="/resources/img/google.png" class="text-center" style="border:0; outline: 0; margin-top: 50px; margin-left: 23px; border-radius: 10px; width: 260px; height: 45px; border:0; outline: 0;" ></a>
 			<h3 style="text-align: center; border:dotted 1px gray; height: 0; width: 350px; display: inline-block;margin-left: 88px; margin-top: 30px;"></h3> <h3 style="margin-left: 20px; text-align: center; border:dotted 1px gray; height: 0; width: 350px; display: inline-block;"></h3>
 			<p style="text-align: center;margin-top: -52px;">OR</p>
 			<form>
