@@ -14,4 +14,6 @@ public interface UserCommentDAO {
 	
 	public CommentInfoVO getComment(CommentInfoVO vo);
 	
+	public void updateComment(CommentInfoVO vo);
+	
 }

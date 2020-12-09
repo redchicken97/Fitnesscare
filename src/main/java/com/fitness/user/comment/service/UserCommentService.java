@@ -14,4 +14,6 @@ public interface UserCommentService {
 	public List<String> getCommentList(CommentInfoVO vo);
 	
 	public CommentInfoVO getComment(CommentInfoVO vo);
+	
+	public void updateComment(CommentInfoVO vo);
 }

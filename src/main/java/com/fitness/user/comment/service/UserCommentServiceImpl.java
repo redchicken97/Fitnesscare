@@ -74,4 +74,9 @@ public class UserCommentServiceImpl implements UserCommentService {
 		System.out.println("service getComment 실행");
 		return userCommentDAO.getComment(vo);
 	}
+
+	@Override
+	public void updateComment(CommentInfoVO vo) {
+		userCommentDAO.updateComment(vo);
+	}
 }

@@ -19,7 +19,6 @@
 <body>
 
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 	<h1> 댓글 달기 </h1>
 	<form>
@@ -74,35 +73,39 @@
 		$.getJSON('commentList.do', function(data){
 			
 			var str = "";
+			console.log(data);
 			
 			$.each(data, function(index, item){
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
+					+  "<p class='replyId'>" + JSON.parse(item).cmt_id + "</p>"
 					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
 					+  "<p class='replyDate'>" + JSON.parse(item).cmt_regdate + "</p>"
 					+  "<p class='replyRecommend'>" + JSON.parse(item).cmt_rdcnt + "</p>"
 					+  "<p class='replyReport'>" + JSON.parse(item).cmt_reportcnt + "</p>"
 					+  "<p class='replayText'>" + JSON.parse(item).cmt_content + "</p>"
-					+  "<button type='button'>댓글 수정</button>"
-					+  "<button type='button'>답글 쓰기</button>"
+					+  "<a href='getComment.do?cmt_id="+ JSON.parse(item).cmt_id +"'>댓글 수정</a>"
+					+  "<button type='button'>수정 하기</button>"
 					+  "<button type='button'>신고 하기</button>"
 					+  "<button type='button'>추천 하기</button>"
 					+ "</li>"
 					+ "<hr/>";
+					
 		      });
 			
 			$('#replies').html(str);
 			
 		});
+	
 	}
 	
-		function blank_check(){
+	function blank_check(){
 			if($.trim($('#cmt_content').val()) == ""){
 				alert('댓글을 입력해주세요');
 				$('#cmt_content').val('').focus();
 				
 				return false;
 			}
-		}
+	}
 		
 	</script>
 

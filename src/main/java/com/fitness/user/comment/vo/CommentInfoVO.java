@@ -15,6 +15,7 @@ public class CommentInfoVO {
 	private int cmt_step;			// 답변 위치
 	private int cmt_depth;			// 답변 들여쓰기 횟수
 	private String cmt_content;		// 댓글 내용
+	
 	public int getCmt_id() {
 		return cmt_id;
 	}

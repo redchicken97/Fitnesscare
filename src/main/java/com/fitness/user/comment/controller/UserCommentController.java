@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
-import com.google.gson.JsonObject;
 
 @Controller
 public class UserCommentController {
@@ -38,16 +37,24 @@ public class UserCommentController {
 		return "comment";
 	}
 	
+	@RequestMapping("/getComment.do")
+	public String getComment(CommentInfoVO vo, Model model) {
+		System.out.println("controller에서 getComment 실행");
+		model.addAttribute("commentOne", userCommentService.getComment(vo));
+		return "getComment";
+	}
+	
 	@RequestMapping("/commentList.do")
 	public @ResponseBody List<String> getCommentList(CommentInfoVO vo) {	
 		System.out.println("controller에서 getCommentList 작동");
 		return userCommentService.getCommentList(vo);
 	}
 	
-	@RequestMapping("/getComment.do")
-	public String getComment(CommentInfoVO vo, Model model) {
-		System.out.println("controller에서 getComment 실행");
-		model.addAttribute("commentOne", userCommentService.getComment(vo));
-		return "getComment";
+	
+	@RequestMapping("/updateComment.do")
+	public String updateComment(CommentInfoVO vo) {
+		System.out.println("controller에서 updateComment 실행");
+		userCommentService.updateComment(vo);
+		return "redirect:/comment.do";
 	}
 } 

@@ -52,5 +52,11 @@
 		WHERE cmt_id = #{cmt_id}
 	</select>
 	
-	<update id=""></update>
+	<update id="updateComment" parameterType="commentInfo">
+		UPDATE comment_info
+		SET
+		cmt_content = #{cmt_content}, cmt_regdate = sysdate
+		WHERE
+		cmt_id = #{cmt_id}
+	</update>	
 </mapper>
