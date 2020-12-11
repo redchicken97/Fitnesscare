@@ -77,6 +77,19 @@ public class UserCommentServiceImpl implements UserCommentService {
 
 	@Override
 	public void updateComment(CommentInfoVO vo) {
+		System.out.println("service updateComment 실행");
 		userCommentDAO.updateComment(vo);
+	}
+
+	@Override
+	public void upRdCnt(CommentInfoVO vo) {
+		System.out.println("service 추천수 증가");
+		userCommentDAO.upRdCnt(vo);
+	}
+
+	@Override
+	public void upReportCnt(CommentInfoVO vo) {
+		System.out.println("service 신고수 증가");
+		userCommentDAO.upReportCnt(vo);
 	}
 }

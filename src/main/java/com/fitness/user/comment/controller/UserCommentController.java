@@ -1,10 +1,12 @@
 package com.fitness.user.comment.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,6 +52,14 @@ public class UserCommentController {
 		return userCommentService.getCommentList(vo);
 	}
 	
+	@RequestMapping("/upRdCnt.do")
+	@ResponseBody Map<String , Object> upRdCnt(@RequestBody Map<String, Object> param, CommentInfoVO vo) {
+		int cmt_id = (int) param.get("cmt_id");
+		int cmt_rdcnt = (int) param.get("cmt_rdcnt");
+		return param;
+	}
+	@RequestMapping("/upReportCnt.do")
+	public @re
 	
 	@RequestMapping("/updateComment.do")
 	public String updateComment(CommentInfoVO vo) {

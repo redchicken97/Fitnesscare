@@ -5,7 +5,7 @@
     
     	request.setCharacterEncoding("UTF-8");
     	UserVO userInfo = (UserVO) session.getAttribute("userInfo");
-//    	int userId = Integer.parseInt(request.getParameter("userId"));
+    	int userId = Integer.parseInt(request.getParameter("userId"));
     	int boardId = 0;
     	int refId = 2;
     
@@ -20,8 +20,8 @@
 
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
 
-	<h1> 댓글 달기 </h1>
-	<form>
+	<h1> 댓글 달기 </h1>s
+	<form action = "commentInput.do" method="POST">
 		<input type="hidden" name="cmt_type" value="free">
 		<input type="hidden" name="target_id" value="<%=boardId%>">
 		
@@ -36,8 +36,9 @@
 			</div>
 			<div class="form-group">
 				<label for="newReplywriter">작성자 이름</label>
-				<input class="form-control" id="newReplywriter" name="user_id" value="${userInfo.user_id }">
+				<input class="form-control" id="newReplywriter" name="user_id" value="<%=userId %>">
 			</div>
+			<input type="submit" value="입력">
 		</div>
 		
 		<div class="comment-box">

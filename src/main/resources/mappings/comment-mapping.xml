@@ -17,7 +17,7 @@
 		<result property="cmt_content" column="CMT_CONTENT"/>
 	</resultMap>
 	
-	<insert id="insertComment" parameterType="commentInfo">
+	<insert id="reInsertComment" parameterType="commentInfo">
 		INSERT INTO
 		comment_info
 		(cmt_id, target_id, cmt_type, user_id, cmt_ref, 
@@ -32,7 +32,7 @@
 		#{cmt_step},#{cmt_depth},#{cmt_content})
 	</insert>
 	
-	<insert id="reInsertComment" parameterType="commentInfo">
+	<insert id="insertComment" parameterType="commentInfo">
 		INSERT INTO
 		comment_info
 		(cmt_id, target_id, cmt_type, user_id, cmt_ref, 
@@ -58,5 +58,23 @@
 		cmt_content = #{cmt_content}, cmt_regdate = sysdate
 		WHERE
 		cmt_id = #{cmt_id}
-	</update>	
+	</update>
+	
+	<!-- 추천수 증가 -->
+	<update id="upRdCnt" parameterType="commentInfo">
+		UPDATE comment_info
+		SET 
+		cmt_rdcnt = cmt_rdcnt + 1
+		WHERE
+		cmt_id = #{cmt_id}
+	</update>
+	
+	<!-- 신고수 증가 -->
+	<update id="upReportCnt" parameterType="commentInfo">
+		UPDATE comment_info
+		SET
+		cmt_reportcnt = cmt_reportcnt + 1
+		WHERE
+		cmt_id = #{cmt_id}
+	</update>
 </mapper>

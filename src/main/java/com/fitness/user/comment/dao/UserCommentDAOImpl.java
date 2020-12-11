@@ -44,4 +44,18 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 		sqlSessionTemplate.update("commentDAO.updateComment", vo);
 	}
 
+	// 추천수 증가 
+	@Override
+	public void upRdCnt(CommentInfoVO vo) {
+		System.out.println("mybatis 추천 증가");
+		sqlSessionTemplate.update("commentDAO.upRdCnt", vo);
+	}
+
+	// 신고수 증가
+	@Override
+	public void upReportCnt(CommentInfoVO vo) {
+		System.out.println("mybatis 신고 증가");
+		sqlSessionTemplate.update("commentDAO.upReportCnt", vo);
+	}
+
 }

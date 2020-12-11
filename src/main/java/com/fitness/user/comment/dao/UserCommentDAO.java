@@ -16,4 +16,8 @@ public interface UserCommentDAO {
 	
 	public void updateComment(CommentInfoVO vo);
 	
+	public void upRdCnt(CommentInfoVO vo);
+	
+	public void upReportCnt(CommentInfoVO vo);
+	
 }

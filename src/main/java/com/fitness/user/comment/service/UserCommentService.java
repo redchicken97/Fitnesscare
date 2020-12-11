@@ -1,3 +1,4 @@
+
 package com.fitness.user.comment.service;
 
 import java.util.List;
@@ -16,4 +17,8 @@ public interface UserCommentService {
 	public CommentInfoVO getComment(CommentInfoVO vo);
 	
 	public void updateComment(CommentInfoVO vo);
+	
+	public void upRdCnt(CommentInfoVO vo);
+	
+	public void upReportCnt(CommentInfoVO vo);
 }
