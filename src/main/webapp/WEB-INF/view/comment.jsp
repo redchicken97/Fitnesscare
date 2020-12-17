@@ -81,13 +81,12 @@
 					+  "<p class='replyId'>" + JSON.parse(item).cmt_id + "</p>"
 					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
 					+  "<p class='replyDate'>" + JSON.parse(item).cmt_regdate + "</p>"
-					+  "<p class='replyRecommend'>" + JSON.parse(item).cmt_rdcnt + "</p>"
-					+  "<p class='replyReport'>" + JSON.parse(item).cmt_reportcnt + "</p>"
+					+  "<p id='replyRecommend'>" + JSON.parse(item).cmt_rdcnt + "</p>"
+					+  "<p id='replyReport'>" + JSON.parse(item).cmt_reportcnt + "</p>"
 					+  "<p class='replayText'>" + JSON.parse(item).cmt_content + "</p>"
 					+  "<a href='getComment.do?cmt_id="+ JSON.parse(item).cmt_id +"'>댓글 수정</a>"
-					+  "<button type='button'>수정 하기</button>"
 					+  "<button type='button'>신고 하기</button>"
-					+  "<button type='button'>추천 하기</button>"
+					+  "<button type='button' onclick='getUpRdCnt()'>추천 하기</button>"
 					+ "</li>"
 					+ "<hr/>";
 					
@@ -99,13 +98,28 @@
 	
 	}
 	
-	function blank_check(){
-			if($.trim($('#cmt_content').val()) == ""){
-				alert('댓글을 입력해주세요');
-				$('#cmt_content').val('').focus();
-				
-				return false;
+	function getUpRdCnt(){
+		$.ajax({
+			type: 'post',
+			contentType: 'application/json',
+			data: JSON.stringify($('form')) ,
+			dataType : 'json', 
+			url : 'upRdCnt.do'
+			success : function(data){
+				console.log(this.data);
+				alert('추천 !');
+//				document.getElementById('replyRecommend').innerHTML;
 			}
+		});
+	}
+	
+	function blank_check(){
+		if($.trim($('#cmt_content').val()) == ""){
+			alert('댓글을 입력해주세요');
+			$('#cmt_content').val('').focus();
+			
+			return false;
+		}
 	}
 		
 	</script>

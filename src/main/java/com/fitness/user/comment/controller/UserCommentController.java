@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 @Controller
 public class UserCommentController {
@@ -53,13 +56,29 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/upRdCnt.do")
-	@ResponseBody Map<String , Object> upRdCnt(@RequestBody Map<String, Object> param, CommentInfoVO vo) {
+	@ResponseBody String upRdCnt(@RequestBody Map<String, Object> param) {
+		System.out.println("controller 에서 upRdCnt 실행");
+		CommentInfoVO vo1 = new CommentInfoVO();
+		CommentInfoVO vo2 = new CommentInfoVO();
+		
+		JsonObject Rd = new JsonObject();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
 		int cmt_id = (int) param.get("cmt_id");
 		int cmt_rdcnt = (int) param.get("cmt_rdcnt");
-		return param;
+		vo1.setCmt_id(cmt_id);
+		vo1.setCmt_rdCnt(cmt_rdcnt);
+		
+		userCommentService.upRdCnt(vo1);	
+		
+		Rd.addProperty("cmt_id", userCommentService.getComment(vo2).getCmt_id());
+		Rd.addProperty("cmt_rdcnt", userCommentService.getComment(vo2).getCmt_rdCnt());
+		
+		String json = gson.toJson(Rd);
+		
+		return json;
 	}
-	@RequestMapping("/upReportCnt.do")
-	public @re
+//	@RequestMapping("/upReportCnt.do")
 	
 	@RequestMapping("/updateComment.do")
 	public String updateComment(CommentInfoVO vo) {
