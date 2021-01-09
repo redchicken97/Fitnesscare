@@ -1,4 +1,5 @@
 <%@page import="com.fitness.common.user.vo.UserVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
@@ -69,6 +70,8 @@
 	
 	getreplies();
 	
+	var alreadyLikeClick = false;
+	var alreadyHateClick = false;
 	
 	function getreplies(){
 		$.getJSON('commentList.do', function(data){
@@ -77,8 +80,11 @@
 			console.log(data);
 			
 			$.each(data, function(index, item){
+				var test = JSON.parse(item).cmt_rdcnt;
+				console.log(index + " : " + test);
+				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
-					+  "<p class='replyId'>" + JSON.parse(item).cmt_id + "</p>"
+					+  "<p id='replyId'>" + JSON.parse(item).cmt_id + "</p>"
 					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
 					+  "<p class='replyDate'>" + JSON.parse(item).cmt_regdate + "</p>"
 					+  "<p id='replyRecommend'>" + JSON.parse(item).cmt_rdcnt + "</p>"
@@ -86,10 +92,9 @@
 					+  "<p class='replayText'>" + JSON.parse(item).cmt_content + "</p>"
 					+  "<a href='getComment.do?cmt_id="+ JSON.parse(item).cmt_id +"'>댓글 수정</a>"
 					+  "<button type='button'>신고 하기</button>"
-					+  "<button type='button' onclick='getUpRdCnt()'>추천 하기</button>"
+					+  "<button type='button' id='likeButton' onclick='getUpRdCnt()' value='"+JSON.parse(item).cmt_id"'>추천 하기</button>"
 					+ "</li>"
 					+ "<hr/>";
-					
 		      });
 			
 			$('#replies').html(str);
@@ -98,13 +103,27 @@
 	
 	}
 	
+
 	function getUpRdCnt(){
+		
+		var lcnt = $('#likeButton').val();	// lcnt = 추천수 의미
+		var cmt_id = $('#replyId').text();
+		
+		if(!alreadyLikeClick){
+			lcnt = parseInt(lcnt) + 1;
+			alreadyLikeClick = true;
+		}
+		
+		var submitObj = new Object();
+		submitObj.cmt_id = cmt_id;
+		submitObj.cmt_rdcnt = lcnt;
+		
 		$.ajax({
 			type: 'post',
-			contentType: 'application/json',
-			data: JSON.stringify($('form')) ,
+			contentType: 'application/json;charset=UTF-8',
+			data: JSON.stringify(submitObj) ,
 			dataType : 'json', 
-			url : 'upRdCnt.do'
+			url : 'upRdCnt.do',
 			success : function(data){
 				console.log(this.data);
 				alert('추천 !');
@@ -116,8 +135,7 @@
 	function blank_check(){
 		if($.trim($('#cmt_content').val()) == ""){
 			alert('댓글을 입력해주세요');
-			$('#cmt_content').val('').focus();
-			
+			$('#cmt_content').val('').focus();			
 			return false;
 		}
 	}
