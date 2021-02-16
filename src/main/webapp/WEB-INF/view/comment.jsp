@@ -21,7 +21,7 @@
 
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
 
-	<h1> 댓글 달기 </h1>s
+	<h1> 댓글 달기 </h1>
 	<form action = "commentInput.do" method="POST">
 		<input type="hidden" name="cmt_type" value="free">
 		<input type="hidden" name="target_id" value="<%=boardId%>">
@@ -85,14 +85,14 @@
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
 					+  "<p id='replyId'>" + JSON.parse(item).cmt_id + "</p>"
-					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
-					+  "<p class='replyDate'>" + JSON.parse(item).cmt_regdate + "</p>"
-					+  "<p id='replyRecommend'>" + JSON.parse(item).cmt_rdcnt + "</p>"
-					+  "<p id='replyReport'>" + JSON.parse(item).cmt_reportcnt + "</p>"
-					+  "<p class='replayText'>" + JSON.parse(item).cmt_content + "</p>"
+					+  "<p class='replyWriter'> 작성자 아이디 : " + JSON.parse(item).user_id + "</p>"
+					+  "<p class='replyDate'> 작성날짜 : " + JSON.parse(item).cmt_regdate + "</p>"
+					+  "<p id='replyRecommend'>댓글 추천수 : " + JSON.parse(item).cmt_rdcnt + "</p>"
+					+  "<p id='replyReport'>댓글 신고수 : " + JSON.parse(item).cmt_reportcnt + "</p>"
+					+  "<p class='replayText'>댓글 내용 : " + JSON.parse(item).cmt_content + "</p>"
 					+  "<a href='getComment.do?cmt_id="+ JSON.parse(item).cmt_id +"'>댓글 수정</a>"
 					+  "<button type='button'>신고 하기</button>"
-					+  "<button type='button' id='likeButton' onclick='getUpRdCnt()' value='"+JSON.parse(item).cmt_id"'>추천 하기</button>"
+					+  "<button type='button' id='likeButton' onclick='getUpRdCnt()' value="+ JSON.parse(item).cmt_id +">추천 하기</button>"
 					+ "</li>"
 					+ "<hr/>";
 		      });
@@ -102,21 +102,30 @@
 		});
 	
 	}
-	
 
 	function getUpRdCnt(){
 		
 		var lcnt = $('#likeButton').val();	// lcnt = 추천수 의미
 		var cmt_id = $('#replyId').text();
 		
+		console.log("cmt_id : " + cmt_id);
+		
 		if(!alreadyLikeClick){
 			lcnt = parseInt(lcnt) + 1;
 			alreadyLikeClick = true;
 		}
 		
+		console.log(typeof lcnt);	//이곳에서 typeof 결과 : number
+		
 		var submitObj = new Object();
-		submitObj.cmt_id = cmt_id;
+		submitObj.cmt_id = parseInt(cmt_id);
 		submitObj.cmt_rdcnt = lcnt;
+ 		
+		console.log("cmt_rdcnt : " + submitObj.cmt_rdcnt)	//cmt_rdcnt 확인용
+		console.log("cmt_id : " + submitObj.cmt_id)	//cmt_id 확인용
+		
+		console.log(typeof submitObj.cmt_rdcnt);
+		console.log(typeof submitObj.cmt_id);
 		
 		$.ajax({
 			type: 'post',

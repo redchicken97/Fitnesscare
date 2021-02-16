@@ -59,20 +59,27 @@ public class UserCommentController {
 	@ResponseBody String upRdCnt(@RequestBody Map<String, Object> param) {
 		System.out.println("controller 에서 upRdCnt 실행");
 		CommentInfoVO vo1 = new CommentInfoVO();
-		CommentInfoVO vo2 = new CommentInfoVO();
+//		CommentInfoVO vo2 = new CommentInfoVO();
 		
 		JsonObject Rd = new JsonObject();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		
+		System.out.println(" cmt_id : " + param.get("cmt_id"));
+		System.out.println(" cmt_rdcnt : " + param.get("cmt_rdcnt"));
+				
 		int cmt_id = (int) param.get("cmt_id");
 		int cmt_rdcnt = (int) param.get("cmt_rdcnt");
+		
+//		System.out.println("cmt_id : " + cmt_id);
+//		System.out.println("cmt_rdcnt : " + cmt_rdcnt);
+		
 		vo1.setCmt_id(cmt_id);
 		vo1.setCmt_rdCnt(cmt_rdcnt);
 		
 		userCommentService.upRdCnt(vo1);	
 		
-		Rd.addProperty("cmt_id", userCommentService.getComment(vo2).getCmt_id());
-		Rd.addProperty("cmt_rdcnt", userCommentService.getComment(vo2).getCmt_rdCnt());
+		Rd.addProperty("cmt_id", userCommentService.getComment(vo1).getCmt_id());
+		Rd.addProperty("cmt_rdcnt", userCommentService.getComment(vo1).getCmt_rdCnt());
 		
 		String json = gson.toJson(Rd);
 		

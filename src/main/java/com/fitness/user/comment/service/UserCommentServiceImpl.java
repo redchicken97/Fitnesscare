@@ -42,7 +42,7 @@ public class UserCommentServiceImpl implements UserCommentService {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		for(CommentInfoVO vo1 : userCommentDAO.getCommentList(vo)) {
-			
+			 
 			if (vo1.getCmt_content() == null) {
 				vo1.setCmt_content(" ");
 			}
@@ -54,7 +54,7 @@ public class UserCommentServiceImpl implements UserCommentService {
 			List1.addProperty("cmt_type", vo1.getCmt_type());
 			List1.addProperty("user_id", vo1.getUser_id());
 			List1.addProperty("cmt_regdate", today);
-			List1.addProperty("cmt_rdcnt", vo1.getCmt_reportCnt());
+			List1.addProperty("cmt_rdcnt", vo1.getCmt_rdCnt());
 			List1.addProperty("cmt_reportcnt", vo1.getCmt_reportCnt());
 			List1.addProperty("cmt_ref", vo1.getCmt_ref());
 			List1.addProperty("cmt_step", vo1.getCmt_step());
@@ -63,7 +63,7 @@ public class UserCommentServiceImpl implements UserCommentService {
 
 			String json = gson.toJson(List1);		
 			
-			List2.add(json);
+			List2.add(json);			
 
 		}
 		return List2;
