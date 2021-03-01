@@ -84,8 +84,16 @@
 				console.log(index + " : " + test);
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
-					+  "<p id='replyId'>" + JSON.parse(item).cmt_id + "</p>"
-					+  "<p class='replyWriter'> 작성자 아이디 : " + JSON.parse(item).user_id + "</p>"
+				
+//					+  "<p id='replyId'>" + JSON.parse(item).cmt_id + "</p>"
+
+					+  "<p id='replyId'>" + 
+							"<ui>댓글 번호</ui></br />" + 
+							"<ui class='id'>"+JSON.parse(item).cmt_id + "</ui>" + 
+						"</p>"
+					
+					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
+					
 					+  "<p class='replyDate'> 작성날짜 : " + JSON.parse(item).cmt_regdate + "</p>"
 					+  "<p id='replyRecommend'>댓글 추천수 : " + JSON.parse(item).cmt_rdcnt + "</p>"
 					+  "<p id='replyReport'>댓글 신고수 : " + JSON.parse(item).cmt_reportcnt + "</p>"

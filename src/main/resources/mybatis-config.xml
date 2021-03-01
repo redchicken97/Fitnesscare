@@ -8,6 +8,7 @@
 		<typeAlias type="com.fitness.common.user.vo.UserVO" alias="user_info"></typeAlias>
 		<typeAlias type="com.fitness.user.kakaoMap.vo.HealthTeamVO" alias="healtTeam"/>
 		<typeAlias type="com.fitness.user.comment.vo.CommentInfoVO" alias="commentInfo"/>
+		<typeAlias type="com.fitness.user.comment.vo.CommentOverlapVO" alias="overlapCheck"/>
 		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"></typeAlias>
@@ -32,6 +33,7 @@
 	<mappers>
 		<mapper resource="mappings/healthTeam-mapping.xml"/>
 		<mapper resource="mappings/comment-mapping.xml"/>
+		<mapper resource="mappings/overlap-mapping.xml"/>
 		<mapper resource="mappings/fitness-mapping.xml"/>
 		<mapper resource="mappings/workoutSave-mapping.xml" />
 		<mapper resource="mappings/foodSave-mapping.xml" />
