@@ -3,6 +3,8 @@ package com.fitness.user.comment.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fitness.common.user.vo.UserVO;
 import com.fitness.user.comment.service.CommentOverlapService;
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
@@ -60,15 +63,23 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/upRdCnt.do")
-	@ResponseBody String upRdCnt(@RequestBody Map<String, Object> param) {
+	@ResponseBody String upRdCnt(@RequestBody Map<String, Object> param, HttpSession session) {
 		System.out.println("controller 에서 upRdCnt 실행");
 		CommentInfoVO vo1 = new CommentInfoVO();
+		
+		UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+		
+		System.out.println("userInfo : " + userInfo);
+		
+		boolean pass = true;
 		
 		JsonObject Rd = new JsonObject();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 				
 		int cmt_id = (int) param.get("cmt_id");
 		int cmt_rdcnt = (int) param.get("cmt_rdcnt");
+		int user_id = (int) param.get("user_id");
+		
 		
 		vo1.setCmt_id(cmt_id);
 		vo1.setCmt_rdCnt(cmt_rdcnt);

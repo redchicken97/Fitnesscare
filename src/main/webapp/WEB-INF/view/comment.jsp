@@ -84,15 +84,16 @@
 				console.log(index + " : " + test);
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
-				
-//					+  "<p id='replyId'>" + JSON.parse(item).cmt_id + "</p>"
 
-					+  "<p id='replyId'>" + 
+					+  	"<p class='replyId'>" + 
 							"<ui>댓글 번호</ui></br />" + 
-							"<ui class='id'>"+JSON.parse(item).cmt_id + "</ui>" + 
+							"<ui id='id'>"+JSON.parse(item).cmt_id + "</ui>" + 
 						"</p>"
-					
-					+  "<p class='replyWriter'>" + JSON.parse(item).user_id + "</p>"
+
+					+	"<p class='replyWriter'>" +
+							"<ui>작성자 번호</ui></br />" + 
+							"<ui id='writer'>"+ JSON.parse(item).user_id +"</ui>" +
+						"</p>"
 					
 					+  "<p class='replyDate'> 작성날짜 : " + JSON.parse(item).cmt_regdate + "</p>"
 					+  "<p id='replyRecommend'>댓글 추천수 : " + JSON.parse(item).cmt_rdcnt + "</p>"
@@ -104,7 +105,7 @@
 					+ "</li>"
 					+ "<hr/>";
 		      });
-			
+
 			$('#replies').html(str);
 			
 		});
@@ -114,9 +115,10 @@
 	function getUpRdCnt(){
 		
 		var lcnt = $('#likeButton').val();	// lcnt = 추천수 의미
-		var cmt_id = $('#replyId').text();
+		var cmt_id = $('#id').text();
+		var user_id = $('#writer').text();
 		
-		console.log("cmt_id : " + cmt_id);
+		console.log(cmt_id);
 		
 		if(!alreadyLikeClick){
 			lcnt = parseInt(lcnt) + 1;
@@ -128,12 +130,7 @@
 		var submitObj = new Object();
 		submitObj.cmt_id = parseInt(cmt_id);
 		submitObj.cmt_rdcnt = lcnt;
- 		
-		console.log("cmt_rdcnt : " + submitObj.cmt_rdcnt)	//cmt_rdcnt 확인용
-		console.log("cmt_id : " + submitObj.cmt_id)	//cmt_id 확인용
-		
-		console.log(typeof submitObj.cmt_rdcnt);
-		console.log(typeof submitObj.cmt_id);
+		submitObj.user_id = parseInt(user_id);
 		
 		$.ajax({
 			type: 'post',
