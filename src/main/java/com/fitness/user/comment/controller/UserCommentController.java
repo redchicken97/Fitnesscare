@@ -16,6 +16,7 @@ import com.fitness.common.user.vo.UserVO;
 import com.fitness.user.comment.service.CommentOverlapService;
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
+import com.fitness.user.comment.vo.CommentOverlapVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -66,32 +67,59 @@ public class UserCommentController {
 	@ResponseBody String upRdCnt(@RequestBody Map<String, Object> param, HttpSession session) {
 		System.out.println("controller 에서 upRdCnt 실행");
 		CommentInfoVO vo1 = new CommentInfoVO();
+		CommentOverlapVO Cvo = new CommentOverlapVO();
 		
 		UserVO userInfo = (UserVO) session.getAttribute("userInfo");
 		
 		System.out.println("userInfo : " + userInfo);
 		
-		boolean pass = true;
-		
 		JsonObject Rd = new JsonObject();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		int user_id = 0;
+		String json = null;
+
+		try {
+			int cmt_id = (int) param.get("cmt_id");
+			int cmt_rdcnt = (int) param.get("cmt_rdcnt");
+			System.out.println("cmt_id : " + param.get("cmt_id"));
+			System.out.println("cmt_rdcnt : " + param.get("rdcnt"));
+			user_id = (int) param.get("user_id");
+			
+			boolean pass = checkUserId(userInfo.getUser_id(), user_id);
+			
+			vo1.setCmt_id(cmt_id);
+			vo1.setCmt_rdCnt(cmt_rdcnt);	
+			
+			Rd.addProperty("cmt_id", userCommentService.getComment(vo1).getCmt_id());
+			Rd.addProperty("cmt_rdcnt", userCommentService.getComment(vo1).getCmt_rdCnt());
+			
+			json = gson.toJson(Rd);
+			
+			if (pass) {
+				int cnt = 0;
+				if(user_id != 0) {
+					Cvo.setCmt_id(cmt_id); Cvo.setUser_id(user_id); 
+					cnt = commentOverlapService.checkOverlap(Cvo);
+					System.out.println("cnt : " + cnt);
+				}
+				if(cnt == 0) {
+					Cvo.setCmt_id(cmt_id); Cvo.setUser_id(user_id); Cvo.setCnt_sep("Y");
+					commentOverlapService.insertOverlap(Cvo);
+					userCommentService.upRdCnt(vo1);
+					return json;
+				}
+				if(cnt > 0) {
+					pass = false;
+					return null;
+				}
 				
-		int cmt_id = (int) param.get("cmt_id");
-		int cmt_rdcnt = (int) param.get("cmt_rdcnt");
-		int user_id = (int) param.get("user_id");
-		
-		
-		vo1.setCmt_id(cmt_id);
-		vo1.setCmt_rdCnt(cmt_rdcnt);
-		
-		userCommentService.upRdCnt(vo1);	
-		
-		Rd.addProperty("cmt_id", userCommentService.getComment(vo1).getCmt_id());
-		Rd.addProperty("cmt_rdcnt", userCommentService.getComment(vo1).getCmt_rdCnt());
-		
-		String json = gson.toJson(Rd);
-		
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		return json;
+		
+		
 	}
 //	@RequestMapping("/upReportCnt.do")
 	
@@ -100,5 +128,20 @@ public class UserCommentController {
 		System.out.println("controller에서 updateComment 실행");
 		userCommentService.updateComment(vo);
 		return "redirect:/comment.do";
+	}
+	
+	public boolean checkUserId(int userInfoId, int userId) { 
+		//userInfoId = 세션에서 가져온 유저 고유 아이디
+		//userId = jsp 에서 직접 가져오는 유저 고유 아이디
+		int meUser = userInfoId;
+		int myUser = userId;
+		
+		boolean pass = false;
+		
+		if (meUser == myUser) {
+			pass = true;
+		}
+		
+		return pass;
 	}
 } 

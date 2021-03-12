@@ -87,12 +87,12 @@
 
 					+  	"<p class='replyId'>" + 
 							"<ui>댓글 번호</ui></br />" + 
-							"<ui id='id'>"+JSON.parse(item).cmt_id + "</ui>" + 
+							"<ui class='id'>"+JSON.parse(item).cmt_id + "</ui>" + 
 						"</p>"
 
 					+	"<p class='replyWriter'>" +
 							"<ui>작성자 번호</ui></br />" + 
-							"<ui id='writer'>"+ JSON.parse(item).user_id +"</ui>" +
+							"<ui class='writer'>"+ JSON.parse(item).user_id +"</ui>" +
 						"</p>"
 					
 					+  "<p class='replyDate'> 작성날짜 : " + JSON.parse(item).cmt_regdate + "</p>"
@@ -101,7 +101,7 @@
 					+  "<p class='replayText'>댓글 내용 : " + JSON.parse(item).cmt_content + "</p>"
 					+  "<a href='getComment.do?cmt_id="+ JSON.parse(item).cmt_id +"'>댓글 수정</a>"
 					+  "<button type='button'>신고 하기</button>"
-					+  "<button type='button' id='likeButton' onclick='getUpRdCnt()' value="+ JSON.parse(item).cmt_id +">추천 하기</button>"
+					+  "<button type='button' class='likeButton' onclick='getUpRdCnt("+index+")' value="+ JSON.parse(item).cmt_id +">추천 하기</button>"
 					+ "</li>"
 					+ "<hr/>";
 		      });
@@ -112,13 +112,17 @@
 	
 	}
 
-	function getUpRdCnt(){
+	function getUpRdCnt(cnt){
 		
-		var lcnt = $('#likeButton').val();	// lcnt = 추천수 의미
-		var cmt_id = $('#id').text();
-		var user_id = $('#writer').text();
+		var check = cnt;
 		
-		console.log(cmt_id);
+		var lcnt = $('.likeButton').eq(check).val();	// lcnt = 추천수 의미
+		var cmt_id = $('.id').eq(check).text();
+		var user_id = $('.writer').eq(check).text();
+		
+		console.log("lcnt : " + lcnt);
+		console.log("cmt_id : " + cmt_id);
+		console.log("user_id : " + user_id);
 		
 		if(!alreadyLikeClick){
 			lcnt = parseInt(lcnt) + 1;
@@ -132,6 +136,7 @@
 		submitObj.cmt_rdcnt = lcnt;
 		submitObj.user_id = parseInt(user_id);
 		
+		
 		$.ajax({
 			type: 'post',
 			contentType: 'application/json;charset=UTF-8',
@@ -143,6 +148,9 @@
 				alert('추천 !');
 //				document.getElementById('replyRecommend').innerHTML;
 			}
+		})
+		.fail(function(){
+			alert("한개의 글에 한번만 클릭이 가능힙니다 !");
 		});
 	}
 	
