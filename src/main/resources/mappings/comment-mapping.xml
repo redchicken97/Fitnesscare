@@ -26,11 +26,11 @@
 		comment_info),
 		#{target_id},#{cmt_type},#{user_id},
 		 
-		(select nvl(max(cmt_id), 0) from comment_info),
-		 
+		(select nvl(max(cmt_id), 0) + 1 from comment_info),	 
 
 		#{cmt_step},#{cmt_depth},#{cmt_content})
 	</insert>
+	<!-- 
 	
 	<insert id="insertComment" parameterType="commentInfo">
 		INSERT INTO
@@ -42,6 +42,8 @@
 		#{target_id},#{cmt_type},#{user_id},#{cmt_ref},
 		#{cmt_step},#{cmt_depth},#{cmt_content})
 	</insert>
+	 -->
+	
 	
 	<select id="getCommentList" resultMap="commentResult">
 		SELECT * FROM comment_info ORDER BY cmt_id DESC

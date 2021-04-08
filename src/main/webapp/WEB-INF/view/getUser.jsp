@@ -5,6 +5,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+	System.out.println("userInfo : "+ userInfo);
 	
 %>
 

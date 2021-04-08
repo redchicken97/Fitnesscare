@@ -6,9 +6,9 @@
     
     	request.setCharacterEncoding("UTF-8");
     	UserVO userInfo = (UserVO) session.getAttribute("userInfo");
-    	int userId = Integer.parseInt(request.getParameter("userId"));
+ //   	int userId = Integer.parseInt(request.getParameter("userId").trim());
     	int boardId = 0;
-    	int refId = 2;
+//    	int refId = 2;
     
     %>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 			</div>
 			<div class="form-group">
 				<label for="newReplywriter">작성자 이름</label>
-				<input class="form-control" id="newReplywriter" name="user_id" value="<%=userId %>">
+				<input class="form-control" id="newReplywriter" name="user_id" value="${userInfo.user_id }">
 			</div>
 			<input type="submit" value="입력">
 		</div>
@@ -71,8 +71,8 @@
 	
 	getreplies();
 	
-	var alreadyLikeClick = false;
-	var alreadyHateClick = false;
+//	var alreadyLikeClick = false;
+//	var alreadyHateClick = false;
 	
 	function getreplies(){
 		$.getJSON('commentList.do', function(data){
@@ -122,7 +122,7 @@
 		if(!ch){
 			var UsBox = document.getElementById('Ubox');	// 대댓글 div를 찾기위한 유저 아이디 입력칸 객체
 			var ReplyBox = UsBox.parentNode;	// 대댓글 입력 칸이 모드 모여있는 div
-			var commentBox = ReplyBox.parentNode;	// 댓글 창 div
+			var commentBox = ReplyBox.parentNode;	// 댓글 창
 			
 			commentBox.removeChild(ReplyBox);
 		}
@@ -222,10 +222,10 @@
 		console.log("cmt_id : " + cmt_id);
 		console.log("user_id : " + user_id);
 		
-		if(!alreadyLikeClick){
-			lcnt = parseInt(lcnt) + 1;
-			alreadyLikeClick = true;
-		}
+		
+		lcnt = parseInt(lcnt) + 1;
+		alreadyLikeClick = true;
+		
 		
 		console.log(typeof lcnt);	//이곳에서 typeof 결과 : number
 		
@@ -243,7 +243,7 @@
 			success : function(data){
 				console.log(this.data);
 				alert('추천 !');
-//				document.getElementById('replyRecommend').innerHTML;
+				getreplies();
 			}
 		})
 		.fail(function(){

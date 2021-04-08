@@ -21,17 +21,21 @@ public class UserCommentServiceImpl implements UserCommentService {
 	@Autowired
 	private UserCommentDAO userCommentDAO;
 	
+	// 댓글 달기
 	@Override
 	public void insertComment(CommentInfoVO vo) {
 		System.out.println("service insertComment 실행");
 		userCommentDAO.insertComment(vo);
 	}
 
+	//대댓글 달기
 	@Override
 	public void reInsertComment(CommentInfoVO vo) {
 		System.out.println("service reInsertComment 실행");
 		userCommentDAO.reInsertComment(vo);
 	}
+	 
+	
 	
 	@Override
 	public List<String> getCommentList(CommentInfoVO vo) {

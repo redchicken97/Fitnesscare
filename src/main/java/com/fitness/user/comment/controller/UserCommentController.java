@@ -67,6 +67,7 @@ public class UserCommentController {
 	@ResponseBody String upRdCnt(@RequestBody Map<String, Object> param, HttpSession session) {
 		System.out.println("controller 에서 upRdCnt 실행");
 		CommentInfoVO vo1 = new CommentInfoVO();
+		CommentInfoVO vo2 = new CommentInfoVO();
 		CommentOverlapVO Cvo = new CommentOverlapVO();
 		
 		UserVO userInfo = (UserVO) session.getAttribute("userInfo");
@@ -82,38 +83,37 @@ public class UserCommentController {
 			int cmt_id = (int) param.get("cmt_id");
 			int cmt_rdcnt = (int) param.get("cmt_rdcnt");
 			System.out.println("cmt_id : " + param.get("cmt_id"));
-			System.out.println("cmt_rdcnt : " + param.get("rdcnt"));
+			System.out.println("cmt_rdcnt : " + param.get("cmt_rdcnt"));
 			user_id = (int) param.get("user_id");
 			
-			boolean pass = checkUserId(userInfo.getUser_id(), user_id);
-			
 			vo1.setCmt_id(cmt_id);
-			vo1.setCmt_rdCnt(cmt_rdcnt);	
+			vo1.setCmt_rdCnt(cmt_rdcnt);
 			
-			Rd.addProperty("cmt_id", userCommentService.getComment(vo1).getCmt_id());
-			Rd.addProperty("cmt_rdcnt", userCommentService.getComment(vo1).getCmt_rdCnt());
+			vo2 = userCommentService.getComment(vo1);
+			
+			Rd.addProperty("cmt_id", vo2.getCmt_id());
+			Rd.addProperty("cmt_rdcnt", vo2.getCmt_rdCnt());
 			
 			json = gson.toJson(Rd);
 			
-			if (pass) {
-				int cnt = 0;
-				if(user_id != 0) {
-					Cvo.setCmt_id(cmt_id); Cvo.setUser_id(user_id); 
-					cnt = commentOverlapService.checkOverlap(Cvo);
-					System.out.println("cnt : " + cnt);
-				}
-				if(cnt == 0) {
-					Cvo.setCmt_id(cmt_id); Cvo.setUser_id(user_id); Cvo.setCnt_sep("Y");
-					commentOverlapService.insertOverlap(Cvo);
-					userCommentService.upRdCnt(vo1);
-					return json;
-				}
-				if(cnt > 0) {
-					pass = false;
-					return null;
-				}
-				
+
+			int cnt = 0;
+			if(user_id != 0) {
+				Cvo.setCmt_id(cmt_id); Cvo.setUser_id(user_id); 
+				cnt = commentOverlapService.checkOverlap(Cvo);
+				System.out.println("cnt : " + cnt);
 			}
+			if(cnt == 0) {
+				Cvo.setCmt_id(cmt_id); Cvo.setUser_id(user_id); Cvo.setCnt_sep("Y");
+				commentOverlapService.insertOverlap(Cvo);
+				userCommentService.upRdCnt(vo1);
+				return json;
+			}
+			if(cnt > 0) {
+				return null;
+			}
+				
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -130,18 +130,5 @@ public class UserCommentController {
 		return "redirect:/comment.do";
 	}
 	
-	public boolean checkUserId(int userInfoId, int userId) { 
-		//userInfoId = 세션에서 가져온 유저 고유 아이디
-		//userId = jsp 에서 직접 가져오는 유저 고유 아이디
-		int meUser = userInfoId;
-		int myUser = userId;
-		
-		boolean pass = false;
-		
-		if (meUser == myUser) {
-			pass = true;
-		}
-		
-		return pass;
-	}
+	
 } 
