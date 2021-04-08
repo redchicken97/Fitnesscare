@@ -46,7 +46,7 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 					   
-			sb.append("&client_id=e11e0bca2855ad3abc123dc69e2a7bf7");
+			sb.append("&client_id=317680d5a011b0c1d9c69e3363dec15d");
 						
 			sb.append("&redirect_uri=http://localhost:8181/Fitnesscare/kakaoredirect.do");
 						

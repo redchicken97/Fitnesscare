@@ -48,6 +48,7 @@
 			</ul>
 		</div>
 		
+		
 	</form>
 
 
@@ -84,24 +85,25 @@
 				console.log(index + " : " + test);
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
-
-					+  	"<p class='replyId'>" + 
-							"<ui>댓글 번호</ui></br />" + 
-							"<ui class='id'>"+JSON.parse(item).cmt_id + "</ui>" + 
-						"</p>"
-
-					+	"<p class='replyWriter'>" +
-							"<ui>작성자 번호</ui></br />" + 
-							"<ui class='writer'>"+ JSON.parse(item).user_id +"</ui>" +
-						"</p>"
 					
-					+  "<p class='replyDate'> 작성날짜 : " + JSON.parse(item).cmt_regdate + "</p>"
-					+  "<p id='replyRecommend'>댓글 추천수 : " + JSON.parse(item).cmt_rdcnt + "</p>"
-					+  "<p id='replyReport'>댓글 신고수 : " + JSON.parse(item).cmt_reportcnt + "</p>"
-					+  "<p class='replayText'>댓글 내용 : " + JSON.parse(item).cmt_content + "</p>"
-					+  "<a href='getComment.do?cmt_id="+ JSON.parse(item).cmt_id +"'>댓글 수정</a>"
-					+  "<button type='button'>신고 하기</button>"
-					+  "<button type='button' class='likeButton' onclick='getUpRdCnt("+index+")' value="+ JSON.parse(item).cmt_id +">추천 하기</button>"
+					+ "<div class='replybox'>" 
+						+ "<ui>댓글 번호 : </ui>"
+						+ "<ui class='replyId'>"+ JSON.parse(item).cmt_id  +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ui>"
+						+ "<ui>작성자 번호 : </ui>"
+						+ "<ui class='replyWriter'>"+ JSON.parse(item).user_id +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ui>"
+						+ "<ui>작성 날짜 : </ui>"
+						+ "<ui class='replyDate'>"+ JSON.parse(item).cmt_regdate +"</ui><br /><br />"
+						+ "<ui>댓글 내용 : </ui>"
+						+ "<ui class='replyContent'>"+ JSON.parse(item).cmt_content +"</ui><br /><br />"
+						+ "<ui>추천 수 :</ui>"
+						+ "<ui class='replyRecommend'>"+ JSON.parse(item).cmt_rdcnt +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ui>"
+						+ "<ui>신고 수 : </ui>"
+						+ "<ui class='replyReport'>"+ JSON.parse(item).cmt_reportcnt + "</ui><br /><br />"
+						+ "<button type='button' class='likeButton' onclick='getUpRdCnt("+index+")'>추천 하기</button>"
+						+ "<button type='button'>신고 하기</button>"
+						+ "<button type='button' class='replyButton' onclick='makeReplyBox("+index+")'>대댓글 달기</button>"
+					+ "</div>"
+					
 					+ "</li>"
 					+ "<hr/>";
 		      });
@@ -111,14 +113,110 @@
 		});
 	
 	}
+	// 개발 방향 선회 -> 대댓글 하나만 열리기
+	
+	var ch = true; // 대댓글 창이 열렸는지 안 열렸는지 확인용 변수
+
+	function makeReplyBox(cnt){
+		
+		if(!ch){
+			var UsBox = document.getElementById('Ubox');	// 대댓글 div를 찾기위한 유저 아이디 입력칸 객체
+			var ReplyBox = UsBox.parentNode;	// 대댓글 입력 칸이 모드 모여있는 div
+			var commentBox = ReplyBox.parentNode;	// 댓글 창 div
+			
+			commentBox.removeChild(ReplyBox);
+		}
+		
+		var RBox = document.getElementsByClassName('replybox')[cnt];
+		
+		var blank1 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
+		var blank2 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
+		var blank3 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
+		var blank4 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
+		
+		var Div = document.createElement('div');
+		Div.setAttribute('id', 'ListBox');
+		
+		var userBox = document.createElement('input');
+		userBox.setAttribute('id', 'Ubox');
+		userBox.setAttribute('placeholder', '유저 입력');
+		
+		var insert = document.createElement('button');
+		insert.setAttribute('id', 'iB');	//*.do를 작동시키기 위한 버튼
+		var ButtonText = document.createTextNode('댓글 등록');
+		insert.appendChild(ButtonText);
+		
+		var del = document.createElement('button');
+		del.setAttribute('onclick', 'delReply()');
+		var delText = document.createTextNode('닫기');
+		del.appendChild(delText);
+		
+		var br0 = document.createElement('br');
+		var br1 = document.createElement('br');
+		var br2 = document.createElement('br');
+		var br3 = document.createElement('br');
+		
+		var contentBox = document.createElement('input');
+		contentBox.setAttribute('id', 'conBox');
+		contentBox.setAttribute('placeholder', '내용입력');
+		
+		var refBox = document.createElement('input');
+		refBox.setAttribute('id', 'rBox');
+		refBox.setAttribute('placeholder', '그룹');
+		
+		var stepBox = document.createElement('input');
+		stepBox.setAttribute('id', 'sBox');
+		stepBox.setAttribute('placeholder', 'step');
+		
+		var depthBox = document.createElement('input');
+		depthBox.setAttribute('id', 'dBox');
+		depthBox.setAttribute('placeholder', '들여쓰기');
+		
+		Div.appendChild(br0);
+		
+		Div.appendChild(userBox);
+		
+		Div.appendChild(br1);
+		
+		Div.appendChild(contentBox);
+		Div.appendChild(blank1);
+		Div.appendChild(insert);	//등록 버튼
+		
+		Div.appendChild(blank4);
+		
+		Div.appendChild(del);		//닫기 버튼
+		
+		Div.appendChild(br2);
+		
+		Div.appendChild(refBox);
+		Div.appendChild(blank2);
+		Div.appendChild(stepBox);
+		Div.appendChild(blank3);
+		Div.appendChild(depthBox);
+		
+		RBox.appendChild(Div);
+		
+		ch = false;
+		
+	}
+	
+	function delReply(){
+		var rb = document.getElementById('rBox');
+		var RD = rb.parentNode;
+		var RDIV = RD.parentNode;
+		
+		RDIV.removeChild(RD);
+		
+		ch = true;
+	}
 
 	function getUpRdCnt(cnt){
 		
 		var check = cnt;
 		
-		var lcnt = $('.likeButton').eq(check).val();	// lcnt = 추천수 의미
-		var cmt_id = $('.id').eq(check).text();
-		var user_id = $('.writer').eq(check).text();
+		var lcnt = $('.replyRecommend').eq(check).text();	// lcnt = 추천수 의미
+		var cmt_id = $('.replyId').eq(check).text();
+		var user_id = $('.replyWriter').eq(check).text();
 		
 		console.log("lcnt : " + lcnt);
 		console.log("cmt_id : " + cmt_id);
@@ -134,8 +232,7 @@
 		var submitObj = new Object();
 		submitObj.cmt_id = parseInt(cmt_id);
 		submitObj.cmt_rdcnt = lcnt;
-		submitObj.user_id = parseInt(user_id);
-		
+		submitObj.user_id = parseInt(user_id);	
 		
 		$.ajax({
 			type: 'post',

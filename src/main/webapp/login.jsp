@@ -27,7 +27,7 @@
 				<td><input type="submit" value="로그인"></td>
 				<td>
 					<a href="https://kauth.kakao.com/oauth/authorize
-						?client_id=e11e0bca2855ad3abc123dc69e2a7bf7
+						?client_id=317680d5a011b0c1d9c69e3363dec15d
 						&redirect_uri=http://localhost:8181/Fitnesscare/kakaoredirect.do
 						&response_type=code">
 						<img src="/Fitnesscare/resources/img/kakao_login_small.png">
