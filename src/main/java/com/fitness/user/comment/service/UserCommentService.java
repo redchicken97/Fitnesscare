@@ -18,6 +18,8 @@ public interface UserCommentService {
 	
 	public void updateComment(CommentInfoVO vo);
 	
+	public void checkUpdateComment(CommentInfoVO vo);
+	
 	public void upRdCnt(CommentInfoVO vo);
 	
 	public void upReportCnt(CommentInfoVO vo);

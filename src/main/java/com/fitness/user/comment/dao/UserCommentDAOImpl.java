@@ -17,13 +17,13 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 	@Override
 	public void insertComment(CommentInfoVO vo) {
 		System.out.println("mybatis insertComment 실행");
-		sqlSessionTemplate.insert("commentDAO.reInsertComment", vo);
+		sqlSessionTemplate.insert("commentDAO.insertComment", vo);
 	}
 	
 	@Override
 	public void reInsertComment(CommentInfoVO vo) {
 		System.out.println("mybatis reInsertComment 실행");
-		sqlSessionTemplate.insert("commentDAO.insertComment", vo);
+		sqlSessionTemplate.insert("commentDAO.reInsertComment", vo);
 	}
 
 	@Override
@@ -56,6 +56,13 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 	public void upReportCnt(CommentInfoVO vo) {
 		System.out.println("mybatis 신고 증가");
 		sqlSessionTemplate.update("commentDAO.upReportCnt", vo);
+	}
+	
+	// 대댓글 확인용 업데이트
+	@Override
+	public void checkUpdateComment(CommentInfoVO vo) {
+		System.out.println("mybatis check comment 실행");
+		sqlSessionTemplate.update("commentDAO.checkUpdateComment", vo);
 	}
 
 }

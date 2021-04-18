@@ -15,6 +15,7 @@ public class CommentInfoVO {
 	private int cmt_step;			// 답변 위치
 	private int cmt_depth;			// 답변 들여쓰기 횟수
 	private String cmt_content;		// 댓글 내용
+	private int reply_check;		// 대댓글이 달렸나 안달렸나 (0 이면 없고 1이면 있음)
 	
 	public int getCmt_id() {
 		return cmt_id;
@@ -82,13 +83,20 @@ public class CommentInfoVO {
 	public void setCmt_rdCnt(int cmt_rdCnt) {
 		this.cmt_rdCnt = cmt_rdCnt;
 	}
-	
+	public int getReply_check() {
+		return reply_check;
+	}
+	public void setReply_check(int reply_check) {
+		this.reply_check = reply_check;
+	}
 	@Override
 	public String toString() {
 		return "CommentInfoVO [cmt_id=" + cmt_id + ", target_id=" + target_id + ", cmt_type=" + cmt_type + ", user_id="
 				+ user_id + ", cmt_regdate=" + cmt_regdate + ", cmt_rdCnt=" + cmt_rdCnt + ", cmt_reportCnt="
 				+ cmt_reportCnt + ", cmt_ref=" + cmt_ref + ", cmt_step=" + cmt_step + ", cmt_depth=" + cmt_depth
-				+ ", cmt_content=" + cmt_content + "]";
+				+ ", cmt_content=" + cmt_content + ", reply_check=" + reply_check + "]";
 	}
+	
+
 	
 }

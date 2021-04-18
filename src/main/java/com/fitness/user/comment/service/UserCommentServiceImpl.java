@@ -34,8 +34,6 @@ public class UserCommentServiceImpl implements UserCommentService {
 		System.out.println("service reInsertComment 실행");
 		userCommentDAO.reInsertComment(vo);
 	}
-	 
-	
 	
 	@Override
 	public List<String> getCommentList(CommentInfoVO vo) {
@@ -64,6 +62,7 @@ public class UserCommentServiceImpl implements UserCommentService {
 			List1.addProperty("cmt_step", vo1.getCmt_step());
 			List1.addProperty("cmt_depth", vo1.getCmt_depth());
 			List1.addProperty("cmt_content", vo1.getCmt_content());
+			List1.addProperty("reply_check", vo1.getReply_check());
 
 			String json = gson.toJson(List1);		
 			
@@ -95,5 +94,11 @@ public class UserCommentServiceImpl implements UserCommentService {
 	public void upReportCnt(CommentInfoVO vo) {
 		System.out.println("service 신고수 증가");
 		userCommentDAO.upReportCnt(vo);
+	}
+
+	@Override
+	public void checkUpdateComment(CommentInfoVO vo) {
+		System.out.println("service check comment 실행");
+		userCommentDAO.checkUpdateComment(vo);
 	}
 }

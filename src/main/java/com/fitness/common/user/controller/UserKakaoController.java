@@ -33,13 +33,15 @@ public class UserKakaoController {
 		
 		//kakao api를 이용한 이메일 가져오기
 		String kakaoId = (String) userInfo.get("email");
+		System.out.println("카카오 api 이메일 가져오기");
 		
 		//가져온 이메일을 이용해서 유저가 있는지 확인
 		UserVO KakaoUser = userService.userLogin(kakaoId);
+		System.out.println("이메일 확인하기");
 		
 		//있다면 로그인 화면으로 이동
 		if (KakaoUser != null) {
-			model.addAttribute("userInfo", KakaoUser);
+			session.setAttribute("userInfo", KakaoUser);
 			return "getUser";
 		}
 		
