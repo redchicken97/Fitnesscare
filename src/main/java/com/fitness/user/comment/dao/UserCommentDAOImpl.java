@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fitness.user.comment.vo.CommentInfoVO;
 
@@ -20,10 +21,26 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 		sqlSessionTemplate.insert("commentDAO.insertComment", vo);
 	}
 	
+	@Transactional
 	@Override
 	public void reInsertComment(CommentInfoVO vo) {
 		System.out.println("mybatis reInsertComment 실행");
-		sqlSessionTemplate.insert("commentDAO.reInsertComment", vo);
+		CommentInfoVO in = new CommentInfoVO();		// insert 용 vo
+		CommentInfoVO up = new CommentInfoVO();		// update 용 vo
+		
+		in.setTarget_id(vo.getTarget_id());
+		in.setCmt_type(vo.getCmt_type());
+		in.setUser_id(vo.getUser_id());
+		in.setCmt_ref(vo.getCmt_ref());
+		in.setCmt_step(vo.getCmt_step());
+		in.setCmt_depth(vo.getCmt_depth());
+		in.setCmt_content(vo.getCmt_content());
+		
+		up.setCmt_id(vo.getCmt_id());
+		
+		System.out.println(up.toString());
+		sqlSessionTemplate.insert("commentDAO.reInsertComment", in);
+		sqlSessionTemplate.update("commentDAO.checkUpdateComment", up);
 	}
 
 	@Override

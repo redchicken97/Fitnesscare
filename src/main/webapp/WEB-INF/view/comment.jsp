@@ -22,7 +22,7 @@
 	<script src="/Fitnesscare/resources/js/jquery-3.5.1.min.js"></script>
 
 	<h1> 댓글 달기 </h1>
-	<form action = "commentInput.do" method="POST">
+	<form action = "commentInput.do" method="POST" class="reClass">
 		<input type="hidden" name="cmt_type" value="free">
 		<input type="hidden" name="target_id" value="<%=boardId%>">
 		
@@ -39,34 +39,36 @@
 				<label for="newReplywriter">작성자 이름</label>
 				<input class="form-control" id="newReplywriter" name="user_id" value="${userInfo.user_id }">
 			</div>
-			<input type="submit" value="입력">
+			<button type="button" class='commentInput1'>댓글 입력</button>
 		</div>
 		
+	</form>
 		<div class="comment-box">
 			<ul id="replies">
 			
 			</ul>
 		</div>	
-		
-	</form>
-
+	
 	<script>
 	
 	var arr = new Array();		// cmt_id, cmt_ref, re_check 순으로 값이 들어감
 	var arr1 = new Array(); 
-	
+
 	arr.push([0,0,0]);
 	
-		$('#commentInput').click(function(){
+		$('.commentInput1').click(function(){		
 			$.ajax({
 				url:'commentInput.do',
 				type:'post',
-				data:$('form').serialize(),
+				data:$('.reClass').serialize(),
 				success:function(data){
 					alert("댓글 입력이 완료되었습니다");
 					getreplies();
+					$('#newReplyText').val('').focus();
+
 				} 
 			});
+			
 		});
 		
 	</script>
@@ -79,8 +81,9 @@
 //	var alreadyHateClick = false;
 	
 	function getreplies(){
+		arr = [];
+		arr.push([0,0,0]);
 		
-
 		$.getJSON('commentList.do', function(data){
 			
 			var str = "";
@@ -94,7 +97,7 @@
 					
 					+ "<div class='replybox'>" 
 						+ "<ui>댓글 번호 : </ui>"
-						+ "<ui class='replyId'>"+ JSON.parse(item).cmt_id  +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ui>"
+						+ "<ui class='replyId'>"+ JSON.parse(item).cmt_id +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ui>"
 						+ "<ui>작성자 번호 : </ui>"
 						+ "<ui class='replyWriter'>"+ JSON.parse(item).user_id +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ui>"
 						+ "<ui>작성 날짜 : </ui>"
@@ -123,36 +126,29 @@
 			
 		});
 		console.log(arr);
-		console.log(typeof arr[0][0]);
-		console.log(arr[0][1]);
+
 	}
 	// 개발 방향 선회 -> 대댓글 하나만 열리기
 	
 	var ch = true; // 대댓글 창이 열렸는지 안 열렸는지 확인용 변수
 
-	$('#iB').click(function(){
-		$.ajax({
-			url:'reCommentInput.do',
-			type:post,
-			data:$('#ListBox').serialize(),
-			success:function(data){
-				alert('대댓글 입력이 완료되었습니다.');
-			}
-		})
-	})
 	function makeReplyBox(cnt){
-		
+			
 		if(!ch){
 			var UsBox = document.getElementById('Ubox');	// 대댓글 div를 찾기위한 유저 아이디 입력칸 객체
 			var ReplyBox = UsBox.parentNode;	// 대댓글 입력 칸이 모드 모여있는 div
 			var commentBox = ReplyBox.parentNode;	// 댓글 창
+			var DDiv = commentBox.parentNode;
 			
-			commentBox.removeChild(ReplyBox);
+			DDiv.removeChild(commentBox);
 		}
 		
 		var RBox = document.getElementsByClassName('replybox')[cnt];
 		
 		var CM_id = document.getElementsByClassName('replyId')[cnt].innerText;
+		
+		var cmId = parseInt(CM_id);
+		
 		var CM_re = document.getElementsByClassName('cmt_ref')[cnt].value;	// 값 받아오는 변수
 		var CM_st = document.getElementsByClassName('cmt_step')[cnt].value;	// 값 받아오는 변수
 		var CM_de = document.getElementsByClassName('cmt_depth')[cnt].value;// 값 받아오는 변수
@@ -211,9 +207,13 @@
 		
 		var insert = document.createElement('button');
 		insert.setAttribute('id', 'iB');	//*.do를 작동시키기 위한 버튼
-//		insert.setAttribute('onclick', 'rereply()');
 		var ButtonText = document.createTextNode('바로 밑 댓글 등록');
 		insert.appendChild(ButtonText);
+		
+		var cm_idBox = document.createElement('input'); 
+		cm_idBox.setAttribute('type', 'hidden');
+		cm_idBox.setAttribute('name', 'cmt_id');
+		cm_idBox.setAttribute('value', cmId);
 		
 		var refBox = document.createElement('input');
 		refBox.setAttribute('id', 'rBox');
@@ -243,8 +243,12 @@
 		Btype.setAttribute('name', 'target_id');
 		Btype.setAttribute('value', <%=boardId%>);
 		
+		var reForm = document.createElement('form');	//form 태그 제작용
+		reForm.setAttribute('class', 'rereForm');
+		
 		Div.appendChild(Ctype);
 		Div.appendChild(Btype);
+		Div.appendChild(cm_idBox);
 		
 		Div.appendChild(br0);
 		
@@ -269,8 +273,23 @@
 		Div.appendChild(blank3);
 		Div.appendChild(depthBox);
 		
-		RBox.appendChild(Div);
+		reForm.appendChild(Div);
 		
+		RBox.appendChild(reForm);
+		
+		$('#iB').click(function(){
+			console.log('대댓글 달기가 클릭 되었습니다');
+			$.ajax({
+				url:'reCommentInput.do',
+				type:'post',
+				data:$('.rereForm').serialize(),
+				success:function(data){
+					alert('대댓글 입력이 완료되었습니다.');
+				}
+			});
+
+		});
+
 		ch = false;
 		
 	}
@@ -279,8 +298,9 @@
 		var rb = document.getElementById('rBox');
 		var RD = rb.parentNode;
 		var RDIV = RD.parentNode;
+		var RRDiv = RDIV.parentNode;
 		
-		RDIV.removeChild(RD);
+		RRDiv.removeChild(RDIV);
 		
 		ch = true;
 	}
@@ -317,7 +337,7 @@
 				console.log(this.data);
 				alert('추천 !');
 				getreplies();
-			}
+			} 
 		})
 		.fail(function(){
 			alert("한개의 글에 한번만 클릭이 가능힙니다 !");

@@ -41,7 +41,7 @@ public class UserCommentController {
 	public String reInsertComment(CommentInfoVO vo) {
 		System.out.println("controller에서 reInsertComment 작동");
 		userCommentService.reInsertComment(vo);
-		return null;
+		return "comment";
 	}
 	
 	@RequestMapping("/comment.do")
