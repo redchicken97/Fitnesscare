@@ -52,8 +52,9 @@
 	<script>
 	
 	var arr = new Array();		// cmt_id, cmt_ref, re_check 순으로 값이 들어감
-	var arr1 = new Array(); 
-
+	var arr1 = new Array();		// 1차 필터 
+	var arr2 = new Array();		// 2차 필터
+	var arr3 = new Array();		// 3차 필터
 	arr.push([0,0,0]);
 	
 		$('.commentInput1').click(function(){		
@@ -82,15 +83,46 @@
 	
 	function getreplies(){
 		arr = [];
-		arr.push([0,0,0]);
-		
+		arr.push([0,0,0,0]);
+		var replyList = [];
+		var dataList=[];
+		var cnt = 0;
+		var cm = 0;
+		var c = 0;
+		var k = 0;
 		$.getJSON('commentList.do', function(data){
 			
-			var str = "";
-//			console.log(data);
+			for (var c = 0; c < data.length; c++){
+				dataList.push([data[c]]);
+			}
+
+			while (true){
+				replyList.push([dataList[0]]);
+
+				dataList.splice(0, 1);
+				
+				if (JSON.parse(replyList[replyList.length - 1]).reply_check == 1){
+					for(var i = 0; i < dataList.length; i++){
+						if(JSON.parse(replyList[replyList.length - 1]).cmt_ref == JSON.parse(dataList[i]).cmt_ref){
+							replyList.push([dataList[i]]);
+							cm++;
+							if(cm == 1){
+								c = i;
+							}
+						}
+					}
+				}
+				dataList.splice(c, cm);
+				c = 0;
+				cm = 0;
+				if (replyList.length == data.length) break;
+			}
+			console.log(replyList);
 			
+			var str = "";
 			$.each(data, function(index, item){
 				var test = JSON.parse(item).cmt_rdcnt;
+//				console.log(item);
 //				console.log(index + " : " + test);
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
@@ -119,26 +151,37 @@
 					
 					+ "</li>"
 					+ "<hr/>";
-					arr.push([JSON.parse(item).cmt_id, JSON.parse(item).cmt_ref, JSON.parse(item).cmt_step])
+					arr.push([JSON.parse(item).cmt_id, JSON.parse(item).cmt_ref, JSON.parse(item).cmt_step, JSON.parse(item).cmt_depth])
 		      });
 
 			$('#replies').html(str);
 			
 		});
-		console.log(arr);
+//		console.log(arr);
 
 	}
 	// 개발 방향 선회 -> 대댓글 하나만 열리기
 	
 	var ch = true; // 대댓글 창이 열렸는지 안 열렸는지 확인용 변수
-
+	var pass = false;
+	var big = 0;
+	var stepUp = false;
+	
 	function makeReplyBox(cnt){
-			
+		
+		pass = false;
+		
+		big = 0;
+		
 		if(!ch){
 			var UsBox = document.getElementById('Ubox');	// 대댓글 div를 찾기위한 유저 아이디 입력칸 객체
 			var ReplyBox = UsBox.parentNode;	// 대댓글 입력 칸이 모드 모여있는 div
 			var commentBox = ReplyBox.parentNode;	// 댓글 창
 			var DDiv = commentBox.parentNode;
+			
+			arr1 = [];
+			arr2 = [];
+			arr3 = [];
 			
 			DDiv.removeChild(commentBox);
 		}
@@ -165,14 +208,64 @@
 			
 			console.log("re_check 값이 0 입니다.");
 			
+			
 		}else if(RE_ch == 1){
 			
-			for (var i = 1 ; i < arr.length; i++){
+			var cm_re = parseInt(CM_re);
+			var cm_de = parseInt(CM_de) + 1;
+			
+			for (var i = 1; i < arr.length; i++){
 				if(arr[i][1] == CM_re) {
-					arr1.push([arr[i][0], arr[i][1], arr[i][2]]); 
+					arr1.push([arr[i][0], arr[i][1], arr[i][2], arr[i][3]]); 
 				}
 			}
+			
 			console.log(arr1);
+			for (var k = 0; k < arr1.length; k++){
+				if(arr1[k][3] == cm_de){
+					arr2.push([arr1[k][0], arr1[k][1], arr1[k][2], arr1[k][3]]);
+				}
+			}
+			
+			console.log(arr2);
+			
+			if (arr2.length == 1){
+				big = arr2[0][2] + 1;
+				pass = true;
+			}
+			
+			if (!pass){
+				for (var t = 0; t < arr2.length - 1; t++){
+					if(arr2[k][2] + 1 != arr2[k + 1][2]){
+						arr3.push([arr2[k][0], arr2[k][1], arr2[k][2], arr[k][3]]);
+					}
+				}	
+			}
+			
+			if (arr3.length == 0){
+				for (var tk = 0; tk < arr2.length - 1; tk++){
+					if(arr2[tk][2] < arr2[tk + 1][2]){
+						big = arr[tk + 1][2];
+						stepUp = true;
+					}
+				}
+				console.log("big : ", big);
+				pass = true;
+			}
+			
+			console.log(arr3);
+			
+			if (!pass){
+				for (var v = 0; v < arr3.length - 1; v++){
+					if(arr3[v][2] < arr3[v + 1][2]){
+						big = arr3[v + 1][2];
+						stepUp = true;
+					}
+				}
+			}
+
+			var cm_st = big; 
+			
 			console.log("re_chek 값이 1 입니다.");
 		}
 		
@@ -230,7 +323,7 @@
 		var depthBox = document.createElement('input');
 		depthBox.setAttribute('id', 'dBox');
 		depthBox.setAttribute('placeholder', '들여쓰기');
-		depthBox.setAttribute('name', 'cnt_depth');
+		depthBox.setAttribute('name', 'cmt_depth');
 		depthBox.setAttribute('value', cm_de);
 		
 		var Ctype = document.createElement('input');	//계시판 종류 (자유계시판, 운동계시판 등등)
@@ -301,6 +394,9 @@
 		var RRDiv = RDIV.parentNode;
 		
 		RRDiv.removeChild(RDIV);
+		arr1 = [];
+		arr2 = [];
+		arr3 = [];
 		
 		ch = true;
 	}

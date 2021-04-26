@@ -44,7 +44,7 @@
 	</insert>
 	
 	<select id="getCommentList" resultMap="commentResult">
-		SELECT * FROM comment_info ORDER BY cmt_id DESC
+		SELECT * FROM comment_info ORDER BY cmt_id ASC
 	</select>
 	
 	<select id="getComment" resultType="commentInfo">
@@ -67,6 +67,15 @@
 		reply_check = 1 
 		WHERE
 		cmt_id = #{cmt_id}
+	</update>
+	
+	<!-- step 값 증가용  -->
+	<update id="updateStep" parameterType="commentInfo">
+		UPDATE comment_info
+		SET
+		cmt_step = cmt_step + 1
+		WHERE
+		cmt_step > #{cmt_step} <!-- 추후 변경 -->
 	</update>
 	
 	<!-- 추천수 증가 -->

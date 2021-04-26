@@ -36,6 +36,8 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 		in.setCmt_depth(vo.getCmt_depth());
 		in.setCmt_content(vo.getCmt_content());
 		
+		System.out.println(in.toString());
+		
 		up.setCmt_id(vo.getCmt_id());
 		
 		System.out.println(up.toString());
