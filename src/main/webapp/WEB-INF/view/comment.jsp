@@ -174,32 +174,30 @@
 		big = 0;
 		
 		if(!ch){
-			var UsBox = document.getElementById('Ubox');	// 대댓글 div를 찾기위한 유저 아이디 입력칸 객체
-			var ReplyBox = UsBox.parentNode;	// 대댓글 입력 칸이 모드 모여있는 div
-			var commentBox = ReplyBox.parentNode;	// 댓글 창
-			var DDiv = commentBox.parentNode;
+			$("form").remove("#rereForm");
 			
 			arr1 = [];
 			arr2 = [];
 			arr3 = [];
 			
-			DDiv.removeChild(commentBox);
 		}
 		
-		var RBox = document.getElementsByClassName('replybox')[cnt];
 		
-		var CM_id = document.getElementsByClassName('replyId')[cnt].innerText;
+		var CM_id = $('.replyId').eq(cnt).text();
 		
 		var cmId = parseInt(CM_id);
 		
-		var CM_re = document.getElementsByClassName('cmt_ref')[cnt].value;	// 값 받아오는 변수
-		var CM_st = document.getElementsByClassName('cmt_step')[cnt].value;	// 값 받아오는 변수
-		var CM_de = document.getElementsByClassName('cmt_depth')[cnt].value;// 값 받아오는 변수
-		var RE_ch = document.getElementsByClassName('reply_check')[cnt].value; // 대댓글이 달렸는지 확인하는 변수
+		var CM_re = $('.cmt_ref').eq(cnt).val();
+		var CM_st = $('.cmt_step').eq(cnt).val();
+		var CM_de = $('.cmt_depth').eq(cnt).val();
+		var RE_ch = $('.reply_check').eq(cnt).val();
 		
 		console.log("arr.length : ", arr.length);	// 댓글 총 갯수 + 1이 나온다면 선공 
 		console.log("cmt_id : ", CM_id);
 
+		
+		//step 수 계산 
+		//대댓글이 없는경우
 		if(RE_ch == 0){
 			
 			var cm_re = parseInt(CM_re);
@@ -208,7 +206,7 @@
 			
 			console.log("re_check 값이 0 입니다.");
 			
-			
+		//대댓글이 있는경우
 		}else if(RE_ch == 1){
 			
 			var cm_re = parseInt(CM_re);
@@ -274,101 +272,43 @@
 		var blank3 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
 		var blank4 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
 		
-		var Div = document.createElement('div');
-		Div.setAttribute('id', 'ListBox');
+		var $obj = $("<div class='ListBox'></div>");
 		
-		var userBox = document.createElement('input');
-		userBox.setAttribute('id', 'Ubox');
-		userBox.setAttribute('placeholder', '유저 입력');
-		userBox.setAttribute('name', 'user_id');		
-		userBox.setAttribute('value', ${userInfo.user_id });
+		var userBox = "<input id='Ubox' paceholder='유저입력' name='user_id' value='${userInfo.user_id }'><br>";
+		var contentBox = "<input id='conBox' placeholder='내용입력' name='cmt_content'>";
+		var insert = "<button id='iB'>바로 밑 댓글 등록</button>";
 		
-		var del = document.createElement('button');
-		del.setAttribute('onclick', 'delReply()');
-		var delText = document.createTextNode('닫기');
-		del.appendChild(delText);
+		var refBox = "<input id='rBox' placeholder='그룹' name='cmt_ref' value="+ cm_re +">";
+		var stepBox = "<input id='sBox' placeholder='step' name='cmt_step' value="+ cm_st +">";
+		var depthBox = "<input id='dBox' placeholder='들여쓰기' name='cmt_depth' value="+ cm_de +">";
+		var del = "<button id='deBu' onclick='delReply("+ cnt +")'>닫기</button><br>";
 		
-		var br0 = document.createElement('br');
-		var br1 = document.createElement('br');
-		var br2 = document.createElement('br');
-		var br3 = document.createElement('br');
+		var cm_idBox = "<input type='hidden' name='cmt_id' value="+ cmId +"><br>"; 
+		var Ctype = "<input type='hidden' name='cmt_type' value='free'>";
+		var Btype = "<input type='hidden' name='target_id' value='<%=boardId%>'>"
 		
-		var contentBox = document.createElement('input');
-		contentBox.setAttribute('id', 'conBox');
-		contentBox.setAttribute('placeholder', '내용입력');
-		contentBox.setAttribute('name', 'cmt_content')
+		var $form = $("<form id='rereForm'></form>");
 		
-		var insert = document.createElement('button');
-		insert.setAttribute('id', 'iB');	//*.do를 작동시키기 위한 버튼
-		var ButtonText = document.createTextNode('바로 밑 댓글 등록');
-		insert.appendChild(ButtonText);
+		$('.replybox').eq(cnt).append($form);
+		$('#rereForm').append($obj);
 		
-		var cm_idBox = document.createElement('input'); 
-		cm_idBox.setAttribute('type', 'hidden');
-		cm_idBox.setAttribute('name', 'cmt_id');
-		cm_idBox.setAttribute('value', cmId);
+		$('.ListBox').append(Ctype);
+		$('.ListBox').append(Btype);
+		$('.ListBox').append(cm_idBox);
 		
-		var refBox = document.createElement('input');
-		refBox.setAttribute('id', 'rBox');
-		refBox.setAttribute('placeholder', '그룹');
-		refBox.setAttribute('name', 'cmt_ref');
-		refBox.setAttribute('value', cm_re);
+		$('.ListBox').append(userBox);
 		
-		var stepBox = document.createElement('input');
-		stepBox.setAttribute('id', 'sBox');
-		stepBox.setAttribute('placeholder', 'step');
-		stepBox.setAttribute('name','cmt_step');
-		stepBox.setAttribute('value', cm_st);
+		$('.ListBox').append(contentBox);
+		$('.ListBox').append(blank1);
+		$('.ListBox').append(insert);
+		$('.ListBox').append(blank4);
+		$('.ListBox').append(del);
 		
-		var depthBox = document.createElement('input');
-		depthBox.setAttribute('id', 'dBox');
-		depthBox.setAttribute('placeholder', '들여쓰기');
-		depthBox.setAttribute('name', 'cmt_depth');
-		depthBox.setAttribute('value', cm_de);
-		
-		var Ctype = document.createElement('input');	//계시판 종류 (자유계시판, 운동계시판 등등)
-		Ctype.setAttribute('type','hidden');
-		Ctype.setAttribute('name','cmt_type');
-		Ctype.setAttribute('value', 'free');
-		
-		var Btype = document.createElement('input');	//계시판 id
-		Btype.setAttribute('type', 'hidden');
-		Btype.setAttribute('name', 'target_id');
-		Btype.setAttribute('value', <%=boardId%>);
-		
-		var reForm = document.createElement('form');	//form 태그 제작용
-		reForm.setAttribute('class', 'rereForm');
-		
-		Div.appendChild(Ctype);
-		Div.appendChild(Btype);
-		Div.appendChild(cm_idBox);
-		
-		Div.appendChild(br0);
-		
-		Div.appendChild(userBox);
-		
-		Div.appendChild(br1);
-		
-		Div.appendChild(contentBox);
-		Div.appendChild(blank1);	
-
-		Div.appendChild(insert);	//등록 버튼
-
-		Div.appendChild(blank4);
-		
-		Div.appendChild(del);		//닫기 버튼
-		
-		Div.appendChild(br2);
-		
-		Div.appendChild(refBox);
-		Div.appendChild(blank2);
-		Div.appendChild(stepBox);
-		Div.appendChild(blank3);
-		Div.appendChild(depthBox);
-		
-		reForm.appendChild(Div);
-		
-		RBox.appendChild(reForm);
+		$('.ListBox').append(refBox);
+		$('.ListBox').append(blank2);
+		$('.ListBox').append(stepBox);
+		$('.ListBox').append(blank3);
+		$('.ListBox').append(depthBox);
 		
 		$('#iB').click(function(){
 			console.log('대댓글 달기가 클릭 되었습니다');
@@ -384,16 +324,12 @@
 		});
 
 		ch = false;
-		
 	}
 	
-	function delReply(){
-		var rb = document.getElementById('rBox');
-		var RD = rb.parentNode;
-		var RDIV = RD.parentNode;
-		var RRDiv = RDIV.parentNode;
+	function delReply(cnt){
 		
-		RRDiv.removeChild(RDIV);
+		$("form").remove("#rereForm");
+		
 		arr1 = [];
 		arr2 = [];
 		arr3 = [];
