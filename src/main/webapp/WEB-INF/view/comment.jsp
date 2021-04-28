@@ -16,6 +16,7 @@
 <head>
 <meta charset="UTF-8">
 <title>댓글 시험 페이지</title>
+<link href="/Fitnesscare/resources/css/reply.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -182,7 +183,6 @@
 			
 		}
 		
-		
 		var CM_id = $('.replyId').eq(cnt).text();
 		
 		var cmId = parseInt(CM_id);
@@ -194,7 +194,6 @@
 		
 		console.log("arr.length : ", arr.length);	// 댓글 총 갯수 + 1이 나온다면 선공 
 		console.log("cmt_id : ", CM_id);
-
 		
 		//step 수 계산 
 		//대댓글이 없는경우
@@ -266,12 +265,6 @@
 			
 			console.log("re_chek 값이 1 입니다.");
 		}
-		
-		var blank1 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
-		var blank2 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
-		var blank3 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
-		var blank4 = document.createTextNode("\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0");
-		
 		var $obj = $("<div class='ListBox'></div>");
 		
 		var userBox = "<input id='Ubox' paceholder='유저입력' name='user_id' value='${userInfo.user_id }'><br>";
@@ -295,19 +288,12 @@
 		$('.ListBox').append(Ctype);
 		$('.ListBox').append(Btype);
 		$('.ListBox').append(cm_idBox);
-		
 		$('.ListBox').append(userBox);
-		
 		$('.ListBox').append(contentBox);
-		$('.ListBox').append(blank1);
 		$('.ListBox').append(insert);
-		$('.ListBox').append(blank4);
 		$('.ListBox').append(del);
-		
 		$('.ListBox').append(refBox);
-		$('.ListBox').append(blank2);
 		$('.ListBox').append(stepBox);
-		$('.ListBox').append(blank3);
 		$('.ListBox').append(depthBox);
 		
 		$('#iB').click(function(){
