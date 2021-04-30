@@ -49,7 +49,7 @@
 			
 			</ul>
 		</div>	
-	
+</body>
 	<script>
 	
 	var arr = new Array();		// cmt_id, cmt_ref, re_check 순으로 값이 들어감
@@ -78,10 +78,18 @@
 	<script>
 	
 	getreplies();
-	
+
 //	var alreadyLikeClick = false;
 //	var alreadyHateClick = false;
-	
+
+// 대댓글 한칸 늘리는 css
+	function sibal(tab){
+		console.log(tab);
+		for (var ccc = 0; ccc < tab.length; ccc++){
+			$(".replyLi").eq(tab[ccc][0]).css({"margin-left" : tab[ccc][1] * 50});
+		}
+		console.log($(".replyLi").eq(1));
+	}
 	function getreplies(){
 		arr = [];
 		arr.push([0,0,0,0]);
@@ -91,6 +99,7 @@
 		var cm = 0;
 		var c = 0;
 		var k = 0;
+		
 		$.getJSON('commentList.do', function(data){
 			
 			for (var c = 0; c < data.length; c++){
@@ -119,12 +128,10 @@
 				if (replyList.length == data.length) break;
 			}
 			console.log(replyList);
-			
+			var tab = [];
 			var str = "";
-			$.each(data, function(index, item){
+			$.each(replyList, function(index, item){
 				var test = JSON.parse(item).cmt_rdcnt;
-//				console.log(item);
-//				console.log(index + " : " + test);
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
 					
@@ -153,16 +160,20 @@
 					+ "</li>"
 					+ "<hr/>";
 					arr.push([JSON.parse(item).cmt_id, JSON.parse(item).cmt_ref, JSON.parse(item).cmt_step, JSON.parse(item).cmt_depth])
-		      });
-
-			$('#replies').html(str);
+					
+					//console.log(JSON.parse(item).cmt_depth);
+					if (JSON.parse(item).cmt_depth >= 1){
+						tab.push([index, JSON.parse(item).cmt_depth]);
+					}
+			});
 			
+			$('#replies').html(str);
+			sibal(tab);
 		});
-//		console.log(arr);
 
+		
 	}
-	// 개발 방향 선회 -> 대댓글 하나만 열리기
-	
+
 	var ch = true; // 대댓글 창이 열렸는지 안 열렸는지 확인용 변수
 	var pass = false;
 	var big = 0;
@@ -369,8 +380,7 @@
 			return false;
 		}
 	}
-		
+//	sibal();
 	</script>
 
-</body>
 </html>
