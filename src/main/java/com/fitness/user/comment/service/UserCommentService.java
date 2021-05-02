@@ -23,4 +23,6 @@ public interface UserCommentService {
 	public void upRdCnt(CommentInfoVO vo);
 	
 	public void upReportCnt(CommentInfoVO vo);
+
+	public void seReInsertComment(CommentInfoVO vo);
 }

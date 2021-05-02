@@ -84,53 +84,17 @@
 
 // 대댓글 한칸 늘리는 css
 	function sibal(tab){
-		console.log(tab);
 		for (var ccc = 0; ccc < tab.length; ccc++){
 			$(".replyLi").eq(tab[ccc][0]).css({"margin-left" : tab[ccc][1] * 50});
 		}
-		console.log($(".replyLi").eq(1));
 	}
 	function getreplies(){
-		arr = [];
-		arr.push([0,0,0,0]);
-		var replyList = [];
-		var dataList=[];
-		var cnt = 0;
-		var cm = 0;
-		var c = 0;
-		var k = 0;
 		
 		$.getJSON('commentList.do', function(data){
 			
-			for (var c = 0; c < data.length; c++){
-				dataList.push([data[c]]);
-			}
-
-			while (true){
-				replyList.push([dataList[0]]);
-
-				dataList.splice(0, 1);
-				
-				if (JSON.parse(replyList[replyList.length - 1]).reply_check == 1){
-					for(var i = 0; i < dataList.length; i++){
-						if(JSON.parse(replyList[replyList.length - 1]).cmt_ref == JSON.parse(dataList[i]).cmt_ref){
-							replyList.push([dataList[i]]);
-							cm++;
-							if(cm == 1){
-								c = i;
-							}
-						}
-					}
-				}
-				dataList.splice(c, cm);
-				c = 0;
-				cm = 0;
-				if (replyList.length == data.length) break;
-			}
-			console.log(replyList);
 			var tab = [];
 			var str = "";
-			$.each(replyList, function(index, item){
+			$.each(data, function(index, item){
 				var test = JSON.parse(item).cmt_rdcnt;
 				
 				str += "<li data-replyNo= '" + JSON.parse(item).cmt_id + "' class='replyLi'>"
@@ -177,10 +141,10 @@
 	var ch = true; // 대댓글 창이 열렸는지 안 열렸는지 확인용 변수
 	var pass = false;
 	var big = 0;
-	var stepUp = false;
+	var stepUp = 0;
 	
 	function makeReplyBox(cnt){
-		
+		stepUp = 0;
 		pass = false;
 		
 		big = 0;
@@ -254,7 +218,7 @@
 				for (var tk = 0; tk < arr2.length - 1; tk++){
 					if(arr2[tk][2] < arr2[tk + 1][2]){
 						big = arr[tk + 1][2];
-						stepUp = true;
+						stepUp = 1;
 					}
 				}
 				console.log("big : ", big);
@@ -267,7 +231,7 @@
 				for (var v = 0; v < arr3.length - 1; v++){
 					if(arr3[v][2] < arr3[v + 1][2]){
 						big = arr3[v + 1][2];
-						stepUp = true;
+						stepUp = 1;
 					}
 				}
 			}
@@ -290,14 +254,18 @@
 		var cm_idBox = "<input type='hidden' name='cmt_id' value="+ cmId +"><br>"; 
 		var Ctype = "<input type='hidden' name='cmt_type' value='free'>";
 		var Btype = "<input type='hidden' name='target_id' value='<%=boardId%>'>"
+		var step = "<input type='hidden' class='stepUp' name='stepUp' value="+ stepUp +">"
 		
 		var $form = $("<form id='rereForm'></form>");
 		
+		var steep = $('.stepUp').val();
+		console.log(typeof steep);
 		$('.replybox').eq(cnt).append($form);
 		$('#rereForm').append($obj);
 		
 		$('.ListBox').append(Ctype);
 		$('.ListBox').append(Btype);
+		$('.ListBox').append(step);
 		$('.ListBox').append(cm_idBox);
 		$('.ListBox').append(userBox);
 		$('.ListBox').append(contentBox);
@@ -307,14 +275,19 @@
 		$('.ListBox').append(stepBox);
 		$('.ListBox').append(depthBox);
 		
+//		var gooo = "stepUp=" + stepUp;
+//		console.log(gooo);
+		
 		$('#iB').click(function(){
+			
 			console.log('대댓글 달기가 클릭 되었습니다');
 			$.ajax({
 				url:'reCommentInput.do',
 				type:'post',
-				data:$('.rereForm').serialize(),
+				data:$('#rereForm').serialize(),
 				success:function(data){
 					alert('대댓글 입력이 완료되었습니다.');
+					getreplies();
 				}
 			});
 

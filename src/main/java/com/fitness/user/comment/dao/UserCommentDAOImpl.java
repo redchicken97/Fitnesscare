@@ -23,6 +23,35 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 	
 	@Transactional
 	@Override
+	public void seReInsertComment(CommentInfoVO vo) {
+		
+		System.out.println("mybatis reInsertComment 실행");
+		CommentInfoVO in = new CommentInfoVO();		// insert 용 vo
+		CommentInfoVO up = new CommentInfoVO();		// update 용 vo
+		CommentInfoVO se = new CommentInfoVO();		// step update용 
+		
+		in.setTarget_id(vo.getTarget_id());
+		in.setCmt_type(vo.getCmt_type());
+		in.setUser_id(vo.getUser_id());
+		in.setCmt_ref(vo.getCmt_ref());
+		in.setCmt_step(vo.getCmt_step());
+		in.setCmt_depth(vo.getCmt_depth());
+		in.setCmt_content(vo.getCmt_content());
+		
+		System.out.println(in.toString());
+		
+		up.setCmt_id(vo.getCmt_id());
+		
+		se.setCmt_step(vo.getCmt_step());
+		
+		System.out.println(up.toString());
+		sqlSessionTemplate.insert("commentDAO.reInsertComment", in);
+		sqlSessionTemplate.update("commentDAO.checkUpdateComment", up);
+		sqlSessionTemplate.update("commentDAO.updateStep", se);
+	}
+	
+	@Transactional
+	@Override
 	public void reInsertComment(CommentInfoVO vo) {
 		System.out.println("mybatis reInsertComment 실행");
 		CommentInfoVO in = new CommentInfoVO();		// insert 용 vo
@@ -83,5 +112,6 @@ public class UserCommentDAOImpl implements UserCommentDAO {
 		System.out.println("mybatis check comment 실행");
 		sqlSessionTemplate.update("commentDAO.checkUpdateComment", vo);
 	}
+
 
 }

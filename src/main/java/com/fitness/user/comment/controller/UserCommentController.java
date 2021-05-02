@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fitness.common.user.vo.UserVO;
@@ -38,8 +39,10 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/reCommentInput.do")
-	public String reInsertComment(CommentInfoVO vo) {
+	public String reInsertComment(CommentInfoVO vo, @RequestParam(value="stepUp") String step) {
 		System.out.println("controller에서 reInsertComment 작동");
+		System.out.println(step);
+		int s = Integer.parseInt(step);
 		userCommentService.reInsertComment(vo);
 		return "comment";
 	}

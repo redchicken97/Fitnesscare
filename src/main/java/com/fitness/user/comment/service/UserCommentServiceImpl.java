@@ -28,6 +28,13 @@ public class UserCommentServiceImpl implements UserCommentService {
 		userCommentDAO.insertComment(vo);
 	}
 
+	//setpUp 값 1증가 도 추가한 대댓글 달기
+	@Override
+	public void seReInsertComment(CommentInfoVO vo) {
+		System.out.println("step 값이 1 일때의 reInsertComment 실행");
+		userCommentDAO.seReInsertComment(vo);
+	}
+	
 	//대댓글 달기
 	@Override
 	public void reInsertComment(CommentInfoVO vo) {
@@ -101,4 +108,5 @@ public class UserCommentServiceImpl implements UserCommentService {
 		System.out.println("service check comment 실행");
 		userCommentDAO.checkUpdateComment(vo);
 	}
+
 }
