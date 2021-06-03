@@ -17,8 +17,9 @@
 </head>
 <body>
 	<div id="map" style="width:100%;height:350px;"></div>
-	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e11e0bca2855ad3abc123dc69e2a7bf7"></script>
+	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=de65e137185c3c1a57b774574870f503"></script>
 	<h3>제목 : ${mapOne.ht_title}</h3>
+	<button class="join_button"></button>
 	<script>
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div

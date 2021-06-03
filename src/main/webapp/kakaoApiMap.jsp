@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>keyWordSearchList</title>
 <link rel="stylesheet" type="text/css" href="resources/css/List.css">
 </head>
@@ -299,10 +299,12 @@ function removeAllChildNods(el) {
 		<input id="locPosition_X" type="text" name="ht_x" value=""><br> 
 		장소 이름 
 		<input id="locTitle" type="text" name="ht_placename" value=""><br> 
+
+		인원수 제한
+		<input id="limitCnt" type="text" name="ht_limitCnt"><br>
 		
 		내용
 		<textarea name="ht_content"></textarea>
-		
 
 		<input type="hidden" name="userId" value="<%=userId %>">
 		

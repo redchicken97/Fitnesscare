@@ -115,6 +115,7 @@
 						+ "<button type='button' class='likeButton' onclick='getUpRdCnt("+index+")'>추천 하기</button>"
 						+ "<button type='button'>신고 하기</button>"
 						+ "<button type='button' class='replyButton' onclick='makeReplyBox("+index+")'>대댓글 달기</button>"
+						+ "<button type='button' class='updateReplybutton onclick='updateReply("+index+")'>수정하기</button>"
 						+ "<input type='hidden' class='cmt_ref' value=" + JSON.parse(item).cmt_ref + ">"
 						+ "<input type='hidden' class='cmt_step' value=" + JSON.parse(item).cmt_step + ">"
 						+ "<input type='hidden' class='cmt_depth' value=" + JSON.parse(item).cmt_depth + ">"
@@ -353,7 +354,14 @@
 			return false;
 		}
 	}
-//	sibal();
+	function updateReply(cnt){
+		
+		var CM_re = $('.cmt_ref').eq(cnt).val();
+		var CM_st = $('.cmt_step').eq(cnt).val();
+		var CM_de = $('.cmt_depth').eq(cnt).val();
+		var RE_ch = $('.reply_check').eq(cnt).val();
+		
+	}
 	</script>
 
 </html>

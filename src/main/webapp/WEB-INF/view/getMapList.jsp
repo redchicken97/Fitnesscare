@@ -1,14 +1,15 @@
-<%@page import="com.fitness.user.kakaoMap.vo.HealthTeamVO"%>
-<%@page import="java.util.List"%>
+<%@page import="com.fitness.common.user.vo.UserVO"%>
+<%@ page import="com.fitness.user.kakaoMap.vo.HealthTeamVO"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-
-	List<HealthTeamVO> mapList = (List<HealthTeamVO>) session.getAttribute("mapList");
-
+UserVO userInfo = (UserVO) session.getAttribute("userInfo");
 %>
+    	
 
 <!DOCTYPE html>
 <html>
@@ -29,13 +30,15 @@
 		
 		<c:forEach var="map" items="${mapList}">
 			<tr>
+				<fmt:formatDate var="formatRegDate" value="${map.ht_regdate }" pattern="yyyy.MM.dd"/>
 				<td>${map.ht_id }</td>
 				<td><a href="getMap.do?ht_id=${map.ht_id }">${map.ht_title }</a></td>
 				<td>${map.user_id }</td> <!-- 나중에 user_id를 이용해서 닉네임을 가져옴 -->
-				<td>${map.ht_regdate }</td>
+				<td>${formatRegDate }</td>
 				<td>${map.ht_commentCnt }</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="kakaoApiMap.jsp?id=${userInfo.user_id}">새 장소 공유하기</a>
 </body>
 </html>

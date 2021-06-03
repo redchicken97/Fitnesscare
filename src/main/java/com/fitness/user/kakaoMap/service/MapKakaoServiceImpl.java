@@ -23,6 +23,7 @@ public class MapKakaoServiceImpl implements MapKakaoService {
 	@Override
 	public List<HealthTeamVO> getMapList(HealthTeamVO vo) {
 		System.out.println("service getList 실행");
+		
 		return mapKakaoDAO.getMapList(vo);
 	}
 

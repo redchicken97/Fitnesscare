@@ -43,7 +43,12 @@ public class UserCommentController {
 		System.out.println("controller에서 reInsertComment 작동");
 		System.out.println(step);
 		int s = Integer.parseInt(step);
-		userCommentService.reInsertComment(vo);
+		if (s == 0) {
+			userCommentService.reInsertComment(vo);
+		}else if(s == 1) {
+			userCommentService.seReInsertComment(vo);
+		}
+		
 		return "comment";
 	}
 	
