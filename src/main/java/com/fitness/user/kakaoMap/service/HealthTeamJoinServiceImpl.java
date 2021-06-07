@@ -22,14 +22,14 @@ public class HealthTeamJoinServiceImpl implements HealthTeamJoinService {
 
 	@Override
 	public List<HealthTeamJoinVO> getHealthTeamJoinList(HealthTeamJoinVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("service JoinList 실행");
+		return healthTeamJoinDAO.getHealthTeamJoinList(vo);
 	}
 
 	@Override
 	public void deleteHealthTeamJoin(HealthTeamJoinVO vo) {
-		// TODO Auto-generated method stub
-
+		System.out.println("service deleteJoin 실행");
+		healthTeamJoinDAO.deleteHealthTeamJoin(vo);
 	}
 
 }
