@@ -1,8 +1,7 @@
 <%@page import="com.fitness.user.kakaoMap.vo.HealthTeamVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
-   
+
 <%
 
 	HealthTeamVO mapOne = (HealthTeamVO) session.getAttribute("mapOne");
@@ -19,7 +18,10 @@
 	<div id="map" style="width:100%;height:350px;"></div>
 	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=de65e137185c3c1a57b774574870f503"></script>
 	<h3>제목 : ${mapOne.ht_title}</h3>
-	<button class="join_button"></button>
+	<h3>내용 : ${mapOne.ht_content}</h3>
+	<h3>참가한 인원 (참가 제한 인원 : ${mapOne.ht_limitCnt})</h3>
+	<button class="join_button" onclick="join()">참가하기</button>
+	<hr>
 	<script>
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -48,6 +50,17 @@
 		
 		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다.
 		infowindow.open(map, marker);
+	</script>
+	<script>
+		function join(){
+			$.ajax({
+				type: 'post',
+				contentType: 'application/json;charset=UTF-8',
+				data: JSON.stringify(submitObj),
+				dataType : 'json',
+				url
+			})
+		}
 	</script>
 </body>
 </html>
