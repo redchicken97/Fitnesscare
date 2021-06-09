@@ -15,9 +15,9 @@ public class HealthTeamJoinServiceImpl implements HealthTeamJoinService {
 	private HealthTeamJoinDAO healthTeamJoinDAO;
 	
 	@Override
-	public void insertGetListJoinTeam(HealthTeamJoinVO vo) {
+	public List<HealthTeamJoinVO> insertGetListJoinTeam(HealthTeamJoinVO vo) {
 		System.out.println("service insertJoin 실행");
-		healthTeamJoinDAO.insertGetListJoinTeam(vo);
+		return healthTeamJoinDAO.insertGetListJoinTeam(vo);
 	}
 
 	@Override

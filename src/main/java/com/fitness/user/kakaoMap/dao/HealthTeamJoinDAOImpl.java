@@ -17,10 +17,11 @@ public class HealthTeamJoinDAOImpl implements HealthTeamJoinDAO {
 
 	@Transactional
 	@Override
-	public void insertGetListJoinTeam(HealthTeamJoinVO vo) {
+	public List<HealthTeamJoinVO> insertGetListJoinTeam(HealthTeamJoinVO vo) {
 		System.out.println("mybatis insert 실행");
 		sqlSessionTemplate.insert("healthTeamJoinDAO.insertHealthTeamJoin");
-		sqlSessionTemplate.selectList("healthTeamJoinDAO.getHealthTeamJoinList");
+		
+		return sqlSessionTemplate.selectList("healthTeamJoinDAO.getHealthTeamJoinList");
 	}
 	
 	@Transactional

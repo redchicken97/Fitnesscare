@@ -102,8 +102,7 @@ public class UserCommentController {
 			Rd.addProperty("cmt_id", vo2.getCmt_id());
 			Rd.addProperty("cmt_rdcnt", vo2.getCmt_rdCnt());
 			
-			json = gson.toJson(Rd);
-			
+			json = gson.toJson(Rd);	
 
 			int cnt = 0;
 			if(user_id != 0) {

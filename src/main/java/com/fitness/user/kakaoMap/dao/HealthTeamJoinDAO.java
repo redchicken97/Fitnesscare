@@ -6,7 +6,7 @@ import com.fitness.user.kakaoMap.vo.HealthTeamJoinVO;
 
 public interface HealthTeamJoinDAO {
 	
-	public void insertGetListJoinTeam(HealthTeamJoinVO vo);
+	public List<HealthTeamJoinVO> insertGetListJoinTeam(HealthTeamJoinVO vo);
 	
 	public void deleteGetListHealthTeamJoin(HealthTeamJoinVO vo);
 }

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fitness.user.kakaoMap.service.HealthTeamJoinService;
 import com.fitness.user.kakaoMap.vo.HealthTeamJoinVO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 @Controller
 public class HealthTeamJoinController {
@@ -22,10 +25,19 @@ public class HealthTeamJoinController {
 	public String insertGetListJoinTeam (@RequestBody Map<String, Object> param) {
 		System.out.println("controller에서 insertJoin 작동");
 		HealthTeamJoinVO vo1 = new HealthTeamJoinVO();
-		int ht_id = 0;
-		int user_id = 0;
-		healthTeamJoinService.insertGetListJoinTeam(vo1);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		JsonObject List1 = new JsonObject();
+		int ht_id = (int) param.get("ht_id");
+		int user_id = (int) param.get("user_id");
+		vo1.setHt_id(ht_id);
+		vo1.setUser_id(user_id);
+		for (HealthTeamJoinVO vo2 : healthTeamJoinService.insertGetListJoinTeam(vo1)) {
+			List1.addProperty("ht_id", vo2.getHt_id());
+			List1.addProperty("user_id", vo2.getUser_id());
+		}
+		
 		return null;
+
 	}
 	
 	@RequestMapping("/deleteJoin.do")
