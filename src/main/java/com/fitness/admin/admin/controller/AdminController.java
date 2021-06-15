@@ -62,4 +62,36 @@ public class AdminController {
 		return "getAdminList";
 	}
 	
+	
+	
+	@RequestMapping(value="frontBoard.admin", method=RequestMethod.GET)
+	public String frontBoard() {
+		return "frontBoard";
+	}
+	
+	@RequestMapping(value="frontLogin.admin", method=RequestMethod.GET)
+	public String frontLogin() {
+		return "frontLogin";
+	}
+	
+	@RequestMapping(value="frontMainPage.admin", method=RequestMethod.GET)
+	public String frontMainPage() {
+		return "frontMainPage";
+	}
+	
+	@RequestMapping(value="frontTerm.admin", method=RequestMethod.GET)
+	public String frontTerm() {
+		return "frontTerm";
+	}
+	
+	@RequestMapping(value="frontReg1.admin", method=RequestMethod.GET)
+	public String frontReg1() {
+		return "frontReg1";
+	}
+	
+	@RequestMapping(value="frontReg2.admin", method=RequestMethod.GET)
+	public String frontReg2() {
+		return "frontReg2";
+	}
+	
 }
