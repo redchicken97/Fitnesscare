@@ -73,7 +73,7 @@ function searchPlaces() {
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch( keyword, placesSearchCB);
+    ps.keywordSearch(keyword, placesSearchCB);
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -154,6 +154,7 @@ function displayPlaces(places) {
                    locRoadAdress = result[0].road_address.address_name;
                 }
             });
+           
 //           locPosition = marker.getPosition();
            Position_Y = marker.getPosition().getLat();
            Position_X = marker.getPosition().getLng();
@@ -306,7 +307,7 @@ function removeAllChildNods(el) {
 		내용
 		<textarea name="ht_content"></textarea>
 
-		<input type="hidden" name="userId" value="<%=userId %>">
+		<input type="hidden" name="user_id" value="<%=userId %>">
 		
 		<input type="submit" value="확인">
 	</form>

@@ -7,7 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+	UserVO userInfo = (UserVO) session.getAttribute("userInfo");
 %>
     	
 
@@ -39,6 +39,6 @@ UserVO userInfo = (UserVO) session.getAttribute("userInfo");
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="kakaoApiMap.jsp?id=${userInfo.user_id}">새 장소 공유하기</a>
+	<a href="kakaoMakeMap.jsp?id=${userInfo.user_id}">새 장소 공유하기</a>
 </body>
 </html>

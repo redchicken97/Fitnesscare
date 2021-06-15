@@ -1,5 +1,7 @@
 package com.fitness.user.kakaoMap.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,12 @@ public class HealthTeamJoinController {
 	
 	//참가인원 추가 및 인원리스트 조회
 	@RequestMapping("/insertJoin.do")
-	
-	public String insertGetListJoinTeam (@RequestBody Map<String, Object> param) {
+	public List<String> insertGetListJoinTeam (@RequestBody Map<String, Object> param) {
 		System.out.println("controller에서 insertJoin 작동");
 		HealthTeamJoinVO vo1 = new HealthTeamJoinVO();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonObject List1 = new JsonObject();
+		List<String> List2 = new ArrayList<String>();
 		int ht_id = (int) param.get("ht_id");
 		int user_id = (int) param.get("user_id");
 		vo1.setHt_id(ht_id);
@@ -34,10 +36,13 @@ public class HealthTeamJoinController {
 		for (HealthTeamJoinVO vo2 : healthTeamJoinService.insertGetListJoinTeam(vo1)) {
 			List1.addProperty("ht_id", vo2.getHt_id());
 			List1.addProperty("user_id", vo2.getUser_id());
+			
+			String json = gson.toJson(List1);
+			
+			List2.add(json);
 		}
 		
-		return null;
-
+		return List2;
 	}
 	
 	@RequestMapping("/deleteJoin.do")
