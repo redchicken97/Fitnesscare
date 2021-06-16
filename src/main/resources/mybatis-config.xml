@@ -18,7 +18,11 @@
 		<typeAlias type="com.fitness.admin.user.vo.UserManVO" alias="userMan"></typeAlias>
 		<typeAlias type="com.fitness.admin.qeboard.vo.QEBoardVO" alias="qeboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"></typeAlias>
+	<!-- 
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
+	 -->	
+		
+	
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -44,6 +48,11 @@
 		<mapper resource="mappings/qeboard-mapping.xml" />
 		<mapper resource="mappings/feboard-mapping.xml" />
 		<mapper resource="mappings/veboard-mapping.xml" />
+		
+	<!-- 
 		<mapper resource="mappings/hteboard-mapping.xml" />
+	 -->	
+	
+	
 	</mappers>
 </configuration>
