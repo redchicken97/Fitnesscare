@@ -1,8 +1,8 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.common.dao;
 
 import java.util.List;
 
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.vo.UserVO;
 
 public interface UserDAO {
 	

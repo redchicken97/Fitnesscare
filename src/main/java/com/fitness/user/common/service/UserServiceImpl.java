@@ -1,4 +1,4 @@
-package com.fitness.common.user.service;
+package com.fitness.user.common.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fitness.admin.common.paging.Criteria;
-import com.fitness.common.user.dao.UserDAO;
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.dao.UserDAO;
+import com.fitness.user.common.vo.UserVO;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {

@@ -1,8 +1,8 @@
-package com.fitness.common.user.service;
+package com.fitness.user.common.service;
 
 import java.util.HashMap;
 
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.vo.UserVO;
 
 public interface UserKakaoService {
 	public String getAccessToken(String authorize_code);

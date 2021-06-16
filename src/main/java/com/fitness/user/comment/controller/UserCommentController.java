@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fitness.common.user.vo.UserVO;
 import com.fitness.user.comment.service.CommentOverlapService;
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
 import com.fitness.user.comment.vo.CommentOverlapVO;
+import com.fitness.user.common.vo.UserVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;

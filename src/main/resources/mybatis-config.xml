@@ -5,17 +5,18 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-		<typeAlias type="com.fitness.common.user.vo.UserVO" alias="user_info"></typeAlias>
+		<typeAlias type="com.fitness.user.common.vo.UserVO" alias="user_info"></typeAlias>
 		<typeAlias type="com.fitness.user.kakaoMap.vo.HealthTeamVO" alias="healtTeam"/>
 		<typeAlias type="com.fitness.user.comment.vo.CommentInfoVO" alias="commentInfo"/>
 		<typeAlias type="com.fitness.user.comment.vo.CommentOverlapVO" alias="overlapCheck"/>
+		<typeAlias type="com.fitness.user.comment.vo.HealthTeamJoinVO" alias="healthTeamJoin"></typeAlias>
+		<typeAlias type="com.fitness.user.feboard.vo.FeBoardVO" alias="feboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"></typeAlias>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"></typeAlias>
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"></typeAlias>
 		<typeAlias type="com.fitness.admin.user.vo.UserManVO" alias="userMan"></typeAlias>
 		<typeAlias type="com.fitness.admin.qeboard.vo.QEBoardVO" alias="qeboard"></typeAlias>
-		<typeAlias type="com.fitness.admin.feboard.vo.FEBoardVO" alias="feboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"></typeAlias>
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
 	</typeAliases>

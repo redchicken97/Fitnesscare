@@ -1,4 +1,4 @@
-<%@page import="com.fitness.common.user.vo.UserVO"%>
+<%@page import="com.fitness.user.common.vo.UserVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

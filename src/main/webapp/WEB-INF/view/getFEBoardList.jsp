@@ -14,6 +14,7 @@
 <body>
 	<h1>자유 게시판 공지사항 목록</h1>
 	<a href="/insertFEBoard.admin">공지사항 등록</a>
+	<a href="/getFEBoardList.admin">글 작성</a>
 	<table border="1">
 		<tr>
 			<th>번호</th>

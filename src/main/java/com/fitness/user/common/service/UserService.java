@@ -1,9 +1,9 @@
-package com.fitness.common.user.service;
+package com.fitness.user.common.service;
 
 import java.util.List;
 
 import com.fitness.admin.common.paging.Criteria;
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.vo.UserVO;
 
 public interface UserService {
 	

@@ -1,4 +1,4 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.common.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.vo.UserVO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {

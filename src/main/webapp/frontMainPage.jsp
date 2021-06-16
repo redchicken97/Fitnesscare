@@ -95,22 +95,22 @@
 			<div class="row text-center">
 				<div style="margin-left: -20px;" class="col-lg-12">
 					<div style="text-align:center;">
-						<div style="background-image: url('/Fitnesscare/resources/img/boxing.png'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Boxing</p></div>
-						<div style="background-image: url('/resources/img/yoga.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Yoga</p></div>
-						<div style="background-image: url('/resources/img/dance.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Dance</p></div>
-						<div style="background-image: url('/resources/img/pt.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Personal training</p></div>
-						<div style="background-image: url('/resources/img/running.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Running</p></div>
-						<div style="background-image: url('/resources/img/ft.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Pilates</p></div>
-						<div style="background-image: url('/resources/img/sp.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Spinning</p></div>
-						<div style="background-image: url('/resources/img/pushup.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Calisthenics</p></div>
-						<div style="background-image: url('/resources/img/pullup.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Calisthenics</p></div>
-						<div style="background-image: url('/resources/img/gallery-1.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
-						<div style="background-image: url('/resources/img/dead.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
-						<div style="background-image: url('/resources/img/bench.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
-						<div style="background-image: url('/resources/img/sp.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Squirt</p></div>
-						<div style="background-image: url('/resources/img/gallery-3.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
-						<div style="background-image: url('/resources/img/main6.png'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 160px;"></p>Personal training</div>
-						<div style="background-image: url('/resources/img/main7.jpg'); background-repeat: no-repeat; color: white; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Personal training</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/boxing.png'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Boxing</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/yoga.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Yoga</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/dance.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Dance</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/pt.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Personal training</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/running.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Running</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/ft.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Pilates</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/sp.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Spinning</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/pushup.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Calisthenics</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/pullup.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Calisthenics</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/gallery-1.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/dead.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/bench.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/sp.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Squirt</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/gallery-3.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Weight training</p></div>
+						<div style="background-image: url('/Fitnesscare/resources/img/main6.png'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 160px;"></p>Personal training</div>
+						<div style="background-image: url('/Fitnesscare/resources/img/main7.jpg'); background-repeat: no-repeat; color: black; text-align: center; font-weight: bold; font-size: 40px;" class="zoom"><p style="padding-top: 170px;">Personal training</p></div>
 					</div>
 				</div> <!-- end col-lg-12 -->
 			</div> <!-- end row text-center -->
@@ -125,7 +125,7 @@
 			<div class="col-lg-16">
 				<figure style=" display: inline-block; border:solid 1px white; min-width: 392px;min-height: 431px;
 				" class="trainer">
-					<img style="width: 392px; height: 330px;" src="/resources/img/trainer-1.jpg">
+					<img style="width: 392px; height: 330px;" src="/Fitnesscare/resources/img/trainer-1.jpg">
 					<figcaption>
 						<h3 style="font-weight: bold; font-size: 20px; text-align: center;"> Zackary Greinke</h3>
 						<p style="text-align: center;">non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
@@ -134,7 +134,7 @@
 				</figure>
 				<figure style="  display: inline-block; border:solid 1px white; min-width: 392px;min-height: 431px;
 				" class="trainer">
-					<img style="width: 392px; height: 330px;" src="/resources/img/trainer-2.jpg">
+					<img style="width: 392px; height: 330px;" src="/Fitnesscare/resources/img/trainer-2.jpg">
 					<figcaption>
 						<h3 style="font-weight: bold; font-size: 20px; text-align: center;">  Aroldis Chapman </h3>
 						<p style="text-align: center;">non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
@@ -143,7 +143,7 @@
 				</figure>
 				<figure style=" display: inline-block; border:solid 1px white; min-width: 392px;min-height: 431px;
 				" class="trainer">
-					<img style="width: 392px; height: 330px;" src="/resources/img/trainer-3.jpg">
+					<img style="width: 392px; height: 330px;" src="/Fitnesscare/resources/img/trainer-3.jpg">
 					<figcaption>
 						<h3 style="font-weight: bold; font-size: 20px; text-align: center;"> Ronda Rousey</h3>
 						<p style="text-align: center;">non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>

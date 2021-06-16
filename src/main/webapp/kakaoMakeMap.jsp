@@ -39,8 +39,6 @@
 		<input type="submit" value="확인">
 	</form>
 	
-	
-	 
 	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=de65e137185c3c1a57b774574870f503&libraries=services"></script>
 	<script>
 		function makeMap(){
@@ -121,8 +119,7 @@
 			        
 			    });
 			}
-			
-			
+	
 		}
 	</script>
 </body>

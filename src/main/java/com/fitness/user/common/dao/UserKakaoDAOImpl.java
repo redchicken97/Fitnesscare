@@ -1,10 +1,10 @@
-package com.fitness.common.user.dao;
+package com.fitness.user.common.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.vo.UserVO;
 
 @Repository
 public class UserKakaoDAOImpl implements UserKakaoDAO {

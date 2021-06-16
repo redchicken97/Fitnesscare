@@ -1,4 +1,4 @@
-package com.fitness.common.user.controller;
+package com.fitness.user.common.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fitness.common.user.service.UserService;
-import com.fitness.common.user.vo.UserVO;
+import com.fitness.user.common.service.UserService;
+import com.fitness.user.common.vo.UserVO;
 
 @Controller
 public class UserController {
