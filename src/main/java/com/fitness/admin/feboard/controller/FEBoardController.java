@@ -27,18 +27,11 @@ public class FEBoardController {
 	@Autowired
 	private UserManService userManService;
 	
-	@RequestMapping(value="insertFEBoard", method=RequestMethod.GET)
-	public String insertFEBoardFrom(FEBoardVO vo) {
-		System.out.println("FEBoardController.insertFEBoardFrom 실행");
-		return "insertFEBoard";
+	@RequestMapping("/insertFeBoard.do")
+	public String insertFeBoard(FEBoardVO vo) {
+		return "redirect:/getFEBoardList.do";
 	}
 	
-	@RequestMapping(value="insertFEBoard", method=RequestMethod.POST)
-	public String insertFEBoard(FEBoardVO vo) {
-		System.out.println("FEBoardController.insertFEBoard 실행");
-		fEBoardService.insertFEBoard(vo);
-		return "redirect:/getFEBoardList.admin";
-	}
 	
 	@RequestMapping(value="updateFEBoard", method=RequestMethod.GET)
 	public String updateFEBoardFrom(FEBoardVO vo, Model model) {

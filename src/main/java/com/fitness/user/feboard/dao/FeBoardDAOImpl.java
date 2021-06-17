@@ -17,7 +17,7 @@ public class FeBoardDAOImpl implements FeBoardDAO {
 
 	@Override
 	public void insertFEBoard(FeBoardVO vo) {
-		System.out.println("mybatis 자유게시판 입력 작동");
+		System.out.println("mybatis 자유게시판  입력 작동");
 		sqlSessionTemplate.insert("FEBoardDAO.insertFEBoard", vo);
 	}
 
