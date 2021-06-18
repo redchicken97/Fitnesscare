@@ -20,6 +20,6 @@ public class FeBoardController {
 	}
 	@RequestMapping("/getFeBoardList.do")
 	public String getFeBoardList(FeBoardVO vo) {
-		return "getFEBoardList";
+		return "getFeBoardList";
 	}
 }
