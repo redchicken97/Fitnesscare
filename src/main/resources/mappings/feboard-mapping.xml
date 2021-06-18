@@ -36,11 +36,6 @@
 		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
 		ORDER BY free_id DESC
 	</select>
-	
-	<select id="getFEBoardCount" resultType="int">
-		SELECT COUNT(*)
-		FROM free 
-	</select>
 
 	<insert id="insertFEBoard" parameterType="feboard">
 		INSERT INTO

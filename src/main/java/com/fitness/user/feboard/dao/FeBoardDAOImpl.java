@@ -16,42 +16,35 @@ public class FeBoardDAOImpl implements FeBoardDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public void insertFEBoard(FeBoardVO vo) {
+	public void insertFeBoard(FeBoardVO vo) {
 		System.out.println("mybatis 자유게시판  입력 작동");
 		sqlSessionTemplate.insert("FEBoardDAO.insertFEBoard", vo);
 	}
 
 	@Override
-	public void updateFEBoard(FeBoardVO vo) {
+	public void updateFeBoard(FeBoardVO vo) {
 		System.out.println("mybatis 자유게시판 수정 작동");
 		sqlSessionTemplate.update("FEBoardDAO.updateFEBoard", vo);
 
 	}
 
 	@Override
-	public void deleteFEBoard(FeBoardVO vo) {
+	public void deleteFeBoard(FeBoardVO vo) {
 		System.out.println("mybatis 자유게시판 삭제 작동");
 		sqlSessionTemplate.delete("FEBoardDAO.deleteFEBoard", vo);
 	}
 
 	@Override
-	public FeBoardVO getFEBoard(FeBoardVO vo) {
+	public FeBoardVO getFeBoard(FeBoardVO vo) {
 		System.out.println("mybatis 자유 게시판 게시글 하나 가져오기 작동");
 		
 		return sqlSessionTemplate.selectOne("FEBoardDAO.getFEBoard", vo);
 	}
 
 	@Override
-	public List<FeBoardVO> getFEBoardList(Criteria cri) {
+	public List<FeBoardVO> getFeBoardList(FeBoardVO vo) {
 		System.out.println("mybatis 자유 게시판 게시글 가져오기 작동 ");
-		
-		return sqlSessionTemplate.selectList("FEBoardDAO.getFEBoardList", cri);
-	}
-
-	@Override
-	public int getFEBoardCount() {
-		System.out.println("mybatis 자유 게시판 뭔지 모름 나중에 수정 예정");
-		return (int) sqlSessionTemplate.selectOne("FEBoardDAO.getFEBoardCount");
+		return sqlSessionTemplate.selectList("FEBoardDAO.getFEBoardList", vo);
 	}
 
 }

@@ -7,16 +7,13 @@ import com.fitness.user.feboard.vo.FeBoardVO;
 
 public interface FeBoardDAO {
 	
-	void insertFEBoard(FeBoardVO vo);
+	void insertFeBoard(FeBoardVO vo);
 	
-	public void updateFEBoard(FeBoardVO vo);
+	public void updateFeBoard(FeBoardVO vo);
 	
-	public void deleteFEBoard(FeBoardVO vo);
+	public void deleteFeBoard(FeBoardVO vo);
 	
-	public FeBoardVO getFEBoard(FeBoardVO vo); 
+	public FeBoardVO getFeBoard(FeBoardVO vo); 
 	
-	public List<FeBoardVO> getFEBoardList(Criteria cri);
-	
-	public int getFEBoardCount();
-	
+	public List<FeBoardVO> getFeBoardList(FeBoardVO vo);
 }
