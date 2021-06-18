@@ -15,7 +15,7 @@ public class FeBoardController {
 	
 	@RequestMapping("/insertFeBoard.do")
 	public String insertFeBoard(FeBoardVO vo) {
-		feBoardService.insertFEBoard(vo);
+		feBoardService.insertFeBoard(vo);
 		return "redirect:/getFeBoardList.do";
 	}
 	@RequestMapping("/getFeBoardList.do")
