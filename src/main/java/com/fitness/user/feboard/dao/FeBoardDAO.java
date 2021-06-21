@@ -2,7 +2,6 @@ package com.fitness.user.feboard.dao;
 
 import java.util.List;
 
-import com.fitness.user.PageMake.paging.Criteria;
 import com.fitness.user.feboard.vo.FeBoardVO;
 
 public interface FeBoardDAO {

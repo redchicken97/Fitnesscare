@@ -12,7 +12,6 @@ public class FeBoardVO {
 	private int free_rdcnt;		//추천 수
 	private int free_visitcnt;	//조회 수 
 	private int free_reportcnt;	//신고 수
-	private int free_type;		//글 종류 -> 공지 글인지 아닌지
 	private String free_content;//글 내용
 	
 	public int getFree_id() {
@@ -63,12 +62,6 @@ public class FeBoardVO {
 	public void setFree_reportcnt(int free_reportcnt) {
 		this.free_reportcnt = free_reportcnt;
 	}
-	public int getFree_type() {
-		return free_type;
-	}
-	public void setFree_type(int free_type) {
-		this.free_type = free_type;
-	}
 	public String getFree_content() {
 		return free_content;
 	}
@@ -80,9 +73,7 @@ public class FeBoardVO {
 		return "FeBoardVO [free_id=" + free_id + ", free_title=" + free_title + ", user_id=" + user_id
 				+ ", free_regdate=" + free_regdate + ", free_commentcnt=" + free_commentcnt + ", free_rdcnt="
 				+ free_rdcnt + ", free_visitcnt=" + free_visitcnt + ", free_reportcnt=" + free_reportcnt
-				+ ", free_type=" + free_type + ", free_content=" + free_content + "]";
+				+ ", free_content=" + free_content + "]";
 	}
 	
-	
-
 }

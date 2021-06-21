@@ -13,7 +13,6 @@
 		<result property="free_rdcnt" column="FREE_RDCNT" />
 		<result property="free_visitcnt" column="FREE_VISITCNT" />
 		<result property="free_reportcnt" column="FREE_REPORTCNT" />
-		<result property="free_type" column="FREE_TYPE" />
 		<result property="free_content" column="FREE_CONTENT" />
 	</resultMap>
 	
@@ -26,7 +25,7 @@
 	<sql id="subGetFEBoardList1">
 		SELECT free_id, free_title, user_id, free_regdate, 
 		free_commentcnt, free_rdcnt, free_visitcnt, free_reportcnt, 
-		free_type, free_content, ROWNUM AS rnum 
+		free_content, ROWNUM AS rnum 
 		FROM free 
 	</sql>
 	
@@ -39,8 +38,8 @@
 
 	<insert id="insertFEBoard" parameterType="feboard">
 		INSERT INTO
-		free (free_id, free_title, user_id, free_type, free_content)
-		VALUES(FREE_ID_SEQ.NEXTVAL, #{free_title}, #{user_id}, 1, #{free_content})
+		free (free_id, free_title, user_id, free_content)
+		VALUES(FREE_ID_SEQ.NEXTVAL, #{free_title}, #{user_id}, #{free_content})
 	</insert>
 	
 	<update id="updateFEBoard" parameterType="feboard">

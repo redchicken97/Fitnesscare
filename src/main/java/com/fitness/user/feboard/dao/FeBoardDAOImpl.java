@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fitness.user.PageMake.paging.Criteria;
 import com.fitness.user.feboard.vo.FeBoardVO;
 
 @Repository
