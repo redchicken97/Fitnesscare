@@ -34,6 +34,13 @@ public class FeBoardController {
 	}
 	@RequestMapping("/deleteFeBoard.do")
 	public String deleteFeBoard(FeBoardVO vo) {
+		System.out.println("자유 게시판 게시글 삭제");
+		feBoardService.deleteFeBoard(vo);
 		return "redirect:/getFeBoardList.do";
+	}
+	@RequestMapping("/updateFeBoard.do")
+	public String updateFeBoard(FeBoardVO vo) {
+		System.out.println("자유 게시판 수정");
+		return "redirect:/getFeBoard.do?free_id="+vo.getFree_id();
 	}
 }
