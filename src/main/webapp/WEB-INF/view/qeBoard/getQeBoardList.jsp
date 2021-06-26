@@ -5,34 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유 게시판</title>
+<title>자유 게시판 리스트</title>
 </head>
 <body>
-	<a href="insertFeBoard.jsp">자유 게시판 입력</a>
-	<h3>자유 게시판 목록</h3>
+	<a href="insertQeBoard.jsp">글 작성</a>
+	<h3>질문 게시판 글 목록</h3>
 	
 	<table border="1">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
-			<th>댓글수</th>
+			<th>댓글 수</th>
 			<th>작성자</th>
 			<th>날짜</th>
 			<th>조회수</th>
 			<th>좋아요</th>
 		</tr>
 		
-		<c:forEach var=lists items="${FeList}">
+		<c:forEach var=lists items="${QeList }"> 
 			<tr>
-				<td>${lists.free_id }</td>
-				<td>${lists.free_title }</td>
-				<td>${lists.free_commentcnt }</td>
+				<td>${lists.q_id }</td>
+				<td>${lists.q_title }</td>
+				<td>${lists.q_commentcnt }</td>
 				<td>${lists.user_id }</td>
-				<td>${lists.free_regdate }</td>
-				<td>${lists.free_visitcnt }</td>
-				<td>${lists.free_rdcnt }</td>
+				<td>${lists.q_regdate }</td>
+				<td>${lists.q_visitcnt }</td>
+				<td>${lists.q_rdcnt }</td>
 			</tr>
 		</c:forEach>
+		
 	</table>
 </body>
 </html>

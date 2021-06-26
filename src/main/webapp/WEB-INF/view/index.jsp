@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,11 @@
 </head>
 <body>
 	<h1>메인 페이지</h1>
+	
+	<h3>${userInfo.user_nick }님이 로그인하셧습니다</h3>
+	
+	
+	
 	<hr>
 		<a href="login.jsp">로그인</a><br>
 		<!-- 	<a href="insertUser.jsp">회원가입</a></br></br> -->

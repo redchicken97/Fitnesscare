@@ -21,9 +21,8 @@
 		WHERE q_id = #{q_id}
 	</select>
 	
-	<select id="getQEBoardCount" resultType="int">
-		SELECT COUNT(*)
-		FROM question 
+	<select id="getQEBoardList" resultMap="qeboardResult">
+		SELECT * FROM question ORDER BY q_id DESC
 	</select>
 
 	<insert id="insertQEBoard" parameterType="qeboard">

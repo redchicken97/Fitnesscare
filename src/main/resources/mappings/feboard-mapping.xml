@@ -22,18 +22,8 @@
 		WHERE free_id = #{free_id}
 	</select>
 	
-	<sql id="subGetFEBoardList1">
-		SELECT free_id, free_title, user_id, free_regdate, 
-		free_commentcnt, free_rdcnt, free_visitcnt, free_reportcnt, 
-		free_content, ROWNUM AS rnum 
-		FROM free 
-	</sql>
-	
 	<select id="getFEBoardList" resultMap="feboardResult">
-		SELECT * 
-		FROM (<include refid="subGetFEBoardList1" />) sub1
-		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
-		ORDER BY free_id DESC
+		SELECT * FROM free ORDER BY free_id DESC
 	</select>
 
 	<insert id="insertFEBoard" parameterType="feboard">

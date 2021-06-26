@@ -42,7 +42,8 @@ public class UserKakaoController {
 		//있다면 로그인 화면으로 이동
 		if (KakaoUser != null) {
 			session.setAttribute("userInfo", KakaoUser);
-			return "getUser";
+
+			return "index";
 		}
 		
 		if (userInfo.get("email") != null) {

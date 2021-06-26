@@ -63,5 +63,7 @@
 	<a href="getMapList.do">헬스장 장소 공유 게시판</a>
 	<a href="kakaoApiMap.jsp?id=${userInfo.user_id }">헬스 장소 공유 등록</a>
 	<a href="comment.do?userId=${userInfo.user_id }">댓글 달기</a>
+	<a href="getFeBoardList.do">자유 게시판</a>
+	<a href="getQeBoardList.do">질문 게시판</a>
 </body>
 </html>

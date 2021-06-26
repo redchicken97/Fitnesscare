@@ -24,13 +24,13 @@ public class FeBoardController {
 	public String getFeBoard(FeBoardVO vo, Model model) {
 		System.out.println("자유 게시판 게시문 가져오기 controller");
 		model.addAttribute("FeBaord", feBoardService.getFeBoard(vo));
-		return "getFeBoard";
+		return "feBoard/getFeBoard";
 	}
 	@RequestMapping("/getFeBoardList.do")
 	public String getFeBoardList(FeBoardVO vo, Model model) {
 		System.out.println("자유 게시판 List controller");
 		model.addAttribute("FeList", feBoardService.getFeBoardList(vo));
-		return "getFeBoardList";
+		return "feBoard/getFeBoardList";
 	}
 	@RequestMapping("/deleteFeBoard.do")
 	public String deleteFeBoard(FeBoardVO vo) {

@@ -40,6 +40,7 @@ public class QeBoardServiceImpl implements QeBoardService {
 
 	@Override
 	public void updateBoard(QeBoardVO vo) {
+		System.out.println("service 질문 게시판 글 수정");
 		qeBoardDAO.updateBoard(vo);
 	}
 

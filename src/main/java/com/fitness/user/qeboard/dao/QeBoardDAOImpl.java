@@ -29,7 +29,7 @@ public class QeBoardDAOImpl implements QeBoardDAO {
 	@Override
 	public List<QeBoardVO> getQeBoardList(QeBoardVO vo) {
 		System.out.println("질문 게시판 게시글 전체 가져오기");
-		return sqlSessionTemplate.selectList("QEBoardDAO.getFEBoardList", vo);
+		return sqlSessionTemplate.selectList("QEBoardDAO.getQEBoardList", vo);
 	}
 
 	@Override

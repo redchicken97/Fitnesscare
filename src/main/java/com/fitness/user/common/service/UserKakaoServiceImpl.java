@@ -100,9 +100,9 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 	        conn.setRequestMethod("POST");
 	        
 	        //    요청에 필요한 Header에 포함될 내용
-	       
-	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);	        
-	        
+//	        System.out.println("access_token : " + access_Token);
+	        conn.setRequestProperty("Authorization", "Bearer " + access_Token.trim());	  
+     
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("responseCode : " + responseCode);
 	        

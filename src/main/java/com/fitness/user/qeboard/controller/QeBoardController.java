@@ -2,6 +2,7 @@ package com.fitness.user.qeboard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fitness.user.qeboard.service.QeBoardService;
@@ -20,20 +21,24 @@ public class QeBoardController {
 		return "redirect:/getQeBoardList.do";
 	}
 	@RequestMapping("/getQeBoardList.do")
-	public String getQeBoardList(QeBoardVO vo) {
+	public String getQeBoardList(QeBoardVO vo, Model model) {
 		System.out.println("질문 게시판 글 가져오기 controller");
-		return "getQeBoardList";
+		model.addAttribute("QeList", qeBoardService.getQeBoardList(vo));
+		return "qeBoard/getQeBoardList";
 	}
 	@RequestMapping("/getQeBoard.do")
-	public String getQeBoard(QeBoardVO vo) {
-		return "getQeBoard";
+	public String getQeBoard(QeBoardVO vo, Model model) {
+		model.addAttribute("QeBoard", qeBoardService.getQeBoard(vo));
+		return "qeBoard/getQeBoard";
 	}
 	@RequestMapping("/deleteQeBoard.do")
 	public String deleteQeBoard(QeBoardVO vo) {
+		qeBoardService.deleteQeBoard(vo);
 		return "redirect:/getQeBoardList.do";
 	}
 	@RequestMapping("/updateQeBoard.do")
 	public String updateQeBoard(QeBoardVO vo) {
+		qeBoardService.updateBoard(vo);
 		return "redirect:/getQeBoard.do?q_id" + vo.getQ_id();
 	}
 	

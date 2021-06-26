@@ -26,12 +26,12 @@ public class MapKakaoController {
 	public String getMapList(HealthTeamVO vo, Model model) {
 		System.out.println("controller에서 게시판 목록 보기");
 		model.addAttribute("mapList", mapkakaoservice.getMapList(vo));
-		return "getMapList";
+		return "kakaoMap/getMapList";
 	}
 	@RequestMapping("/getMap.do")
 	public String getMap(HealthTeamVO vo, Model model) {
 		System.out.println("controller에서 글 하나 가셔오기");
 		model.addAttribute("mapOne", mapkakaoservice.getMap(vo.getHt_id()));
-		return "getMap";
+		return "kakaoMap/getMap";
 	}
 }
