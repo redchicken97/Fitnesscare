@@ -60,4 +60,10 @@ public class UserKakaoController {
 		userkakaoService.insertKakaoUser(vo);
 		return "redirect:/getUserList.do";
 	}
+	
+	@RequestMapping("/logoutKakao.do")
+	public String logoutKakao(UserVO vo) {
+		return "";
+	}
+	
 }
