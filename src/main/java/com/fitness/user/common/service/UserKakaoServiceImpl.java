@@ -74,8 +74,8 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 			access_Token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 			
-			System.out.println("access_token : "+access_Token);
-			System.out.println("refresh_token :"+refresh_Token);
+			System.out.println("access_token : " + access_Token);
+			System.out.println("refresh_token :" + refresh_Token);
 			
 			br.close();
 			bw.close();
@@ -152,6 +152,7 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 	@Override
 	public void logoutKakao(String access_Token) {
 		String reqURL = "https://kapi.kakao.com/v1/user/logout";
+		System.out.println("access_token : " + access_Token);
 		try {
 			URL url = new URL(reqURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

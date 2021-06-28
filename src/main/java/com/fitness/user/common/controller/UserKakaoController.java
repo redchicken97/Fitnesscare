@@ -41,8 +41,8 @@ public class UserKakaoController {
 		
 		//있다면 로그인 화면으로 이동
 		if (KakaoUser != null) {
+			session.setAttribute("access_Token", access_Token);
 			session.setAttribute("userInfo", KakaoUser);
-
 			return "index";
 		}
 		
@@ -64,8 +64,9 @@ public class UserKakaoController {
 	@RequestMapping("/logoutKakao.do")
 	public String logoutKakao(HttpSession session) {
 		userkakaoService.logoutKakao((String) session.getAttribute("access_Token"));
-		session.removeAttribute("access_Token");
-		return "index";
+		session.removeAttribute("access_token");
+		session.removeAttribute("userInfo");
+		return "redirect:/index.jsp";
 	}
 	
 }
