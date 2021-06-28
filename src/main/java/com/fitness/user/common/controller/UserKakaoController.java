@@ -43,7 +43,7 @@ public class UserKakaoController {
 		if (KakaoUser != null) {
 			session.setAttribute("access_Token", access_Token);
 			session.setAttribute("userInfo", KakaoUser);
-			return "index";
+			return "redirect:/index.jsp";
 		}
 		
 		if (userInfo.get("email") != null) {

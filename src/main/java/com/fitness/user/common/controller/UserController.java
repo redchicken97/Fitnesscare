@@ -50,6 +50,11 @@ public class UserController {
 		}
 		return null;
 	}
+	@RequestMapping("/logout.do")
+	public String logoutUser(HttpSession session) {
+		session.removeAttribute("userInfo");
+		return "redirect:/index.jsp";
+	}
 	@RequestMapping("/getUser.do")
 	public String getUser(UserVO vo, HttpSession session, HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
