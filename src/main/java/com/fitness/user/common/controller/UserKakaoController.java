@@ -62,8 +62,10 @@ public class UserKakaoController {
 	}
 	
 	@RequestMapping("/logoutKakao.do")
-	public String logoutKakao(UserVO vo) {
-		return "";
+	public String logoutKakao(HttpSession session) {
+		userkakaoService.logoutKakao((String) session.getAttribute("access_Token"));
+		session.removeAttribute("access_Token");
+		return "index";
 	}
 	
 }

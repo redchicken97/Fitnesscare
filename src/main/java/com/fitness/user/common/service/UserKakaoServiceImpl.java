@@ -135,7 +135,6 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 	    
 	    return userInfo;
 	}
-
 	
 	@Override
 	public void insertKakaoUser(UserVO vo) {
@@ -148,6 +147,32 @@ public class UserKakaoServiceImpl implements UserKakaoService {
 	public UserVO getKakaoUser(UserVO vo) {
 		System.out.println("service에서 getKakaoUser 실행");
 		return userKakaoDAO.getKakaoUser(vo);
+	}
+
+	@Override
+	public void logoutKakao(String access_Token) {
+		String reqURL = "https://kapi.kakao.com/v1/user/logout";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+			
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			
+			String result = "";
+			String line = "";
+			
+			while((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
