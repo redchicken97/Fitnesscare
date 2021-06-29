@@ -7,7 +7,7 @@
 <title>자유게시판 게시물 가져오기</title>
 </head>
 <body>
-	<a href="">수정</a><a href="">삭제</a>
+	<a href="modifyPage.do">수정</a><a href="">삭제</a>
 	<h2><strong>${FeBaord.free_title}</strong></h2>
 	<h3>글쓴이 ${userInfo.user_nick }</h3>
 	<h4>${FeBoard.free_regdate }</h4> <h4>${FeBoard.free_visitcnt }</h4>

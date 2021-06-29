@@ -38,6 +38,12 @@ public class FeBoardController {
 		feBoardService.deleteFeBoard(vo);
 		return "redirect:/getFeBoardList.do";
 	}
+	//수정 게시판으로 이동용 컨트롤러
+	@RequestMapping("/modifyPage.do")
+	public String modifyPage() {
+		return "redirect:/feBoard/updateFeBoard.jsp";
+	}
+	
 	@RequestMapping("/updateFeBoard.do")
 	public String updateFeBoard(FeBoardVO vo) {
 		System.out.println("자유 게시판 수정");

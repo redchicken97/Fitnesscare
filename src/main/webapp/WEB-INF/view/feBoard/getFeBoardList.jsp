@@ -22,7 +22,7 @@
 			<th>좋아요</th>
 		</tr>
 		
-		<c:forEach var=lists items="${FeList}">
+		<c:forEach var="lists" items="${FeList}">
 			<tr>
 				<td>${lists.free_id }</td>
 				<td>${lists.free_title }</td>

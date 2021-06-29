@@ -13,11 +13,16 @@
 	
 	<%if(session.getAttribute("userInfo") == null){%>
 		
-		<h3>로그인 하시겠습니까?</h3>
+		<a href="login.jsp">로그인</a><br>
 	
 	<% } %>
+	<%if(session.getAttribute("userInfo") != null){ %>
 	
-	<h3>${userInfo.user_nick }님이 로그인하셧습니다</h3>
+		<h3>${userInfo.user_nick }님이 로그인하셧습니다</h3>
+		
+	<% }%>
+	
+	
 
 	<c:choose>
 		<c:when test="${fn:contains(userInfo.user_loginMethod,'K')}">
@@ -30,7 +35,6 @@
 	</c:choose>
 	
 	<hr>
-		<a href="login.jsp">로그인</a><br>
 		<!-- 	<a href="insertUser.jsp">회원가입</a></br></br> -->
 		<!--  	<a href="getUserList.do">회원정보</a><br><br> 	-->	
 		<!-- <a href="getQEBoardList.admin">질문 게시판</a> -->	
