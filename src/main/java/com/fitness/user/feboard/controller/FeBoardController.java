@@ -23,7 +23,7 @@ public class FeBoardController {
 	@RequestMapping("/getFeBoard.do")
 	public String getFeBoard(FeBoardVO vo, Model model) {
 		System.out.println("자유 게시판 게시문 가져오기 controller");
-		model.addAttribute("FeBaord", feBoardService.getFeBoard(vo));
+		model.addAttribute("FeBoard", feBoardService.getFeBoard(vo));
 		return "feBoard/getFeBoard";
 	}
 	@RequestMapping("/getFeBoardList.do")
@@ -38,15 +38,20 @@ public class FeBoardController {
 		feBoardService.deleteFeBoard(vo);
 		return "redirect:/getFeBoardList.do";
 	}
-	//수정 게시판으로 이동용 컨트롤러
+	//수정 게시판으로 이동용 컨트롤러 메소드
 	@RequestMapping("/modifyPage.do")
-	public String modifyPage() {
-		return "redirect:/feBoard/updateFeBoard.jsp";
+	public String modifyPage(FeBoardVO vo, Model model ) {
+		System.out.println("controller 에서 modifyPage실행");
+		model.addAttribute("getFBoard", feBoardService.getFeBoard(vo));
+		return "feBoard/updateFeBoard";
 	}
 	
+	//modifyPage로 이동한뒤 데이터를 실제로 업데이트하는 메소드
 	@RequestMapping("/updateFeBoard.do")
 	public String updateFeBoard(FeBoardVO vo) {
 		System.out.println("자유 게시판 수정");
+		feBoardService.updateFeBoard(vo);
 		return "redirect:/getFeBoard.do?free_id="+vo.getFree_id();
 	}
+
 }

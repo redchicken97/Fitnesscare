@@ -28,7 +28,7 @@
 		<input type="hidden" name="user_id" value="${userInfo.user_id }">
 		
 		내용 : <br>
-		<textarea rows="50" cols="50" name="free_content" ></textarea>
+		<textarea rows="8" cols="50" name="free_content" ></textarea>
 		
 	</form>
 </body>
