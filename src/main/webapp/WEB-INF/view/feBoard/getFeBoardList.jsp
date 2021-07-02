@@ -24,10 +24,8 @@
 		
 		<c:forEach var="lists" items="${FeList}">
 			<tr>
-				<td>${lists.free_id }</td>
-				
+				<td>${lists.free_id }</td>				
 				<td><a href="getFeBoard.do?free_id=${lists.free_id }">${lists.free_title }</a></td>
-				
 				<td>${lists.free_commentcnt }</td>
 				<td>${lists.user_id }</td>
 				<td>${lists.free_regdate }</td>

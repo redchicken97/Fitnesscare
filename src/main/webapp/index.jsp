@@ -22,8 +22,6 @@
 		
 	<% }%>
 	
-	
-
 	<c:choose>
 		<c:when test="${fn:contains(userInfo.user_loginMethod,'K')}">
 			<a href="logoutKakao.do">카카오 로그아웃하기</a>

@@ -24,8 +24,8 @@
 		
 		<c:forEach var=lists items="${QeList }"> 
 			<tr>
-				<td>${lists.q_id }</td>
-				<td>${lists.q_title }</td>
+				<td>${lists.q_id }</td>			
+				<td><a href="getQeBoard.do?q_id=${lists.q_id }">${lists.q_title }</a></td>			
 				<td>${lists.q_commentcnt }</td>
 				<td>${lists.user_id }</td>
 				<td>${lists.q_regdate }</td>

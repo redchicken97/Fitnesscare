@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 입력</title>
+<title>자유 게시판 작성</title>
 </head>
 <body>
 	<h2>입력 화면</h2>

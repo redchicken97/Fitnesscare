@@ -14,7 +14,7 @@
 	
 	<c:if test="${name eq writer }">
 		<a href="modifyPage.do?free_id=${FeBoard.free_id }">수정</a> 
-		<a href="">삭제</a>
+		<a href="deleteFeBoard.do?free_id=${FeBoard.free_id }">삭제</a>
 	</c:if>
 	
 	<h2><strong>${FeBoard.free_title}</strong></h2>
