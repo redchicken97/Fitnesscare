@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 				<td><a href="getQeBoard.do?q_id=${lists.q_id }">${lists.q_title }</a></td>			
 				<td>${lists.q_commentcnt }</td>
 				<td>${lists.user_id }</td>
-				<td>${lists.q_regdate }</td>
+				<td><fmt:formatDate value="${lists.q_regdate }" pattern="yyyy-MM-dd"/></td>
 				<td>${lists.q_visitcnt }</td>
 				<td>${lists.q_rdcnt }</td>
 			</tr>

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fitness.user.common.service.UserService;
+import com.fitness.user.common.vo.UserVO;
 import com.fitness.user.feboard.service.FeBoardService;
 import com.fitness.user.feboard.vo.FeBoardVO;
 
@@ -13,6 +15,9 @@ public class FeBoardController {
 	
 	@Autowired
 	private FeBoardService feBoardService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/insertFeBoard.do")
 	public String insertFeBoard(FeBoardVO vo) {
@@ -24,6 +29,8 @@ public class FeBoardController {
 	public String getFeBoard(FeBoardVO vo, Model model) {
 		System.out.println("자유 게시판 게시문 가져오기 controller");
 		model.addAttribute("FeBoard", feBoardService.getFeBoard(vo));
+		//feBoardService.getFeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
+		model.addAttribute("UserName", getUserName(vo).getUser_name());
 		return "feBoard/getFeBoard";
 	}
 	@RequestMapping("/getFeBoardList.do")
@@ -43,6 +50,8 @@ public class FeBoardController {
 	public String modifyPage(FeBoardVO vo, Model model ) {
 		System.out.println("controller 에서 modifyPage실행");
 		model.addAttribute("getFBoard", feBoardService.getFeBoard(vo));
+		//feBoardService.getFeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
+		model.addAttribute("UserName", getUserName(vo).getUser_name());
 		return "feBoard/updateFeBoard";
 	}
 	
@@ -52,6 +61,13 @@ public class FeBoardController {
 		System.out.println("자유 게시판 수정");
 		feBoardService.updateFeBoard(vo);
 		return "redirect:/getFeBoard.do?free_id="+vo.getFree_id();
+	}
+	
+	//유저 아이디를 이용해서 사용자 정보를 가져오는 메서드
+	public UserVO getUserName(FeBoardVO vo) {
+		vo = feBoardService.getFeBoard(vo);
+		UserVO wvo = new UserVO();
+		return userService.getUser(wvo);
 	}
 
 }

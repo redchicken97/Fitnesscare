@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 				<td><a href="getFeBoard.do?free_id=${lists.free_id }">${lists.free_title }</a></td>
 				<td>${lists.free_commentcnt }</td>
 				<td>${lists.user_id }</td>
-				<td>${lists.free_regdate }</td>
+				<td><fmt:formatDate value="${lists.free_regdate }" pattern="yyyy-MM-dd"/></td>
 				<td>${lists.free_visitcnt }</td>
 				<td>${lists.free_rdcnt }</td>
 			</tr>

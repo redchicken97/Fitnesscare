@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,9 @@
 	</c:if>
 	
 	<h2><strong>${FeBoard.free_title}</strong></h2>
-	<h3>글쓴이 ${FeBoard.user_id }</h3>
-	<h4>${FeBoard.free_regdate }</h4> <h4>${FeBoard.free_visitcnt }</h4>
+	<h3>글쓴이 : ${UserName}</h3>
+	<h4><fmt:formatDate value="${FeBoard.free_regdate }" pattern="yyyy-MM-dd"/></h4>
+	<h4>${FeBoard.free_visitcnt }</h4>
 	<p>
 		${FeBoard.free_content }
 	</p>
