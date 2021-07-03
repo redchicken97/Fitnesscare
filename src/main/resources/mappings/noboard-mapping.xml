@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NOBoardDAO">
+	
+	<resultMap type="noboard" id="noboardResult">
+		<id property="n_id" column="NO_ID"/>
+		<result property="n_title" column="NO_TITLE"/>
+		<result property="user_id" column="USER_ID"/>
+		<result property="n_regdate"/>
+		<result/>
+		<result/>
+		<result/>
+		<result/>
+		<result/>
+	</resultMap>
+
+</mapper>
