@@ -6,7 +6,7 @@ import com.fitness.user.feboard.vo.FeBoardVO;
 
 public interface FeBoardDAO {
 	
-	void insertFeBoard(FeBoardVO vo);
+	public void insertFeBoard(FeBoardVO vo);
 	
 	public void updateFeBoard(FeBoardVO vo);
 	
