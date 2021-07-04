@@ -7,12 +7,42 @@
 		<id property="n_id" column="NO_ID"/>
 		<result property="n_title" column="NO_TITLE"/>
 		<result property="user_id" column="USER_ID"/>
-		<result property="n_regdate"/>
-		<result/>
-		<result/>
-		<result/>
-		<result/>
-		<result/>
+		<result property="n_regdate" column="N_REGDATE"/>
+		<result property="n_commentcnt" column="N_COMMENTCNT"/>
+		<result property="n_rdcnt" column="N_RDCNT"/>
+		<result property="n_visitcnt" column="N_VISITCNT"/>
+		<result property="n_reportcnt" column="N_REPORTCNT"/>
+		<result property="n_content" column="N_CONTENT"/>
 	</resultMap>
 
+	<select id="getNOBoard" resultMap="noboardResult">
+		SELECT * 
+		FROM notice
+		WHERE n_id = #{n_id}
+	</select>
+	
+	<select id="getNOBoardList" resultMap="noboardResult">
+		SELECT * FROM notice ORDER BY n_id DESC
+	</select>
+	
+	<insert id="insertNOBoard" parameterType="noboard">
+		INSERT INTO
+		notice (n_id, n_title, user_id, n_content)
+		VALUE(N_ID_SEQ.NEXTVAL, #{n_id}, #{n_title}, #{user_id}, #{n_content})
+	</insert>
+	
+	<update id="updateNOBoard" parameterType="noboard">
+		UPDATE notice
+		SET
+		n_title = #{n_title},
+		n_content = #{n_content}
+		WHERE
+		n_id = #{n_id}
+	</update>
+	
+	<delete id="deleteNOBoard" parameterType="noboard">
+		DELETE FROM notice
+		WHERE n_id = #{n_id}
+	</delete>
+	
 </mapper>
