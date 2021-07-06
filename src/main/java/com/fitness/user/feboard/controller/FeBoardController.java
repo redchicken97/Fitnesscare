@@ -1,5 +1,8 @@
 package com.fitness.user.feboard.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +39,14 @@ public class FeBoardController {
 	@RequestMapping("/getFeBoardList.do")
 	public String getFeBoardList(FeBoardVO vo, Model model) {
 		System.out.println("자유 게시판 List controller");
-		model.addAttribute("FeList", feBoardService.getFeBoardList(vo));
+		List<FeBoardVO> feList = new ArrayList<>();
+		List<String> nameList = new ArrayList<>();
+		feList = feBoardService.getFeBoardList(vo);
+		for(int i = 0; i < feList.size(); i++) {
+			nameList.add(i, getUserName(feList.get(i)).getUser_name());
+		}
+		model.addAttribute("FeList", feList);
+		model.addAttribute("FeNameList", nameList);
 		return "feBoard/getFeBoardList";
 	}
 	@RequestMapping("/deleteFeBoard.do")

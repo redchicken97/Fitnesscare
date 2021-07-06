@@ -1,5 +1,8 @@
 package com.fitness.admin.noboard.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +31,14 @@ public class NoBoardController {
 	@RequestMapping("/getNoBoardList.do")
 	public String getNoBoardList(NoBoardVO vo, Model model) {
 		System.out.println("공지 게시판 글 전체 controller");
-		model.addAttribute("NoList", noBoardService.getNoBoardList());
+		List<NoBoardVO> noList = new ArrayList<>();
+		List<String> nameList = new ArrayList<>();
+		noList =  noBoardService.getNoBoardList();
+		for (int i = 0; i < noList.size(); i++) {
+			nameList.add(i, getUserName(noList.get(i)).getUser_name());
+		}
+		model.addAttribute("NoList", noList);
+		model.addAttribute("NoNameList", nameList);
 		return "noBoard/getNoBoardList";
 	}
 	@RequestMapping("/getNoBoard.do")

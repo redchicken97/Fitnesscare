@@ -1,5 +1,8 @@
 package com.fitness.user.qeboard.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +31,16 @@ public class QeBoardController {
 	@RequestMapping("/getQeBoardList.do")
 	public String getQeBoardList(QeBoardVO vo, Model model) {
 		System.out.println("질문 게시판 글 가져오기 controller");
-		model.addAttribute("QeList", qeBoardService.getQeBoardList(vo));
+		List<QeBoardVO> qeList = new ArrayList<>();
+		List<String> nameList = new ArrayList<>();
+		
+		qeList = qeBoardService.getQeBoardList(vo);
+		for (int i = 0; i < qeList.size(); i++) {
+			nameList.add(i, getUserName(qeList.get(i)).getUser_name());
+		}
+		
+		model.addAttribute("QeList", qeList);
+		model.addAttribute("QeNameList", nameList);
 		return "qeBoard/getQeBoardList";
 	}
 	@RequestMapping("/getQeBoard.do")

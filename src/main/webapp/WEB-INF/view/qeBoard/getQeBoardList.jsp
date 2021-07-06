@@ -23,12 +23,12 @@
 			<th>좋아요</th>
 		</tr>
 		
-		<c:forEach var=lists items="${QeList }"> 
+		<c:forEach var="lists" items="${QeList }" varStatus="status"> 
 			<tr>
 				<td>${lists.q_id }</td>			
 				<td><a href="getQeBoard.do?q_id=${lists.q_id }">${lists.q_title }</a></td>			
 				<td>${lists.q_commentcnt }</td>
-				<td>${lists.user_id }</td>
+				<td>${QeNameList[status.index] }</td>
 				<td><fmt:formatDate value="${lists.q_regdate }" pattern="yyyy-MM-dd"/></td>
 				<td>${lists.q_visitcnt }</td>
 				<td>${lists.q_rdcnt }</td>

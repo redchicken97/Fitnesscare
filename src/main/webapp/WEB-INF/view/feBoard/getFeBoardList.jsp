@@ -23,12 +23,12 @@
 			<th>좋아요</th>
 		</tr>
 		
-		<c:forEach var="lists" items="${FeList}">
+		<c:forEach var="lists" items="${FeList}" varStatus="status">
 			<tr>
 				<td>${lists.free_id }</td>				
 				<td><a href="getFeBoard.do?free_id=${lists.free_id }">${lists.free_title }</a></td>
 				<td>${lists.free_commentcnt }</td>
-				<td>${lists.user_id }</td>
+				<td>${FeNameList[status.index]}</td>
 				<td><fmt:formatDate value="${lists.free_regdate }" pattern="yyyy-MM-dd"/></td>
 				<td>${lists.free_visitcnt }</td>
 				<td>${lists.free_rdcnt }</td>
