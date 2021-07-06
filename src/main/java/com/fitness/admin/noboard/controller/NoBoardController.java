@@ -12,7 +12,6 @@ import com.fitness.user.common.vo.UserVO;
 
 @Controller
 public class NoBoardController {
-
 	
 	@Autowired
 	private NoBoardService noBoardService;

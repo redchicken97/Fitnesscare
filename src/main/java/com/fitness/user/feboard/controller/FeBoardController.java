@@ -49,7 +49,7 @@ public class FeBoardController {
 	@RequestMapping("/modifyPage.do")
 	public String modifyPage(FeBoardVO vo, Model model ) {
 		System.out.println("controller 에서 modifyPage실행");
-		model.addAttribute("getFBoard", feBoardService.getFeBoard(vo));
+		model.addAttribute("FeBoard", feBoardService.getFeBoard(vo));
 		//feBoardService.getFeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
 		model.addAttribute("UserName", getUserName(vo).getUser_name());
 		return "feBoard/updateFeBoard";
