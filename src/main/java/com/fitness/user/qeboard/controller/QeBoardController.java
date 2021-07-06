@@ -35,7 +35,7 @@ public class QeBoardController {
 	public String getQeBoard(QeBoardVO vo, Model model) {
 		System.out.println("controller에서 질문 게시물하나 가져오기");
 		model.addAttribute("QeBoard", qeBoardService.getQeBoard(vo));
-		//feBoardService.getFeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
+		//qeBoardService.getQeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
 		model.addAttribute("UserName", getUserName(vo).getUser_name());
 		return "qeBoard/getQeBoard";
 	}
@@ -49,8 +49,8 @@ public class QeBoardController {
 	@RequestMapping("/qeModifyPage.do")
 	public String qeModifyPage(QeBoardVO vo, Model model) {
 		System.out.println("controller에서 modifyPage 실행");
-		model.addAttribute("getQBoard", qeBoardService.getQeBoard(vo));
-		//feBoardService.getFeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
+		model.addAttribute("QeBoard", qeBoardService.getQeBoard(vo));
+		//qeBoardService.getQeBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
 		model.addAttribute("UserName", getUserName(vo).getUser_name());
 		return "qeBoard/updateQeBoard";
 	}
@@ -66,6 +66,7 @@ public class QeBoardController {
 	public UserVO getUserName(QeBoardVO vo) {
 		vo = qeBoardService.getQeBoard(vo);
 		UserVO wvo = new UserVO();
+		wvo.setUser_id(vo.getUser_id());
 		return userService.getUser(wvo);
 	}
 	

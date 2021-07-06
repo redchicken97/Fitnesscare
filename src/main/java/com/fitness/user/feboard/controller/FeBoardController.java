@@ -67,6 +67,7 @@ public class FeBoardController {
 	public UserVO getUserName(FeBoardVO vo) {
 		vo = feBoardService.getFeBoard(vo);
 		UserVO wvo = new UserVO();
+		wvo.setUser_id(vo.getUser_id());
 		return userService.getUser(wvo);
 	}
 
