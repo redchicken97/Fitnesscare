@@ -26,6 +26,7 @@
 	<c:choose>
 		<c:when test="${fn:contains(userInfo.user_level, 'A')}">
 			<h3>관리자님께서 로그인 하셧습니다.</h3>
+			<a href="adminMainPage.jsp">관리자 페이지로 넘어가기</a>
 		</c:when>
 	
 		<c:when test="${fn:contains(userInfo.user_loginMethod,'K')}">
