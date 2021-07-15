@@ -16,7 +16,6 @@
 		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"/>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"/>
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"/>
-		<typeAlias type="com.fitness.admin.user.vo.UserManVO" alias="userMan"/>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"/>
 		<typeAlias type="com.fitness.admin.noboard.vo.NoBoardVO" alias="noboard"/>
 	<!-- 
@@ -45,7 +44,6 @@
 		<mapper resource="mappings/foodSave-mapping.xml" />
 		<mapper resource="mappings/term-mapping.xml" />
 		<mapper resource="mappings/admin-mapping.xml" />
-		<mapper resource="mappings/userman-mapping.xml" />
 		<mapper resource="mappings/qeboard-mapping.xml" />
 		<mapper resource="mappings/feboard-mapping.xml" />
 		<mapper resource="mappings/veboard-mapping.xml" />
