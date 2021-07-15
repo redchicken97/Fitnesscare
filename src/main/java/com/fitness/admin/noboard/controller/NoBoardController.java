@@ -45,6 +45,8 @@ public class NoBoardController {
 	public String getNoBoard(NoBoardVO vo, Model model) {
 		System.out.println("공지 게시판 하나 controller");
 		model.addAttribute("NoBoard", noBoardService.getNoBoard(vo));
+		//noBoardService.getNoBoard에서 가져온 user_id를 이용해서 유저 이름을 가져오는 메서드
+		model.addAttribute("UserName", getUserName(vo).getUser_name());
 		return "noBoard/getNoBoard";
 	}
 	@RequestMapping("/deleteNoBoard.do")
