@@ -13,28 +13,14 @@
 		<result property="term_manager" column="TERM_MANAGER" />
 	</resultMap>
 	
+	<select id="getTermList" resultMap="termResult">
+		SELECT * FROM term ORDER BY term_id DESC
+	</select>
+	
 	<select id="getTerm" resultMap="termResult">
 		SELECT * 
 		FROM term
 		WHERE term_id = #{term_id}
-	</select>
-	
-	<sql id="subGetTermList1">
-		SELECT term_id, term_name, term_type, 
-		term_createdate, term_manager, ROWNUM AS rnum 
-		FROM term 
-	</sql>
-	
-	<select id="getTermList" resultMap="termResult">
-		SELECT * 
-		FROM (<include refid="subGetTermList1" />) sub1
-		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
-		ORDER BY term_id DESC
-	</select>
-	
-	<select id="getTermCount" resultType="int">
-		SELECT COUNT(*)
-		FROM term 
 	</select>
 
 	<insert id="insertTerm" parameterType="term">
@@ -53,5 +39,10 @@
 		WHERE
 		term_id = #{term_id}
 	</update>
+	
+	<delete id="deleteTerm" parameterType="term">
+		DELETE FROM term
+		where term_id = #{term_id}
+	</delete>
  	
 </mapper>

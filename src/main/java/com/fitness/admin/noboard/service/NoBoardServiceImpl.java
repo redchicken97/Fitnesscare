@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fitness.admin.noboard.dao.NoBoardDAO;
 import com.fitness.admin.noboard.vo.NoBoardVO;
 
-@Service
+@Service("noBoardService")
 public class NoBoardServiceImpl implements NoBoardService {
 
 	@Autowired
