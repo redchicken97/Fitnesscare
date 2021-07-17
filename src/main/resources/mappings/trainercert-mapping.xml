@@ -12,38 +12,46 @@
 		<result property="t_company" column="T_COMPANY" />
 		<result property="t_createdate" column="T_CREATEDATE" />
 		<result property="t_clink" column="T_CLINK" />
+		<result property="t_applydate" column="T_APPLYDATE"/>
 		<result property="t_checkdate" column="T_CHECKDATE" />
 	</resultMap>
 	
-	<select id="getTrainerCert" resultMap="trainercertResult">
+	<!-- 신청 하면 입력 되고 -->
+	<insert id="insertTrainerCert" parameterType="trainercert">
+		INSERT INTO 
+		trainer_cert(t_id, user_id, t_picture_link, t_cname, t_company, t_createdate, t_clink)
+		VALUE(T_ID_SEQ.NEXTVAL, #{user_id}, #{t_picture_link}, #{t_cname}, #{t_company}, #{t_createdate}, #{t_clink})
+	</insert>
+	
+	<!-- 신청 날짜 순으로 정렬 -->
+	<select id="applyTrainerList" resultMap="trainercertResult">
 		SELECT * 
-		FROM trainer_cert
-		WHERE t_id = #{t_id}
+		FROM trainer_cert WHERE t_checkdate = null ORDER BY t_applydate DESC
 	</select>
 	
-	<sql id="subGetTrainerCertList1">
-		SELECT t_id, user_id, t_picture_link,
-		t_cname, t_company, t_createdate,
-		t_clink, t_checkdate, ROWNUM AS rnum 
-		FROM trainer_cert 
-	</sql>
-	
-	<select id="getTrainerCertList" resultMap="trainercertResult">
-		SELECT * 
-		FROM (<include refid="subGetTrainerCertList1" />) sub1
-		WHERE rnum BETWEEN #{startNum} AND #{endNum} 
-		ORDER BY t_id DESC
-	</select>
-	
-	<select id="getTrainerCertCount" resultType="int">
-		SELECT COUNT(*)
-		FROM trainer_cert 
-	</select>
-	
+	<!-- 신청 허가 -->
+	<!-- 유저 단계 티레이너로 변경 -->
 	<update id="acceptTrainerCert" parameterType="trainercert">
 		UPDATE user_info
 		SET
 		user_level = 'T'
+		WHERE
+		user_id = #{user_id}
+	</update>
+	
+	<update id="setTCheckDate" parameterType="trainercert">
+		UPDATE trainer_cert
+		SET
+		t_checkdate = SYSDATE
+		where
+		t_id = #{t_id}
+	</update>
+	
+	<!-- 강등 시 -->
+	<update id="relegationTrainerCert" parameterType="trainercert">
+		UPDATE user_info
+		SET
+		user_level = 'U'
 		WHERE
 		user_id = #{user_id}
 	</update>
@@ -53,12 +61,18 @@
 		WHERE t_id = #{t_id}
 	</delete>
 	
-	<update id="setTCheckDate" parameterType="trainercert">
-		UPDATE trainer_cert
-		SET
-		t_checkdate = SYSDATE
-		where
-		t_id = #{t_id}
-	</update>
- 	
+	<!-- 트레이너 정보 가져오기 -->
+	<select id="getTrainerCert" resultMap="trainercertResult">
+		SELECT * 
+		FROM trainer_cert
+		WHERE t_id = #{t_id}
+	</select>
+	
+	<!-- 트레이저 정보들 가져오기 -->
+	<select id="getTrainerCertList">
+		SELECT * 
+		FROM trainer_cert
+		WHERE t_checkdate = not null
+		ORDER BY t_id DESC
+	</select>
 </mapper>

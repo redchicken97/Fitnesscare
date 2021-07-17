@@ -23,19 +23,19 @@ public class NoBoardDAOImpl implements NoBoardDAO {
 	@Override
 	public void updateNoBoard(NoBoardVO vo) {
 		System.out.println("mybatis 공지 게시판 수정");
-		sqlSessionTemplate.update("NOBoardDAO.updateNOBoard");
+		sqlSessionTemplate.update("NOBoardDAO.updateNOBoard", vo);
 	}
 
 	@Override
 	public void deleteNoBoard(NoBoardVO vo) {
 		System.out.println("mybatis 공지 게시판 삭제");
-		sqlSessionTemplate.delete("NOBoardDAO.deleteNOBoard");
+		sqlSessionTemplate.delete("NOBoardDAO.deleteNOBoard", vo);
 	}
 
 	@Override
 	public NoBoardVO getNoBoard(NoBoardVO vo) {
 		System.out.println("mybatis 공지 게시판 게시글 하나 가져오기");
-		return sqlSessionTemplate.selectOne("NOBoardDAO.getNOBoard");
+		return sqlSessionTemplate.selectOne("NOBoardDAO.getNOBoard",vo);
 	}
 
 	@Override

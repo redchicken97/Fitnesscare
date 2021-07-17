@@ -16,7 +16,7 @@ public class UserVO {
 	private String term_type2;	//동의한 약관의 종류
 	private Date user_regdate;	//회원가입 날짜
 	private char user_loginMethod;	//로그인 방법(카카오 : K, 로컬 : L)
-	private char user_level;	//회원의 등급(유져 : U, 신청은 했지만 호가가 나지 않은 상태 : W, 전문가 : T, 관리자 : A)
+	private char user_level;	//회원의 등급(유져 : U, 전문가 : T, 관리자 : A)
 	private char user_state;	//유져 상태(정상 : E, 정지 : D, 탈퇴 : O)
 	private char user_report_count;	//신고당한 횟수
 	public int getUser_id() {
