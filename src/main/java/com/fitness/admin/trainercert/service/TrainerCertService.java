@@ -13,7 +13,7 @@ public interface TrainerCertService {
 	public void decisoinTr(TrainerCertVO vo);
 	
 	//신청자 리스트
-	public List<TrainerCertVO> applyTrList();
+	public List<String> applyTrList();
 	
 	//허가된 사람 리스트
 	public List<TrainerCertVO> decisoinTrList();
