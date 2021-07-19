@@ -60,7 +60,7 @@ public class UserController {
 		response.setContentType("text/html;charset=UTF-8");
 //		String user_pwd = (String)session.getAttribute("user_pwd");
 	//	model.addAttribute("user_pwd");
-		return "getUser";
+		return "userInfo/getUser";
 	}
 	
 	@RequestMapping("/insertUser.do")
@@ -74,7 +74,7 @@ public class UserController {
 	public String getUserList(UserVO vo, Model model) {
 		System.out.println("controller에서 회원 목록 보기");
 		model.addAttribute("userList", userService.getUserList(vo));
-		return "getUserList";
+		return "userInfo/getUserList";
 	}
 	
 	@RequestMapping("/deleteUser.do")

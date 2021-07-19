@@ -60,6 +60,8 @@
 		</tr>		
 	</table>
 	
+	<a href="insertTrainerCert.do">트레이너 신청</a>
+	
 	<a href="getMapList.do">헬스장 장소 공유 게시판</a>
 	<a href="kakaoApiMap.jsp?id=${userInfo.user_id }">헬스 장소 공유 등록</a>
 	<a href="comment.do?userId=${userInfo.user_id }">댓글 달기</a>

@@ -51,8 +51,5 @@ public class TrainerCertDAOImpl implements TrainerCertDAO {
 		return sqlSessionTemplate.selectOne("TrainerCertDAO.getTrainerCert", vo);
 	}
 
-
-	
-	
 	
 }

@@ -20,6 +20,7 @@
 	<%if(session.getAttribute("userInfo") != null){ %>
 	
 		<h3>${userInfo.user_nick }님이 로그인하셧습니다</h3>
+		<a href="#">개인 정보 보기</a>
 		
 	<% }%>
 	
