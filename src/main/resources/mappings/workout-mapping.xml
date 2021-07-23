@@ -17,4 +17,23 @@
 		VALUE(WORKOUT_ID_SEQ.NEXTVAL, #{workout_img}, #{workout_title}, #{workout_link}, #{workout_content})
 	</insert>
 	
+	<select id="getWorkOut" resultMap="workoutResult">
+		SELECT * 
+		FROM WORKOUT
+		WHERE workout_id = #{workout_id}
+	</select>
+	
+	<select id="getWorkOutList" resultMap="workoutResult">
+		SELECT * FROM workout ORDER BY workout_id DESC
+	</select>
+	
+	<update id="updateWorkOut" parameterType="workout">
+		UPDATE workout
+		SET
+		workout_img = #{workout_img},
+		workout_title = #{workout_title},
+		workout_link = #{workout_link},
+		workout_content = #{workout_content}
+	</update>
+	
 </mapper>
