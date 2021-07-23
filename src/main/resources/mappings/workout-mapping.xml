@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WorkOutDAO">
+	<resultMap type="workout" id="workoutResult">
+		<id property="workout_id" column="WORKOUT_ID"/>
+		<result property="workout_img" column="WORKOUT_IMG"/>
+		<result property="workout_title" column="WORKOUT_TITLE"/>
+		<result property="workout_link" column="WORKOUT_LINK"/>
+		<result property="workout_content" column="WORKOUT_CONTENT"/>
+		<result property="workout_regdate" column="WORKOUT_REGDATE"/>
+	</resultMap>
+
+	<insert id="insertWorkOut" parameterType="workout">
+		INSERT INTO
+		WORKOUT (workout_id, workout_img, workout_title, workout_link, workout_content)
+		VALUE(WORKOUT_ID_SEQ.NEXTVAL, #{workout_img}, #{workout_title}, #{workout_link}, #{workout_content})
+	</insert>
+	
+</mapper>

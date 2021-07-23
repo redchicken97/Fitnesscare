@@ -28,7 +28,7 @@
 	<insert id="insertNOBoard" parameterType="noboard">
 		INSERT INTO
 		notice (n_id, n_title, user_id, n_content)
-		VALUE(N_ID_SEQ.NEXTVAL, #{n_id}, #{n_title}, #{user_id}, #{n_content})
+		VALUE(N_ID_SEQ.NEXTVAL, #{n_title}, #{user_id}, #{n_content})
 	</insert>
 	
 	<update id="updateNOBoard" parameterType="noboard">
