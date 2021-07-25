@@ -36,4 +36,9 @@
 		workout_content = #{workout_content}
 	</update>
 	
+	<delete id="deleteWorkOut" parameterType="workout">
+		DELETE FROM workout
+		WHERE workout_id = #{workout_id}
+	</delete>
+	
 </mapper>
