@@ -2,40 +2,41 @@ package com.fitness.trainer.workout.dao;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.fitness.trainer.workout.vo.WorkOutVO;
 
+@Repository
 public class WorkOutDAOImpl implements WorkOutDAO {
+	
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
 	public void insertWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		
+		sqlSessionTemplate.insert("WorkOutDAO.insertWorkOut");
 	}
 
 	@Override
 	public WorkOutVO getWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectOne("WorkOutDAO.getWorkOut");
 	}
 
 	@Override
 	public List<WorkOutVO> getWorkOutList() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectList("WorkOutDAO.getWorkOutList");
 	}
 
 	@Override
 	public void deleteWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		
+		sqlSessionTemplate.delete("WorkOutDAO.deleteWorkOut");
 	}
 
 	@Override
 	public void updateWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		
+		sqlSessionTemplate.update("WorkOutDAO.updateWorkOut");
 	}
-	
-	
-	
+
 }

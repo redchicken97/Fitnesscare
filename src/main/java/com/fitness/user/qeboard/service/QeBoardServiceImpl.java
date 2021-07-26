@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fitness.user.qeboard.dao.QeBoardDAO;
 import com.fitness.user.qeboard.vo.QeBoardVO;
 
-@Service
+@Service("qeBoardService")
 public class QeBoardServiceImpl implements QeBoardService {
 
 	@Autowired

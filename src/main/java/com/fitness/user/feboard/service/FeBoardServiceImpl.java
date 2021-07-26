@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fitness.user.feboard.dao.FeBoardDAO;
 import com.fitness.user.feboard.vo.FeBoardVO;
 
-@Service
+@Service("feBoardService")
 public class FeBoardServiceImpl implements FeBoardService {
 
 	@Autowired
