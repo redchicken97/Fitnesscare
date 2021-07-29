@@ -16,32 +16,27 @@ public class WorkOutServiceImpl implements WorkOutService {
 	
 	@Override
 	public void insertWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		
+		workOutDAO.insertWorkOut(vo);
 	}
 
 	@Override
 	public WorkOutVO getWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return workOutDAO.getWorkOut(vo);
 	}
 
 	@Override
 	public List<WorkOutVO> getWorkOutList() {
-		// TODO Auto-generated method stub
-		return null;
+		return workOutDAO.getWorkOutList();
 	}
 
 	@Override
 	public void deleteWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		
+		workOutDAO.deleteWorkOut(vo);
 	}
 
 	@Override
 	public void updateWorkOut(WorkOutVO vo) {
-		// TODO Auto-generated method stub
-		
+		workOutDAO.updateWorkOut(vo);
 	}
 
 }
