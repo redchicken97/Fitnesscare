@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WorkSaveDAO">
+	<resultMap type="worksave" id="worksaveResult">
+		<id property="worksave_id" column="WORKSAVE_ID"/>
+		<result property="program_id" column="PROGRAM_ID"/>
+		<result property="workout_id" column="WORKOUT_ID"/>
+		<result property="worksave_order" column="WORKSAVE_ORDER"/>
+	</resultMap>
+	
+	<!-- 나중에 program_id 증가 부분 수정 계획있음 -->
+	<insert id="insertWorkSave" parameterType="worksave">
+		INSERT INTO
+		WORKSAVE (worksave_id, program_id, workout_id, worksave_order)
+		VALUE(WORKOUT_ID_SEQ.NEXTVAL, (select nvl(max(program_id), 0) + 1 from WORKSAVE), 
+		#{workout_id}, #{worksave_order})
+	</insert>
+	
+	<delete id="deleteWorkSave" parameterType="worksave">
+		DELETE FROM WORKSAVE
+		WHERE worksave_id = #{worksave_id}
+	</delete>
+</mapper>
