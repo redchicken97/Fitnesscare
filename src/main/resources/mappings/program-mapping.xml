@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="programDAO">
+	<resultMap type="program" id="programResult">
+		<id property="program_id" column="PROGRAM_ID"/>
+		<result property="program_name" column="PROGRAM_NAME"/>
+		<result property="user_id" column="USER_ID"/>
+		<result property="program_cmt_cnt" column="PROGRAM_CMT_CNT"/>
+		<result property="program_rd_cnt" column="PROGRAM_RD_CNT"/>
+		<result property="Program_regdate" column="PROGRAM_REGDATE"/>
+		<result property="program_link" column="PROGRAM_LINK"/>
+	</resultMap>
+	
+	<insert id="insertProgram" parameterType="program">
+		INSERT INTO
+		program (program_id, program_name, user_id, program_cmt_cnt, 
+		program_rd_cnt, program_regdate, program_link)
+		VALUE(PROGRAM_ID_SEQ.NEXTVAL, #{program_name}, #{user_id},
+		#{program_cmt_cnt}, #{program_rd_cnt}, #{program_regdate}, #{program_link})
+	</insert>
+	
+	<select id="getProgram" resultMap="programResult">
+		SELECT * 
+		FROM program
+		WHERE program_id = #{program_id}
+	</select>
+	
+	<select id="getProgramList" resultMap="programResult">
+		SELECT * FROM program ORDER BY program_id DESC
+	</select>
+	
+	<update id="updateProgram" parameterType="program">
+		UPDATE program
+		SET
+		program_name = #{program_name}, 
+		program_link = #{program_link}
+		WHERE
+		program_id = #{program_id}
+	</update>
+	
+	<delete id="deleteProgram" parameterType="program">
+		DELETE FROM program
+		WHERE program_id = #{program_id}
+	</delete>
+	
+</mapper>
