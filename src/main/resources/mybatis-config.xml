@@ -18,7 +18,10 @@
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"/>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"/>
 		<typeAlias type="com.fitness.admin.noboard.vo.NoBoardVO" alias="noboard"/>
+		<typeAlias type="com.fitness.admin.trainercert.vo.TrainerCertVO" alias="trainercert"/>
 		<typeAlias type="com.fitness.trainer.workout.vo.WorkOutVO" alias="workout"/>
+		<typeAlias type="com.fitness.trainer.worksave.vo.WorkSaveVO" alias="worksave"/>
+		<typeAlias type="com.fitness.trainer.program.vo.ProgramVO" alias="program"/>
 	<!-- 
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
 	 -->	
@@ -49,7 +52,10 @@
 		<mapper resource="mappings/feboard-mapping.xml" />
 		<mapper resource="mappings/veboard-mapping.xml" />
 		<mapper resource="mappings/noboard-mapping.xml"/>
+		<mapper resource="mappings/trainercert-mapping.xml"/>
 		<mapper resource="mappings/workout-mapping.xml"/>
+		<mapper resource="mappings/worksave-mapping.xml"/>
+		<mapper resource="mappings/program-mapping.xml"/>
 		
 	<!-- 
 		<mapper resource="mappings/hteboard-mapping.xml" />

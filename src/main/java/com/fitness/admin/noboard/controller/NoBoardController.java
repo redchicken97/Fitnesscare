@@ -32,7 +32,7 @@ public class NoBoardController {
 	public String getNoBoardList(NoBoardVO vo, Model model) {
 		System.out.println("공지 게시판 글 전체 controller");
 		List<NoBoardVO> noList = new ArrayList<>();
-		List<String> nameList = new ArrayList<>();
+		List<String> nameList = new ArrayList<>(); 
 		noList =  noBoardService.getNoBoardList();
 		for (int i = 0; i < noList.size(); i++) {
 			nameList.add(i, getUserName(noList.get(i)).getUser_name());
