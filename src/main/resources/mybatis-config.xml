@@ -22,11 +22,11 @@
 		<typeAlias type="com.fitness.trainer.workout.vo.WorkOutVO" alias="workout"/>
 		<typeAlias type="com.fitness.trainer.worksave.vo.WorkSaveVO" alias="worksave"/>
 		<typeAlias type="com.fitness.trainer.program.vo.ProgramVO" alias="program"/>
+		<typeAlias type="com.fitness.trainer.foodout.vo.FoodOutVO" alias="foodout"/>
 	<!-- 
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
 	 -->	
 		
-	
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -56,11 +56,11 @@
 		<mapper resource="mappings/workout-mapping.xml"/>
 		<mapper resource="mappings/worksave-mapping.xml"/>
 		<mapper resource="mappings/program-mapping.xml"/>
+		<mapper resource="mappings/foodout-mapping.xml"/>
 		
 	<!-- 
 		<mapper resource="mappings/hteboard-mapping.xml" />
 	 -->	
-	
 	
 	</mappers>
 </configuration>
