@@ -23,6 +23,7 @@
 		<typeAlias type="com.fitness.trainer.program.vo.ProgramVO" alias="program"/>
 		<typeAlias type="com.fitness.trainer.foodout.vo.FoodOutVO" alias="foodout"/>
 		<typeAlias type="com.fitness.trainer.foodsave.vo.FoodSaveVO" alias="foodsave"/>
+		<typeAlias type="com.fitness.trainer.meal.vo.MealVO" alias="meal"/>
 	<!-- 
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
 	 -->	
@@ -57,6 +58,7 @@
 		<mapper resource="mappings/program-mapping.xml"/>
 		<mapper resource="mappings/foodout-mapping.xml"/>
 		<mapper resource="mappings/foodsave-mapping.xml"/>
+		<mapper resource="mappings/meal-mapping.xml"/>
 		
 	<!-- 
 		<mapper resource="mappings/hteboard-mapping.xml" />

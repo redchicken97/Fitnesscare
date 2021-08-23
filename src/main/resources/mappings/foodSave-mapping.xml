@@ -7,4 +7,17 @@
 		<result property="foodout_id" column="FOODOUT_ID"/>
 		<result property="foodsave_order" column="FOODSAVE_ORDER"/>
 	</resultMap>
+	
+	<!-- 나중에 meal_id 증가 부분 수정 계획 있음 -->
+	<insert id="insertFoodSave" parameterType="foodsave">
+		INSERT INTO
+		FOODSAVE (foodsave_id, meal_id, foodout_id, foodsave_order)
+		VALUE(FOODSAVE_ID_SEQ.NEXTVAL, (select nvl(max(meal_id), 0) + 1 from FOODSAVE),
+		#{foodout_id}, #{worksave_order})
+	</insert>
+	
+	<delete id="deleteFoodSave" parameterType="foodsave">
+		DELETE FROM FOODSAVE
+		WHERE foodsave_id = #{foodsave_id}
+	</delete>
 </mapper>

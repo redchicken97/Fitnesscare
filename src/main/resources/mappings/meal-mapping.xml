@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mealDAO">
+	<resultMap type="meal" id="mealResult">
+		<id property="meal_id" column="MEAL_ID"/>
+		<result property="meal_name" column="MEAL_NAME"/>
+		<result property="user_id" column="USER_ID"/>
+		<result property="meal_cmt_cnt" column="MEAL_CMT_CNT"/>
+		<result property="meal_rd_cnt" column="MEAL_RD_CNT"/>
+		<result property="meal_regdate" column="MEAL_REGDATE"/>
+		<result property="meal_link" column="MEAL_LINK"/>
+	</resultMap>
+	
+	<insert id="insertMeal" parameterType="meal">
+		INSERT INTO
+		meal(meal_id, meal_name, user_id, meal_cmt_cnt,
+		meal_rd_cnt, meal_regdate, meal_link)
+		VALUE(MEAL_ID_SEQ.NEXTVAL, #{meal_name}, #{user_id},
+		#{meal_cmt_cnt}, #{meal_rd_cnt}, #{meal_regdate}, #{meal_link})
+	</insert>
+	
+	<select id="getMeal" resultMap="mealResult">
+		SELECT *
+		FROM meal
+		WHERE meal_id = #{meal_id}
+	</select>
+	
+	<select id="getMealList" resultMap="mealResult">
+		SELECT * FROM meal ORDER BY meal_id DESC
+	</select>
+	
+	<update id="updateMeal" parameterType="meal">
+		UPDATE meal
+		SET
+		meal_name = #{meal_name}
+		meal_link = #{meal_link}
+		WHERE
+		meal_id = #{meal_id}
+	</update>
+	
+	<delete id="deleteMeal" parameterType="meal">
+		DELETE FROM meal
+		WHERE meal_id = #{meal_id}
+	</delete>
+	
+	<!-- 추천 수 증가 -->
+	<update id="MupRdCnt" parameterType="meal">
+		UPDATE FROM meal
+		SET
+		meal_rd_cnt = meal_rd_cnt + 1
+		WHERE
+		meal_id = #{meal_id}
+	</update>
+	
+	<!-- 댓글 수 증가 -->
+	<update id="MupCmtCnt" parameterType="meal">
+		UPDATE FROM meal
+		SET
+		meal_cmt_cnt = meal_cmt_cnt + 1
+		WHERE
+		meal_id = #{meal_id}
+	</update>
+	
+</mapper>

@@ -43,4 +43,22 @@
 		WHERE program_id = #{program_id}
 	</delete>
 	
+	<!-- 추천 수 증가 -->
+	<update id="PupRdCnt" parameterType="program">
+		UPDATE program
+		SET
+		program_rd_cnt = program_rd_cnt + 1
+		WHERE
+		program_id = #{program_id}
+	</update>
+	
+	<!-- 댓글 수 증가 -->
+	<update id="PupCmtCnt">
+		UPDATE program
+		SET
+		program_cmt_cnt = program_cmt_cnt + 1
+		WHERE
+		program_id = #{program_id}
+	</update>
+	
 </mapper>
