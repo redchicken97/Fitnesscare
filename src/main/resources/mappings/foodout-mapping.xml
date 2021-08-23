@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="foodoutDAO">
 	<resultMap type="foodout" id="foodoutResult">
 		<id property="foodout_id" column="FOODOUT_ID"/>
+		<result property="foodout_img" column="FOODOUT_IMG"/>
+		<result property="foodout_title" column="FOODOUT_TITLE"/>
+		<result property="foodout_link" column="FOODOUT_LINK"/>
+		<result property="foodout_content" column="FOODOUT_CONTENT"/>
+		<result property="foodout_regdate" column="FOODOUT_REGDATE"/>
 	</resultMap>
+	
+	<insert id="insertFoodOut" parameterType="foodout">
+		INSERT INTO
+		FOODOUT (foodout_id, foodout_img, foodout_title, foodout_link, foodout_content)
+		VALUE(FOODOUT_ID_SEQ.NEXTVAL, #{foodout_img}, #{foodout_title}, #{foodout_link}, #{foodout_content})
+	</insert>
+	
+	<select id="getFoodOut" resultMap="foodoutResult">
+		SELECT *
+		FROM FOODOUT
+		WHERE foodout_id = #{foodout_id}
+	</select>
+	
+	<select id="getFoodOutList" resultMap="foodoutResult">
+		SELECT * FROM foodout ORDER BY foodout_id DESC
+	</select>
+	
+	<update id="updateFoodOut" parameterType="foodout">
+		UPDATE foodout
+		SET
+		foodout_img = #{foodout_img}, 
+		foodout_title = #{foodout_title},
+		foodout_link = #{foodout_link},
+		foodout_content = #{foodout_content}
+		WHERE
+		foodout_id = #{foodout_id}
+	</update>
+	
+	<delete id="deleteFoodOut" parameterType="foodout">
+		DELETE FROM foodout
+		WHERE foodout_id = #{foodout_id}
+	</delete>
+	
 </mapper>

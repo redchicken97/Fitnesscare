@@ -34,6 +34,8 @@
 		workout_title = #{workout_title},
 		workout_link = #{workout_link},
 		workout_content = #{workout_content}
+		WHERE
+		workout_id = #{workout_id}
 	</update>
 	
 	<delete id="deleteWorkOut" parameterType="workout">

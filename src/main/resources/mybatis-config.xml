@@ -13,7 +13,6 @@
 		<typeAlias type="com.fitness.user.feboard.vo.FeBoardVO" alias="feboard"/>
 		<typeAlias type="com.fitness.user.qeboard.vo.QeBoardVO" alias="qeboard"/>
 		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"/>
-		<typeAlias type="com.fitness.admin.food.vo.FoodSaveVO" alias="foodSave"/>
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"/>
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"/>
 		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"/>
@@ -23,6 +22,7 @@
 		<typeAlias type="com.fitness.trainer.worksave.vo.WorkSaveVO" alias="worksave"/>
 		<typeAlias type="com.fitness.trainer.program.vo.ProgramVO" alias="program"/>
 		<typeAlias type="com.fitness.trainer.foodout.vo.FoodOutVO" alias="foodout"/>
+		<typeAlias type="com.fitness.trainer.foodsave.vo.FoodSaveVO" alias="foodsave"/>
 	<!-- 
 		<typeAlias type="com.fitness.admin.hteboard.vo.HTEBoardVO" alias="hteboard"></typeAlias>
 	 -->	
@@ -45,7 +45,6 @@
 		<mapper resource="mappings/overlap-mapping.xml"/>
 		<mapper resource="mappings/fitness-mapping.xml"/>
 		<mapper resource="mappings/workoutSave-mapping.xml" />
-		<mapper resource="mappings/foodSave-mapping.xml" />
 		<mapper resource="mappings/term-mapping.xml" />
 		<mapper resource="mappings/admin-mapping.xml" />
 		<mapper resource="mappings/qeboard-mapping.xml" />
@@ -57,6 +56,7 @@
 		<mapper resource="mappings/worksave-mapping.xml"/>
 		<mapper resource="mappings/program-mapping.xml"/>
 		<mapper resource="mappings/foodout-mapping.xml"/>
+		<mapper resource="mappings/foodsave-mapping.xml"/>
 		
 	<!-- 
 		<mapper resource="mappings/hteboard-mapping.xml" />
