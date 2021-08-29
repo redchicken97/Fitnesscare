@@ -17,7 +17,7 @@ public class WorkOutController {
 	@RequestMapping("/insertWorkOut.mdo")
 	public String insertWorkOut(WorkOutVO vo) {
 		workOutService.insertWorkOut(vo);
-		return "redirect:/getWorkOutList.do";
+		return "redirect:/getWorkOutList.mdo";
 	}
 	@RequestMapping("/getWorkOutList.mdo")
 	public String getWorkOutList(Model model) {
@@ -32,7 +32,7 @@ public class WorkOutController {
 	@RequestMapping("/deleteWorkOut.mdo")
 	public String deleteWorkOut(WorkOutVO vo) {
 		workOutService.deleteWorkOut(vo);
-		return "redirect:/getWorkOutList.do";
+		return "redirect:/getWorkOutList.mdo";
 	}
 	//수정 게시판으로 이동용 컨트롤러 메소드
 	@RequestMapping("/workModifyPage.mdo")
@@ -44,6 +44,6 @@ public class WorkOutController {
 	@RequestMapping("/updateWorkOut.mdo")
 	public String workOutUpdate(WorkOutVO vo) {
 		workOutService.updateWorkOut(vo);
-		return "redirect:/getWorkOut.do?workout_id" + vo.getWorkout_id();
+		return "redirect:/getWorkOut.mdo?workout_id" + vo.getWorkout_id();
 	}
 }

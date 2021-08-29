@@ -1,5 +1,7 @@
 package com.fitness.trainer.foodout.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,4 +22,15 @@ public class FoodOutDAO {
 		return sqlSessionTemplate.selectOne("FoodOutDAO.getFoodOut");
 	}
 	
+	public List<FoodOutVO> getFoodOutList(){
+		return sqlSessionTemplate.selectList("FoodOutDAO.getFoodOutList");
+	}
+	
+	public void deleteFoodOut(FoodOutVO vo) {
+		sqlSessionTemplate.delete("FoodOutDAO.deleteFoodOut");
+	}
+	
+	public void updateFoodOut(FoodOutVO vo) {
+		sqlSessionTemplate.update("FoodOutDAO.updateFoodOut");
+	}
 }

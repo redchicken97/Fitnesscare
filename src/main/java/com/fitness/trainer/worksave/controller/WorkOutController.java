@@ -13,6 +13,7 @@ public class WorkOutController {
 	@Autowired
 	private WorkSaveService workSaveService;
 	
+	//추후 필요한 controller 추가할 예정
 	@RequestMapping("/insertWorkSave.mdo")
 	public String insertWorkSave(WorkSaveVO vo) {
 		workSaveService.insertWorkSave(vo);
