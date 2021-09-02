@@ -34,12 +34,12 @@ public class ProgramController {
 		programService.deleteProgram(vo);
 		return "redirect:/getProgramList.mdo";
 	}
-	@RequestMapping("proModifyPage.mdo")
+	@RequestMapping("/proModifyPage.mdo")
 	public String proModifyPage(ProgramVO vo, Model model) {
 		model.addAttribute("program", programService.getProgram(vo));
 		return "program/updateProgram";
 	}
-	@RequestMapping("updateProgram")
+	@RequestMapping("/updateProgram")
 	public String updateProgram(ProgramVO vo) {
 		programService.updateProgram(vo);
 		return "redirect:/getProgram.mdo?program_id" + vo.getProgram_id();
