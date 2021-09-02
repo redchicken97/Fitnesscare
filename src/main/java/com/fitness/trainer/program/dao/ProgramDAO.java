@@ -27,7 +27,7 @@ public class ProgramDAO{
 	}
 
 	public ProgramVO getProgram(ProgramVO vo) {
-		return sqlSessionTemplate.selectOne("programDAO.getProgram");
+		return sqlSessionTemplate.selectOne("programDAO.getProgram", vo);
 	}
 
 	public List<ProgramVO> getProgramList() {

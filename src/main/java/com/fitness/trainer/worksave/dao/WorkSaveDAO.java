@@ -13,11 +13,11 @@ public class WorkSaveDAO{
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public void insertWorkSave(WorkSaveVO vo) {
-		sqlSessionTemplate.insert("WorkSaveDAO.insertWorkSave");
+		sqlSessionTemplate.insert("WorkSaveDAO.insertWorkSave", vo);
 	}
 
 	public void deleteWorkSave(WorkSaveVO vo) {
-		sqlSessionTemplate.delete("WorkSaveDAO.deleteWorkSave");
+		sqlSessionTemplate.delete("WorkSaveDAO.deleteWorkSave", vo);
 	}
 
 }

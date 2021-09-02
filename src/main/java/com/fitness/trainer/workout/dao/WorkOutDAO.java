@@ -15,11 +15,11 @@ public class WorkOutDAO{
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public void insertWorkOut(WorkOutVO vo) {
-		sqlSessionTemplate.insert("WorkOutDAO.insertWorkOut");
+		sqlSessionTemplate.insert("WorkOutDAO.insertWorkOut", vo);
 	}
 
 	public WorkOutVO getWorkOut(WorkOutVO vo) {
-		return sqlSessionTemplate.selectOne("WorkOutDAO.getWorkOut");
+		return sqlSessionTemplate.selectOne("WorkOutDAO.getWorkOut", vo);
 	}
 
 	public List<WorkOutVO> getWorkOutList() {
@@ -27,11 +27,11 @@ public class WorkOutDAO{
 	}
 
 	public void deleteWorkOut(WorkOutVO vo) {
-		sqlSessionTemplate.delete("WorkOutDAO.deleteWorkOut");
+		sqlSessionTemplate.delete("WorkOutDAO.deleteWorkOut", vo);
 	}
 
 	public void updateWorkOut(WorkOutVO vo) {
-		sqlSessionTemplate.update("WorkOutDAO.updateWorkOut");
+		sqlSessionTemplate.update("WorkOutDAO.updateWorkOut", vo);
 	}
 
 }

@@ -15,11 +15,11 @@ public class FoodOutDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertFoodOut(FoodOutVO vo) {
-		sqlSessionTemplate.insert("FoodOutDAO.insertFoodOut");
+		sqlSessionTemplate.insert("FoodOutDAO.insertFoodOut", vo);
 	}
 	
 	public FoodOutVO getFoodOut(FoodOutVO vo) {
-		return sqlSessionTemplate.selectOne("FoodOutDAO.getFoodOut");
+		return sqlSessionTemplate.selectOne("FoodOutDAO.getFoodOut", vo);
 	}
 	
 	public List<FoodOutVO> getFoodOutList(){
@@ -27,10 +27,10 @@ public class FoodOutDAO {
 	}
 	
 	public void deleteFoodOut(FoodOutVO vo) {
-		sqlSessionTemplate.delete("FoodOutDAO.deleteFoodOut");
+		sqlSessionTemplate.delete("FoodOutDAO.deleteFoodOut", vo);
 	}
 	
 	public void updateFoodOut(FoodOutVO vo) {
-		sqlSessionTemplate.update("FoodOutDAO.updateFoodOut");
+		sqlSessionTemplate.update("FoodOutDAO.updateFoodOut", vo);
 	}
 }
