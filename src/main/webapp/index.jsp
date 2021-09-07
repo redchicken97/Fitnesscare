@@ -43,6 +43,7 @@
 		<!-- 	<a href="insertUser.jsp">회원가입</a></br></br> -->
 		<!--  	<a href="getUserList.do">회원정보</a><br><br> 	-->	
 		<!-- <a href="getQEBoardList.admin">질문 게시판</a> -->
+		<a href="comment.do?userId=${userInfo.user_id }">댓글 달기</a>
 		<a href="getNoBoardList.do">공지사항 게시판</a>	
 		<a href="getMapList.do">헬스팀</a>
 		<a href="getFeBoardList.do">자유 게시판</a>

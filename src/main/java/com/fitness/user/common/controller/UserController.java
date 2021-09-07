@@ -45,7 +45,7 @@ public class UserController {
 				session.setAttribute("userInfo", user_pwd);
 				session.setMaxInactiveInterval(30*60);
 	//			model.addAttribute("userInfo", user_pwd);
-				return "redirect:/getUser.do";
+				return "redirect:/index.jsp";
 			} 
 		}
 		return null;

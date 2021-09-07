@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fitness.admin.domain.paging.Criteria;
 import com.fitness.user.comment.service.CommentOverlapService;
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
@@ -66,9 +67,9 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/commentList.do")
-	public @ResponseBody List<String> getCommentList(CommentInfoVO vo) {	
+	public @ResponseBody List<String> getCommentList(Criteria cri) {	
 		System.out.println("controller에서 getCommentList 작동");
-		return userCommentService.getCommentList(vo);
+		return userCommentService.getCommentListPaging(cri);
 	}
 	
 	@RequestMapping("/upRdCnt.do")

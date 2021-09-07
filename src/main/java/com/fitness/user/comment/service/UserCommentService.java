@@ -3,8 +3,8 @@ package com.fitness.user.comment.service;
 
 import java.util.List;
 
+import com.fitness.admin.domain.paging.Criteria;
 import com.fitness.user.comment.vo.CommentInfoVO;
-import com.google.gson.JsonObject;
 
 public interface UserCommentService {
 	
@@ -12,7 +12,9 @@ public interface UserCommentService {
 	
 	public void reInsertComment(CommentInfoVO vo);
 	
-	public List<String> getCommentList(CommentInfoVO vo);
+	public List<String> getCommentListPaging(Criteria cri);
+	
+//	public List<String> getCommentList(CommentInfoVO vo);
 	
 	public CommentInfoVO getComment(CommentInfoVO vo);
 	

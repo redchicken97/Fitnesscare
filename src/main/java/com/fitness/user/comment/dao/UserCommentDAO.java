@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fitness.admin.domain.paging.Criteria;
 import com.fitness.user.comment.vo.CommentInfoVO;
 
 @Repository
@@ -70,12 +71,19 @@ public class UserCommentDAO {
 		sqlSessionTemplate.insert("commentDAO.reInsertComment", in);
 		sqlSessionTemplate.update("commentDAO.checkUpdateComment", up);
 	}
-
-	public List<CommentInfoVO> getCommentList(CommentInfoVO vo) {
+	
+	//페이징 넣은 List
+	public List<CommentInfoVO> getCommentListPaging(Criteria cri){
+		return sqlSessionTemplate.selectList("commentDAO.getCommentListPaging", cri);
+	}
+	
+	/*
+	public List<CommentInfoVO> getCommentList() {
 		System.out.println("mybatis getCommentList 실행");
 		return sqlSessionTemplate.selectList("commentDAO.getCommentList");
 	}
-
+	*/	
+		
 	public CommentInfoVO getComment(CommentInfoVO vo) {
 		System.out.println("mybatis getComment 실행");
 		return sqlSessionTemplate.selectOne("commentDAO.getComment", vo);

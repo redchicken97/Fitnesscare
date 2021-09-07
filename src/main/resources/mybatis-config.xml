@@ -12,11 +12,17 @@
 		<typeAlias type="com.fitness.user.kakaoMap.vo.HealthTeamJoinVO" alias="healthTeamJoin"/>
 		<typeAlias type="com.fitness.user.feboard.vo.FeBoardVO" alias="feboard"/>
 		<typeAlias type="com.fitness.user.qeboard.vo.QeBoardVO" alias="qeboard"/>
-		<typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"/>
+		<!-- <typeAlias type="com.fitness.admin.workout.vo.WorkoutSaveVO" alias="workoutSave"/> -->
+		
 		<typeAlias type="com.fitness.admin.term.vo.TermVO" alias="term"/>
 		<typeAlias type="com.fitness.admin.admin.vo.AdminVO" alias="admin"/>
-		<typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"/>
+		
+		<!-- <typeAlias type="com.fitness.admin.veboard.vo.VEBoardVO" alias="veboard"/> -->
+		
+		
 		<typeAlias type="com.fitness.admin.noboard.vo.NoBoardVO" alias="noboard"/>
+		
+		
 		<typeAlias type="com.fitness.admin.trainercert.vo.TrainerCertVO" alias="trainercert"/>
 		<typeAlias type="com.fitness.trainer.workout.vo.WorkOutVO" alias="workout"/>
 		<typeAlias type="com.fitness.trainer.worksave.vo.WorkSaveVO" alias="worksave"/>
@@ -41,17 +47,25 @@
 		</environment>
 	</environments>
 	<mappers>
+		<mapper resource="mappings/fitness-mapping.xml"/>
 		<mapper resource="mappings/healthTeam-mapping.xml"/>
 		<mapper resource="mappings/comment-mapping.xml"/>
 		<mapper resource="mappings/overlap-mapping.xml"/>
-		<mapper resource="mappings/fitness-mapping.xml"/>
-		<mapper resource="mappings/workoutSave-mapping.xml" />
-		<mapper resource="mappings/term-mapping.xml" />
-		<mapper resource="mappings/admin-mapping.xml" />
+		<mapper resource="mappings/healthTeamJoin-mapping.xml"/>
+<!--  <mapper resource="mappings/workoutSave-mapping.xml" /> -->
 		<mapper resource="mappings/qeboard-mapping.xml" />
 		<mapper resource="mappings/feboard-mapping.xml" />
-		<mapper resource="mappings/veboard-mapping.xml" />
+		
+		<mapper resource="mappings/term-mapping.xml" />
+		<mapper resource="mappings/admin-mapping.xml" />
+
+<!-- 
+<mapper resource="mappings/veboard-mapping.xml" />
+ -->
+		
+
 		<mapper resource="mappings/noboard-mapping.xml"/>
+		
 		<mapper resource="mappings/trainercert-mapping.xml"/>
 		<mapper resource="mappings/workout-mapping.xml"/>
 		<mapper resource="mappings/worksave-mapping.xml"/>
