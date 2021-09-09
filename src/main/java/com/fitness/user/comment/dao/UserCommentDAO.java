@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fitness.admin.domain.paging.Criteria;
+import com.fitness.admin.common.paging.Criteria;
 import com.fitness.user.comment.vo.CommentInfoVO;
 
 @Repository
@@ -112,5 +112,8 @@ public class UserCommentDAO {
 		sqlSessionTemplate.update("commentDAO.checkUpdateComment", vo);
 	}
 
-
+	//댓글 총 갯수 확인용
+	public int getCommentCount() {
+		return (int)sqlSessionTemplate.selectOne("commentDAO.getCommentCount");
+	}
 }

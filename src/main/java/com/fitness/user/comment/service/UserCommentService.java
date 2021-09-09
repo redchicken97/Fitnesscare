@@ -3,7 +3,7 @@ package com.fitness.user.comment.service;
 
 import java.util.List;
 
-import com.fitness.admin.domain.paging.Criteria;
+import com.fitness.admin.common.paging.Criteria;
 import com.fitness.user.comment.vo.CommentInfoVO;
 
 public interface UserCommentService {
@@ -27,4 +27,6 @@ public interface UserCommentService {
 	public void upReportCnt(CommentInfoVO vo);
 
 	public void seReInsertComment(CommentInfoVO vo);
+	
+	public int getCommentCount();
 }

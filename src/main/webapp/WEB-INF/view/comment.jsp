@@ -49,6 +49,26 @@
 			
 			</ul>
 		</div>	
+		
+		<!-- 페이징 들어갈 자리 -->
+	<ul>
+		<c:if test="${pageMaker.prev }">
+			<li>
+				<a href="/commentList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">Previous</a>
+			</li>
+		</c:if>
+		
+		<c:forEach begin="${pageMaker.startPage }" end="${pageMAker.endPage }" var="idx">
+			<li>
+				<a href="/commentList.do${pageMaker.makeQuery(idx)}">${idx}</a>
+			</li>	
+		</c:forEach>
+		
+		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+			<li><a href="/commentList.do${pageMaker.makeQuery(pageMaker.endPage + 1) }">Next</a></li>
+		</c:if>
+	</ul>
+		
 </body>
 	<script>
 	

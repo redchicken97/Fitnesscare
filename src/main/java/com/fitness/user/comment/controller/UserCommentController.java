@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fitness.admin.domain.paging.Criteria;
+import com.fitness.admin.common.paging.Criteria;
+import com.fitness.admin.common.paging.PageMaker;
 import com.fitness.user.comment.service.CommentOverlapService;
 import com.fitness.user.comment.service.UserCommentService;
 import com.fitness.user.comment.vo.CommentInfoVO;
@@ -67,8 +68,15 @@ public class UserCommentController {
 	}
 	
 	@RequestMapping("/commentList.do")
-	public @ResponseBody List<String> getCommentList(Criteria cri) {	
+	public @ResponseBody List<String> getCommentList(Criteria cri, Model model) {	
 		System.out.println("controller에서 getCommentList 작동");
+		
+		// 페이징 처리를 위한 PageMaker 및 criteria설정
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(userCommentService.getCommentCount());
+		cri = pageMaker.getCri();
+		model.addAttribute("pageMaker", pageMaker);
 		return userCommentService.getCommentListPaging(cri);
 	}
 	

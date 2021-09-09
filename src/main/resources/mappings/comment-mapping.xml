@@ -19,20 +19,11 @@
 	</resultMap>
 	
 	<!-- 페이징 작업용 리스트 -->
-	<select id="getCommentListPaging" resultType="commentInfo">
-	<![CDATA[
-	 select
-	 	cmt_id, target_id, cmt_type, user_id, cmt_regdate, cmt_rdcnt, cmt_reportcnt, cmt_ref, cmt_step, cmt_depth, cmt_content, reply_chek
-	 from
-	 	 (
-	 	 select /*+INDEX_ASC(comment_info PK_CMT_ID) */
-	 	 	rownum rn, cmt_id, target_id, cmt_type, user_id, cmt_regdate, cmt_rdcnt, cmt_reportcnt, cmt_ref, cmt_step, cmt_depth, cmt_content, reply_chek
-	 	 from
-	 	 	comment_info
-	 	 where rownum <= #{pageNum} * #{amount}
-	 	 )
-	 where rn > (#{pageNum} -1) * #{amount}
-	]]>
+	<select id="getCommentListPaging" resultMap="commentResult">
+		SELECT * FROM(
+			SELECT cmt_id, target_id, cmt_type, user_id, cmt_regdate, cmt_rdcnt, cmt_reportcnt, cmt_ref, cmt_step, cmt_depth,
+			cmt_content, reply_check, ROWNUM AS rnum FROM comment_info
+		)where rnum BETWEEN #{startNum} AND #{endNum} ORDER BY cmt_id ASC
 	</select>
 	
 	<insert id="insertComment" parameterType="commentInfo">
@@ -113,4 +104,9 @@
 		WHERE
 		cmt_id = #{cmt_id}
 	</update>
+	
+	<!-- 댓글 총 갯수 확인용 -->
+	<select id="getCommentCount" resultType="int">
+		SELECT COUNT(*) FROM comment_info
+	</select>
 </mapper>

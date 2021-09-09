@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitness.admin.domain.paging.Criteria;
+import com.fitness.admin.common.paging.Criteria;
 import com.fitness.user.comment.dao.UserCommentDAO;
 import com.fitness.user.comment.vo.CommentInfoVO;
 import com.google.gson.Gson;
@@ -150,5 +150,8 @@ public class UserCommentServiceImpl implements UserCommentService {
 		userCommentDAO.checkUpdateComment(vo);
 	}
 
-	
+	@Override
+	public int getCommentCount() {
+		return userCommentDAO.getCommentCount();
+	}
 }

@@ -9,6 +9,14 @@ public class Criteria {
 	private int startNum; 
 	private int endNum;
 	
+	public void setStartNum(int startNum) {
+		this.startNum = startNum;
+	}
+
+	public void setEndNum(int endNum) {
+		this.endNum = endNum;
+	}
+
 	// 초기값 설정
 	public Criteria() {
 		this.page = 1;
