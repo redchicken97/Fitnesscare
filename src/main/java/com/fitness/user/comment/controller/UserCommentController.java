@@ -77,6 +77,7 @@ public class UserCommentController {
 		pageMaker.setTotalCount(userCommentService.getCommentCount());
 		cri = pageMaker.getCri();
 		model.addAttribute("pageMaker", pageMaker);
+		System.out.println(pageMaker.toString());
 		return userCommentService.getCommentListPaging(cri);
 	}
 	
